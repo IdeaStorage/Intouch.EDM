@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Intouch.Edm.Views.Templates"
+             xmlns:control="clr-namespace:Intouch.Edm.Controls"
+             x:Class="Intouch.Edm.Views.ScenarioListPage"            
+             NavigationPage.HasNavigationBar="False">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="evenTemplate">
+                <ViewCell>
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc">
+                        <local:ScenarioTemplate />
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="unevenTemplate">
+                <ViewCell>
+                    <Frame BackgroundColor="#eeeeee" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc">
+                        <local:ScenarioTemplate />
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+            <control:ScenarioDataTemplateSelector x:Key="scenarioDataTemplateSelector"
+                EvenTemplate="{StaticResource evenTemplate}"
+                UnevenTemplate="{StaticResource unevenTemplate}" />
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <TabbedPage.Children>
+        <ContentPage Title="Bekleyenler" x:Name="Waiting">
+                <StackLayout>
+                <ListView x:Name="WaitingScenarioListView" 
+                              ItemsSource="{Binding ScenarioItems}"
+                              VerticalOptions="FillAndExpand"
+                              HasUnevenRows="true"
+                              RefreshCommand="{Binding LoadScenariosCommand}"
+                              IsPullToRefreshEnabled="true"
+                              ItemTemplate="{StaticResource scenarioDataTemplateSelector}"
+                              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                              CachingStrategy="RecycleElement"
+                              ItemSelected="OnItemSelected">
+                    </ListView>
+                </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Onaylananlar" x:Name="ApprovedFilter">
+                <StackLayout>
+                    <ListView x:Name="ApprovedScenarioListView" 
+                              ItemsSource="{Binding ScenarioItems}"
+                              VerticalOptions="FillAndExpand"
+                              HasUnevenRows="true"
+                              RefreshCommand="{Binding LoadScenariosCommand}"
+                              IsPullToRefreshEnabled="true"
+                              ItemTemplate="{StaticResource scenarioDataTemplateSelector}"
+                              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                              CachingStrategy="RecycleElement"
+                              ItemSelected="OnItemSelected">
+                    </ListView>
+                </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Reddedilenler" x:Name="RejectedFilter">
+            <StackLayout>
+                <ListView x:Name="RejectedScenarioListView" 
+                              ItemsSource="{Binding ScenarioItems}"
+                              VerticalOptions="FillAndExpand"
+                              HasUnevenRows="true"
+                              RefreshCommand="{Binding LoadScenariosCommand}"
+                              IsPullToRefreshEnabled="true"
+                              ItemTemplate="{StaticResource scenarioDataTemplateSelector}"
+                              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                              CachingStrategy="RecycleElement"
+                              ItemSelected="OnItemSelected">
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

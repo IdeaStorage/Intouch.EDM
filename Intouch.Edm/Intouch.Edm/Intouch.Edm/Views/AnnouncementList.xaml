@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Intouch.Edm.Views.Templates"
+             xmlns:control="clr-namespace:Intouch.Edm.Controls"
+             x:Class="Intouch.Edm.Views.AnnouncementList"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Yeni Duyuru" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="evenTemplate">
+                <ViewCell>
+                    <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc">
+                        <local:AnnouncementListTemplate />
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="unevenTemplate">
+                <ViewCell>
+                    <Frame BackgroundColor="#eeeeee" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc">
+                        <local:AnnouncementListTemplate />
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+            <control:TaskListTemplateSelector x:Key="announcementTemplateSelector"
+                EvenTemplate="{StaticResource evenTemplate}"
+                UnevenTemplate="{StaticResource unevenTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="AnnouncementListView" 
+                ItemsSource="{Binding AnnouncementItems}"
+                Margin="0,5,0,0"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadAnnouncementsCommand}"
+                ItemTemplate="{StaticResource announcementTemplateSelector}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement">
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

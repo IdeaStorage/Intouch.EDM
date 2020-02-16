@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Intouch.Edm.Views.ScenarioApprovePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid
+				RowSpacing="0"
+				Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition
+						Height="*" />
+                <RowDefinition
+						Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- FIELD CONTAINERS -->
+            <StackLayout
+					Spacing="20">
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="subjectIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0"/>
+                    <Label x:Name="Subject" 
+                           Text="{Binding scenario.Subject}" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="Medium"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="eventIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
+                    <Label x:Name="Event" 
+                           Text="{Binding scenario.Event}" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="Medium"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="sourceIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Kaynak" Margin="0, 0, 33, 0"></Label>
+                    <Label x:Name="Source" 
+                           Text="{Binding scenario.Source}"
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="Medium"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="locationIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Lokasyon" Margin="0, 0, 13, 0"></Label>
+                    <Label x:Name="LocationArea" 
+                           Text="{Binding scenario.Site}" 
+                           HorizontalTextAlignment="Center" 
+                           FontSize="Medium"
+                           VerticalTextAlignment="Center" 
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="impactAreaIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Etki Alanı" Margin="0, 0, 13, 0"></Label>
+                    <Label x:Name="ImpactArea" 
+                           Text="{Binding scenario.ImpactArea}" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="Medium"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout
+						Orientation="Horizontal"
+						Spacing="1">
+                    <Image x:Name="image" Margin="85,20,85,20" WidthRequest="200" Source="{Binding scenario.PictureUrl}" BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                    <ActivityIndicator BindingContext="{x:Reference image}" IsRunning="{Binding IsLoading}"></ActivityIndicator>
+                </StackLayout>
+                <StackLayout
+						Orientation="Horizontal"
+						Spacing="1">
+                    <Button x:Name="RejectButton" 
+                            Text="Reddet" 
+                            HorizontalOptions="FillAndExpand" 
+                            Command="{Binding RejectButtonClicked}" 
+                            BackgroundColor="#E61E28" 
+                            CornerRadius="50" 
+                            IsVisible="{Binding isVisible}" 
+                            FontSize="Medium" 
+                            TextColor="White"
+                            BorderColor="Black" 
+                            FlexLayout.AlignSelf="Stretch"  ></Button>
+                    <Button x:Name="ApproveButton"
+                            Text="Onayla" 
+                            HorizontalOptions="FillAndExpand" 
+                            Command="{Binding ApproveButtonClicked}" 
+                            CornerRadius="50" 
+                            FontSize="Medium" 
+                            IsVisible="{Binding isVisible}" 
+                            TextColor="White"
+                            BorderColor="Black" 
+                            BackgroundColor="#2196f3" 
+                            FlexLayout.AlignSelf="Stretch"  ></Button>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>       

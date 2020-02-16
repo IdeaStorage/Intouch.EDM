@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="Intouch.Edm.Views.Templates.ListTemplate">
+    <ContentView.Content>
+        <StackLayout
+		Spacing="0"
+		Orientation="Horizontal"
+		Padding="10, 5, 10, 5"
+		VerticalOptions="Center">
+            <image:CircleImage Source="camera.png"
+                               Aspect="AspectFill" 
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               BorderColor="Red"
+                               TranslationX="8"
+                               BorderThickness="1"
+                               TranslationY="14">
+            </image:CircleImage>
+            <StackLayout
+			Padding="10, 0, 10, 0"
+			Spacing="0"
+			Orientation="Horizontal"
+			HorizontalOptions="FillAndExpand">
+                <StackLayout
+				HorizontalOptions="FillAndExpand"
+				Spacing="0"
+				Padding="10">
+                    <StackLayout
+					Orientation="Horizontal">
+                        <Label
+						Text="{Binding Text}" 
+                        Font="Bold,18"
+						HorizontalOptions="Fill"
+						VerticalOptions="EndAndExpand"/>
+                        <Label
+						Text=" "
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="EndAndExpand" />
+                        <Label
+						Text="{Binding AssignmentTime}"
+						FontSize="12"
+						HorizontalTextAlignment="Center"
+						HorizontalOptions="EndAndExpand"
+						VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+					Orientation="Horizontal"
+					Padding="0,8,0,0">
+                        <Label
+                        Text="{Binding UserName}" 
+                        TextColor="Gray"
+                        FontAttributes="Italic" 
+                        FontSize="13" 
+                        HorizontalOptions="FillAndExpand"
+						VerticalOptions="FillAndExpand" />
+                        <Image VerticalOptions="EndAndExpand" 
+                               Source="{Binding StatusImage}"
+                               WidthRequest="24"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

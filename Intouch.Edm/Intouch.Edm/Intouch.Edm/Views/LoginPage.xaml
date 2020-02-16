@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Intouch.Edm.Controls"
+             x:Class="Intouch.Edm.Views.LoginPage"            
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView
+				VerticalOptions="FillAndExpand"
+				>
+                <!-- MAIN CONTAINER -->
+                <Grid
+					ColumnSpacing="0"
+					RowSpacing="0"
+					
+					HorizontalOptions="Fill"
+					VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+							Height="Auto" />
+                        <RowDefinition
+							Height="*" />
+                        <RowDefinition
+							Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- HEADER -->
+                    <StackLayout
+						Grid.Row="0"
+						Spacing="5"
+						Padding="0,20,0,0"
+						InputTransparent="true">
+                        <!-- LOGO -->
+                        <Grid
+							Grid.Row="1"
+							WidthRequest="135"
+							HeightRequest="135"
+							VerticalOptions="Center"
+							HorizontalOptions="Center">
+                            <BoxView
+								Opacity="1"
+								HorizontalOptions="Center"
+								WidthRequest="60" />
+                            <Image
+                                Source="logo.png"
+								HorizontalOptions="Center"
+								VerticalOptions="Center" />
+                        </Grid>
+                        <!-- WELCOME TEXT -->
+                        <Label
+							Text="Hoşgeldiniz"
+                            FontSize="Large"
+                            FontFamily="Italy"
+							HorizontalOptions="Center"
+                            TextColor="{ DynamicResource BaseTextColor }" />
+                        <!-- USE YOUR CREDENTIALS TEXT -->
+                        <Label
+							Text="Kullanıcı ve şifrenizle giriş yapabilirsiniz."
+							HorizontalOptions="Center"/>
+                        <!--SEPARATOR-->
+                        <BoxView
+							WidthRequest="100"
+							HeightRequest="1"
+							HorizontalOptions="Center"
+							VerticalOptions="End"
+                            BackgroundColor="{ DynamicResource BaseTextColor }" />
+                        <Image 
+                        Source="tree.png"
+						HorizontalOptions="Center"
+						VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <!---FIELDS CONTAINER-->
+                    <Grid
+						Grid.Row="1"
+						RowSpacing="30"
+						ColumnSpacing="15"
+						Padding="20,20,20,20"
+						VerticalOptions="Center"
+                        Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+								Width="Auto" />
+                            <ColumnDefinition
+								Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+								Height="*" />
+                            <RowDefinition
+								Height="*" />
+                        </Grid.RowDefinitions>
+                        <!-- ICON -->
+                        <Image
+							Grid.Column="0"
+							Grid.Row="0"
+                            Source="user.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" />
+                        <Entry
+                            x:Name="userNameEntry" 
+                            Text="{Binding Username}"
+							Grid.Column="1"
+							Grid.Row="0"
+                            ReturnType="Next"
+							VerticalOptions="Center"
+							HorizontalOptions="FillAndExpand"
+							Placeholder="Kullanıcı Adı" />
+                        <!-- ICON -->
+                        <Image
+							Grid.Column="0"
+							Grid.Row="1"
+							Source="password.png"
+                            Margin="5,0,0,0"
+                            VerticalOptions="Center"
+							HorizontalOptions="Center" />
+                        <!-- PASSWORD ENTRY -->
+                        <Entry
+                            x:Name="passwordEntry" 
+                            Text="{Binding Password}"
+                            ReturnType="Done"
+							Grid.Column="1"
+							Grid.Row="1"
+							VerticalOptions="Center"
+							HorizontalOptions="FillAndExpand"
+							Placeholder="Şifre"
+							IsPassword="True">
+                            <Entry.Effects>
+                                <controls:ShowHidePassEffect />
+                            </Entry.Effects>
+                        </Entry>
+                    </Grid>
+                    <!-- BUTTONS -->
+                    <StackLayout
+						Grid.Row="2"
+						Spacing="5"
+						Padding="0,10,0,20"
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="End">
+                        <!-- LOGIN BUTTON-->
+                        <Button
+						    CornerRadius="50" 
+                            FontSize="Medium" 
+                            TextColor="White"
+                            BorderColor="Black" 
+                            BackgroundColor="#2196f3" 
+                            FlexLayout.AlignSelf="Stretch"  
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="350"
+							VerticalOptions="End"
+							Text="LOGIN"                             
+                             Command="{Binding SignInCommand}"
+                        />
+                        <!--SEPARATOR-->
+                        <BoxView
+							Grid.Row="4"
+							HeightRequest="1"
+							VerticalOptions="Start"
+							HorizontalOptions="Center"
+							WidthRequest="300"
+							BackgroundColor="Black" />
+                        <Label
+							Grid.Row="4"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+                            Margin="0,0,0,25"
+							FontSize="14"
+							Text="Şifremi unuttum!">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

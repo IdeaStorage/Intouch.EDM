@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:Intouch.Edm.Views"
+            x:Class="Intouch.Edm.Views.MainPage">
+    <TabbedPage.Children>
+        <NavigationPage Title="Anasayfa" x:Name="TableViewMenu" >
+            <x:Arguments>
+                <views:TableViewMenuPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Görevler" x:Name="TaskList"  IsVisible="{Binding IsVisibleTaskList}">
+            <x:Arguments>
+                <views:TaskListPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="ADK"  x:Name="ScenarioList"  IsVisible="{Binding IsVisibleAdkList}">
+            <x:Arguments>
+                <views:ScenarioListPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Duyurular" 
+                        x:Name="AnnouncementList"
+           >
+            <x:Arguments>
+                <views:AnnouncementList />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+</TabbedPage>

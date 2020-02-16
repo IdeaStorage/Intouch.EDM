@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Intouch.Edm.Views.Templates.ScenarioTemplate">
+    <ContentView.Content>
+        <StackLayout
+		Spacing="0"
+		Orientation="Horizontal"
+		Padding="10, 5, 10, 5"
+		VerticalOptions="Center">
+            <Image Source="{Binding Icon}"
+                   Aspect="AspectFill" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   TranslationX="8"
+                   TranslationY="14">
+            </Image>
+            <StackLayout
+			Padding="10, 0, 10, 0"
+			Spacing="0"
+			Orientation="Horizontal"
+			HorizontalOptions="FillAndExpand">
+                <StackLayout
+				HorizontalOptions="FillAndExpand"
+				Spacing="0"
+				Padding="10">
+                    <StackLayout
+					Orientation="Horizontal">
+                        <Label
+						Text="{Binding Subject}" 
+                        Font="Bold,18"
+						HorizontalOptions="Fill"
+						VerticalOptions="EndAndExpand"/>
+                        <Label
+						Text=" "
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="EndAndExpand" />
+                        <Label
+						Text="{Binding RecordDate}"
+						FontSize="12"
+						HorizontalTextAlignment="Center"
+						HorizontalOptions="EndAndExpand"
+						VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+					Orientation="Horizontal"
+					Padding="0,8,0,0">
+                        <Label
+                        Text="{Binding Source}" 
+                        TextColor="Gray"
+                        FontAttributes="Italic" 
+                        FontSize="13" 
+                        HorizontalOptions="FillAndExpand"
+						VerticalOptions="FillAndExpand" />
+                        <Image VerticalOptions="EndAndExpand" 
+                               Source="{Binding StatusIcon}"
+                               WidthRequest="24"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

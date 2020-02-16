@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Intouch.Edm.Controls"
+             x:Class="Intouch.Edm.Views.NewScenarioPage"
+             BackgroundColor="White"
+             NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Kaydet" Command="{Binding SaveClicked}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid
+				RowSpacing="0"
+				Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition
+						Height="*" />
+                <RowDefinition
+						Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- FIELD CONTAINERS -->
+            <StackLayout
+					Spacing="20">
+                <StackLayout
+						Orientation="Horizontal"
+						Spacing="5">
+                    <Image
+						Source="logo.png"	
+                        BackgroundColor="White"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="subjectIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0"/>
+                    <controls:BorderlessPicker  ItemsSource="{Binding SubjectCombobox}" ItemDisplayBinding="{Binding Name}"                                                
+                                                   Title="Seçiniz" AutomationProperties.HelpText="Seçiniz" SelectedItem="{Binding SelectedSubject,Mode=TwoWay}" 
+                                                    BackgroundColor="White" Margin="3,0,3,8" HorizontalOptions="FillAndExpand"  VerticalOptions="Center">
+                    </controls:BorderlessPicker>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="eventIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
+                    <controls:BorderlessPicker ItemsSource="{Binding EventCombobox}" ItemDisplayBinding="{Binding Name}" Title="Seçiniz" AutomationProperties.HelpText="Seçiniz" 
+                                               SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"   BackgroundColor="White" Margin="3,0,3,8" HorizontalOptions="FillAndExpand"  VerticalOptions="Center" >
+                    </controls:BorderlessPicker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="sourceIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Kaynak" Margin="0, 0, 33, 0"></Label>
+                    <controls:BorderlessPicker 
+                        ItemsSource="{Binding SourceCombobox}"
+                        ItemDisplayBinding="{Binding Name}" 
+                        BackgroundColor="White" 
+                        Margin="3,0,3,8" 
+                        Title="Seçiniz"
+                        HorizontalOptions="FillAndExpand" 
+                        SelectedItem="{Binding SelectedSource,Mode=TwoWay}"
+                        AutomationProperties.HelpText="Seçiniz" 
+                        VerticalOptions="Center">
+                    </controls:BorderlessPicker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="locationIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Lokasyon" Margin="0, 0, 13, 0"></Label>
+                    <controls:BorderlessPicker 
+                        ItemsSource="{Binding LocationCombobox}"
+                        ItemDisplayBinding="{Binding Name}" 
+                        BackgroundColor="White" 
+                        Margin="3,0,3,8" 
+                        Title="Seçiniz"
+                        SelectedItem="{Binding SelectedLocation,Mode=TwoWay}"
+                        HorizontalOptions="FillAndExpand" 
+                        AutomationProperties.HelpText="Seçiniz" 
+                        VerticalOptions="Center">
+                    </controls:BorderlessPicker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                            Source="impactAreaIcon.png"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" 
+                            Margin="0,3,0,0"/>
+                    <Label Style="{StaticResource LableStyle}" Text="Etki Alanı" Margin="0, 0, 13, 0"></Label>
+                    <controls:BorderlessPicker 
+                        ItemsSource="{Binding ImpactAreaCombobox}"
+                        ItemDisplayBinding="{Binding Name}" 
+                        BackgroundColor="White" 
+                        Margin="3,0,3,8" 
+                        Title="Seçiniz"
+                        SelectedItem="{Binding SelectedImpactArea,Mode=TwoWay}"
+                        HorizontalOptions="FillAndExpand" 
+                        AutomationProperties.HelpText="Seçiniz" 
+                        VerticalOptions="Center">
+                    </controls:BorderlessPicker>
+                </StackLayout>
+                <StackLayout
+						Orientation="Horizontal"
+						Spacing="1">
+                    <!-- Circle Button -->
+                    <Button
+						Image="camera.png"	
+                        BackgroundColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        Command="{Binding SheetSimpleClicked}"/>
+                    <Grid>
+                    <Image x:Name="image" Margin="0,20" WidthRequest="400" HeightRequest="200" Source="{Binding ImageSource}"   BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                        <ActivityIndicator BindingContext="{x:Reference image}" IsRunning="{Binding IsLoading}"></ActivityIndicator>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
