@@ -7,5 +7,4 @@ namespace Intouch.Edm.Controls
         public string EntryText { get; set; }
         public ShowHidePassEffect() : base("Xamarin.ShowHidePassEffect") { }
     }
-
 }

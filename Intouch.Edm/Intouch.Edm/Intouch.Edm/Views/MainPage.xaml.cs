@@ -4,17 +4,19 @@ using Intouch.Edm.ViewModels;
 using System;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace Intouch.Edm.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : TabbedPage
+    public partial class MainPage : Xamarin.Forms.TabbedPage
     {
         MainPageViewModel viewModel;
         DataService dataService;
         public MainPage(int currentTab = 0)
         {
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             InitializeComponent();
             BindingContext = viewModel = new MainPageViewModel();
             dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);

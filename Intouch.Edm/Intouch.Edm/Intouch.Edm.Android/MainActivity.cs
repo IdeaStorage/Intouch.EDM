@@ -12,7 +12,7 @@ using ImageCircle.Forms.Plugin.Droid;
 namespace Intouch.Edm.Droid
 {
     
-    [Activity(Label = "Intouch.Edm", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Intouch.Edm", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         private object msgText;

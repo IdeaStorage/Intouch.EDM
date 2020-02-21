@@ -4,26 +4,26 @@
             xmlns:views="clr-namespace:Intouch.Edm.Views"
             x:Class="Intouch.Edm.Views.MainPage">
     <TabbedPage.Children>
-        <NavigationPage Title="Anasayfa" x:Name="TableViewMenu" >
+        <NavigationPage Title="Anasayfa" x:Name="TableViewMenu" Icon="homeIcon.png">
             <x:Arguments>
                 <views:TableViewMenuPage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="Görevler" x:Name="TaskList"  IsVisible="{Binding IsVisibleTaskList}">
+        <NavigationPage Title="Görevler" x:Name="TaskList" Icon="taskIcon.png" IsVisible="{Binding IsVisibleTaskList}">
             <x:Arguments>
                 <views:TaskListPage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="ADK"  x:Name="ScenarioList"  IsVisible="{Binding IsVisibleAdkList}">
+        <NavigationPage Title="ADK" x:Name="ScenarioList" Icon="scenarioIcon.png" IsVisible="{Binding IsVisibleAdkList}">
             <x:Arguments>
                 <views:ScenarioListPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Duyurular" 
                         x:Name="AnnouncementList"
-           >
+                        Icon="announcementIcon.png">
             <x:Arguments>
                 <views:AnnouncementList />
             </x:Arguments>
