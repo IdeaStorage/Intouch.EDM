@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Intouch.Edm.Views.Templates"
              xmlns:control="clr-namespace:Intouch.Edm.Controls"
-             x:Class="Intouch.Edm.Views.ScenarioListPage"            
+             x:Class="Intouch.Edm.Views.ScenarioListPage"
              NavigationPage.HasNavigationBar="False">
     <TabbedPage.Resources>
         <ResourceDictionary>
