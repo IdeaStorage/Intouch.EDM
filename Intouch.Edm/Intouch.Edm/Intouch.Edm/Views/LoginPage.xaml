@@ -8,12 +8,12 @@
         <Grid>
             <ScrollView
 				VerticalOptions="FillAndExpand"
-				>
+				Padding="{ StaticResource MainWrapperPadding }">
                 <!-- MAIN CONTAINER -->
                 <Grid
 					ColumnSpacing="0"
 					RowSpacing="0"
-					
+					Style="{ StaticResource SimpleLoginFormsContentStyle }"
 					HorizontalOptions="Fill"
 					VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>

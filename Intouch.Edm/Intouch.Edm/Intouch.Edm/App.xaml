@@ -10,6 +10,18 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+            <OnIdiom
+				x:Key="MainWrapperPadding"
+                Phone="0, 0, 0, 0"
+				x:TypeArguments="Thickness">
+            </OnIdiom>
+            <OnIdiom
+				x:Key="SimpleLoginFormsContentStyle"
+                Phone="20, 30, 20, 20"                
+				x:TypeArguments="Thickness">
+            </OnIdiom>
+            <Color x:Key="InverseTextColor">#FFFFFF</Color>
+            <Color x:Key="BaseTextColor">#666666</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
