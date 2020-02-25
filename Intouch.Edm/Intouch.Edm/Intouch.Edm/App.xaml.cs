@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Intouch.Edm.Views;
 using Intouch.Edm.Models;
+using Plugin.FirebasePushNotification;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Intouch.Edm
@@ -12,6 +13,13 @@ namespace Intouch.Edm
         public App(string value)
         {
             InitializeComponent();
+
+            Redirect(value);
+            
+        }
+
+        private void Redirect(string value)
+        {
             if (value == "1")
             {
                 MainPage = new NavigationPage(new MainPage((int)TabPageEnums.TaskListPage));
@@ -31,7 +39,38 @@ namespace Intouch.Edm
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
-           // MainPage = new MainPage();
+
+            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
+                Helpers.Settings.AuthenticationToken = p.Token;
+            };
+
+            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            {
+
+                System.Diagnostics.Debug.WriteLine("Received");
+
+            };
+            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine("Opened");
+                foreach (var data in p.Data)
+                {
+                    if (data.Key == "NotificationTypeId")
+                    {
+                        Redirect(data.Value.ToString());
+                    }
+                        System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                }
+
+                if (!string.IsNullOrEmpty(p.Identifier))
+                {
+                    System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
+                }
+
+            };
+            // MainPage = new MainPage();
         }
 
         protected override void OnStart()

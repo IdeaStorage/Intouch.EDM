@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Plugin.FirebasePushNotification;
 using Foundation;
 using UIKit;
 
@@ -24,8 +24,26 @@ namespace Intouch.Edm.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            FirebasePushNotificationManager.Initialize(options, true);
 
             return base.FinishedLaunching(app, options);
+        }
+        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        {
+            FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
+        }
+
+        public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+        {
+            FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
+
+        }
+        // To receive notifications in foregroung on iOS 9 and below.
+        // To receive notifications in background in any iOS version
+        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        {
+
+            FirebasePushNotificationManager.DidReceiveMessage(userInfo);
         }
     }
 }

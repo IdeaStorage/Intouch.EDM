@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Plugin.FirebasePushNotification">
+      <Version>3.1.6</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Iid">
       <Version>60.1142.1</Version>
     </PackageReference>
