@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Intouch.Edm.Views.Templates"
              xmlns:control="clr-namespace:Intouch.Edm.Controls"
              x:Class="Intouch.Edm.Views.AnnouncementList"
-             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Yeni Duyuru" Clicked="ToolbarItem_Clicked" />
