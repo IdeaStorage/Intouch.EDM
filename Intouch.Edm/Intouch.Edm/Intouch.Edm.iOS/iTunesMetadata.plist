@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<dict>
+		<key>armv7</key>
+		<true/>
+		<key>front-facing-camera</key>
+		<true/>
+	</dict>
+	<key>artistName</key>
+	<string>Intouch Company, Inc.</string>
+	<key>copyright</key>
+	<string>� 2015 Edm, A.S</string>
+	<key>drmVersionNumber</key>
+	<integer>0</integer>
+	<key>fileExtension</key>
+	<string>.app</string>
+	<key>gameCenterEnabled</key>
+	<false/>
+	<key>gameCenterEverEnabled</key>
+	<false/>
+	<key>genre</key>
+	<string>Games</string>
+	<key>genreId</key>
+	<integer>6014</integer>
+	<key>kind</key>
+	<string>software</string>
+	<key>playlistArtistName</key>
+	<string>Company, Inc.</string>
+	<key>playlistName</key>
+	<string>App Name</string>
+	<key>releaseDate</key>
+	<string>2015-11-18T03:23:10Z</string>
+	<key>s</key>
+	<integer>143441</integer>
+	<key>softwareIconNeedsShine</key>
+	<false/>
+	<key>softwareVersionBundleId</key>
+	<string>com.intouch.edm</string>
+	<key>subgenres</key>
+	<array>
+		<dict>
+			<key>genre</key>
+			<string>Business</string>
+			<key>genreId</key>
+			<integer>6000</integer>
+		</dict>
+	</array>
+	<key>versionRestrictions</key>
+	<integer>16843008</integer>
+	<key>bundleDisplayName</key>
+	<string>com.intouch.edm</string>
+	<key>bundleShortVersionString</key>
+	<string>1.0</string>
+	<key>bundleVersion</key>
+	<string>1.0</string>
+	<key>itemName</key>
+	<string>Intouch</string>
+</dict>
+</plist>

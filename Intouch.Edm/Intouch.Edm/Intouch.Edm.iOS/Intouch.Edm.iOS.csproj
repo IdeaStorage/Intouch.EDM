@@ -75,6 +75,22 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator'">
+    <OutputPath>bin\iPhoneSimulator\Ad-Hoc\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone'">
+    <OutputPath>bin\iPhone\Ad-Hoc\</OutputPath>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchFloat32>true</MtouchFloat32>
+    <OptimizePNGs>true</OptimizePNGs>
+    <CodesignKey>iPhone Developer: Mehmet Sefa Guller (H9745PFFD5)</CodesignKey>
+    <CodesignProvision>intouchedm</CodesignProvision>
+    <CodesignExtraArgs />
+    <CodesignResourceRules />
+    <CodesignEntitlements />
+    <MtouchSdkVersion>13.2</MtouchSdkVersion>
+    <BuildIpa>true</BuildIpa>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -82,9 +98,12 @@
     <Compile Include="ShowHidePassEffect.cs" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="intouchedm.mobileprovision" />
+    <None Include="iTunesMetadata.plist" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
