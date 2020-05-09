@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Foundation;
 using UIKit;
-using Firebase.CloudMessaging;
-using UserNotifications;
+using Plugin.FirebasePushNotification;
 
 namespace Intouch.Edm.iOS
 {
@@ -12,9 +11,9 @@ namespace Intouch.Edm.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IUNUserNotificationCenterDelegate , IMessagingDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
-        public event EventHandler<UserInfoEventArgs> MessageReceived;
+        
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -26,78 +25,36 @@ namespace Intouch.Edm.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-            RegisterForRemoteNotifications();
-            Messaging.SharedInstance.Delegate = this;
-            if (UNUserNotificationCenter.Current != null)
-            {
-                UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
-            }
-            Firebase.Core.App.Configure();
+
+            FirebasePushNotificationManager.Initialize(options, true);
 
             return base.FinishedLaunching(app, options);
         }
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-
-            {
-                // For iOS 10 display notification (sent via APNS)
-
-                UNUserNotificationCenter.Current.Delegate = this;
-
-                var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
-
-                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, async (granted, error) =>
-
-                {
-
-                    Console.WriteLine(granted);
-
-                    await System.Threading.Tasks.Task.Delay(500);
-
-                });
-
-            }
-            else
-            {
-                // iOS 9 or before
-
-                var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
-
-                var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
-
-                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-
-            }
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-
-            Messaging.SharedInstance.ShouldEstablishDirectChannel = true;
-        }
-        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
-        {
-            Messaging.SharedInstance.ApnsToken = deviceToken;
+            FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
         {
-            base.FailedToRegisterForRemoteNotifications(application, error);
+            FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
+
         }
+        // To receive notifications in foregroung on iOS 9 and below.
+        // To receive notifications in background in any iOS version
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
+            // If you are receiving a notification message while your app is in the background,
+            // this callback will not be fired 'till the user taps on the notification launching the application.
+
+            // If you disable method swizzling, you'll need to call this method. 
+            // This lets FCM track message delivery and analytics, which is performed
+            // automatically with method swizzling enabled.
+            FirebasePushNotificationManager.DidReceiveMessage(userInfo);
+            // Do your magic to handle the notification data
+            System.Console.WriteLine(userInfo);
+
             completionHandler(UIBackgroundFetchResult.NewData);
-        }
-        [Export("messaging: didReceiveRegistrationToken:")]
-        public void DidReceiveRegistrationToken(Messaging messaging, string fcmToken)
-
-        {
-            Xamarin.Forms.Application.Current.Properties["Fcmtocken"] = Messaging.SharedInstance.FcmToken ?? "";
-
-            Xamarin.Forms.Application.Current.SavePropertiesAsync();
-
-            System.Diagnostics.Debug.WriteLine($"######Token######  :  {fcmToken}");
-
-            Console.WriteLine(fcmToken);
-            Helpers.Settings.FirebaseNotification = token;
         }
     }
 }
