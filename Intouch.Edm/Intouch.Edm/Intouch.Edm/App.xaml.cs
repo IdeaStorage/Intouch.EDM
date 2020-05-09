@@ -40,36 +40,36 @@ namespace Intouch.Edm
 
             MainPage = new NavigationPage(new LoginPage());
 
-            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
-            {
-                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
-                Helpers.Settings.AuthenticationToken = p.Token;
-            };
+            //CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+            //{
+            //    System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
+            //    Helpers.Settings.AuthenticationToken = p.Token;
+            //};
 
-            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
-            {
+            //CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            //{
 
-                System.Diagnostics.Debug.WriteLine("Received");
+            //    System.Diagnostics.Debug.WriteLine("Received");
 
-            };
-            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
-            {
-                System.Diagnostics.Debug.WriteLine("Opened");
-                foreach (var data in p.Data)
-                {
-                    if (data.Key == "NotificationTypeId")
-                    {
-                        Redirect(data.Value.ToString());
-                    }
-                        System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
-                }
+            //};
+            //CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Opened");
+            //    foreach (var data in p.Data)
+            //    {
+            //        if (data.Key == "NotificationTypeId")
+            //        {
+            //            Redirect(data.Value.ToString());
+            //        }
+            //            System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+            //    }
 
-                if (!string.IsNullOrEmpty(p.Identifier))
-                {
-                    System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
-                }
+            //    if (!string.IsNullOrEmpty(p.Identifier))
+            //    {
+            //        System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
+            //    }
 
-            };
+            //};
             // MainPage = new MainPage();
         }
 

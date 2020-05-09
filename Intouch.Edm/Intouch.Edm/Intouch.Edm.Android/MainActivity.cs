@@ -8,6 +8,8 @@ using Android.Widget;
 using Android.OS;
 using Plugin.CurrentActivity;
 using ImageCircle.Forms.Plugin.Droid;
+using Android.Util;
+using Firebase.Iid;
 
 namespace Intouch.Edm.Droid
 {
@@ -28,6 +30,9 @@ namespace Intouch.Edm.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             ImageCircleRenderer.Init();
+            
+            Log.Debug("TOKEN","Instance token Id:" + FirebaseInstanceId.Instance.Token);
+            Helpers.Settings.FirebaseNotification = FirebaseInstanceId.Instance.Token;
 
             bool isNotification = false;
 

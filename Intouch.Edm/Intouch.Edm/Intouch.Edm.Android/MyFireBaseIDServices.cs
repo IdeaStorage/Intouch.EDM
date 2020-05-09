@@ -13,7 +13,7 @@ namespace Intouch.Edm.Droid
     {
         const string TAG = "MyFireBaseMessagingService";
         public static string notificationTypeId = "";
-        internal static readonly string CHANNEL_ID = "my_notification_channel";
+        internal static readonly string CHANNEL_ID = "com.intouch.edm";
         public override void OnMessageReceived(RemoteMessage message)
         {
             Log.Debug(TAG, "From: " + message.From);
@@ -102,6 +102,7 @@ namespace Intouch.Edm.Droid
         }
         public void SendRegistrationToServerAsync(string token)
         {
+            Log.Debug(PackageName,token);
             Helpers.Settings.FirebaseNotification = token;
             //duyurular yetkisi varsa notifications topic ine subscribe olacak
             FirebaseMessaging.Instance.SubscribeToTopic("notifications");
