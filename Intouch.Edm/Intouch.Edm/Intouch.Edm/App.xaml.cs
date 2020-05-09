@@ -38,7 +38,7 @@ namespace Intouch.Edm
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new MainPage());
 
             try
             {
