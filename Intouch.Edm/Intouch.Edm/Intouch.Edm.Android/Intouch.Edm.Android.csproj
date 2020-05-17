@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Plugin.Badge">
-      <Version>2.0.0</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Iid">
       <Version>60.1142.1</Version>

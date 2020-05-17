@@ -40,8 +40,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::Intouch.Edm.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Plugin.Badge.Droid.Resource.Animation.design_snackbar_in = global::Intouch.Edm.Droid.Resource.Animation.design_snackbar_in;
 			global::Plugin.Badge.Droid.Resource.Animation.design_snackbar_out = global::Intouch.Edm.Droid.Resource.Animation.design_snackbar_out;
-			global::Plugin.Badge.Droid.Resource.Animation.tooltip_enter = global::Intouch.Edm.Droid.Resource.Animation.tooltip_enter;
-			global::Plugin.Badge.Droid.Resource.Animation.tooltip_exit = global::Intouch.Edm.Droid.Resource.Animation.tooltip_exit;
 			global::Plugin.Badge.Droid.Resource.Animator.design_appbar_state_list_animator = global::Intouch.Edm.Droid.Resource.Animator.design_appbar_state_list_animator;
 			global::Plugin.Badge.Droid.Resource.Attribute.actionBarDivider = global::Intouch.Edm.Droid.Resource.Attribute.actionBarDivider;
 			global::Plugin.Badge.Droid.Resource.Attribute.actionBarItemBackground = global::Intouch.Edm.Droid.Resource.Attribute.actionBarItemBackground;
@@ -370,7 +368,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::Intouch.Edm.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
 			global::Plugin.Badge.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::Intouch.Edm.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
 			global::Plugin.Badge.Droid.Resource.Attribute.textColorAlertDialogListItem = global::Intouch.Edm.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::Plugin.Badge.Droid.Resource.Attribute.textColorError = global::Intouch.Edm.Droid.Resource.Attribute.textColorError;
 			global::Plugin.Badge.Droid.Resource.Attribute.textColorSearchUrl = global::Intouch.Edm.Droid.Resource.Attribute.textColorSearchUrl;
 			global::Plugin.Badge.Droid.Resource.Attribute.theme = global::Intouch.Edm.Droid.Resource.Attribute.theme;
 			global::Plugin.Badge.Droid.Resource.Attribute.thickness = global::Intouch.Edm.Droid.Resource.Attribute.thickness;
@@ -417,8 +414,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::Intouch.Edm.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
 			global::Plugin.Badge.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::Intouch.Edm.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
 			global::Plugin.Badge.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::Intouch.Edm.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::Plugin.Badge.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::Intouch.Edm.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::Plugin.Badge.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::Intouch.Edm.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
 			global::Plugin.Badge.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::Intouch.Edm.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
 			global::Plugin.Badge.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::Intouch.Edm.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
 			global::Plugin.Badge.Droid.Resource.Color.abc_btn_colored_borderless_text_material = global::Intouch.Edm.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
@@ -476,7 +471,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Color.dim_foreground_disabled_material_light = global::Intouch.Edm.Droid.Resource.Color.dim_foreground_disabled_material_light;
 			global::Plugin.Badge.Droid.Resource.Color.dim_foreground_material_dark = global::Intouch.Edm.Droid.Resource.Color.dim_foreground_material_dark;
 			global::Plugin.Badge.Droid.Resource.Color.dim_foreground_material_light = global::Intouch.Edm.Droid.Resource.Color.dim_foreground_material_light;
-			global::Plugin.Badge.Droid.Resource.Color.error_color_material = global::Intouch.Edm.Droid.Resource.Color.error_color_material;
 			global::Plugin.Badge.Droid.Resource.Color.foreground_material_dark = global::Intouch.Edm.Droid.Resource.Color.foreground_material_dark;
 			global::Plugin.Badge.Droid.Resource.Color.foreground_material_light = global::Intouch.Edm.Droid.Resource.Color.foreground_material_light;
 			global::Plugin.Badge.Droid.Resource.Color.highlighted_text_material_dark = global::Intouch.Edm.Droid.Resource.Color.highlighted_text_material_dark;
@@ -527,7 +521,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
 			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
 			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
 			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
 			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
 			global::Plugin.Badge.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::Intouch.Edm.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
@@ -1164,6 +1157,7 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Id.submenuarrow = global::Intouch.Edm.Droid.Resource.Id.submenuarrow;
 			global::Plugin.Badge.Droid.Resource.Id.submit_area = global::Intouch.Edm.Droid.Resource.Id.submit_area;
 			global::Plugin.Badge.Droid.Resource.Id.tabMode = global::Intouch.Edm.Droid.Resource.Id.tabMode;
+			global::Plugin.Badge.Droid.Resource.Id.tag_transition_group = global::Intouch.Edm.Droid.Resource.Id.tag_transition_group;
 			global::Plugin.Badge.Droid.Resource.Id.text = global::Intouch.Edm.Droid.Resource.Id.text;
 			global::Plugin.Badge.Droid.Resource.Id.text2 = global::Intouch.Edm.Droid.Resource.Id.text2;
 			global::Plugin.Badge.Droid.Resource.Id.textSpacerNoButtons = global::Intouch.Edm.Droid.Resource.Id.textSpacerNoButtons;
@@ -1271,7 +1265,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Layout.select_dialog_multichoice_material = global::Intouch.Edm.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::Plugin.Badge.Droid.Resource.Layout.select_dialog_singlechoice_material = global::Intouch.Edm.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::Plugin.Badge.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::Intouch.Edm.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Plugin.Badge.Droid.Resource.Layout.tooltip = global::Intouch.Edm.Droid.Resource.Layout.tooltip;
 			global::Plugin.Badge.Droid.Resource.String.abc_action_bar_home_description = global::Intouch.Edm.Droid.Resource.String.abc_action_bar_home_description;
 			global::Plugin.Badge.Droid.Resource.String.abc_action_bar_up_description = global::Intouch.Edm.Droid.Resource.String.abc_action_bar_up_description;
 			global::Plugin.Badge.Droid.Resource.String.abc_action_menu_overflow_description = global::Intouch.Edm.Droid.Resource.String.abc_action_menu_overflow_description;
@@ -1416,18 +1409,11 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
 			global::Plugin.Badge.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::Intouch.Edm.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
 			global::Plugin.Badge.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::Intouch.Edm.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::Intouch.Edm.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout = global::Intouch.Edm.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Base_V21_Theme_AppCompat;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout = global::Intouch.Edm.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Base_V22_Theme_AppCompat;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Base_V23_Theme_AppCompat;
@@ -1435,7 +1421,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Style.Base_V26_Theme_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Base_V26_Theme_AppCompat;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::Intouch.Edm.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
-			global::Plugin.Badge.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout = global::Intouch.Edm.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::Intouch.Edm.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
 			global::Plugin.Badge.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
@@ -1501,7 +1486,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::Intouch.Edm.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
 			global::Plugin.Badge.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::Intouch.Edm.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
 			global::Plugin.Badge.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::Intouch.Edm.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::Plugin.Badge.Droid.Resource.Style.Base_Widget_Design_AppBarLayout = global::Intouch.Edm.Droid.Resource.Style.Base_Widget_Design_AppBarLayout;
 			global::Plugin.Badge.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::Intouch.Edm.Droid.Resource.Style.Base_Widget_Design_TabLayout;
 			global::Plugin.Badge.Droid.Resource.Style.CardView = global::Intouch.Edm.Droid.Resource.Style.CardView;
 			global::Plugin.Badge.Droid.Resource.Style.CardView_Dark = global::Intouch.Edm.Droid.Resource.Style.CardView_Dark;
@@ -1511,10 +1495,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
 			global::Plugin.Badge.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::Intouch.Edm.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
 			global::Plugin.Badge.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::Plugin.Badge.Droid.Resource.Style.Platform_V11_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::Plugin.Badge.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::Plugin.Badge.Droid.Resource.Style.Platform_V14_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::Plugin.Badge.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Platform_V14_AppCompat_Light;
 			global::Plugin.Badge.Droid.Resource.Style.Platform_V21_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Platform_V21_AppCompat;
 			global::Plugin.Badge.Droid.Resource.Style.Platform_V21_AppCompat_Light = global::Intouch.Edm.Droid.Resource.Style.Platform_V21_AppCompat_Light;
 			global::Plugin.Badge.Droid.Resource.Style.Platform_V25_AppCompat = global::Intouch.Edm.Droid.Resource.Style.Platform_V25_AppCompat;
@@ -1723,7 +1703,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_BottomNavigationView = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_BottomNavigationView;
 			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
 			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_CoordinatorLayout = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
 			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_FloatingActionButton;
 			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_NavigationView = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_NavigationView;
 			global::Plugin.Badge.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::Intouch.Edm.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
@@ -2012,7 +1991,6 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Styleable.DesignTheme = global::Intouch.Edm.Droid.Resource.Styleable.DesignTheme;
 			global::Plugin.Badge.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::Intouch.Edm.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
 			global::Plugin.Badge.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::Intouch.Edm.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
-			global::Plugin.Badge.Droid.Resource.Styleable.DesignTheme_textColorError = global::Intouch.Edm.Droid.Resource.Styleable.DesignTheme_textColorError;
 			global::Plugin.Badge.Droid.Resource.Styleable.DrawerArrowToggle = global::Intouch.Edm.Droid.Resource.Styleable.DrawerArrowToggle;
 			global::Plugin.Badge.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::Intouch.Edm.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
 			global::Plugin.Badge.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::Intouch.Edm.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
@@ -2041,6 +2019,9 @@ namespace Intouch.Edm.Droid
 			global::Plugin.Badge.Droid.Resource.Styleable.FontFamily_fontProviderPackage = global::Intouch.Edm.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
 			global::Plugin.Badge.Droid.Resource.Styleable.FontFamily_fontProviderQuery = global::Intouch.Edm.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont;
+			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont_android_font = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
 			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont_font = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont_font;
 			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
 			global::Plugin.Badge.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::Intouch.Edm.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
