@@ -1,12 +1,10 @@
-﻿using Intouch.Edm.Models;
-using Intouch.Edm.Models.Dtos.CreateScenario;
+﻿using Intouch.Edm.Models.Dtos.CreateScenario;
 using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,13 +14,13 @@ namespace Intouch.Edm.ViewModels
 {
     public class NewScenarioViewModel : BaseViewModel
     {
+        private ICommand _saveCommand;
+        private CreateEmergencyScenario.Picture picture = new CreateEmergencyScenario.Picture();
 
-        ICommand _saveCommand;
-        CreateEmergencyScenario.Picture picture = new CreateEmergencyScenario.Picture();
         public ICommand SaveClicked => _saveCommand
                 ?? (_saveCommand = new Command(async () => await ExecuteSaveClicked()));
 
-        async System.Threading.Tasks.Task ExecuteSaveClicked()
+        private async System.Threading.Tasks.Task ExecuteSaveClicked()
         {
             if (IsUploadingImage)
             {
@@ -36,6 +34,7 @@ namespace Intouch.Edm.ViewModels
                     await CreateNotification();
 
                     break;
+
                 case "Hayır":
                     break;
             }
@@ -43,10 +42,9 @@ namespace Intouch.Edm.ViewModels
 
         public async Task Init()
         {
-
         }
 
-        async System.Threading.Tasks.Task CreateNotification()
+        private async System.Threading.Tasks.Task CreateNotification()
         {
             if (IsBusy)
             {
@@ -96,20 +94,21 @@ namespace Intouch.Edm.ViewModels
             get;
             set;
         }
+
         public List<ComboboxItem> ListEvent
         {
             get;
             set;
         }
+
         public NewScenarioViewModel()
         {
             Initialize();
-
         }
+
         public NewScenarioViewModel(int selectedId)
         {
             Initialize(selectedId);
-
         }
 
         public async void RetrieveImpactArea(int locationId)
@@ -131,29 +130,22 @@ namespace Intouch.Edm.ViewModels
 
             SelectedSubject = new ComboboxItem();
             SelectedEvent = new ComboboxItem();
-            if (selectedEventId == Convert.ToInt32(Events.WaterFlood))
+            if (selectedEventId == Convert.ToInt32(Events.WaterFlood) ||
+                selectedEventId == Convert.ToInt32(Events.Fire) ||
+                selectedEventId == Convert.ToInt32(Events.Earthqueke) ||
+                selectedEventId == Convert.ToInt32(Events.Pandemic))
             {
-                SelectedSubject = SubjectCombobox.Where(p => p.Id == 1).First();
-                SelectedEvent = EventCombobox.Where(p => p.Id == selectedEventId).First();
-            }
-            else if (selectedEventId == Convert.ToInt32(Events.Fire))
-            {
-                SelectedSubject = SubjectCombobox.Where(p => p.Id == 1).First();
-                SelectedEvent = EventCombobox.Where(p => p.Id == selectedEventId).First();
-            }
-            else if (selectedEventId == Convert.ToInt32(Events.Earthqueke))
-            {
-                SelectedSubject = SubjectCombobox.Where(p => p.Id == 1).First();
-                SelectedEvent = EventCombobox.Where(p => p.Id == selectedEventId).First();
+                SelectedSubject = SubjectCombobox.First(p => p.Id == 1);
+                SelectedEvent = EventCombobox.First(p => p.Id == selectedEventId);
             }
             else if (selectedEventId == Convert.ToInt32(Events.BusinessContuniuty))
             {
-                SelectedSubject = SubjectCombobox.Where(p => p.Id == 2).First();
+                SelectedSubject = SubjectCombobox.First(p => p.Id == 2);
             }
         }
 
-
         private ComboboxItem _selectedEvent;
+
         public ComboboxItem SelectedEvent
         {
             get
@@ -168,6 +160,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private ComboboxItem _selectedSource;
+
         public ComboboxItem SelectedSource
         {
             get
@@ -182,6 +175,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private ComboboxItem _selectedImpactArea;
+
         public ComboboxItem SelectedImpactArea
         {
             get
@@ -196,6 +190,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private ComboboxItem _selectedLocation;
+
         public ComboboxItem SelectedLocation
         {
             get
@@ -211,6 +206,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private ComboboxItem _selectedSubject;
+
         public ComboboxItem SelectedSubject
         {
             get
@@ -219,7 +215,6 @@ namespace Intouch.Edm.ViewModels
             }
             set
             {
-
                 SetProperty(ref _selectedSubject, value);
                 SubjectText = "Subject : " + _selectedSubject.Name;
                 SubjectId = _selectedSubject.Id;
@@ -227,6 +222,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _subjectId;
+
         public int SubjectId
         {
             get
@@ -240,6 +236,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _eventId;
+
         public int EventId
         {
             get
@@ -253,6 +250,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _siteId;
+
         public int SiteId
         {
             get
@@ -266,6 +264,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _sourceId;
+
         public int SourceId
         {
             get
@@ -279,6 +278,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _locationId;
+
         public int locationId
         {
             get
@@ -292,6 +292,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _impactAreaId;
+
         public int ImpactAreaId
         {
             get
@@ -305,6 +306,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private string _subjectText;
+
         public string SubjectText
         {
             get
@@ -316,7 +318,9 @@ namespace Intouch.Edm.ViewModels
                 SetProperty(ref _subjectText, value);
             }
         }
-        double _latitude;
+
+        private double _latitude;
+
         public double Latitude
         {
             get { return _latitude; }
@@ -326,7 +330,8 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        double _longitude;
+        private double _longitude;
+
         public double Longitude
         {
             get { return _longitude; }
@@ -337,6 +342,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private ImageSource _imageSource;
+
         public ImageSource ImageSource
         {
             get
@@ -348,7 +354,9 @@ namespace Intouch.Edm.ViewModels
                 SetProperty(ref _imageSource, value);
             }
         }
+
         private bool _isUploadingImage;
+
         public bool IsUploadingImage
         {
             get
@@ -361,12 +369,12 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
+        private ICommand _sheetClicked;
 
-        ICommand _sheetClicked;
         public ICommand SheetSimpleClicked => _sheetClicked
                 ?? (_sheetClicked = new Command(async () => await SheetSimpleCommand()));
 
-        async System.Threading.Tasks.Task SheetSimpleCommand()
+        private async System.Threading.Tasks.Task SheetSimpleCommand()
         {
             string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Fotoğraf Yükle", "Fotoğraf Çek", "Galeriden Yükle");
             switch (selectedAction)
@@ -374,6 +382,7 @@ namespace Intouch.Edm.ViewModels
                 case "Fotoğraf Çek":
                     TakePhoto();
                     break;
+
                 case "Galeriden Yükle":
                     SelectPhotoFromGallery();
                     break;
@@ -382,7 +391,6 @@ namespace Intouch.Edm.ViewModels
 
         public async void TakePhoto()
         {
-
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Cihazınızın kamerası aktif değil!", "OK");
@@ -456,7 +464,8 @@ namespace Intouch.Edm.ViewModels
             IsUploadingImage = false;
         }
 
-        ObservableCollection<ComboboxItem> _SubjectCombobox;
+        private ObservableCollection<ComboboxItem> _SubjectCombobox;
+
         public ObservableCollection<ComboboxItem> SubjectCombobox
         {
             get { return _SubjectCombobox; }
@@ -467,7 +476,8 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        ObservableCollection<ComboboxItem> _EventCombobox;
+        private ObservableCollection<ComboboxItem> _EventCombobox;
+
         public ObservableCollection<ComboboxItem> EventCombobox
         {
             get { return _EventCombobox; }
@@ -477,7 +487,9 @@ namespace Intouch.Edm.ViewModels
                 OnPropertyChanged();
             }
         }
-        ObservableCollection<ComboboxItem> _SourceCombobox;
+
+        private ObservableCollection<ComboboxItem> _SourceCombobox;
+
         public ObservableCollection<ComboboxItem> SourceCombobox
         {
             get { return _SourceCombobox; }
@@ -487,7 +499,9 @@ namespace Intouch.Edm.ViewModels
                 OnPropertyChanged();
             }
         }
-        ObservableCollection<ComboboxItem> _ImpactAreaCombobox;
+
+        private ObservableCollection<ComboboxItem> _ImpactAreaCombobox;
+
         public ObservableCollection<ComboboxItem> ImpactAreaCombobox
         {
             get { return _ImpactAreaCombobox; }
@@ -498,7 +512,8 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        ObservableCollection<ComboboxItem> _LocationCombobox;
+        private ObservableCollection<ComboboxItem> _LocationCombobox;
+
         public ObservableCollection<ComboboxItem> LocationCombobox
         {
             get { return _LocationCombobox; }

@@ -1,10 +1,7 @@
-﻿using Intouch.Edm.Models.Dtos.LookupDto;
+﻿using System.Collections.ObjectModel;
 using EventType = Intouch.Edm.Models.Dtos.LookupDto.EventTypeLookup;
 using ImpactArea = Intouch.Edm.Models.Dtos.LookupDto.ImpactAreaLookup;
 using Location = Intouch.Edm.Models.Dtos.LookupDto.LocationLookup;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace Intouch.Edm.Services
 {
@@ -19,6 +16,7 @@ namespace Intouch.Edm.Services
             };
             return subjects;
         }
+
         public static ObservableCollection<ComboboxItem> GetEvent(EventType.RootObject events)
         {
             var eventList = new ObservableCollection<ComboboxItem>();
@@ -86,6 +84,8 @@ namespace Intouch.Edm.Services
         WaterFlood = 1,
         Earthqueke = 2,
         Fire = 3,
-        BusinessContuniuty = 5
+        BusinessContuniuty = 5,
+        Pandemic = 6,
+        Other = 7
     }
 }

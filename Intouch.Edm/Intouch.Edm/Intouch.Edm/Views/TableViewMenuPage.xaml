@@ -5,9 +5,9 @@
              NavigationPage.HasNavigationBar="False">
     <Grid RowSpacing="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
         </Grid.RowDefinitions>
 
         <!--  row background colors  -->
@@ -16,7 +16,7 @@
         <BoxView Grid.Row="2" Color="White" />
         <!--  title  -->
         <Frame HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10" Margin="8,3,8,3">
-        <Label FontSize="Large" HorizontalOptions="CenterAndExpand" Text="Bildirim Seçenekleri"
+            <Label FontSize="Large" HorizontalOptions="CenterAndExpand" Text="Bildirim Seçenekleri"
                TextColor="Black" VerticalOptions="CenterAndExpand" />
         </Frame>
         <!--  inner grid for button layouts  -->
@@ -44,6 +44,12 @@
             </Frame>
             <Frame Grid.Row="2" Grid.Column="1" HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10">
                 <ImageButton BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="5" ></ImageButton>
+            </Frame>
+            <Frame Grid.Row="3" Grid.Column="0" HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10">
+                <ImageButton BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="6" ></ImageButton>
+            </Frame>
+            <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10">
+                <ImageButton BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="7" ></ImageButton>
             </Frame>
         </Grid>
     </Grid>
