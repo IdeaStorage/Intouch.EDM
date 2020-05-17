@@ -17,10 +17,10 @@ namespace Intouch.Edm.Services
 {
     public class DataService : BaseHttpService, IDataService
     {
-        readonly Uri _baseUri;
-        readonly IDictionary<string, string> _headers;
+        private readonly Uri _baseUri;
+        private readonly IDictionary<string, string> _headers;
 
-        struct IdProviderToken
+        private struct IdProviderToken
         {
             [JsonProperty("sessionToken")]
             public string AccessToken { get; set; }
@@ -47,19 +47,17 @@ namespace Intouch.Edm.Services
             // var response = await SaveEntityToJsonAsync<Scenario>();
             // return response;
         }
+
         public async Task<Dtos.ViewScenario.RootObject> GetScenarioAsync(string scenarioId)
         {
             var url = new Uri(_baseUri, string.Format("/api/services/app/Scenarios/GetScenarioForView?id={0}", scenarioId));
             var response = await SendRequestAsync<Dtos.ViewScenario.RootObject>(url, HttpMethod.Get, _headers);
 
             return response;
-
         }
-
 
         public async Task<Dtos.TaskListDto.RootObject> GetTasksAsync(int userId)
         {
-
             var url = new Uri(_baseUri, $"/api/services/app/UserTasks/GetAllByUser?UserId={userId}");
             var response = await SendRequestAsync<Dtos.TaskListDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -112,6 +110,7 @@ namespace Intouch.Edm.Services
         {
             throw new NotImplementedException();
         }
+
         async public Task<IList<ComboboxItem>> GetImpactAreasAsync()
         {
             var url = new Uri(_baseUri, string.Format("/api/services/app/ImpactAreas/GetAll?SiteId=1&DisablePaging=true"));
@@ -120,6 +119,7 @@ namespace Intouch.Edm.Services
             { Name = x.ImpactArea.Name, Id = x.ImpactArea.Id });
             return query.ToList();
         }
+
         async public Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync()
         {
             var url = new Uri(_baseUri, "/api/services/app/Sites/GetAll?DisablePaging=true");
@@ -127,9 +127,9 @@ namespace Intouch.Edm.Services
 
             return response;
         }
+
         async public Task<Dtos.LookupDto.EventTypeLookup.RootObject> GetEventsAsync(int SubjectTypeId)
         {
-
             Uri url = null;
             if (SubjectTypeId != Convert.ToInt32(Subjects.BusinessContuniuty))
             {
@@ -143,6 +143,7 @@ namespace Intouch.Edm.Services
 
             return response;
         }
+
         async public Task<Dtos.SourceLookupDto.RootObject> GetSourcesAsync(string eventId, int SubjectTypeId)
         {
             Uri url = null;
@@ -175,6 +176,7 @@ namespace Intouch.Edm.Services
 
             return response;
         }
+
         async public Task<Dtos.LookupDto.RootObject> GetSubjectsAsync()
         {
             var url = new Uri(_baseUri, "/api/services/app/Scenarios/GetAllSourceForLookupTable");
@@ -185,7 +187,6 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId)
         {
-
             var url = new Uri(_baseUri, $"/api/services/app/CommiteeApprovals/GetAllForTree?ApproveStatus={approveStatusId}&DisablePaging=true");
             var response = await SendRequestAsync<Dtos.Scenario.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -227,12 +228,20 @@ namespace Intouch.Edm.Services
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, scenario);
             return response?.success == null ? false : response.success;
         }
+
         public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync()
         {
-            var url = new Uri(_baseUri, "/api/services/app/Announcements/GetUserAnnouncements?DisablePaging=true");
-            var response = await SendRequestAsync<Dtos.AnnouncementListDto.RootObject>(url, HttpMethod.Get, _headers);
+            try
+            {
+                var url = new Uri(_baseUri, "/api/services/app/Announcements/GetUserAnnouncements?DisablePaging=true");
+                var response = await SendRequestAsync<Dtos.AnnouncementListDto.RootObject>(url, HttpMethod.Get, _headers);
 
-            return response;
+                return response;
+            }
+            catch (Exception EX)
+            {
+                throw;
+            }
         }
 
         public async Task<Dtos.AnnouncementCountDto.RootObject> GetAnnouncementsCountAsync()
@@ -241,7 +250,6 @@ namespace Intouch.Edm.Services
             var response = await SendRequestAsync<Dtos.AnnouncementCountDto.RootObject>(url, HttpMethod.Get, _headers);
 
             return response;
-
         }
 
         public async Task<bool> CreateAnnouncementAsync(Dtos.CreateAnnouncementDto.CreateAnnouncementDto createAnnouncement)
@@ -262,6 +270,7 @@ namespace Intouch.Edm.Services
         {
             return true;
         }
+
         public async Task<UploadResult> UploadImageAsync(Stream image, string fileName)
         {
             var url = new Uri(_baseUri, "/App/Upload/Save");
@@ -283,6 +292,7 @@ namespace Intouch.Edm.Services
                 return files.Result.FirstOrDefault();
             }
         }
+
         private async System.Threading.Tasks.Task ControlAccessTokenAsync()
         {
             int secondDifference = 1800;//  30 dk eklendiginde verilen sure doluyorsa  token yenilenir.
@@ -291,6 +301,7 @@ namespace Intouch.Edm.Services
                 await RefreshTokenAsync();
             }
         }
+
         public async Task<bool> SaveFirebaseTokenAsync(UserMobileAppTokenInput userMobileAppTokenInput)
         {
             var url = new Uri(_baseUri, "/api/services/app/UserMobileAppTokens/CreateOrEdit");
@@ -320,7 +331,6 @@ namespace Intouch.Edm.Services
             return response.success;
         }
 
-
         /*
 public async Task<Role> GetRoleAsync(int userId)
 {
@@ -342,23 +352,14 @@ await RefreshTokenAsync();
 }
 
 async public Task<IList<ComboboxItem>> GetSitesAsync()
-{           
+{
 var response = await GetEntityFromJsonAsync<Site[]>();
 var query = from res in response
 select new ComboboxItem() { Name = res.Name, Id = res.Id};
 
 return query.ToList();
-
 }
-
-
-
-
-
-
-
 
 */
     }
 }
-

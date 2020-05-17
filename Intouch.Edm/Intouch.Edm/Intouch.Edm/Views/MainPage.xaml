@@ -2,6 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Intouch.Edm.Views"
+            xmlns:badgePlugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions"
             x:Class="Intouch.Edm.Views.MainPage">
     <TabbedPage.Children>
         <NavigationPage Title="Anasayfa" x:Name="TableViewMenu" Icon="homeIcon.png">
@@ -21,8 +22,12 @@
                 <views:ScenarioListPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Duyurular" 
+        <NavigationPage Title="Duyurular"
                         x:Name="AnnouncementList"
+                        badgePlugin:TabBadge.BadgeText="{Binding UnreadCount}"
+                        badgePlugin:TabBadge.BadgePosition="PositionTopRight"
+                        badgePlugin:TabBadge.BadgeColor="Red"
+                        badgePlugin:TabBadge.BadgeTextColor="White"
                         Icon="announcementIcon.png">
             <x:Arguments>
                 <views:AnnouncementList />
