@@ -17,10 +17,10 @@ namespace Intouch.Edm.Services
 {
     public class DataService : BaseHttpService, IDataService
     {
-        readonly Uri _baseUri;
-        readonly IDictionary<string, string> _headers;
+        private readonly Uri _baseUri;
+        private readonly IDictionary<string, string> _headers;
 
-        struct IdProviderToken
+        private struct IdProviderToken
         {
             [JsonProperty("sessionToken")]
             public string AccessToken { get; set; }
@@ -49,6 +49,7 @@ namespace Intouch.Edm.Services
             // var response = await SaveEntityToJsonAsync<Scenario>();
             // return response;
         }
+
         public async Task<Dtos.ViewScenario.RootObject> GetScenarioAsync(string scenarioId)
         {
             await ControlAccessTokenAsync();
@@ -57,9 +58,7 @@ namespace Intouch.Edm.Services
             var response = await SendRequestAsync<Dtos.ViewScenario.RootObject>(url, HttpMethod.Get, _headers);
 
             return response;
-
         }
-
 
         public async Task<Dtos.TaskListDto.RootObject> GetTasksAsync(int userId)
         {
@@ -121,6 +120,7 @@ namespace Intouch.Edm.Services
         {
             throw new NotImplementedException();
         }
+
         async public Task<IList<ComboboxItem>> GetImpactAreasAsync()
         {
             await ControlAccessTokenAsync();
@@ -131,6 +131,7 @@ namespace Intouch.Edm.Services
             { Name = x.ImpactArea.Name, Id = x.ImpactArea.Id });
             return query.ToList();
         }
+
         async public Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync()
         {
             await ControlAccessTokenAsync();
@@ -140,6 +141,7 @@ namespace Intouch.Edm.Services
 
             return response;
         }
+
         async public Task<Dtos.LookupDto.EventTypeLookup.RootObject> GetEventsAsync(int SubjectTypeId)
         {
             await ControlAccessTokenAsync();
@@ -157,18 +159,19 @@ namespace Intouch.Edm.Services
 
             return response;
         }
+
         async public Task<Dtos.SourceLookupDto.RootObject> GetSourcesAsync(string eventId, int SubjectTypeId)
         {
             await ControlAccessTokenAsync();
 
             Uri url = null;
-            if (SubjectTypeId != Convert.ToInt32(Subjects.BusinessContuniuty))
+            if (SubjectTypeId != Convert.ToInt32(Events.Other))
             {
                 url = new Uri(_baseUri, $"/api/services/app/Sources/GetAllByEventId?EventId={eventId}&DisablePaging=true");
             }
             else
             {
-                url = new Uri(_baseUri, $"/api/services/app/Sources/GetAllByEventId?EventId={eventId}&DisablePaging=true");
+                url = new Uri(_baseUri, $"/api/services/app/Sources/GetAllByEventId?DisablePaging=true");
             }
             var response = await SendRequestAsync<Dtos.SourceLookupDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -193,6 +196,7 @@ namespace Intouch.Edm.Services
 
             return response;
         }
+
         async public Task<Dtos.LookupDto.RootObject> GetSubjectsAsync()
         {
             await ControlAccessTokenAsync();
@@ -258,6 +262,7 @@ namespace Intouch.Edm.Services
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, scenario);
             return response?.success == null ? false : response.success;
         }
+
         public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync()
         {
             await ControlAccessTokenAsync();
@@ -276,7 +281,6 @@ namespace Intouch.Edm.Services
             var response = await SendRequestAsync<Dtos.AnnouncementCountDto.RootObject>(url, HttpMethod.Get, _headers);
 
             return response;
-
         }
 
         public async Task<bool> CreateAnnouncementAsync(Dtos.CreateAnnouncementDto.CreateAnnouncementDto createAnnouncement)
@@ -301,6 +305,7 @@ namespace Intouch.Edm.Services
         {
             return true;
         }
+
         public async Task<UploadResult> UploadImageAsync(Stream image, string fileName)
         {
             await ControlAccessTokenAsync();
@@ -324,6 +329,7 @@ namespace Intouch.Edm.Services
                 return files.Result.FirstOrDefault();
             }
         }
+
         private async System.Threading.Tasks.Task ControlAccessTokenAsync()
         {
             string loginTicks = Helpers.Settings.LoginDate;
@@ -334,6 +340,7 @@ namespace Intouch.Edm.Services
                 await RefreshTokenAsync();
             }
         }
+
         public async Task<bool> SaveFirebaseTokenAsync(UserMobileAppTokenInput userMobileAppTokenInput)
         {
             await ControlAccessTokenAsync();
@@ -371,7 +378,6 @@ namespace Intouch.Edm.Services
             return response.success;
         }
 
-
         /*
 public async Task<Role> GetRoleAsync(int userId)
 {
@@ -393,23 +399,14 @@ await RefreshTokenAsync();
 }
 
 async public Task<IList<ComboboxItem>> GetSitesAsync()
-{           
+{
 var response = await GetEntityFromJsonAsync<Site[]>();
 var query = from res in response
 select new ComboboxItem() { Name = res.Name, Id = res.Id};
 
 return query.ToList();
-
 }
-
-
-
-
-
-
-
 
 */
     }
 }
-

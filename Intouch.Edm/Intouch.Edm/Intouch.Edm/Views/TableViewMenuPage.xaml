@@ -43,13 +43,13 @@
                 <ImageButton BackgroundColor="White" Source="fire.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="2" ></ImageButton>
             </Frame>
             <Frame Grid.Row="2" Grid.Column="1" HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10">
-                <ImageButton BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="5" ></ImageButton>
+                <ImageButton BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="17" ></ImageButton>
             </Frame>
             <Frame Grid.Row="3" Grid.Column="0" HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10">
-                <ImageButton BackgroundColor="White" Source="pandemic.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="6" ></ImageButton>
+                <ImageButton BackgroundColor="White" Source="pandemic.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="5" ></ImageButton>
             </Frame>
             <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" OutlineColor="#dcdcdc" CornerRadius="10">
-                <ImageButton BackgroundColor="White" Source="others.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="7" ></ImageButton>
+                <ImageButton BackgroundColor="White" Source="others.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="6" ></ImageButton>
             </Frame>
         </Grid>
     </Grid>
