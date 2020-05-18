@@ -69,7 +69,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AuthenticateOutput.cs" />
+    <Compile Include="AuthenticateOutput.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyFireBaseIDServices.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
