@@ -17,7 +17,13 @@ namespace Intouch.Edm
             Redirect(value);
 
         }
-
+        public bool IsSignedIn
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Helpers.Settings.AuthenticationToken);
+            }
+        }
         private void Redirect(string value)
         {
             if (value == "1")
@@ -37,8 +43,15 @@ namespace Intouch.Edm
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage());
+            if (IsSignedIn)
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            
 
             try
             {

@@ -40,12 +40,12 @@ namespace Intouch.Edm.Helpers
         private const string ContentIdKey = "contentid_key";
         private static readonly string ContentIdDefault = string.Empty;
 
-      
+
 
         private const string FileNameKey = "filename_key";
         private static readonly string FileNameDefault = string.Empty;
 
-        private const string ContentLengthKey ="contentlength_key";
+        private const string ContentLengthKey = "contentlength_key";
         private static readonly string ContentLengthDefault = string.Empty;
 
         private const string ContentTypeKey = "contenttype_key";
@@ -101,41 +101,40 @@ namespace Intouch.Edm.Helpers
             get => AppSettings.GetValueOrDefault(ApiRefreshTokenKey, RefreshTokenDefault);
             set => AppSettings.AddOrUpdateValue(ApiRefreshTokenKey, value);
         }
-        public static int ExpireInSeconds
+        public static string ExpireInSeconds
         {
-            get => Convert.ToInt32(AppSettings.GetValueOrDefault(ExpireInSecondsKey, ExpireInSecondsDefault));
+            get => AppSettings.GetValueOrDefault(ExpireInSecondsKey, ExpireInSecondsDefault);
             set => AppSettings.AddOrUpdateValue(ExpireInSecondsKey, value);
         }
-        public static DateTime LoginDate
+        public static string LoginDate
         {
-            get => Convert.ToDateTime(AppSettings.GetValueOrDefault(LoginDateKey, LoginDateDefault));
+            get => AppSettings.GetValueOrDefault(LoginDateKey, LoginDateDefault);
             set => AppSettings.AddOrUpdateValue(LoginDateKey, value);
         }
-
+      
         internal static void SetPermission(Edm.Models.Dtos.PermissionDto.RootObject responsePermission)
         {
             var permissionList = responsePermission.result.permissions;
-            isNotificationAuthorize = permissionList.Contains("Pages.Notifications");
-            isADKAuthorize = permissionList.Contains("Pages.CommiteeApprovals");
-            isBusinessContinuityScenariosAuthorize = permissionList.Contains("Pages.BusinessContinuityScenarios");
-            isEmergencyScenariosAuthorize = permissionList.Contains("Pages.EmergencyScenarios");
-            isTasksAuthorize = permissionList.Contains("Pages.UserTasks");
-            isTaskDetailAuthorize = permissionList.Contains("Pages.CheckedOptions");
+            isNotificationAuthorize = permissionList.Contains("Pages.Notifications") ? "1" : "0";
+            isADKAuthorize = permissionList.Contains("Pages.CommiteeApprovals") ? "1" : "0";
+            isBusinessContinuityScenariosAuthorize = permissionList.Contains("Pages.BusinessContinuityScenarios") ? "1" : "0";
+            isEmergencyScenariosAuthorize = permissionList.Contains("Pages.EmergencyScenarios") ? "1" : "0";
+            isTasksAuthorize = permissionList.Contains("Pages.UserTasks") ? "1" : "0";
+            isTaskDetailAuthorize = permissionList.Contains("Pages.CheckedOptions") ? "1" : "0";
         }
 
         public static void SetTokenInformation(ApiAuthenticationToken response)
         {
             AuthenticationToken = response.Result.AccessToken;
             RefreshToken = response.Result.RefreshToken;
-            ExpireInSeconds = response.Result.ExpireInSeconds;
-            LoginDate = DateTime.Now;
+            ExpireInSeconds = response.Result.ExpireInSeconds.ToString();
+            LoginDate = DateTime.Now.AddSeconds(response.Result.ExpireInSeconds).Ticks.ToString();
             UserId = response.Result.UserId.ToString();
         }
         public static void SetRefreshTokenInformation(ApiAuthenticationToken response)
         {
             AuthenticationToken = response.Result.AccessToken;
-            ExpireInSeconds = response.Result.ExpireInSeconds;
-            LoginDate = DateTime.Now;
+            LoginDate = DateTime.Now.Ticks.ToString();
         }
         public static string UserId
         {
@@ -161,25 +160,63 @@ namespace Intouch.Edm.Helpers
         {
             AuthenticationToken = response.Result.AccessToken;
             RefreshToken = response.Result.RefreshToken;
-            ExpireInSeconds = response.Result.ExpireInSeconds;
-            LoginDate = DateTime.Now;
+            ExpireInSeconds = response.Result.ExpireInSeconds.ToString();
+            LoginDate = DateTime.Now.Ticks.ToString();
             UserId = response.Result.UserId.ToString();
         }
-        
-        public static bool isADKAuthorize { get; set; }
-        public static bool isNotificationAuthorize { get; set; }
-        public static bool isBusinessContinuityScenariosAuthorize { get; set; }
-        public static bool isEmergencyScenariosAuthorize { get; set; }
-        public static bool isTasksAuthorize { get; set; }
-        public static bool isTaskDetailAuthorize { get; set; }
-      
+        private const string isAdkAuthorizeKey = "isadk_key";
+        private static readonly string isAdkAuthorizeKeyDefault = "1";
+        public static string isADKAuthorize
+        {
+            get => AppSettings.GetValueOrDefault(isAdkAuthorizeKey, isAdkAuthorizeKeyDefault);
+            set => AppSettings.AddOrUpdateValue(isAdkAuthorizeKey, value);
+        }
+        private const string isNotificationAuthorizeKey = "isnotification_key";
+        private static readonly string isNotificationAuthorizeKeyDefault = "1";
+        public static string isNotificationAuthorize
+        {
+            get => AppSettings.GetValueOrDefault(isNotificationAuthorizeKey, isNotificationAuthorizeKeyDefault);
+            set => AppSettings.AddOrUpdateValue(isNotificationAuthorizeKey, value);
+        }
+
+        private const string isBusinessContinuityScenariosAuthorizeKey = "isbusinessscenario_key";
+        private static readonly string isBusinessContinuityScenariosAuthorizeKeyDefault = "1";
+        public static string isBusinessContinuityScenariosAuthorize
+        {
+            get => AppSettings.GetValueOrDefault(isBusinessContinuityScenariosAuthorizeKey, isBusinessContinuityScenariosAuthorizeKeyDefault);
+            set => AppSettings.AddOrUpdateValue(isBusinessContinuityScenariosAuthorizeKey, value);
+        }
+
+        private const string isEmergencyScenariosAuthorizeKey = "isemergencyscenario_key";
+        private static readonly string isEmergencyScenariosAuthorizeKeyDefault = "1";
+        public static string isEmergencyScenariosAuthorize
+        {
+            get => AppSettings.GetValueOrDefault(isEmergencyScenariosAuthorizeKey, isEmergencyScenariosAuthorizeKeyDefault);
+            set => AppSettings.AddOrUpdateValue(isEmergencyScenariosAuthorizeKey, value);
+        }
+
+        private const string isTaskAuthorizeKey = "istaskscenario_key";
+        private static readonly string isTaskAuthorizeKeyDefault = "1";
+        public static string isTasksAuthorize
+        {
+            get => AppSettings.GetValueOrDefault(isTaskAuthorizeKey, isTaskAuthorizeKeyDefault);
+            set => AppSettings.AddOrUpdateValue(isTaskAuthorizeKey, value);
+        }
+
+        private const string isTaskDetailAuthorizeKey = "istaskdetailscenario_key";
+        private static readonly string isTaskDetailAuthorizeKeyDefault = "1";
+        public static string isTaskDetailAuthorize
+        {
+            get => AppSettings.GetValueOrDefault(isTaskDetailAuthorizeKey, isTaskDetailAuthorizeKeyDefault);
+            set => AppSettings.AddOrUpdateValue(isTaskDetailAuthorizeKey, value);
+        }
 
         internal static void SetUploadResult(UploadResult resultPicture)
         {
             ContentId = resultPicture.ContentId;
             ContentLength = resultPicture.ContentLength.ToString();
-            ContentType= resultPicture.ContentType;
-            DisplayFileName= resultPicture.DisplayFileName;
+            ContentType = resultPicture.ContentType;
+            DisplayFileName = resultPicture.DisplayFileName;
             FileName = resultPicture.FileName;
         }
         internal static Edm.Models.Dtos.CreateScenario.CreateEmergencyScenario.Picture GetPictureDetail()

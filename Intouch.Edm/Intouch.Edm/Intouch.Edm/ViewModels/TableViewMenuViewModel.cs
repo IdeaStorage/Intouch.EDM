@@ -9,13 +9,7 @@ namespace Intouch.Edm.ViewModels
 {
     public class TableViewMenuViewModel : BaseViewModel
     {
-        public bool IsSignedIn
-        {
-            get
-            {
-                return !string.IsNullOrWhiteSpace(Helpers.Settings.AuthenticationToken);
-            }
-        }
+        
         public TableViewMenuViewModel()
         {
 
@@ -33,10 +27,10 @@ namespace Intouch.Edm.ViewModels
 
         internal async Task Init()
         {
-            if (!IsSignedIn)
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
-            }
+            //if (!IsSignedIn)
+            //{
+            //    await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+            //}
         }
         ICommand _announcementButton;
         public ICommand AnnouncementClicked => _announcementButton

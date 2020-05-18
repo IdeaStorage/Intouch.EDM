@@ -41,6 +41,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Scenario> AddNotificationAsync(Scenario scenario)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/UserTasks/GetAllByUser");
             var response = await SendRequestAsync<Scenario>(url, HttpMethod.Post, _headers, scenario);
             return response;
@@ -49,6 +51,8 @@ namespace Intouch.Edm.Services
         }
         public async Task<Dtos.ViewScenario.RootObject> GetScenarioAsync(string scenarioId)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, string.Format("/api/services/app/Scenarios/GetScenarioForView?id={0}", scenarioId));
             var response = await SendRequestAsync<Dtos.ViewScenario.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -59,6 +63,7 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.TaskListDto.RootObject> GetTasksAsync(int userId)
         {
+            await ControlAccessTokenAsync();
 
             var url = new Uri(_baseUri, $"/api/services/app/UserTasks/GetAllByUser?UserId={userId}");
             var response = await SendRequestAsync<Dtos.TaskListDto.RootObject>(url, HttpMethod.Get, _headers);
@@ -68,6 +73,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.TaskOptionDto.RootObject> GetTaskOptionsAsync(string taskId)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, $"/api/services/app/CheckedOptions/GetAll?UserTaskId={taskId}");
             var response = await SendRequestAsync<Dtos.TaskOptionDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -76,6 +83,8 @@ namespace Intouch.Edm.Services
 
         public async Task<IList<TaskItem>> GetTaskAsync(string taskId)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, string.Format("/api/services/app/UserTasks/GetUserTaskForEdit?id={0}", taskId));
             var response = await SendRequestAsync<TaskItem[]>(url, HttpMethod.Get, _headers);
 
@@ -114,6 +123,8 @@ namespace Intouch.Edm.Services
         }
         async public Task<IList<ComboboxItem>> GetImpactAreasAsync()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, string.Format("/api/services/app/ImpactAreas/GetAll?SiteId=1&DisablePaging=true"));
             var response = await SendRequestAsync<ImpactAreaDto[]>(url, HttpMethod.Get, _headers);
             var query = response.FirstOrDefault().Items.Select(x => new ComboboxItem()
@@ -122,6 +133,8 @@ namespace Intouch.Edm.Services
         }
         async public Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Sites/GetAll?DisablePaging=true");
             var response = await SendRequestAsync<Dtos.LookupDto.LocationLookup.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -129,6 +142,7 @@ namespace Intouch.Edm.Services
         }
         async public Task<Dtos.LookupDto.EventTypeLookup.RootObject> GetEventsAsync(int SubjectTypeId)
         {
+            await ControlAccessTokenAsync();
 
             Uri url = null;
             if (SubjectTypeId != Convert.ToInt32(Subjects.BusinessContuniuty))
@@ -145,6 +159,8 @@ namespace Intouch.Edm.Services
         }
         async public Task<Dtos.SourceLookupDto.RootObject> GetSourcesAsync(string eventId, int SubjectTypeId)
         {
+            await ControlAccessTokenAsync();
+
             Uri url = null;
             if (SubjectTypeId != Convert.ToInt32(Subjects.BusinessContuniuty))
             {
@@ -161,6 +177,8 @@ namespace Intouch.Edm.Services
 
         async public Task<Dtos.LookupDto.ImpactAreaLookup.RootObject> GetImpactAreaAsync(int locationId)
         {
+            await ControlAccessTokenAsync();
+
             Uri url = null;
             url = new Uri(_baseUri, $"/api/services/app/ImpactAreas/GetAll?siteId={locationId}&DisablePaging=true");
             //if (SubjectTypeId != Convert.ToInt32(Subjects.BusinessContuniuty))
@@ -177,6 +195,8 @@ namespace Intouch.Edm.Services
         }
         async public Task<Dtos.LookupDto.RootObject> GetSubjectsAsync()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Scenarios/GetAllSourceForLookupTable");
             var response = await SendRequestAsync<Dtos.LookupDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -185,6 +205,7 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId)
         {
+            await ControlAccessTokenAsync();
 
             var url = new Uri(_baseUri, $"/api/services/app/CommiteeApprovals/GetAllForTree?ApproveStatus={approveStatusId}&DisablePaging=true");
             var response = await SendRequestAsync<Dtos.Scenario.RootObject>(url, HttpMethod.Get, _headers);
@@ -194,6 +215,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.Scenario.RootObject> GetScenarioAsync(int? approveStatusId)
         {
+            await ControlAccessTokenAsync();
+
             Task<Dtos.Scenario.RootObject> EmergencyScenarios = GetEmergencyScenario(approveStatusId);
             //Task<Dtos.Scenario.RootObject> businessContuniutyScenarios = GetBusinessContinuityScenario();
             //EmergencyScenarios.Result.result.items.AddRange(businessContuniutyScenarios.Result.result.items);
@@ -202,6 +225,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.Scenario.RootObject> GetBusinessContinuityScenario()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, string.Format("/api/services/app/BusinessContinuityScenarios/GetAll"));
             var response2 = await SendRequestAsync<TaskDto[]>(url, HttpMethod.Get, _headers);
             return null;
@@ -209,6 +234,8 @@ namespace Intouch.Edm.Services
 
         public async Task<bool> CreateEmergencyScenario(CreateEmergencyScenario.RootObject scenario)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, string.Format("/api/services/app/Scenarios/Notify"));
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, scenario);
             return response.success;
@@ -216,6 +243,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.ApproveScenarioReturnDto.RootObject> ApproveScenario(Dtos.ApproveScenario.ApproveScenarioDto scenario)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/CommiteeApprovals/ApproveScenario");
             var response = await SendRequestAsync<Dtos.ApproveScenarioReturnDto.RootObject>(url, HttpMethod.Post, _headers, scenario);
             return response;
@@ -223,12 +252,16 @@ namespace Intouch.Edm.Services
 
         public async Task<bool> RejectScenario(Dtos.ApproveScenario.ApproveScenarioDto scenario)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/CommiteeApprovals/RejectScenario");
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, scenario);
             return response?.success == null ? false : response.success;
         }
         public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Announcements/GetUserAnnouncements?DisablePaging=true");
             var response = await SendRequestAsync<Dtos.AnnouncementListDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -237,6 +270,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.AnnouncementCountDto.RootObject> GetAnnouncementsCountAsync()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Announcements/GetUserAnnouncementsUnreadCount");
             var response = await SendRequestAsync<Dtos.AnnouncementCountDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -246,6 +281,8 @@ namespace Intouch.Edm.Services
 
         public async Task<bool> CreateAnnouncementAsync(Dtos.CreateAnnouncementDto.CreateAnnouncementDto createAnnouncement)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Announcements/SendAnnouncement");
             var response = await SendRequestAsync<Dtos.NewAnnouncementReturnDto.RootObject>(url, HttpMethod.Post, _headers, createAnnouncement);
             return response.success;
@@ -253,6 +290,8 @@ namespace Intouch.Edm.Services
 
         public async Task<bool> UpdateTaskOptions(Dtos.TaskOptionUpdateDto.RootObject updateTaskOption)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/UserTasks/Update");
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Put, _headers, updateTaskOption);
             return response.success;
@@ -264,6 +303,8 @@ namespace Intouch.Edm.Services
         }
         public async Task<UploadResult> UploadImageAsync(Stream image, string fileName)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/App/Upload/Save");
             HttpContent fileStreamContent = new StreamContent(image);
             fileStreamContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data") { Name = "files", FileName = fileName };
@@ -285,14 +326,18 @@ namespace Intouch.Edm.Services
         }
         private async System.Threading.Tasks.Task ControlAccessTokenAsync()
         {
-            int secondDifference = 1800;//  30 dk eklendiginde verilen sure doluyorsa  token yenilenir.
-            if ((Helpers.Settings.LoginDate.AddSeconds(Edm.Helpers.Settings.ExpireInSeconds) - DateTime.Now).Hours < 1)
+            string loginTicks = Helpers.Settings.LoginDate;
+            long loginDateTicks = long.Parse(loginTicks);
+            DateTime loginDate = new DateTime(loginDateTicks);
+            if ((DateTime.Now - loginDate).Seconds > 0)
             {
                 await RefreshTokenAsync();
             }
         }
         public async Task<bool> SaveFirebaseTokenAsync(UserMobileAppTokenInput userMobileAppTokenInput)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/UserMobileAppTokens/CreateOrEdit");
             var response = await SendRequestAsync<Edm.Models.Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, userMobileAppTokenInput);
             return response.success;
@@ -300,6 +345,8 @@ namespace Intouch.Edm.Services
 
         public async Task<Dtos.PermissionDto.RootObject> GetPermissionsAsync(int userId)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, $"/api/services/app/User/GetUserPermissions?Id={userId}");
             var response = await SendRequestAsync<Dtos.PermissionDto.RootObject>(url, HttpMethod.Get, _headers);
 
@@ -308,6 +355,8 @@ namespace Intouch.Edm.Services
 
         public async Task<bool> SetReadNotification(Dtos.AnnouncementSetReadDto.AnnouncementSetDto notificaon)
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Notification/SetNotificationAsRead");
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, notificaon);
             return response.success;
@@ -315,6 +364,8 @@ namespace Intouch.Edm.Services
 
         public async Task<bool> SetReadNotifications()
         {
+            await ControlAccessTokenAsync();
+
             var url = new Uri(_baseUri, "/api/services/app/Announcements/SetAllAnnouncementsAsRead");
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers);
             return response.success;
