@@ -168,7 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Plugin.Badge">
-      <Version>2.2.1</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Plugin.FirebasePushNotification">
       <Version>3.1.6</Version>
@@ -178,7 +178,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Intouch.Edm\Intouch.Edm.csproj">
-      <Project>{B4B86FFE-0639-4785-A05B-E646D5E6F328}</Project>
+      <Project>{9E9DD3C4-A0C8-4EDF-82C8-FC81F12927A4}</Project>
       <Name>Intouch.Edm</Name>
     </ProjectReference>
   </ItemGroup>
