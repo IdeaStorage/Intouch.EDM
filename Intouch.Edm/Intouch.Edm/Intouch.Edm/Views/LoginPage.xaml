@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
-             x:Class="Intouch.Edm.Views.LoginPage"            
-             NavigationPage.HasNavigationBar="False">
+             x:Class="Intouch.Edm.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}">
     <ContentPage.Content>
         <Grid>
             <ScrollView
@@ -56,7 +57,7 @@
                         <!-- USE YOUR CREDENTIALS TEXT -->
                         <Label
 							Text="Kullanıcı ve şifrenizle giriş yapabilirsiniz."
-							HorizontalOptions="Center"/>
+							HorizontalOptions="Center" />
                         <!--SEPARATOR-->
                         <BoxView
 							WidthRequest="100"
@@ -64,7 +65,7 @@
 							HorizontalOptions="Center"
 							VerticalOptions="End"
                             BackgroundColor="{ DynamicResource BaseTextColor }" />
-                        <Image 
+                        <Image
                         Source="tree.png"
 						HorizontalOptions="Center"
 						VerticalOptions="Center" />
@@ -99,7 +100,7 @@
 							VerticalOptions="Center"
 							HorizontalOptions="Center" />
                         <Entry
-                            x:Name="userNameEntry" 
+                            x:Name="userNameEntry"
                             Text="{Binding Username}"
 							Grid.Column="1"
 							Grid.Row="0"
@@ -117,7 +118,7 @@
 							HorizontalOptions="Center" />
                         <!-- PASSWORD ENTRY -->
                         <Entry
-                            x:Name="passwordEntry" 
+                            x:Name="passwordEntry"
                             Text="{Binding Password}"
                             ReturnType="Done"
 							Grid.Column="1"
@@ -139,19 +140,24 @@
 						HorizontalOptions="FillAndExpand"
 						VerticalOptions="End">
                         <!-- LOGIN BUTTON-->
+                        <ActivityIndicator
+                            x:Name="Progress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
                         <Button
-						    CornerRadius="50" 
-                            FontSize="Medium" 
+						    CornerRadius="50"
+                            FontSize="Medium"
                             TextColor="White"
-                            BorderColor="Black" 
-                            BackgroundColor="#2196f3" 
-                            FlexLayout.AlignSelf="Stretch"  
+                            BorderColor="Black"
+                            BackgroundColor="#2196f3"
+                            FlexLayout.AlignSelf="Stretch"
                             HorizontalOptions="CenterAndExpand"
                             WidthRequest="350"
 							VerticalOptions="End"
-							Text="LOGIN"                             
-                             Command="{Binding SignInCommand}"
-                        />
+							Text="LOGIN"
+                             Command="{Binding SignInCommand}" />
                         <!--SEPARATOR-->
                         <BoxView
 							Grid.Row="4"

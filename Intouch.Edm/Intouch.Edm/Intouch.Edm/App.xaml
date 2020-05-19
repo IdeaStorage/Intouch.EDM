@@ -1,27 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Intouch.Edm.Converters"
              x:Class="Intouch.Edm.App">
-    <Application.Resources>
-        <ResourceDictionary>
-            <!--Global Styles-->
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
-            <OnIdiom
-				x:Key="MainWrapperPadding"
-                Phone="0, 0, 0, 0"
-				x:TypeArguments="Thickness">
-            </OnIdiom>
-            <OnIdiom
-				x:Key="SimpleLoginFormsContentStyle"
-                Phone="20, 30, 20, 20"                
-				x:TypeArguments="Thickness">
-            </OnIdiom>
-            <Color x:Key="InverseTextColor">#FFFFFF</Color>
-            <Color x:Key="BaseTextColor">#666666</Color>
-        </ResourceDictionary>
-    </Application.Resources>
+  <Application.Resources>
+    <ResourceDictionary>
+      <!--Global Styles-->
+      <Color x:Key="NavigationPrimary">#2196F3</Color>
+      <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+        <Setter Property="BarTextColor" Value="White" />
+      </Style>
+      <OnIdiom
+  x:Key="MainWrapperPadding"
+          Phone="0, 0, 0, 0"
+  x:TypeArguments="Thickness">
+      </OnIdiom>
+      <OnIdiom
+  x:Key="SimpleLoginFormsContentStyle"
+          Phone="20, 30, 20, 20"
+  x:TypeArguments="Thickness">
+      </OnIdiom>
+      <Color x:Key="InverseTextColor">#FFFFFF</Color>
+      <Color x:Key="BaseTextColor">#666666</Color>
+      <converters:ReverseBooleanConverter x:Key="reverseBoolean" />
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>
