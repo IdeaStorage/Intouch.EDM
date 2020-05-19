@@ -269,4 +269,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\emergencyIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\others.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pandemic.png" />
+  </ItemGroup>
 </Project>

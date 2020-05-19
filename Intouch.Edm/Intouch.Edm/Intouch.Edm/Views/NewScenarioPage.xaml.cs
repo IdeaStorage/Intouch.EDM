@@ -21,7 +21,7 @@ namespace Intouch.Edm.Views
             await Task.Delay(1000);
             if (viewModel != null)
             {
-                await viewModel.Init();
+                viewModel.Init();
             }
         }
         public NewScenarioPage(object param)

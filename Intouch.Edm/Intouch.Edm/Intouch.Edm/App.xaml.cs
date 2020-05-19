@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Intouch.Edm.Models;
+using Intouch.Edm.Views;
+using Plugin.FirebasePushNotification;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Intouch.Edm.Views;
-using Intouch.Edm.Models;
-using Plugin.FirebasePushNotification;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace Intouch.Edm
 {
     public partial class App : Application
@@ -15,7 +16,14 @@ namespace Intouch.Edm
             InitializeComponent();
 
             Redirect(value);
+        }
 
+        public bool IsSignedIn
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Helpers.Settings.AuthenticationToken);
+            }
         }
 
         private void Redirect(string value)
@@ -37,8 +45,14 @@ namespace Intouch.Edm
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage());
+            if (IsSignedIn)
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
 
             try
             {
@@ -69,14 +83,12 @@ namespace Intouch.Edm
                     {
                         System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
                     }
-
-                 };
+                };
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"error occured: {ex.ToString()}");
             }
-            // MainPage = new MainPage();
         }
 
         protected override void OnStart()

@@ -20,7 +20,7 @@ namespace Intouch.Edm.ViewModels
         public ICommand SaveClicked => _saveCommand
                 ?? (_saveCommand = new Command(async () => await ExecuteSaveClicked()));
 
-        private async System.Threading.Tasks.Task ExecuteSaveClicked()
+        private async Task ExecuteSaveClicked()
         {
             if (IsUploadingImage)
             {
@@ -40,11 +40,12 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        public async Task Init()
+        public void Init()
         {
+            // Method intentionally left empty.
         }
 
-        private async System.Threading.Tasks.Task CreateNotification()
+        private async Task CreateNotification()
         {
             if (IsBusy)
             {
@@ -66,7 +67,7 @@ namespace Intouch.Edm.ViewModels
                     userId = Convert.ToInt32(Helpers.Settings.UserId),
                     subjectType = SubjectId,
                     eventTypeId = EventId,
-                    siteId = locationId,
+                    siteId = LocationId,
                     sourceId = SourceId,
                     impactAreaId = ImpactAreaId,
                     picture = picture
@@ -117,19 +118,28 @@ namespace Intouch.Edm.ViewModels
             ImpactAreaCombobox = PickerService.GetImpactArea(impactAreatList);
         }
 
+        public async Task RetrieveSource(int eventId)
+        {
+            Models.Dtos.SourceLookupDto.RootObject sourceList = await DataService.GetSourcesAsync(eventId);
+            SourceCombobox = PickerService.GetSource(sourceList);
+        }
+
         private async void Initialize(int selectedEventId = 0)
         {
             int selectedSubjectId = selectedEventId != Convert.ToInt32(Events.BusinessContuniuty) ? Convert.ToInt32(Subjects.Emergency) : Convert.ToInt32(Subjects.BusinessContuniuty);
-            var sourcetList = await DataService.GetSourcesAsync(selectedEventId.ToString(), selectedSubjectId);
-            var eventList = await DataService.GetEventsAsync(selectedSubjectId);
-            var locationList = await DataService.GetLocationAsync();
-            SourceCombobox = PickerService.GetSource(sourcetList);
-            SubjectCombobox = PickerService.GetSubject();
-            EventCombobox = PickerService.GetEvent(eventList);
+
+            Models.Dtos.SourceLookupDto.RootObject sourceList = await DataService.GetSourcesAsync(selectedEventId);
+            Models.Dtos.LookupDto.EventTypeLookup.RootObject eventList = await DataService.GetEventsAsync(selectedSubjectId);
+            Models.Dtos.LookupDto.LocationLookup.RootObject locationList = await DataService.GetLocationAsync();
+
             LocationCombobox = PickerService.GetLocation(locationList);
+            SubjectCombobox = PickerService.GetSubject();
+            SourceCombobox = PickerService.GetSource(sourceList);
+            EventCombobox = PickerService.GetEvent(eventList);
 
             SelectedSubject = new ComboboxItem();
             SelectedEvent = new ComboboxItem();
+
             if (selectedEventId == Convert.ToInt32(Events.WaterFlood) ||
                 selectedEventId == Convert.ToInt32(Events.Fire) ||
                 selectedEventId == Convert.ToInt32(Events.Earthqueke) ||
@@ -156,6 +166,7 @@ namespace Intouch.Edm.ViewModels
             {
                 SetProperty(ref _selectedEvent, value);
                 EventId = SelectedEvent.Id;
+                RetrieveSource(EventId);
             }
         }
 
@@ -200,8 +211,8 @@ namespace Intouch.Edm.ViewModels
             set
             {
                 SetProperty(ref _selectedLocation, value);
-                locationId = SelectedLocation.Id;
-                RetrieveImpactArea(locationId);
+                LocationId = SelectedLocation.Id;
+                RetrieveImpactArea(LocationId);
             }
         }
 
@@ -279,7 +290,7 @@ namespace Intouch.Edm.ViewModels
 
         private int _locationId;
 
-        public int locationId
+        public int LocationId
         {
             get
             {
@@ -374,22 +385,22 @@ namespace Intouch.Edm.ViewModels
         public ICommand SheetSimpleClicked => _sheetClicked
                 ?? (_sheetClicked = new Command(async () => await SheetSimpleCommand()));
 
-        private async System.Threading.Tasks.Task SheetSimpleCommand()
+        private async Task SheetSimpleCommand()
         {
             string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Fotoğraf Yükle", "Fotoğraf Çek", "Galeriden Yükle");
             switch (selectedAction)
             {
                 case "Fotoğraf Çek":
-                    TakePhoto();
+                    await TakePhoto();
                     break;
 
                 case "Galeriden Yükle":
-                    SelectPhotoFromGallery();
+                    await SelectPhotoFromGallery();
                     break;
             }
         }
 
-        public async void TakePhoto()
+        public async Task TakePhoto()
         {
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
@@ -423,12 +434,13 @@ namespace Intouch.Edm.ViewModels
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
             }
             IsUploadingImage = false;
         }
 
-        private async void SelectPhotoFromGallery()
+        private async Task SelectPhotoFromGallery()
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
@@ -459,6 +471,7 @@ namespace Intouch.Edm.ViewModels
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf gönderilirken hata oluştu", "OK");
             }
             IsUploadingImage = false;

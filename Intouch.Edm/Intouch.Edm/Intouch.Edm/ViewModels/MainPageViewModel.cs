@@ -1,4 +1,6 @@
-﻿namespace Intouch.Edm.ViewModels
+﻿using System;
+
+namespace Intouch.Edm.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
@@ -60,8 +62,8 @@
 
         async void GetTabPageVisible()
         {
-            IsVisibleTaskList = Helpers.Settings.isTasksAuthorize;
-            IsVisibleAdkList = Helpers.Settings.isADKAuthorize;
+            IsVisibleTaskList = Helpers.Settings.isTasksAuthorize == "1" ? true : false ;
+            IsVisibleAdkList = Helpers.Settings.isADKAuthorize == "1" ? true : false;
         }
     }
 }

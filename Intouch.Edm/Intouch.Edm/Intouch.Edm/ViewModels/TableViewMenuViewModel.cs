@@ -9,42 +9,33 @@ namespace Intouch.Edm.ViewModels
 {
     public class TableViewMenuViewModel : BaseViewModel
     {
-        public bool IsSignedIn
-        {
-            get
-            {
-                return !string.IsNullOrWhiteSpace(Helpers.Settings.AuthenticationToken);
-            }
-        }
         public TableViewMenuViewModel()
         {
-
         }
 
-        ICommand _newNotificationButton;
+        private ICommand _newNotificationButton;
+
         public ICommand NewNotificationClicked => _newNotificationButton
         ?? (_newNotificationButton = new CommandHandler(param => NavigateNewNotification(param), true));
 
-
-        async Task NavigateNewNotification(object param)
+        private async Task NavigateNewNotification(object param)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new NewScenarioPage(param));
         }
 
         internal async Task Init()
         {
-            if (!IsSignedIn)
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
-            }
+            // Method intentionally left empty.
         }
-        ICommand _announcementButton;
+
+        private ICommand _announcementButton;
+
         public ICommand AnnouncementClicked => _announcementButton
         ?? (_announcementButton = new CommandHandler(param => NavigateAnnouncementList(), true));
 
-        async Task NavigateAnnouncementList()
+        private async Task NavigateAnnouncementList()
         {
-            bool result = await DataService.SetReadNotifications();
+            await DataService.SetReadNotifications();
             await Application.Current.MainPage.Navigation.PushAsync(new MainPage((int)TabPageEnums.AnnouncementListPage));
         }
     }

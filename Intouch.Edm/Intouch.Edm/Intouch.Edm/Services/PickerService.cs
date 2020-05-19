@@ -76,7 +76,7 @@ namespace Intouch.Edm.Services
     public enum Subjects
     {
         Emergency = 1,
-        BusinessContuniuty = 5
+        BusinessContuniuty = 17
     }
 
     public enum Events
@@ -84,8 +84,8 @@ namespace Intouch.Edm.Services
         WaterFlood = 1,
         Earthqueke = 2,
         Fire = 3,
-        BusinessContuniuty = 5,
-        Pandemic = 6,
-        Other = 7
+        BusinessContuniuty = 17,
+        Pandemic = 5,
+        Other = 6
     }
 }
