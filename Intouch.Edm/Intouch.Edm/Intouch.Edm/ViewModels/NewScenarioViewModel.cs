@@ -152,6 +152,10 @@ namespace Intouch.Edm.ViewModels
             {
                 SelectedSubject = SubjectCombobox.First(p => p.Id == 2);
             }
+            else if (selectedEventId == Convert.ToInt32(Events.Other))
+            {
+                SelectedSubject = SubjectCombobox.First(p => p.Id == 1);
+            }
         }
 
         private ComboboxItem _selectedEvent;
