@@ -45,14 +45,6 @@ namespace Intouch.Edm
         public App()
         {
             InitializeComponent();
-            if (IsSignedIn)
-            {
-                MainPage = new NavigationPage(new MainPage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
 
             try
             {
@@ -61,7 +53,22 @@ namespace Intouch.Edm
                         System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
                         Helpers.Settings.FirebaseNotification = p.Token;
                     };
-
+                //Helpers.Settings.FirebaseNotification = CrossFirebasePushNotification.Current.Token;
+            }
+            catch (Exception)
+            {
+                // Potentially..
+            }
+            if (IsSignedIn)
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            try
+            {
                 CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
                 {
                     System.Diagnostics.Debug.WriteLine("Received");
