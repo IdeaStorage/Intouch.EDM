@@ -59,7 +59,7 @@ namespace Intouch.Edm
                 CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
                     {
                         System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
-                        Helpers.Settings.AuthenticationToken = p.Token;
+                        Helpers.Settings.FirebaseNotification = p.Token;
                     };
 
                 CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
