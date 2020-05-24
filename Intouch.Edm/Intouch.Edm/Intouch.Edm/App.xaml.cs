@@ -48,6 +48,7 @@ namespace Intouch.Edm
 
             try
             {
+                CrossFirebasePushNotification.Current.Subscribe("notifications");
                 CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
                     {
                         System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
