@@ -53,7 +53,6 @@ namespace Intouch.Edm
                         System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
                         Helpers.Settings.FirebaseNotification = p.Token;
                     };
-                //Helpers.Settings.FirebaseNotification = CrossFirebasePushNotification.Current.Token;
             }
             catch (Exception)
             {
