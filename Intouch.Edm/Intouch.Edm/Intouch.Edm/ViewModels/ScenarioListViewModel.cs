@@ -19,11 +19,11 @@ namespace Intouch.Edm.ViewModels
         {
             if (statusId != null)
             {
-                Edm.Helpers.Settings.StatusId = statusId.ToString();
+                Helpers.Settings.StatusId = statusId.ToString();
             }
             else
             {
-                statusId = Convert.ToInt32(Edm.Helpers.Settings.StatusId);
+                statusId = Convert.ToInt32(Helpers.Settings.StatusId);
             }
             ScenarioItems = new ObservableRangeCollection<Scenario>();
             AllScenarioItems = new ObservableRangeCollection<Scenario>();
@@ -31,7 +31,7 @@ namespace Intouch.Edm.ViewModels
             LoadScenariosCommand = new Command(async () => await ExecuteLoadScenariosCommand(statusId));
         }
 
-        async Task ExecuteLoadScenariosCommand(int? statusId)
+        private async Task ExecuteLoadScenariosCommand(int? statusId)
         {
             if (IsBusy)
             {
@@ -62,7 +62,7 @@ namespace Intouch.Edm.ViewModels
                         Icon = x.subjectType == 1 ? "emergencyIcon.png" : "businessIcon.png",
                         PictureUrl = x.pictureUrl,
                         ScenarioId = x.scenarioId,
-                        IsWaiting = x.approveStatus == 0 ? true : false
+                        IsWaiting = x.approveStatus == 0
                     };
                     ScenarioItems.Add(scenario);
                 }
@@ -79,22 +79,3 @@ namespace Intouch.Edm.ViewModels
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

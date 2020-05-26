@@ -140,24 +140,25 @@
 						HorizontalOptions="FillAndExpand"
 						VerticalOptions="End">
                         <!-- LOGIN BUTTON-->
-                        <ActivityIndicator
+                        <StackLayout>
+                            <ActivityIndicator
                             x:Name="Progress"
                             Color="{StaticResource NavigationPrimary}"
                             IsEnabled="{Binding IsBusy}"
                             IsVisible="{Binding IsBusy}"
                             IsRunning="{Binding IsBusy}"></ActivityIndicator>
-                        <Button
+                            <Button
 						    CornerRadius="50"
                             FontSize="Medium"
                             TextColor="White"
                             BorderColor="Black"
                             BackgroundColor="#2196f3"
                             FlexLayout.AlignSelf="Stretch"
-                            HorizontalOptions="CenterAndExpand"
-                            WidthRequest="350"
+                            HorizontalOptions="FillAndExpand"
 							VerticalOptions="End"
 							Text="LOGIN"
                              Command="{Binding SignInCommand}" />
+                        </StackLayout>
                         <!--SEPARATOR-->
                         <BoxView
 							Grid.Row="4"

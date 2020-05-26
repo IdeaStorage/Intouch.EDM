@@ -76,6 +76,7 @@ namespace Intouch.Edm.ViewModels
                 var resultCreateScenario = await DataService.CreateEmergencyScenario(newItem);
                 if (resultCreateScenario)
                 {
+                    IsBusy = false;
                     await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
                     await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
                 }
@@ -109,6 +110,7 @@ namespace Intouch.Edm.ViewModels
 
         public NewScenarioViewModel(int selectedId)
         {
+            IsBusy = true;
             Initialize(selectedId);
         }
 
@@ -156,6 +158,7 @@ namespace Intouch.Edm.ViewModels
             {
                 SelectedSubject = SubjectCombobox.First(p => p.Id == 1);
             }
+            IsBusy = false;
         }
 
         private ComboboxItem _selectedEvent;

@@ -10,8 +10,9 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskListPage : ContentPage
     {
-        TaskListViewModel viewModel;
-        DataService dataService;
+        private TaskListViewModel viewModel;
+        private DataService dataService;
+
         public TaskListPage()
         {
             InitializeComponent();
@@ -19,14 +20,12 @@ namespace Intouch.Edm.Views
             dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            TaskItem taskItem = args.SelectedItem as TaskItem;
-            if (taskItem == null)
+            if (!(args.SelectedItem is TaskItem taskItem))
             {
                 return;
             }
-
 
             var options = await dataService.GetTaskOptionsAsync(taskItem.Id);
             taskItem.Options = options;

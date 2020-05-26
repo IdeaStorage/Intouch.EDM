@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
              x:Class="Intouch.Edm.Views.NewScenarioPage"
              BackgroundColor="White"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasBackButton="True">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Kaydet" Command="{Binding SaveClicked}" />
@@ -121,6 +122,12 @@
                         VerticalOptions="Center">
                     </controls:BorderlessPicker>
                 </StackLayout>
+                <ActivityIndicator
+                            x:Name="Progress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
                 <StackLayout
 						Orientation="Horizontal"
 						Spacing="1">
