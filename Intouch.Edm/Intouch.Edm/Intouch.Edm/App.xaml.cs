@@ -45,6 +45,20 @@ namespace Intouch.Edm
         public App()
         {
             InitializeComponent();
+
+            try
+            {
+                CrossFirebasePushNotification.Current.Subscribe("notifications");
+                CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+                    {
+                        System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
+                        Helpers.Settings.FirebaseNotification = p.Token;
+                    };
+            }
+            catch (Exception)
+            {
+                // Potentially..
+            }
             if (IsSignedIn)
             {
                 MainPage = new NavigationPage(new MainPage());
@@ -53,15 +67,8 @@ namespace Intouch.Edm
             {
                 MainPage = new NavigationPage(new LoginPage());
             }
-
             try
             {
-                CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
-                    {
-                        System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
-                        Helpers.Settings.AuthenticationToken = p.Token;
-                    };
-
                 CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
                 {
                     System.Diagnostics.Debug.WriteLine("Received");

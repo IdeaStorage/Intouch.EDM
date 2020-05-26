@@ -15,7 +15,8 @@ namespace Intouch.Edm.Services
             Uri url,
             HttpMethod httpMethod = null,
             IDictionary<string, string> headers = null,
-            object requestData = null)
+            object requestData = null,
+            bool isAddHeader = true)
         {
             var result = default(T);
 
@@ -36,7 +37,8 @@ namespace Intouch.Edm.Services
                 }
 
                 // Add headers to request
-                if (headers != null)
+                // Refresh Token da aynı parametreleri header a eklememesi gerekiyor.
+                if (headers != null && isAddHeader)
                 {
                     foreach (var h in headers)
                     {
@@ -74,6 +76,7 @@ namespace Intouch.Edm.Services
                 }
             }
         }
+
         protected async Task<T> GetEntityFromJsonAsync<T>(object requestData = null)
         {
             var result = default(T);
@@ -92,6 +95,7 @@ namespace Intouch.Edm.Services
             await Task.Delay(1000);
             return result;
         }
+
         protected async Task<T> SaveEntityToJsonAsync<T>(object requestData = null)
         {
             var result = default(T);
@@ -107,7 +111,6 @@ namespace Intouch.Edm.Services
                 serializer.Serialize(file, requestData);
             }
 
-
             using (var reader = new StreamReader(stream))
             {
                 json = await reader.ReadToEndAsync();
@@ -117,16 +120,5 @@ namespace Intouch.Edm.Services
             await Task.Delay(1000);
             return result;
         }
-        /*
-          string resource = "jetStream.Results.settings.txt";
-using (Stream stream = assembly.GetManifestResourceStream(resource))
-using (var fs = new FileStream(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal)), FileMode.Create, FileAccess.Write))
-using (var stream = new MemoryStream())
-using (var writer = new StreamWriter(fs))
-{
-    rStream.Stream.CopyTo(stream);
-    writer.Write(stream.ToArray());
-}
-         */
     }
 }
