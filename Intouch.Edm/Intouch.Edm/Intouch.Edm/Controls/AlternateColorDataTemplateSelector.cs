@@ -1,11 +1,10 @@
 ﻿using Intouch.Edm.Models;
 using MvvmHelpers;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Intouch.Edm.Controls
 {
-    class AlternateColorDataTemplateSelector : DataTemplateSelector
+    internal class AlternateColorDataTemplateSelector : DataTemplateSelector
     {
         public DataTemplate EvenTemplate { get; set; }
         public DataTemplate UnevenTemplate { get; set; }

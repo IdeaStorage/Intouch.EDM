@@ -103,7 +103,6 @@
       <SubType>Designer</SubType>
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="intouchedm.mobileprovision" />
     <None Include="iTunesMetadata.plist" />
   </ItemGroup>
   <ItemGroup>

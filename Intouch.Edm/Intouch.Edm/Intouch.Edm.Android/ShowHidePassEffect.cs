@@ -7,6 +7,7 @@ using Xamarin.Forms.Platform.Android;
 
 [assembly: ResolutionGroupName("Xamarin")]
 [assembly: ExportEffect(typeof(ShowHidePassEffect), "ShowHidePassEffect")]
+
 namespace Intouch.Edm.Droid
 {
     public class ShowHidePassEffect : PlatformEffect

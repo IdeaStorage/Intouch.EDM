@@ -16,7 +16,6 @@
     public class AuthenticateOutput
     {
         public AuthenticateOutputResult Result { get; set; }
-
     }
 
     public class AuthenticateOutputResult

@@ -61,15 +61,17 @@ namespace Intouch.Edm.ViewModels
                     picture = Edm.Helpers.Settings.GetPictureDetail();
                 }
                 else
+                {
                     picture = null;
+                }
                 var newItem = new CreateEmergencyScenario.RootObject()
                 {
                     userId = Convert.ToInt32(Helpers.Settings.UserId),
-                    subjectType = SubjectId,
-                    eventTypeId = EventId,
-                    siteId = LocationId,
-                    sourceId = SourceId,
-                    impactAreaId = ImpactAreaId,
+                    subjectType = SubjectId != 0 ? SubjectId : null,
+                    eventTypeId = EventId != 0 ? EventId : null,
+                    siteId = LocationId != 0 ? LocationId : null,
+                    sourceId = SourceId != 0 ? SourceId : null,
+                    impactAreaId = ImpactAreaId != 0 ? ImpactAreaId : null,
                     picture = picture
                 };
 
@@ -114,14 +116,16 @@ namespace Intouch.Edm.ViewModels
             Initialize(selectedId);
         }
 
-        public async void RetrieveImpactArea(int locationId)
+        public async void RetrieveImpactArea(int? id)
         {
+            var locationId = id ?? 0;
             var impactAreatList = await DataService.GetImpactAreaAsync(locationId);
             ImpactAreaCombobox = PickerService.GetImpactArea(impactAreatList);
         }
 
-        public async Task RetrieveSource(int eventId)
+        public async Task RetrieveSource(int? id)
         {
+            var eventId = id ?? 0;
             Models.Dtos.SourceLookupDto.RootObject sourceList = await DataService.GetSourcesAsync(eventId);
             SourceCombobox = PickerService.GetSource(sourceList);
         }
@@ -239,9 +243,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private int _subjectId;
+        private int? _subjectId;
 
-        public int SubjectId
+        public int? SubjectId
         {
             get
             {
@@ -253,9 +257,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private int _eventId;
+        private int? _eventId;
 
-        public int EventId
+        public int? EventId
         {
             get
             {
@@ -267,9 +271,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private int _siteId;
+        private int? _siteId;
 
-        public int SiteId
+        public int? SiteId
         {
             get
             {
@@ -281,9 +285,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private int _sourceId;
+        private int? _sourceId;
 
-        public int SourceId
+        public int? SourceId
         {
             get
             {
@@ -295,9 +299,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private int _locationId;
+        private int? _locationId;
 
-        public int LocationId
+        public int? LocationId
         {
             get
             {
@@ -309,9 +313,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private int _impactAreaId;
+        private int? _impactAreaId;
 
-        public int ImpactAreaId
+        public int? ImpactAreaId
         {
             get
             {

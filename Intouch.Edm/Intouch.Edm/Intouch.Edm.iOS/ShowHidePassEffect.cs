@@ -5,6 +5,7 @@ using Xamarin.Forms.Platform.iOS;
 
 [assembly: ResolutionGroupName("Xamarin")]
 [assembly: ExportEffect(typeof(Intouch.Edm.iOS.ShowHidePassEffect), "ShowHidePassEffect")]
+
 namespace Intouch.Edm.iOS
 {
     public class ShowHidePassEffect : PlatformEffect
@@ -16,7 +17,6 @@ namespace Intouch.Edm.iOS
 
         protected override void OnDetached()
         {
-
         }
 
         private void ConfigureControl()
@@ -55,7 +55,6 @@ namespace Intouch.Edm.iOS
                 paddingViewRight.Add(buttonRect);
                 paddingViewRight.ContentMode = UIViewContentMode.BottomRight;
 
-
                 vUpdatedEntry.LeftView = paddingViewRight;
                 vUpdatedEntry.LeftViewMode = UITextFieldViewMode.Always;
 
@@ -64,7 +63,6 @@ namespace Intouch.Edm.iOS
                 Control.Layer.MasksToBounds = true;
                 vUpdatedEntry.TextAlignment = UITextAlignment.Left;
             }
-
         }
     }
 }

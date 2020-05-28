@@ -5,15 +5,17 @@ using Android.Util;
 using Firebase.Iid;
 using Firebase.Messaging;
 using System;
+
 namespace Intouch.Edm.Droid
 {
     [Service]
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     public class MyFirebaseMessagingService : FirebaseMessagingService
     {
-        const string TAG = "MyFireBaseMessagingService";
+        private const string TAG = "MyFireBaseMessagingService";
         public static string notificationTypeId = "";
         internal static readonly string CHANNEL_ID = "com.intouch.edm";
+
         public override void OnMessageReceived(RemoteMessage message)
         {
             Log.Debug(TAG, "From: " + message.From);
@@ -37,15 +39,10 @@ namespace Intouch.Edm.Droid
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
             {
-                //var intent = new Intent(this, typeof(MainActivity));
-                //intent.AddFlags(ActivityFlags.ClearTop);
-                //var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
-
                 var intent = new Intent("MainActivity");
                 intent.AddFlags(ActivityFlags.ClearTop);
 
                 PendingIntent pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.Immutable);
-
 
                 var notificationBuilder = new Notification.Builder(this)
                             .SetContentTitle(header)
@@ -54,8 +51,7 @@ namespace Intouch.Edm.Droid
                             .SetAutoCancel(true)
                             .SetContentIntent(pendingIntent);
 
-                //var notificationManager = NotificationManager.FromContext(this);
-                var notificationManager = (Android.App.NotificationManager)this.GetSystemService(Context.NotificationService);
+                var notificationManager = (NotificationManager)this.GetSystemService(NotificationService);
                 notificationManager.Notify(1, notificationBuilder.Build());
             }
             else
@@ -94,20 +90,20 @@ namespace Intouch.Edm.Droid
     [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
     public class MyFirebaseIIDService : FirebaseInstanceIdService
     {
-        const string TAG = "MyFirebaseIIDService";
+        private const string TAG = "MyFirebaseIIDService";
+
         public override void OnTokenRefresh()
         {
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             SendRegistrationToServerAsync(refreshedToken);
         }
+
         public void SendRegistrationToServerAsync(string token)
         {
-            Log.Debug(PackageName,token);
+            Log.Debug(PackageName, token);
             Helpers.Settings.FirebaseNotification = token;
             //duyurular yetkisi varsa notifications topic ine subscribe olacak
             FirebaseMessaging.Instance.SubscribeToTopic("notifications");
-
         }
     }
-
 }
