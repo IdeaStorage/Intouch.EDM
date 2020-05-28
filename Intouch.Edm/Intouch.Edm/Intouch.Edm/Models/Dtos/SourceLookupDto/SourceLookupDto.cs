@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Intouch.Edm.Models.Dtos.SourceLookupDto
 {
     public class SourceLookupDto
     {
     }
+
     public class Source
     {
         public string name { get; set; }

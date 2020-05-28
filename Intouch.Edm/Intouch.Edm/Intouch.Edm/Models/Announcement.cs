@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Intouch.Edm.Models
+﻿namespace Intouch.Edm.Models
 {
     public class Announcement
     {

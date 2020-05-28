@@ -26,13 +26,17 @@ namespace Intouch.Edm.Services
 
         internal static Models.Dtos.TaskOptionUpdateDto.RootObject GetTaskOptions(ObservableCollection<HelperModel> statusRecords)
         {
-            Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = new Models.Dtos.TaskOptionUpdateDto.RootObject();
-            updateTaskOption.checkedOptions = new List<Models.Dtos.TaskOptionUpdateDto.CheckedOption>();
+            Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = new Models.Dtos.TaskOptionUpdateDto.RootObject
+            {
+                checkedOptions = new List<Models.Dtos.TaskOptionUpdateDto.CheckedOption>()
+            };
             foreach (var taskOption in statusRecords)
             {
-                Models.Dtos.TaskOptionUpdateDto.CheckedOption updateOption = new Models.Dtos.TaskOptionUpdateDto.CheckedOption();
-                updateOption.completed = taskOption.IsSelected;
-                updateOption.id = taskOption.Id;
+                Models.Dtos.TaskOptionUpdateDto.CheckedOption updateOption = new Models.Dtos.TaskOptionUpdateDto.CheckedOption
+                {
+                    completed = taskOption.IsSelected,
+                    id = taskOption.Id
+                };
                 updateTaskOption.checkedOptions.Add(updateOption);
             }
 

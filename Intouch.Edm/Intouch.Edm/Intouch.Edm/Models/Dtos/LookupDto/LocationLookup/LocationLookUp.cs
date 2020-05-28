@@ -5,6 +5,7 @@ namespace Intouch.Edm.Models.Dtos.LookupDto.LocationLookup
     public class LocationLookUp
     {
     }
+
     public class Site
     {
         public string name { get; set; }

@@ -7,6 +7,7 @@ namespace Intouch.Edm.Models
     {
         [JsonProperty("totalCount")]
         public int TotalCount { get; set; }
+
         [JsonProperty("items")]
         public List<Location> Items { get; set; }
     }

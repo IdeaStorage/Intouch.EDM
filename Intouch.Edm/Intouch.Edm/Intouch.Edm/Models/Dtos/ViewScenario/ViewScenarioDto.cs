@@ -5,6 +5,7 @@ namespace Intouch.Edm.Models.Dtos.ViewScenario
     public class ViewScenarioDto
     {
     }
+
     public class Scenario
     {
         public int scenarioNo { get; set; }

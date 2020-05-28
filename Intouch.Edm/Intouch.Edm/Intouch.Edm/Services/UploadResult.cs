@@ -10,9 +10,9 @@ namespace Intouch.Edm.Services
         public string DisplayFileName { get; set; }
         public string ContentId { get; set; }
     }
+
     public class UploadFilesAjaxResponse
     {
-
         public List<UploadResult> Result { get; set; }
     }
 }

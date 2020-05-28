@@ -6,6 +6,7 @@ namespace Intouch.Edm.Models
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
+
         public int SubjectId { get; set; }
         public int SiteId { get; set; }
         public int EventId { get; set; }
@@ -29,11 +30,3 @@ namespace Intouch.Edm.Models
         public bool IsWaiting { get; set; }
     }
 }
-
-/*
- {"result":{"totalCount":3,"items":[
- {"emergencyScenario":{"effectTime":0,"admIsRequired":false,"admPersonCount":0,"odmIsRequired":false,
- "odmPersonCount":0,"name":"","subjectType":1,"siteId":1,"impactAreaId":2,"eventTypeId":2,"contactUserId":null,
- "contactFirmId":null,"sourceId":4,"id":"7dbe821e-4bc8-4254-fc67-08d787ab5da5"},"siteName":"Bileşim Genel Müdürlük","impactAreaName":"B1 Katı","eventTypeName":"Yangın","contactUserName":"","contactFirmName":"","sourceName":"Elektrik Kontağı"},{"emergencyScenario":{"effectTime":0,"admIsRequired":false,"admPersonCount":0,"odmIsRequired":false,"odmPersonCount":0,"name":"","subjectType":1,"siteId":1,"impactAreaId":1,"eventTypeId":2,"contactUserId":null,"contactFirmId":null,"sourceId":4,"id":"7e95737e-eed9-4199-fc66-08d787ab5da5"},"siteName":"Bileşim Genel Müdürlük","impactAreaName":"B2 Katı","eventTypeName":"Yangın","contactUserName":"","contactFirmName":"","sourceName":"Elektrik Kontağı"},{"emergencyScenario":{"effectTime":0,"admIsRequired":false,"admPersonCount":0,"odmIsRequired":false,"odmPersonCount":0,"name":"","subjectType":1,"siteId":1,"impactAreaId":null,"eventTypeId":3,"contactUserId":null,"contactFirmId":null,"sourceId":7,"id":"a992b7d6-da85-4fe4-1476-08d7879bf79d"},"siteName":"Bileşim Genel Müdürlük","impactAreaName":"","eventTypeName":"Deprem","contactUserName":"","contactFirmName":"","sourceName":"Afet"}]},"targetUrl":null,"success":true,"error":null,"unAuthorizedRequest":false,"__abp":true}
-     
-     */

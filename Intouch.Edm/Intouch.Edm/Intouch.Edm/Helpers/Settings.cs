@@ -19,9 +19,6 @@ namespace Intouch.Edm.Helpers
         private const string ExpireInSecondsKey = "expiretoken_key";
         private static readonly string ExpireInSecondsDefault = string.Empty;
 
-        private const string UserIdKey = "userid_key";
-        private static readonly string UserIdDefault = string.Empty;
-
         private const string UserRoleTokenKey = "user_role";
         private static readonly string UserRoleTokenDefault = string.Empty;
 
@@ -39,8 +36,6 @@ namespace Intouch.Edm.Helpers
 
         private const string ContentIdKey = "contentid_key";
         private static readonly string ContentIdDefault = string.Empty;
-
-
 
         private const string FileNameKey = "filename_key";
         private static readonly string FileNameDefault = string.Empty;
@@ -61,57 +56,67 @@ namespace Intouch.Edm.Helpers
             get => AppSettings.GetValueOrDefault(StatusIdKey, StatusIdDefault);
             set => AppSettings.AddOrUpdateValue(StatusIdKey, value);
         }
+
         public static string ContentId
         {
             get => AppSettings.GetValueOrDefault(ContentIdKey, ContentIdDefault);
             set => AppSettings.AddOrUpdateValue(ContentIdKey, value);
         }
+
         public static string FileName
         {
             get => AppSettings.GetValueOrDefault(FileNameKey, FileNameDefault);
             set => AppSettings.AddOrUpdateValue(FileNameKey, value);
         }
+
         public static string ContentLength
         {
             get => AppSettings.GetValueOrDefault(ContentLengthKey, ContentLengthDefault);
             set => AppSettings.AddOrUpdateValue(ContentLengthKey, value);
         }
+
         public static string ContentType
         {
             get => AppSettings.GetValueOrDefault(ContentTypeKey, ContentTypeDefault);
             set => AppSettings.AddOrUpdateValue(ContentTypeKey, value);
         }
+
         public static string DisplayFileName
         {
             get => AppSettings.GetValueOrDefault(DisplayFileNameKey, DisplayFileNameDefault);
             set => AppSettings.AddOrUpdateValue(DisplayFileNameKey, value);
         }
+
         public static string AuthenticationToken
         {
             get => AppSettings.GetValueOrDefault(ApiAuthTokenKey, AuthTokenDefault);
             set => AppSettings.AddOrUpdateValue(ApiAuthTokenKey, value);
         }
+
         public static string UserRole
         {
             get => AppSettings.GetValueOrDefault(UserRoleTokenKey, UserRoleTokenDefault);
             set => AppSettings.AddOrUpdateValue(UserRoleTokenKey, value);
         }
+
         public static string RefreshToken
         {
             get => AppSettings.GetValueOrDefault(ApiRefreshTokenKey, RefreshTokenDefault);
             set => AppSettings.AddOrUpdateValue(ApiRefreshTokenKey, value);
         }
+
         public static string ExpireInSeconds
         {
             get => AppSettings.GetValueOrDefault(ExpireInSecondsKey, ExpireInSecondsDefault);
             set => AppSettings.AddOrUpdateValue(ExpireInSecondsKey, value);
         }
+
         public static string LoginDate
         {
             get => AppSettings.GetValueOrDefault(LoginDateKey, LoginDateDefault);
             set => AppSettings.AddOrUpdateValue(LoginDateKey, value);
         }
-      
+
         internal static void SetPermission(Edm.Models.Dtos.PermissionDto.RootObject responsePermission)
         {
             var permissionList = responsePermission.result.permissions;
@@ -131,31 +136,37 @@ namespace Intouch.Edm.Helpers
             LoginDate = DateTime.Now.AddSeconds(response.Result.ExpireInSeconds).Ticks.ToString();
             UserId = response.Result.UserId.ToString();
         }
+
         public static void SetRefreshTokenInformation(ApiAuthenticationToken response)
         {
             AuthenticationToken = response.Result.AccessToken;
             LoginDate = DateTime.Now.Ticks.ToString();
         }
+
         public static string UserId
         {
             get => (AppSettings.GetValueOrDefault(ExpireInSecondsKey, ExpireInSecondsDefault));
             set => AppSettings.AddOrUpdateValue(ExpireInSecondsKey, value);
         }
+
         public static string Username
         {
             get => AppSettings.GetValueOrDefault(UsernameKey, UsernameDefault);
             set => AppSettings.AddOrUpdateValue(UsernameKey, value);
         }
+
         public static string Password
         {
             get => AppSettings.GetValueOrDefault(PasswordKey, PasswordDefault);
             set => AppSettings.AddOrUpdateValue(PasswordKey, value);
         }
+
         public static string FirebaseNotification
         {
             get => AppSettings.GetValueOrDefault(FirebaseNotificationKey, FirebaseNotificationDefault);
             set => AppSettings.AddOrUpdateValue(FirebaseNotificationKey, value);
         }
+
         public static void SetPictureInformation(ApiAuthenticationToken response)
         {
             AuthenticationToken = response.Result.AccessToken;
@@ -164,15 +175,19 @@ namespace Intouch.Edm.Helpers
             LoginDate = DateTime.Now.Ticks.ToString();
             UserId = response.Result.UserId.ToString();
         }
+
         private const string isAdkAuthorizeKey = "isadk_key";
         private static readonly string isAdkAuthorizeKeyDefault = "1";
+
         public static string isADKAuthorize
         {
             get => AppSettings.GetValueOrDefault(isAdkAuthorizeKey, isAdkAuthorizeKeyDefault);
             set => AppSettings.AddOrUpdateValue(isAdkAuthorizeKey, value);
         }
+
         private const string isNotificationAuthorizeKey = "isnotification_key";
         private static readonly string isNotificationAuthorizeKeyDefault = "1";
+
         public static string isNotificationAuthorize
         {
             get => AppSettings.GetValueOrDefault(isNotificationAuthorizeKey, isNotificationAuthorizeKeyDefault);
@@ -181,6 +196,7 @@ namespace Intouch.Edm.Helpers
 
         private const string isBusinessContinuityScenariosAuthorizeKey = "isbusinessscenario_key";
         private static readonly string isBusinessContinuityScenariosAuthorizeKeyDefault = "1";
+
         public static string isBusinessContinuityScenariosAuthorize
         {
             get => AppSettings.GetValueOrDefault(isBusinessContinuityScenariosAuthorizeKey, isBusinessContinuityScenariosAuthorizeKeyDefault);
@@ -189,6 +205,7 @@ namespace Intouch.Edm.Helpers
 
         private const string isEmergencyScenariosAuthorizeKey = "isemergencyscenario_key";
         private static readonly string isEmergencyScenariosAuthorizeKeyDefault = "1";
+
         public static string isEmergencyScenariosAuthorize
         {
             get => AppSettings.GetValueOrDefault(isEmergencyScenariosAuthorizeKey, isEmergencyScenariosAuthorizeKeyDefault);
@@ -197,6 +214,7 @@ namespace Intouch.Edm.Helpers
 
         private const string isTaskAuthorizeKey = "istaskscenario_key";
         private static readonly string isTaskAuthorizeKeyDefault = "1";
+
         public static string isTasksAuthorize
         {
             get => AppSettings.GetValueOrDefault(isTaskAuthorizeKey, isTaskAuthorizeKeyDefault);
@@ -205,6 +223,7 @@ namespace Intouch.Edm.Helpers
 
         private const string isTaskDetailAuthorizeKey = "istaskdetailscenario_key";
         private static readonly string isTaskDetailAuthorizeKeyDefault = "1";
+
         public static string isTaskDetailAuthorize
         {
             get => AppSettings.GetValueOrDefault(isTaskDetailAuthorizeKey, isTaskDetailAuthorizeKeyDefault);
@@ -219,6 +238,7 @@ namespace Intouch.Edm.Helpers
             DisplayFileName = resultPicture.DisplayFileName;
             FileName = resultPicture.FileName;
         }
+
         internal static Edm.Models.Dtos.CreateScenario.CreateEmergencyScenario.Picture GetPictureDetail()
         {
             Edm.Models.Dtos.CreateScenario.CreateEmergencyScenario.Picture picture = new Edm.Models.Dtos.CreateScenario.CreateEmergencyScenario.Picture

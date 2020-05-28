@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Intouch.Edm.Models.Dtos.NewAnnouncementReturnDto
 {
-    class NewAnnouncementReturnDto
+    internal class NewAnnouncementReturnDto
     {
     }
+
     public class ValidationError
     {
         public string message { get; set; }

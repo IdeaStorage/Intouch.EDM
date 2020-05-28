@@ -4,8 +4,8 @@ namespace Intouch.Edm.Models.Dtos.LookupDto
 {
     public class LookupDto
     {
-        
     }
+
     public class Item
     {
         public int id { get; set; }

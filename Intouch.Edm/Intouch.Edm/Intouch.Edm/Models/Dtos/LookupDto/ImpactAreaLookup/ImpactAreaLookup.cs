@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Intouch.Edm.Models.Dtos.LookupDto.ImpactAreaLookup
 {
-    class ImpactAreaLookup
+    internal class ImpactAreaLookup
     {
     }
 

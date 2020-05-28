@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace Intouch.Edm.Helpers
 {
-    public class CommandHandler :ICommand
+    public class CommandHandler : ICommand
     {
         private Action<object> _action;
         private bool _canExecute;

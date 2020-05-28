@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Intouch.Edm.Services
+﻿namespace Intouch.Edm.Services
 {
     public enum TaskStatus
     {

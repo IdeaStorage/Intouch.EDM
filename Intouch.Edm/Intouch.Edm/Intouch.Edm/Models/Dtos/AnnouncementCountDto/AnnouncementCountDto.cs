@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Intouch.Edm.Models.Dtos.AnnouncementCountDto
+﻿namespace Intouch.Edm.Models.Dtos.AnnouncementCountDto
 {
     public class AnnouncementCountDto
     {
     }
+
     public class RootObject
     {
         public int result { get; set; }

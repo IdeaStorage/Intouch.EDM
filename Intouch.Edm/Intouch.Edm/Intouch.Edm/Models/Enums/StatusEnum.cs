@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Intouch.Edm.Models.Enums
+﻿namespace Intouch.Edm.Models.Enums
 {
     public enum StatusEnums
     {

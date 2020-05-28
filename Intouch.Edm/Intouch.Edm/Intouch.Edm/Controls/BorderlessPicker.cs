@@ -4,6 +4,5 @@ namespace Intouch.Edm.Controls
 {
     public partial class BorderlessPicker : Picker
     {
-
     }
 }

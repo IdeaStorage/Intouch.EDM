@@ -1,13 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Intouch.Edm.Models.Dtos.Scenario
 {
     public class Scenario
     {
-
     }
+
     public class Item
     {
         public object commiteeApprovalId { get; set; }

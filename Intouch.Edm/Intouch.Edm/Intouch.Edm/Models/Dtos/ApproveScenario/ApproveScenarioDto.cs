@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Intouch.Edm.Models.Dtos.ApproveScenario
+﻿namespace Intouch.Edm.Models.Dtos.ApproveScenario
 {
     public class ApproveScenarioDto
     {
