@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Intouch.Edm.Views.Templates.ScenarioTemplate">
     <ContentView.Content>
@@ -9,7 +9,7 @@
 		Padding="10, 5, 10, 5"
 		VerticalOptions="Center">
             <Image Source="{Binding Icon}"
-                   Aspect="AspectFill" 
+                   Aspect="AspectFill"
                    HorizontalOptions="Center"
                    VerticalOptions="Start"
                    TranslationX="8"
@@ -27,10 +27,10 @@
                     <StackLayout
 					Orientation="Horizontal">
                         <Label
-						Text="{Binding Subject}" 
+						Text="{Binding Subject}"
                         Font="Bold,18"
 						HorizontalOptions="Fill"
-						VerticalOptions="EndAndExpand"/>
+						VerticalOptions="EndAndExpand" />
                         <Label
 						Text=" "
 						HorizontalOptions="FillAndExpand"
@@ -46,15 +46,15 @@
 					Orientation="Horizontal"
 					Padding="0,8,0,0">
                         <Label
-                        Text="{Binding Source}" 
+                        Text="{Binding Source}"
                         TextColor="Gray"
-                        FontAttributes="Italic" 
-                        FontSize="13" 
+                        FontAttributes="Italic"
+                        FontSize="13"
                         HorizontalOptions="FillAndExpand"
 						VerticalOptions="FillAndExpand" />
-                        <Image VerticalOptions="EndAndExpand" 
+                        <Image VerticalOptions="EndAndExpand"
                                Source="{Binding StatusIcon}"
-                               WidthRequest="24"/>
+                               WidthRequest="24" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

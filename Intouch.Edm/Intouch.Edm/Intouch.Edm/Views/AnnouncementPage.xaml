@@ -25,7 +25,7 @@
 							Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame BackgroundColor="White" Grid.Row="0" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc" Margin="3,5,3,10">
-                        <Entry Margin="3,0,3,8" 
+                        <Entry Margin="3,0,3,8"
                            HorizontalOptions="FillAndExpand"
                            FontAttributes="Bold"
                            Placeholder="Başlık"
@@ -35,7 +35,7 @@
                         </Entry>
                     </Frame>
                     <Frame BackgroundColor="White" CornerRadius="10" Grid.Row="1" HasShadow="True" OutlineColor="#dcdcdc" Margin="3,0,3,5">
-                        <Editor 
+                        <Editor
                             HorizontalOptions="FillAndExpand"
                             Placeholder="Mesaj yaz..."
                             Text="{Binding AnnouncementDescription}"
@@ -44,19 +44,18 @@
                     </Frame>
                     <Button
                             Grid.Row="2"
-						    CornerRadius="50" 
-                            FontSize="Medium" 
+						    CornerRadius="50"
+                            FontSize="Medium"
                             TextColor="White"
                         Margin="0,0,0,5"
-                            BorderColor="Black" 
-                            BackgroundColor="#2196f3" 
-                            FlexLayout.AlignSelf="Stretch"  
+                            BorderColor="Black"
+                            BackgroundColor="#2196f3"
+                            FlexLayout.AlignSelf="Stretch"
                             HorizontalOptions="CenterAndExpand"
                             WidthRequest="350"
 							VerticalOptions="End"
-							Text="GÖNDER" 
-                            Command="{Binding NewAnnouncementButtonClicked}"
-                        />
+							Text="GÖNDER"
+                            Command="{Binding NewAnnouncementButtonClicked}" />
                 </Grid>
             </ScrollView>
         </Grid>

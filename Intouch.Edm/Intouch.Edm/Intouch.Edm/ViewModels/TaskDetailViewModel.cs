@@ -9,7 +9,8 @@ namespace Intouch.Edm.ViewModels
 {
     public class TaskDetailViewModel : BaseViewModel
     {
-        TaskItem _task;
+        private TaskItem _task;
+
         public TaskItem Task
         {
             get { return _task; }
@@ -55,7 +56,9 @@ namespace Intouch.Edm.ViewModels
             };
             IsPictureButtonVisible = !string.IsNullOrEmpty(taskItem.Scenario.PictureUrl);
         }
-        ObservableCollection<HelperModel> _statusRecords;
+
+        private ObservableCollection<HelperModel> _statusRecords;
+
         public ObservableCollection<HelperModel> StatusRecords
         {
             get { return _statusRecords; }
@@ -66,7 +69,8 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        ObservableCollection<TaskDetail> _taskDetailLists;
+        private ObservableCollection<TaskDetail> _taskDetailLists;
+
         public ObservableCollection<TaskDetail> TaskDetailLists
         {
             get { return _taskDetailLists; }
@@ -77,15 +81,17 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        ICommand _saveCommand;
+        private ICommand _saveCommand;
+
         public ICommand SaveClicked => _saveCommand
                 ?? (_saveCommand = new Command(async () => await ExecuteSaveClicked()));
 
-        ICommand _showPicture;
+        private ICommand _showPicture;
+
         public ICommand ShowPictureButton => _showPicture
          ?? (_showPicture = new Command(async () => await ShowPictureClicked()));
 
-        async System.Threading.Tasks.Task ShowPictureClicked()
+        private async System.Threading.Tasks.Task ShowPictureClicked()
         {
             if (string.IsNullOrEmpty(Task.Scenario.PictureUrl))
             {
@@ -97,11 +103,11 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        async System.Threading.Tasks.Task ExecuteSaveClicked()
+        private async System.Threading.Tasks.Task ExecuteSaveClicked()
         {
             Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = TaskService.GetTaskOptions(StatusRecords);
             updateTaskOption.id = Task.Id;
-            updateTaskOption.description = Description != null ? Description : string.Empty;
+            updateTaskOption.description = Description ?? string.Empty;
             var taskResult = await DataService.UpdateTaskOptions(updateTaskOption);
             if (taskResult)
             {

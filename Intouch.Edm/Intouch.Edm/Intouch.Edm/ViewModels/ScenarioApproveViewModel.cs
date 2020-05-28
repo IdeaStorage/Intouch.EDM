@@ -1,19 +1,16 @@
 ﻿using Intouch.Edm.Models;
-using Intouch.Edm.Services;
+using Intouch.Edm.Models.Dtos.ApproveScenario;
 using Intouch.Edm.Views;
-using System;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Intouch.Edm.Models.Dtos.ApproveScenario;
 
 namespace Intouch.Edm.ViewModels
 {
     public class ScenarioApproveViewModel : BaseViewModel
     {
-
         public Scenario scenario { get; set; }
         private bool _isVisible;
+
         public bool isVisible
         {
             get
@@ -35,25 +32,21 @@ namespace Intouch.Edm.ViewModels
                 OnPropertyChanged();
             }
         }
-        public string scenarioId { get; set; }
 
-        //public override Task Init(Scenario scenario)
-        //{
-        //    this.Scenario = scenario;
-        //}
+        public string scenarioId { get; set; }
 
         public ScenarioApproveViewModel(Scenario scenario)
         {
-            this.Scenario = scenario;
-            // RetrieveScenario(scenarioId);
-            _isVisible = this.Scenario.IsWaiting;
+            Scenario = scenario;
+            _isVisible = Scenario.IsWaiting;
         }
 
-        ICommand _approveCommand;
+        private ICommand _approveCommand;
+
         public ICommand ApproveButtonClicked => _approveCommand
                 ?? (_approveCommand = new Command(async () => await ApproveClicked()));
 
-        async System.Threading.Tasks.Task ApproveClicked()
+        private async System.Threading.Tasks.Task ApproveClicked()
         {
             ApproveScenarioDto approveScenario = new ApproveScenarioDto { id = this.scenario.Id };
 
@@ -61,20 +54,19 @@ namespace Intouch.Edm.ViewModels
             string returnMessage = result.result.message;
             if (result.result.approveResult)
             {
-                
                 await Application.Current.MainPage.DisplayAlert("ONAYLANDI", returnMessage, "TAMAM");
                 await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
             }
             else
                 await Application.Current.MainPage.DisplayAlert("Başarısız", returnMessage, "TAMAM");
-
         }
 
-        ICommand _rejectCommand;
+        private ICommand _rejectCommand;
+
         public ICommand RejectButtonClicked => _rejectCommand
                 ?? (_rejectCommand = new Command(async () => await RejectClicked()));
 
-        async System.Threading.Tasks.Task RejectClicked()
+        private async System.Threading.Tasks.Task RejectClicked()
         {
             ApproveScenarioDto approveScenario = new ApproveScenarioDto { id = this.Scenario.Id };
 

@@ -12,8 +12,9 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : Xamarin.Forms.TabbedPage
     {
-        MainPageViewModel viewModel;
-        DataService dataService;
+        private MainPageViewModel viewModel;
+        private DataService dataService;
+
         public MainPage(int currentTab = 0)
         {
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
@@ -28,7 +29,7 @@ namespace Intouch.Edm.Views
 
                 if (numPage == (int)TabPageEnums.AnnouncementListPage)
                 {
-                    bool result = await dataService.SetReadNotifications();
+                    await dataService.SetReadNotifications();
                 }
             };
             if (currentTab == (int)TabPageEnums.AnnouncementListPage)

@@ -28,8 +28,8 @@
     </TabbedPage.Resources>
     <TabbedPage.Children>
         <ContentPage Title="Bekleyenler" x:Name="Waiting">
-                <StackLayout>
-                <ListView x:Name="WaitingScenarioListView" 
+            <StackLayout>
+                <ListView x:Name="WaitingScenarioListView"
                               ItemsSource="{Binding ScenarioItems}"
                               VerticalOptions="FillAndExpand"
                               HasUnevenRows="true"
@@ -39,12 +39,12 @@
                               IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                               CachingStrategy="RecycleElement"
                               ItemSelected="OnItemSelected">
-                    </ListView>
-                </StackLayout>
+                </ListView>
+            </StackLayout>
         </ContentPage>
         <ContentPage Title="Onaylananlar" x:Name="ApprovedFilter">
-                <StackLayout>
-                    <ListView x:Name="ApprovedScenarioListView" 
+            <StackLayout>
+                <ListView x:Name="ApprovedScenarioListView"
                               ItemsSource="{Binding ScenarioItems}"
                               VerticalOptions="FillAndExpand"
                               HasUnevenRows="true"
@@ -54,12 +54,12 @@
                               IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                               CachingStrategy="RecycleElement"
                               ItemSelected="OnItemSelected">
-                    </ListView>
-                </StackLayout>
+                </ListView>
+            </StackLayout>
         </ContentPage>
         <ContentPage Title="Reddedilenler" x:Name="RejectedFilter">
             <StackLayout>
-                <ListView x:Name="RejectedScenarioListView" 
+                <ListView x:Name="RejectedScenarioListView"
                               ItemsSource="{Binding ScenarioItems}"
                               VerticalOptions="FillAndExpand"
                               HasUnevenRows="true"

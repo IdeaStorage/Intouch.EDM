@@ -32,7 +32,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="AnnouncementListView" 
+            <ListView x:Name="AnnouncementListView"
                 ItemsSource="{Binding AnnouncementItems}"
                 Margin="0,5,0,0"
                 VerticalOptions="FillAndExpand"

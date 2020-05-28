@@ -1,28 +1,26 @@
-﻿using System;
+﻿using Intouch.Edm.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 using Xamarin.Forms;
-
-using Intouch.Edm.Models;
-using Intouch.Edm.Services;
 
 namespace Intouch.Edm.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-       // public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
         public IDataService DataService => DependencyService.Get<IDataService>() ?? new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
 
-        bool isBusy = false;
+        private bool isBusy = false;
+
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
 
-        string title = string.Empty;
+        private string title = string.Empty;
+
         public string Title
         {
             get { return title; }
@@ -42,8 +40,8 @@ namespace Intouch.Edm.ViewModels
             return true;
         }
 
-        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;
@@ -52,6 +50,5 @@ namespace Intouch.Edm.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
     }
 }

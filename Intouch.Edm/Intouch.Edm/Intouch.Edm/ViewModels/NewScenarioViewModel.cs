@@ -56,9 +56,9 @@ namespace Intouch.Edm.ViewModels
 
             try
             {
-                if (!string.IsNullOrEmpty(Edm.Helpers.Settings.ContentId))
+                if (!string.IsNullOrEmpty(Helpers.Settings.ContentId))
                 {
-                    picture = Edm.Helpers.Settings.GetPictureDetail();
+                    picture = Helpers.Settings.GetPictureDetail();
                 }
                 else
                 {
@@ -435,7 +435,7 @@ namespace Intouch.Edm.ViewModels
                 var imageFile = file;
                 var resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
 
-                Edm.Helpers.Settings.SetUploadResult(resultPicture);
+                Helpers.Settings.SetUploadResult(resultPicture);
                 ImageSource = ImageSource.FromStream(() =>
                 {
                     var stream = file.GetStream();
@@ -467,11 +467,13 @@ namespace Intouch.Edm.ViewModels
             try
             {
                 if (file == null)
+                {
                     return;
+                }
 
                 var imageFile = file;
                 var resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
-                Edm.Helpers.Settings.SetUploadResult(resultPicture);
+                Helpers.Settings.SetUploadResult(resultPicture);
 
                 ImageSource = ImageSource.FromStream(() =>
                   {

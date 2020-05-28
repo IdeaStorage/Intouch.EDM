@@ -1,5 +1,4 @@
 ﻿using Intouch.Edm.ViewModels;
-using Intouch.Edm.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,12 +7,13 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AnnouncementList : ContentPage
     {
-        AnnouncementListViewModel viewModel;
+        private AnnouncementListViewModel viewModel;
+
         public AnnouncementList()
         {
             InitializeComponent();
             BindingContext = viewModel = new AnnouncementListViewModel();
-        }        
+        }
 
         protected override void OnAppearing()
         {

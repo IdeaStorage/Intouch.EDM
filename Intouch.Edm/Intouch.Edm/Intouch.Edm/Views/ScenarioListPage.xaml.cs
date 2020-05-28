@@ -10,7 +10,8 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScenarioListPage : TabbedPage
     {
-        ScenarioListViewModel viewModel;
+        private ScenarioListViewModel viewModel;
+
         public ScenarioListPage()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace Intouch.Edm.Views
             };
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (!(args.SelectedItem is Scenario scenario))
             {

@@ -1,7 +1,6 @@
 ﻿using Intouch.Edm.Models;
 using Intouch.Edm.Models.Dtos.CreateScenario;
 using Intouch.Edm.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,7 +22,7 @@ namespace Intouch.Edm.Services
 
         Task<Scenario> AddNotificationAsync(Scenario notification);
 
-        Task<Dtos.ViewScenario.RootObject> GetScenarioAsync(string scenarioId);
+        Task<Dtos.ViewScenario.RootObject> GetScenarioDetailAsync(string scenarioId);
 
         Task<Role> GetRoleAsync(int userId);
 

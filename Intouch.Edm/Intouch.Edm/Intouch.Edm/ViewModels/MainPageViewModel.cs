@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Intouch.Edm.ViewModels
+﻿namespace Intouch.Edm.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
@@ -11,6 +9,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private int _unreadCount;
+
         public int UnreadCount
         {
             get
@@ -24,6 +23,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private bool _isVisibleTaskList;
+
         public bool IsVisibleTaskList
         {
             get
@@ -37,6 +37,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private bool _isVisibleAdkList;
+
         public bool IsVisibleAdkList
         {
             get
@@ -49,7 +50,7 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        async void GetUnreadAnnouncementCountAsync()
+        private async void GetUnreadAnnouncementCountAsync()
         {
             var announcementCount = await DataService.GetAnnouncementsCountAsync();
             int unreadCount = 0;
@@ -60,10 +61,10 @@ namespace Intouch.Edm.ViewModels
             UnreadCount = unreadCount;
         }
 
-        async void GetTabPageVisible()
+        private void GetTabPageVisible()
         {
-            IsVisibleTaskList = Helpers.Settings.isTasksAuthorize == "1" ? true : false ;
-            IsVisibleAdkList = Helpers.Settings.isADKAuthorize == "1" ? true : false;
+            IsVisibleTaskList = Helpers.Settings.isTasksAuthorize == "1";
+            IsVisibleAdkList = Helpers.Settings.isADKAuthorize == "1";
         }
     }
 }

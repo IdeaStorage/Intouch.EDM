@@ -15,7 +15,8 @@ namespace Intouch.Edm.ViewModels
         public ObservableRangeCollection<TaskItem> AllTaskItems { get; set; }
         public ObservableRangeCollection<string> FilterOptions { get; }
 
-        string selectedFilter = "Hepsi";
+        private string selectedFilter = "Hepsi";
+
         public string SelectedFilter
         {
             get => selectedFilter;
@@ -25,6 +26,7 @@ namespace Intouch.Edm.ViewModels
                     FilterItems();
             }
         }
+
         public Command LoadTasksCommand { get; set; }
 
         public TaskListViewModel()
@@ -38,12 +40,12 @@ namespace Intouch.Edm.ViewModels
             };
         }
 
-        void FilterItems()
+        private void FilterItems()
         {
             TaskItems.ReplaceRange(AllTaskItems.Where(a => a.UserName == SelectedFilter || SelectedFilter == "Hepsi"));
         }
 
-        async Task ExecuteLoadTasksCommand()
+        private async Task ExecuteLoadTasksCommand()
         {
             if (IsBusy)
             {

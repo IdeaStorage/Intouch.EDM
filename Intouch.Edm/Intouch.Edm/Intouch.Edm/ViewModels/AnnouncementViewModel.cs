@@ -1,7 +1,4 @@
 ﻿using Intouch.Edm.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -10,6 +7,7 @@ namespace Intouch.Edm.ViewModels
     public class AnnouncementViewModel : BaseViewModel
     {
         private string _announcementTitle;
+
         public string AnnouncementTitle
         {
             get
@@ -23,6 +21,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private string _announcementDescription;
+
         public string AnnouncementDescription
         {
             get
@@ -35,12 +34,12 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        ICommand _newAnnouncementCommand;
+        private ICommand _newAnnouncementCommand;
 
         public ICommand NewAnnouncementButtonClicked => _newAnnouncementCommand
                 ?? (_newAnnouncementCommand = new Command(async () => await NewAnnouncementClicked()));
 
-        async System.Threading.Tasks.Task NewAnnouncementClicked()
+        private async System.Threading.Tasks.Task NewAnnouncementClicked()
         {
             Models.Dtos.CreateAnnouncementDto.CreateAnnouncementDto createAnnouncement = new Models.Dtos.CreateAnnouncementDto.CreateAnnouncementDto { title = AnnouncementTitle, text = AnnouncementDescription };
             var createAnnouncementResult = await DataService.CreateAnnouncementAsync(createAnnouncement);

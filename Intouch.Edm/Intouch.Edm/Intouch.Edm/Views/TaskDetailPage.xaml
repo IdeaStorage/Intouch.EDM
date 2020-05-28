@@ -35,88 +35,88 @@
                     <Image
                             Source="subjectIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
-                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0"/>
-                    <Label x:Name="Subject" 
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
+                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0" />
+                    <Label x:Name="Subject"
                            Text="{Binding Task.Scenario.Subject}"
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="eventIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
-                    <Label x:Name="Event" 
+                    <Label x:Name="Event"
                            Text="{Binding Task.Scenario.Event}"
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="sourceIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Kaynak" Margin="0, 0, 33, 0"></Label>
-                    <Label x:Name="Source" 
+                    <Label x:Name="Source"
                            Text="{Binding Task.Scenario.Source}"
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="locationIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Lokasyon" Margin="0, 0, 13, 0"></Label>
-                    <Label x:Name="LocationArea" 
+                    <Label x:Name="LocationArea"
                            Text="{Binding Task.Scenario.Site}"
-                           HorizontalTextAlignment="Center" 
+                           HorizontalTextAlignment="Center"
                            FontSize="Medium"
-                           VerticalTextAlignment="Center" 
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="impactAreaIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Etki Alanı" Margin="0, 0, 13, 0"></Label>
-                    <Label x:Name="ImpactArea" 
-                           Text="{Binding Task.Scenario.ImpactArea}" 
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                    <Label x:Name="ImpactArea"
+                           Text="{Binding Task.Scenario.ImpactArea}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <Editor x:Name="DescriptionEditor" FontSize="Medium" BindingContext="{Binding Description}"  AutoSize="TextChanges" Placeholder="Açıklama"  TextColor="Black" />
-                <Button x:Name="NewNotificationButton" 
-                            Text="Fotoğraf göster" 
+                <Button x:Name="NewNotificationButton"
+                            Text="Fotoğraf göster"
                             IsVisible="{Binding IsPictureButtonVisible}"
-                            Command="{Binding ShowPictureButton}" 
-                            HorizontalOptions="FillAndExpand" 
-                            BackgroundColor="#E61E28" 
-                            CornerRadius="50" 
-                            FontSize="Medium" 
+                            Command="{Binding ShowPictureButton}"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="#E61E28"
+                            CornerRadius="50"
+                            FontSize="Medium"
                             TextColor="White"
-                            BorderColor="Black" 
+                            BorderColor="Black"
                             FlexLayout.AlignSelf="Stretch"></Button>
                 <Image x:Name="image" Margin="85,20,85,20" WidthRequest="200" IsVisible="{Binding IsImageVisible}" Source="{Binding PictureUrl}"  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
                 <ListView x:Name="TaskListView" ItemsSource="{Binding StatusRecords}"  ItemSelected="TaskListView_ItemSelected" HeightRequest="250">
@@ -126,10 +126,10 @@
                                 <ViewCell.View>
                                     <StackLayout HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal" Padding="10  ">
-                                        <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" />
                                         <Image Source="tick.png"  IsVisible="{Binding IsSelected}"
                                     VerticalOptions="Center"  HeightRequest="40"
-                                    WidthRequest="40"/>
+                                    WidthRequest="40" />
                                     </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>

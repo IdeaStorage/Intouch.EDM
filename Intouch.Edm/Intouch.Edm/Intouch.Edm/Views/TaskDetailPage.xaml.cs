@@ -8,7 +8,7 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskDetailPage : ContentPage
     {
-        TaskDetailViewModel viewModel;
+        private TaskDetailViewModel viewModel;
 
         public TaskDetailPage(TaskDetailViewModel viewModel)
         {

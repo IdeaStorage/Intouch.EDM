@@ -19,7 +19,7 @@ namespace Intouch.Edm.ViewModels
             LoadAnnouncementsCommand = new Command(async () => await ExecuteLoadAnnouncementsCommand());
         }
 
-        async Task ExecuteLoadAnnouncementsCommand()
+        private async Task ExecuteLoadAnnouncementsCommand()
         {
             if (IsBusy)
             {
@@ -37,11 +37,6 @@ namespace Intouch.Edm.ViewModels
                     Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
                     AnnouncementItems.Add(announcement);
                 }
-                //Serden için okunmamış duyurular
-                var announcementCount = await DataService.GetAnnouncementsCountAsync();
-                int unReadAnnouncementCount = 0;
-                if (announcementCount?.result != null)
-                    unReadAnnouncementCount = announcementCount.result;
             }
             catch (Exception ex)
             {

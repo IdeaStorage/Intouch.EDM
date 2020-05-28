@@ -7,7 +7,7 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScenarioApprovePage : ContentPage
     {
-        ScenarioApproveViewModel viewModel;
+        private ScenarioApproveViewModel viewModel;
 
         public ScenarioApprovePage(ScenarioApproveViewModel viewModel)
         {

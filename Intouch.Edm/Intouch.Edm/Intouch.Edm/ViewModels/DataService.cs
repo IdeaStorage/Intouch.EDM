@@ -40,7 +40,7 @@ namespace Intouch.Edm.Services
             return response;
         }
 
-        public async Task<Dtos.ViewScenario.RootObject> GetScenarioAsync(string scenarioId)
+        public async Task<Dtos.ViewScenario.RootObject> GetScenarioDetailAsync(string scenarioId)
         {
             await ControlAccessTokenAsync();
 
@@ -96,7 +96,7 @@ namespace Intouch.Edm.Services
         public async Task<ApiAuthenticationToken> RefreshTokenAsync(string refreshToken = null)
         {
             var url = new Uri(_baseUri, string.Format("/api/TokenAuth/RefreshToken?refreshToken={0}",
-                refreshToken != null ? refreshToken : Helpers.Settings.RefreshToken));
+                refreshToken ?? Helpers.Settings.RefreshToken));
             var response = await SendRequestAsync<ApiAuthenticationToken>(url, HttpMethod.Post, _headers, null, false);
             _headers.Remove("authorization");
             _headers.Add("authorization", PrepareBearerString(response.Result.AccessToken));

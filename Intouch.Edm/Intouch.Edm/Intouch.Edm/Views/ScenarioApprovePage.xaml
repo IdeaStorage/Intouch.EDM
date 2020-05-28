@@ -30,76 +30,76 @@
                     <Image
                             Source="subjectIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
-                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0"/>
-                    <Label x:Name="Subject" 
-                           Text="{Binding scenario.Subject}" 
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
+                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0" />
+                    <Label x:Name="Subject"
+                           Text="{Binding scenario.Subject}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="eventIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
-                    <Label x:Name="Event" 
-                           Text="{Binding scenario.Event}" 
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                    <Label x:Name="Event"
+                           Text="{Binding scenario.Event}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="sourceIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Kaynak" Margin="0, 0, 33, 0"></Label>
-                    <Label x:Name="Source" 
+                    <Label x:Name="Source"
                            Text="{Binding scenario.Source}"
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="locationIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Lokasyon" Margin="0, 0, 13, 0"></Label>
-                    <Label x:Name="LocationArea" 
-                           Text="{Binding scenario.Site}" 
-                           HorizontalTextAlignment="Center" 
+                    <Label x:Name="LocationArea"
+                           Text="{Binding scenario.Site}"
+                           HorizontalTextAlignment="Center"
                            FontSize="Medium"
-                           VerticalTextAlignment="Center" 
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image
                             Source="impactAreaIcon.png"
 							VerticalOptions="Center"
-							HorizontalOptions="Center" 
-                            Margin="0,3,0,0"/>
+							HorizontalOptions="Center"
+                            Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Etki Alanı" Margin="0, 0, 13, 0"></Label>
-                    <Label x:Name="ImpactArea" 
-                           Text="{Binding scenario.ImpactArea}" 
-                           HorizontalTextAlignment="Center" 
-                           VerticalTextAlignment="Center" 
+                    <Label x:Name="ImpactArea"
+                           Text="{Binding scenario.ImpactArea}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
                 </StackLayout>
                 <StackLayout
 						Orientation="Horizontal"
@@ -110,27 +110,27 @@
                 <StackLayout
 						Orientation="Horizontal"
 						Spacing="1">
-                    <Button x:Name="RejectButton" 
-                            Text="Reddet" 
-                            HorizontalOptions="FillAndExpand" 
-                            Command="{Binding RejectButtonClicked}" 
-                            BackgroundColor="#E61E28" 
-                            CornerRadius="50" 
-                            IsVisible="{Binding isVisible}" 
-                            FontSize="Medium" 
+                    <Button x:Name="RejectButton"
+                            Text="Reddet"
+                            HorizontalOptions="FillAndExpand"
+                            Command="{Binding RejectButtonClicked}"
+                            BackgroundColor="#E61E28"
+                            CornerRadius="50"
+                            IsVisible="{Binding isVisible}"
+                            FontSize="Medium"
                             TextColor="White"
-                            BorderColor="Black" 
+                            BorderColor="Black"
                             FlexLayout.AlignSelf="Stretch"  ></Button>
                     <Button x:Name="ApproveButton"
-                            Text="Onayla" 
-                            HorizontalOptions="FillAndExpand" 
-                            Command="{Binding ApproveButtonClicked}" 
-                            CornerRadius="50" 
-                            FontSize="Medium" 
-                            IsVisible="{Binding isVisible}" 
+                            Text="Onayla"
+                            HorizontalOptions="FillAndExpand"
+                            Command="{Binding ApproveButtonClicked}"
+                            CornerRadius="50"
+                            FontSize="Medium"
+                            IsVisible="{Binding isVisible}"
                             TextColor="White"
-                            BorderColor="Black" 
-                            BackgroundColor="#2196f3" 
+                            BorderColor="Black"
+                            BackgroundColor="#2196f3"
                             FlexLayout.AlignSelf="Stretch"  ></Button>
                 </StackLayout>
             </StackLayout>

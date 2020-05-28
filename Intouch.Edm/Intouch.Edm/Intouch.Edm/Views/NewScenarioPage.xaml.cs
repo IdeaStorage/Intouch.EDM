@@ -8,13 +8,14 @@ namespace Intouch.Edm.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewScenarioPage : ContentPage
     {
-        NewScenarioViewModel viewModel;
+        private NewScenarioViewModel viewModel;
+
         public NewScenarioPage()
         {
             InitializeComponent();
             BindingContext = viewModel = new NewScenarioViewModel();
         }
-       
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -24,6 +25,7 @@ namespace Intouch.Edm.Views
                 viewModel.Init();
             }
         }
+
         public NewScenarioPage(object param)
         {
             InitializeComponent();

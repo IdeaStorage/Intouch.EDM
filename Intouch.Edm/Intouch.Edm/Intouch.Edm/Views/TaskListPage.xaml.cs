@@ -29,7 +29,7 @@ namespace Intouch.Edm.Views
 
             var options = await dataService.GetTaskOptionsAsync(taskItem.Id);
             taskItem.Options = options;
-            var scenarioDto = await dataService.GetScenarioAsync(taskItem.ScenarioId);
+            var scenarioDto = await dataService.GetScenarioDetailAsync(taskItem.ScenarioId);
             taskItem.ScenarioDto = scenarioDto;
 
             await Application.Current.MainPage.Navigation.PushAsync(new TaskDetailPage(new TaskDetailViewModel(taskItem)));
