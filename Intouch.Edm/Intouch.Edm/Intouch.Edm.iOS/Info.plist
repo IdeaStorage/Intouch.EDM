@@ -20,7 +20,7 @@
 	<key>MinimumOSVersion</key>
 	<string>10.3</string>
 	<key>CFBundleDisplayName</key>
-	<string>Intouch.Edm</string>
+	<string>Acil Durum</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.intouch.edm</string>
 	<key>CFBundleVersion</key>
@@ -28,7 +28,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Icon.xcassets/AppIcons.appiconset</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
