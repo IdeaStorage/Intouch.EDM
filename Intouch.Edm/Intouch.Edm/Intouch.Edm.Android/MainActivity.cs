@@ -8,7 +8,7 @@ using Plugin.CurrentActivity;
 
 namespace Intouch.Edm.Droid
 {
-    [Activity(Label = "Intouch.Edm", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Acil Durum", Icon = "@drawable/mainIcon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static readonly string CHANNEL_ID = "my_notification_channel";
