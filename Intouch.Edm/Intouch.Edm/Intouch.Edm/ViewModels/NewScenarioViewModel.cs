@@ -143,14 +143,29 @@ namespace Intouch.Edm.ViewModels
             SourceCombobox = PickerService.GetSource(sourceList);
             EventCombobox = PickerService.GetEvent(eventList);
 
+            ControlFormComponentsBySelectedEventId(selectedEventId);
+            IsBusy = false;
+        }
+
+        public void ControlFormComponentsBySelectedEventId(int selectedEventId)
+        {
             SelectedSubject = new ComboboxItem();
             SelectedEvent = new ComboboxItem();
 
             if (selectedEventId == Convert.ToInt32(Events.WaterFlood) ||
                 selectedEventId == Convert.ToInt32(Events.Fire) ||
-                selectedEventId == Convert.ToInt32(Events.Earthqueke) ||
+                selectedEventId == Convert.ToInt32(Events.Earthquake) ||
                 selectedEventId == Convert.ToInt32(Events.Pandemic))
             {
+                if (selectedEventId != Convert.ToInt32(Events.Pandemic))
+                {
+                    IsEnabledEvent = false;
+                }
+
+                if (selectedEventId == Convert.ToInt32(Events.Earthquake) && SourceCombobox.Count == 1)
+                {
+                    SelectedSource = SourceCombobox.First();
+                }
                 SelectedSubject = SubjectCombobox.First(p => p.Id == 1);
                 SelectedEvent = EventCombobox.First(p => p.Id == selectedEventId);
             }
@@ -162,7 +177,20 @@ namespace Intouch.Edm.ViewModels
             {
                 SelectedSubject = SubjectCombobox.First(p => p.Id == 1);
             }
-            IsBusy = false;
+        }
+
+        private bool _isEnabledEvent = true;
+
+        public bool IsEnabledEvent
+        {
+            get
+            {
+                return _isEnabledEvent;
+            }
+            set
+            {
+                SetProperty(ref _isEnabledEvent, value);
+            }
         }
 
         private ComboboxItem _selectedEvent;
@@ -177,7 +205,10 @@ namespace Intouch.Edm.ViewModels
             {
                 SetProperty(ref _selectedEvent, value);
                 EventId = SelectedEvent.Id;
-                RetrieveSource(EventId);
+                if (SelectedEvent.Id != 0 && SelectedEvent.Id != Convert.ToInt32(Events.Earthquake))
+                {
+                    RetrieveSource(EventId);
+                }
             }
         }
 

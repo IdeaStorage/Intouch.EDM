@@ -61,8 +61,16 @@
 							HorizontalOptions="Center"
                             Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
-                    <controls:BorderlessPicker ItemsSource="{Binding EventCombobox}" ItemDisplayBinding="{Binding Name}" Title="Seçiniz" AutomationProperties.HelpText="Seçiniz"
-                                               SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"   BackgroundColor="White" Margin="3,0,3,8" HorizontalOptions="FillAndExpand"  VerticalOptions="Center">
+                    <controls:BorderlessPicker ItemsSource="{Binding EventCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               Title="Seçiniz"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"
+                                               BackgroundColor="White"
+                                               Margin="3,0,3,8"
+                                               HorizontalOptions="FillAndExpand"
+                                               IsEnabled="{Binding IsEnabledEvent}"
+                                               VerticalOptions="Center">
                     </controls:BorderlessPicker>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">

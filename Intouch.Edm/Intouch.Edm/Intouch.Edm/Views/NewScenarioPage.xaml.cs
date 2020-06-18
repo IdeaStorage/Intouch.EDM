@@ -19,7 +19,6 @@ namespace Intouch.Edm.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await Task.Delay(1000);
             if (viewModel != null)
             {
                 viewModel.Init();

@@ -82,10 +82,10 @@ namespace Intouch.Edm.Services
     public enum Events
     {
         WaterFlood = 1,
-        Earthqueke = 2,
-        Fire = 3,
-        BusinessContuniuty = 17,
+        Fire = 2,
+        Earthquake = 3,
         Pandemic = 5,
-        Other = 6
+        Other = 6,
+        BusinessContuniuty = 17
     }
 }
