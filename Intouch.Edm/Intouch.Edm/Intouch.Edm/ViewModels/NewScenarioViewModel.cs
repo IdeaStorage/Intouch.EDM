@@ -372,28 +372,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private double _latitude;
-
-        public double Latitude
-        {
-            get { return _latitude; }
-            set
-            {
-                SetProperty(ref _latitude, value);
-            }
-        }
-
-        private double _longitude;
-
-        public double Longitude
-        {
-            get { return _longitude; }
-            set
-            {
-                SetProperty(ref _longitude, value);
-            }
-        }
-
         private ImageSource _imageSource;
 
         public ImageSource ImageSource
