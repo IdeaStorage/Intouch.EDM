@@ -12,6 +12,8 @@ namespace Intouch.Edm.ViewModels
     {
         public ObservableRangeCollection<Announcement> AnnouncementItems { get; set; }
         public Command LoadAnnouncementsCommand { get; set; }
+        private readonly int _resultCount = 20;
+        private int _totalCount = 0;
 
         public AnnouncementListViewModel()
         {
@@ -31,12 +33,7 @@ namespace Intouch.Edm.ViewModels
             try
             {
                 AnnouncementItems.Clear();
-                var announcementItems = await DataService.GetAnnouncementsAsync();
-                foreach (var announcementItem in announcementItems.result.items)
-                {
-                    Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
-                    AnnouncementItems.Add(announcement);
-                }
+                GetAnnouncements(_resultCount, 0);
             }
             catch (Exception ex)
             {
@@ -45,6 +42,31 @@ namespace Intouch.Edm.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        public async void LoadMoreItems(Announcement currentItem)
+        {
+            int itemIndex = AnnouncementItems.IndexOf(currentItem);
+
+            if (AnnouncementItems.Count - 1 == itemIndex &&
+                _totalCount != AnnouncementItems.Count &&
+                AnnouncementItems.Count >= _resultCount)
+            {
+                IsBusy = true;
+                GetAnnouncements(null, _resultCount);
+                _totalCount = AnnouncementItems.Count;
+                IsBusy = false;
+            }
+        }
+
+        public async void GetAnnouncements(int? maxCount, int skipCount)
+        {
+            var announcementItems = await DataService.GetAnnouncementsAsync(maxCount, skipCount);
+            foreach (var announcementItem in announcementItems.result.items)
+            {
+                Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
+                AnnouncementItems.Add(announcement);
             }
         }
     }

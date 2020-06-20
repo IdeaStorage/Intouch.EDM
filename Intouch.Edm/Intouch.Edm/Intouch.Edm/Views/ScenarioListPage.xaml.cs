@@ -48,5 +48,15 @@ namespace Intouch.Edm.Views
         {
             return true;
         }
+
+        private void ApprovedListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            (BindingContext as ScenarioListViewModel).LoadMoreItems(e.Item as Scenario, Children.IndexOf(CurrentPage));
+        }
+
+        private void RejectedListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            (BindingContext as ScenarioListViewModel).LoadMoreItems(e.Item as Scenario, Children.IndexOf(CurrentPage));
+        }
     }
 }

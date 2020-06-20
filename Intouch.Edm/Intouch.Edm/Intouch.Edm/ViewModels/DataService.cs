@@ -191,21 +191,25 @@ namespace Intouch.Edm.Services
             return response;
         }
 
-        public async Task<Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId)
+        public async Task<Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId, int? maxResultCount, int skipCount)
         {
             await ControlAccessTokenAsync();
+            var url = $"/api/services/app/CommiteeApprovals/GetAllForTree?ApproveStatus={approveStatusId}&skipCount={skipCount}";
 
-            var url = new Uri(_baseUri, $"/api/services/app/CommiteeApprovals/GetAllForTree?ApproveStatus={approveStatusId}&DisablePaging=true");
-            var response = await SendRequestAsync<Dtos.Scenario.RootObject>(url, HttpMethod.Get, _headers);
+            if (maxResultCount != null)
+            {
+                url = $"{url}&MaxResultCount={maxResultCount}";
+            }
+            var response = await SendRequestAsync<Dtos.Scenario.RootObject>(new Uri(_baseUri, url), HttpMethod.Get, _headers);
 
             return response;
         }
 
-        public async Task<Dtos.Scenario.RootObject> GetScenarioAsync(int? approveStatusId)
+        public async Task<Dtos.Scenario.RootObject> GetScenarioAsync(int? approveStatusId, int? maxResultCount, int skipCount)
         {
             await ControlAccessTokenAsync();
 
-            Task<Dtos.Scenario.RootObject> EmergencyScenarios = GetEmergencyScenario(approveStatusId);
+            Task<Dtos.Scenario.RootObject> EmergencyScenarios = GetEmergencyScenario(approveStatusId, maxResultCount, skipCount);
             return await EmergencyScenarios;
         }
 
@@ -236,12 +240,16 @@ namespace Intouch.Edm.Services
             return response?.success != null && response.success;
         }
 
-        public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync()
+        public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync(int? maxResultCount, int skipCount)
         {
             await ControlAccessTokenAsync();
 
-            var url = new Uri(_baseUri, "/api/services/app/Announcements/GetUserAnnouncements?DisablePaging=true");
-            var response = await SendRequestAsync<Dtos.AnnouncementListDto.RootObject>(url, HttpMethod.Get, _headers);
+            var url = $"/api/services/app/Announcements/GetUserAnnouncements?skipCount={skipCount}";
+            if (maxResultCount != null)
+            {
+                url = $"{url}&MaxResultCount={maxResultCount}";
+            }
+            var response = await SendRequestAsync<Dtos.AnnouncementListDto.RootObject>(new Uri(_baseUri, url), HttpMethod.Get, _headers);
 
             return response;
         }

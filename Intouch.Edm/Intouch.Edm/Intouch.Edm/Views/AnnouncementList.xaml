@@ -5,6 +5,7 @@
              xmlns:control="clr-namespace:Intouch.Edm.Controls"
              x:Class="Intouch.Edm.Views.AnnouncementList"
              NavigationPage.HasNavigationBar="False"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasBackButton="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Yeni Duyuru" Clicked="ToolbarItem_Clicked" />
@@ -34,6 +35,7 @@
         <StackLayout>
             <ListView x:Name="AnnouncementListView"
                 ItemsSource="{Binding AnnouncementItems}"
+                ItemAppearing="ListView_ItemAppearing"
                 Margin="0,5,0,0"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -43,6 +45,12 @@
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement">
             </ListView>
+            <ActivityIndicator
+                            x:Name="Progress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

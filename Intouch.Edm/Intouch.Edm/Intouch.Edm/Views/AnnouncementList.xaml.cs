@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.ViewModels;
+﻿using Intouch.Edm.Models;
+using Intouch.Edm.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,6 +24,11 @@ namespace Intouch.Edm.Views
             {
                 viewModel.LoadAnnouncementsCommand.Execute(null);
             }
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            (BindingContext as AnnouncementListViewModel).LoadMoreItems(e.Item as Announcement);
         }
 
         private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
