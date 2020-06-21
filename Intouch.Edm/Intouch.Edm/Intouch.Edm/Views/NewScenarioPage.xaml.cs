@@ -21,7 +21,7 @@ namespace Intouch.Edm.Views
             base.OnAppearing();
             if (viewModel != null)
             {
-                viewModel.Init();
+               await viewModel.Init();
             }
         }
 

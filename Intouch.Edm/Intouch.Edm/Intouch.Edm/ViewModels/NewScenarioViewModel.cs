@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.Models.Dtos.CreateScenario;
+﻿using Intouch.Edm.Models;
+using Intouch.Edm.Models.Dtos.CreateScenario;
 using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using Plugin.Media;
@@ -16,6 +17,16 @@ namespace Intouch.Edm.ViewModels
     {
         private ICommand _saveCommand;
         private CreateEmergencyScenario.Picture picture = new CreateEmergencyScenario.Picture();
+
+        public GeoCoords gpsCoords = new GeoCoords();
+
+        private bool isVisibleLocation = true;
+
+        public bool IsVisibleLocation
+        {
+            get { return isVisibleLocation; }
+            set { SetProperty(ref isVisibleLocation, value); }
+        }
 
         public ICommand SaveClicked => _saveCommand
                 ?? (_saveCommand = new Command(async () => await ExecuteSaveClicked()));
@@ -40,11 +51,11 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        public void Init()
+        internal async Task Init()
         {
             // Method intentionally left empty.
-        }
 
+        }
         private async Task CreateNotification()
         {
             if (IsBusy)
@@ -72,7 +83,9 @@ namespace Intouch.Edm.ViewModels
                     siteId = LocationId != 0 ? LocationId : null,
                     sourceId = SourceId != 0 ? SourceId : null,
                     impactAreaId = ImpactAreaId != 0 ? ImpactAreaId : null,
-                    picture = picture
+                    picture = picture,
+                    latitude = gpsCoords.Latitude,
+                    longitude = gpsCoords.Longitude
                 };
 
                 var resultCreateScenario = await DataService.CreateEmergencyScenario(newItem);
@@ -144,7 +157,24 @@ namespace Intouch.Edm.ViewModels
             EventCombobox = PickerService.GetEvent(eventList);
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
-            IsBusy = false;
+
+            IsVisibleLocation = true;
+
+            if (selectedEventId == Convert.ToInt32(Events.Earthquake))
+            {
+                IsVisibleLocation = false;
+                var locationService = DependencyService.Get<ILocationService>();
+                var position = await locationService.GetGeoCoordinatesAsync();
+                if (position != null && position.IsGpsClose == false)
+                {
+                    gpsCoords = position;
+                    //await Application.Current.MainPage.DisplayAlert("BAŞARILI", position.Latitude + "---" + position.Longitude, "TAMAM");
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("GPS", "Lokasyon bilgisini almak için GPS i açınız!", "TAMAM");
+                }
+            }
         }
 
         public void ControlFormComponentsBySelectedEventId(int selectedEventId)

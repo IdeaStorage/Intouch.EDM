@@ -92,7 +92,7 @@
                         VerticalOptions="Center">
                     </controls:BorderlessPicker>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" x:Name="locationLayout" IsVisible="{Binding IsVisibleLocation}">
                     <Image
                             Source="locationIcon.png"
 							VerticalOptions="Center"

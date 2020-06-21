@@ -20,6 +20,8 @@
             public int? eventTypeId { get; set; }
             public int? sourceId { get; set; }
             public Picture picture { get; set; }
+            public double latitude { get; set; }
+            public double longitude { get; set; }
         }
     }
 }
