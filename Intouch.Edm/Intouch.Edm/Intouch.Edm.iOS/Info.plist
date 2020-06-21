@@ -52,6 +52,7 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
@@ -62,7 +63,7 @@
 	<string>Intouch.Edm</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-  <key>NSLocationWhenInUsageDescription</key>
-  <string>Acil durum yer bildirimi</string>
+	<key>NSLocationWhenInUsageDescription</key>
+	<string>Acil durum yer bildirimi</string>
 </dict>
 </plist>
