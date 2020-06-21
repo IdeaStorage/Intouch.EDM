@@ -54,8 +54,8 @@ namespace Intouch.Edm.ViewModels
         internal async Task Init()
         {
             // Method intentionally left empty.
-
         }
+
         private async Task CreateNotification()
         {
             if (IsBusy)
@@ -67,37 +67,42 @@ namespace Intouch.Edm.ViewModels
 
             try
             {
-                if (!string.IsNullOrEmpty(Helpers.Settings.ContentId))
-                {
-                    picture = Helpers.Settings.GetPictureDetail();
-                }
-                else
-                {
-                    picture = null;
-                }
-                var newItem = new CreateEmergencyScenario.RootObject()
-                {
-                    userId = Convert.ToInt32(Helpers.Settings.UserId),
-                    subjectType = SubjectId != 0 ? SubjectId : null,
-                    eventTypeId = EventId != 0 ? EventId : null,
-                    siteId = LocationId != 0 ? LocationId : null,
-                    sourceId = SourceId != 0 ? SourceId : null,
-                    impactAreaId = ImpactAreaId != 0 ? ImpactAreaId : null,
-                    picture = picture,
-                    latitude = gpsCoords.Latitude,
-                    longitude = gpsCoords.Longitude
-                };
+                GetLocationInfoBySelectedEventId(Convert.ToInt32(EventId));
 
-                var resultCreateScenario = await DataService.CreateEmergencyScenario(newItem);
-                if (resultCreateScenario)
+                if (!gpsCoords.IsGpsClose)
                 {
-                    IsBusy = false;
-                    await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
-                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("BAŞARISIZ", "İşlem Sırasında Hata Alındı.", "TAMAM");
+                    if (!string.IsNullOrEmpty(Helpers.Settings.ContentId))
+                    {
+                        picture = Helpers.Settings.GetPictureDetail();
+                    }
+                    else
+                    {
+                        picture = null;
+                    }
+                    var newItem = new CreateEmergencyScenario.RootObject()
+                    {
+                        userId = Convert.ToInt32(Helpers.Settings.UserId),
+                        subjectType = SubjectId != 0 ? SubjectId : null,
+                        eventTypeId = EventId != 0 ? EventId : null,
+                        siteId = LocationId != 0 ? LocationId : null,
+                        sourceId = SourceId != 0 ? SourceId : null,
+                        impactAreaId = ImpactAreaId != 0 ? ImpactAreaId : null,
+                        picture = picture,
+                        latitude = gpsCoords.Latitude,
+                        longitude = gpsCoords.Longitude
+                    };
+
+                    var resultCreateScenario = await DataService.CreateEmergencyScenario(newItem);
+                    if (resultCreateScenario)
+                    {
+                        IsBusy = false;
+                        await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
+                        await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("BAŞARISIZ", "İşlem Sırasında Hata Alındı.", "TAMAM");
+                    }
                 }
             }
             finally
@@ -157,20 +162,22 @@ namespace Intouch.Edm.ViewModels
             EventCombobox = PickerService.GetEvent(eventList);
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
-
+            IsBusy = false;
             IsVisibleLocation = true;
 
+            GetLocationInfoBySelectedEventId(selectedEventId);
+        }
+
+        public async void GetLocationInfoBySelectedEventId(int selectedEventId = 0)
+        {
             if (selectedEventId == Convert.ToInt32(Events.Earthquake))
             {
                 IsVisibleLocation = false;
                 var locationService = DependencyService.Get<ILocationService>();
                 var position = await locationService.GetGeoCoordinatesAsync();
-                if (position != null && position.IsGpsClose == false)
-                {
-                    gpsCoords = position;
-                    //await Application.Current.MainPage.DisplayAlert("BAŞARILI", position.Latitude + "---" + position.Longitude, "TAMAM");
-                }
-                else
+                gpsCoords = position;
+
+                if (position == null || position.IsGpsClose)
                 {
                     await Application.Current.MainPage.DisplayAlert("GPS", "Lokasyon bilgisini almak için GPS i açınız!", "TAMAM");
                 }
