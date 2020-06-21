@@ -26,7 +26,6 @@ namespace Intouch.Edm.ViewModels
 
         internal async Task Init()
         {
-            
         }
 
         private ICommand _announcementButton;
@@ -37,6 +36,8 @@ namespace Intouch.Edm.ViewModels
         private async Task NavigateAnnouncementList()
         {
             await DataService.SetReadNotifications();
+            var mainViewModel = new MainPageViewModel();
+            mainViewModel.UnreadCount = 0;
             await Application.Current.MainPage.Navigation.PushAsync(new MainPage((int)TabPageEnums.AnnouncementListPage));
         }
     }

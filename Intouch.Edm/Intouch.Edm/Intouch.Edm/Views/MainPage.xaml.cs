@@ -30,6 +30,7 @@ namespace Intouch.Edm.Views
                 if (numPage == (int)TabPageEnums.AnnouncementListPage)
                 {
                     await dataService.SetReadNotifications();
+                    (BindingContext as MainPageViewModel).UnreadCount = 0;
                 }
             };
             if (currentTab == (int)TabPageEnums.AnnouncementListPage)

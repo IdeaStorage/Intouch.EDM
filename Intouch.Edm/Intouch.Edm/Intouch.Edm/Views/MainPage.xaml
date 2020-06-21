@@ -24,7 +24,7 @@
         </NavigationPage>
         <NavigationPage Title="Duyurular"
                         x:Name="AnnouncementList"
-                        badgePlugin:TabBadge.BadgeText="{Binding UnreadCount}"
+                        badgePlugin:TabBadge.BadgeText="{Binding Count}"
                         badgePlugin:TabBadge.BadgePosition="PositionTopRight"
                         badgePlugin:TabBadge.BadgeColor="Red"
                         badgePlugin:TabBadge.BadgeTextColor="White"

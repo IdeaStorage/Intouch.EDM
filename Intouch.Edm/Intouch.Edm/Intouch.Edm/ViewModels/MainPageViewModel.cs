@@ -1,6 +1,4 @@
-﻿
-
-using Intouch.Edm.Services;
+﻿using Intouch.Edm.Services;
 using Xamarin.Forms;
 
 namespace Intouch.Edm.ViewModels
@@ -11,20 +9,19 @@ namespace Intouch.Edm.ViewModels
         {
             GetUnreadAnnouncementCountAsync();
             GetTabPageVisible();
-            
         }
 
-        private int _unreadCount;
+        private int? _unreadCount;
+        public string Count => _unreadCount <= 0 ? string.Empty : _unreadCount.ToString();
 
-        public int UnreadCount
+        public int? UnreadCount
         {
-            get
-            {
-                return _unreadCount;
-            }
+            get => _unreadCount;
             set
             {
-                SetProperty(ref _unreadCount, value);
+                _unreadCount = value;
+                OnPropertyChanged(nameof(UnreadCount));
+                OnPropertyChanged(nameof(Count));
             }
         }
 
@@ -59,12 +56,10 @@ namespace Intouch.Edm.ViewModels
         private async void GetUnreadAnnouncementCountAsync()
         {
             var announcementCount = await DataService.GetAnnouncementsCountAsync();
-            int unreadCount = 0;
-            if (announcementCount?.result != null)
+            if (announcementCount?.result != null && announcementCount.result > 0)
             {
-                unreadCount = announcementCount.result;
+                UnreadCount = announcementCount.result;
             }
-            UnreadCount = unreadCount;
         }
 
         private void GetTabPageVisible()
