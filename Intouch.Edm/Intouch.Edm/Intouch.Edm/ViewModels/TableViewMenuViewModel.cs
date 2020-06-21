@@ -1,5 +1,6 @@
 ﻿using Intouch.Edm.Helpers;
 using Intouch.Edm.Models;
+using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -26,6 +27,17 @@ namespace Intouch.Edm.ViewModels
         internal async Task Init()
         {
             // Method intentionally left empty.
+           
+            var locationService = DependencyService.Get<ILocationService>();
+            var position = await locationService.GetGeoCoordinatesAsync();
+            if (position != null && position.IsGpsClose == false)
+            {
+               await Application.Current.MainPage.DisplayAlert("BAŞARILI", position.Latitude + "---" + position.Longitude, "TAMAM");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("GPS","Lokasyon bilgisini almak için GPS i açınız!", "TAMAM");
+            }
         }
 
         private ICommand _announcementButton;

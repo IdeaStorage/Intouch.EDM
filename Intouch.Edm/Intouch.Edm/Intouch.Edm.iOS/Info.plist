@@ -62,5 +62,7 @@
 	<string>Intouch.Edm</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+  <key>NSLocationWhenInUsageDescription</key>
+  <string>Acil durum yer bildirimi</string>
 </dict>
 </plist>

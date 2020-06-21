@@ -1,4 +1,5 @@
 ﻿using Intouch.Edm.Models;
+using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using Plugin.FirebasePushNotification;
 using System;
@@ -46,6 +47,7 @@ namespace Intouch.Edm
         {
             InitializeComponent();
 
+            
             try
             {
                 CrossFirebasePushNotification.Current.Subscribe("notifications");

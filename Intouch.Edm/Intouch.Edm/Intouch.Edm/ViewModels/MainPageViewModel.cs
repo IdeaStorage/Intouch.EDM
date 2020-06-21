@@ -1,4 +1,9 @@
-﻿namespace Intouch.Edm.ViewModels
+﻿
+
+using Intouch.Edm.Services;
+using Xamarin.Forms;
+
+namespace Intouch.Edm.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
@@ -6,6 +11,7 @@
         {
             GetUnreadAnnouncementCountAsync();
             GetTabPageVisible();
+            
         }
 
         private int _unreadCount;
