@@ -36,9 +36,9 @@ namespace Intouch.Edm.Services
 
         Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync();
 
-        Task<Edm.Models.Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId);
+        Task<Edm.Models.Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId, int? maxResultCount, int skipCount);
 
-        Task<Dtos.Scenario.RootObject> GetScenarioAsync(int? approveStatusId);
+        Task<Dtos.Scenario.RootObject> GetScenarioAsync(int? approveStatusId, int? maxResultCount, int skipCount);
 
         Task<bool> CreateEmergencyScenario(CreateEmergencyScenario.RootObject scenario);
 
@@ -46,7 +46,7 @@ namespace Intouch.Edm.Services
 
         Task<bool> RejectScenario(Dtos.ApproveScenario.ApproveScenarioDto scenario);
 
-        Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync();
+        Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync(int? maxResultCount, int skipCount);
 
         Task<Dtos.AnnouncementCountDto.RootObject> GetAnnouncementsCountAsync();
 

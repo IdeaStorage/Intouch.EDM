@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Intouch.Edm.Views.Templates"
              xmlns:control="clr-namespace:Intouch.Edm.Controls"
              x:Class="Intouch.Edm.Views.ScenarioListPage"
+            IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasNavigationBar="False">
     <TabbedPage.Resources>
         <ResourceDictionary>
@@ -48,6 +49,7 @@
                               ItemsSource="{Binding ScenarioItems}"
                               VerticalOptions="FillAndExpand"
                               HasUnevenRows="true"
+                              ItemAppearing="ApprovedListView_ItemAppearing"
                               RefreshCommand="{Binding LoadScenariosCommand}"
                               IsPullToRefreshEnabled="true"
                               ItemTemplate="{StaticResource scenarioDataTemplateSelector}"
@@ -55,6 +57,12 @@
                               CachingStrategy="RecycleElement"
                               ItemSelected="OnItemSelected">
                 </ListView>
+                <ActivityIndicator
+                            x:Name="ApprovedProgress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
             </StackLayout>
         </ContentPage>
         <ContentPage Title="Reddedilenler" x:Name="RejectedFilter">
@@ -62,6 +70,7 @@
                 <ListView x:Name="RejectedScenarioListView"
                               ItemsSource="{Binding ScenarioItems}"
                               VerticalOptions="FillAndExpand"
+                              ItemAppearing="RejectedListView_ItemAppearing"
                               HasUnevenRows="true"
                               RefreshCommand="{Binding LoadScenariosCommand}"
                               IsPullToRefreshEnabled="true"
@@ -70,6 +79,12 @@
                               CachingStrategy="RecycleElement"
                               ItemSelected="OnItemSelected">
                 </ListView>
+                <ActivityIndicator
+                            x:Name="RejectedProgress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
             </StackLayout>
         </ContentPage>
     </TabbedPage.Children>
