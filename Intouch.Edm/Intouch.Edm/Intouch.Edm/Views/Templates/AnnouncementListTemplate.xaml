@@ -56,7 +56,7 @@
                         HorizontalOptions="FillAndExpand"
 						VerticalOptions="FillAndExpand" />
                         <Label VerticalOptions="End"
-                               Text="{Binding AnnouncementUserName}"
+                               Text="{Binding AnnouncementUserInfo}"
                                FontSize="11"></Label>
                     </StackLayout>
                 </StackLayout>

@@ -12,7 +12,8 @@ namespace Intouch.Edm.Services
                 Id = announcementItem.id,
                 Description = announcementItem.text,
                 Title = announcementItem.title,
-                RecordDate = announcementItem.createTime.ToString("dd MMMM yyyy HH:mm")
+                RecordDate = announcementItem.createTime.ToString("dd MMMM yyyy HH:mm"),
+                AnnouncementUserInfo = $"{announcementItem.creatorUserName} ({announcementItem.creatorJobTitle})"
             };
             return announcement;
         }

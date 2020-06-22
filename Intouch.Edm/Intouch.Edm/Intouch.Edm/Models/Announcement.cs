@@ -6,6 +6,6 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string RecordDate { get; set; }
-        public string AnnouncementUserName { get; set; }
+        public string AnnouncementUserInfo { get; set; }
     }
 }

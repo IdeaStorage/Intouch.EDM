@@ -16,6 +16,9 @@ namespace Intouch.Edm.Models.Dtos.AnnouncementListDto
         public string title { get; set; }
         public string text { get; set; }
         public int id { get; set; }
+        public int creatorUserId { get; set; }
+        public string creatorUserName { get; set; }
+        public string creatorJobTitle { get; set; }
     }
 
     public class Result
