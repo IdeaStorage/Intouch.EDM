@@ -12,11 +12,11 @@
             <image:CircleImage Source="{Binding profilePicture}"
                                Aspect="AspectFill"
                                HorizontalOptions="Center"
-                               VerticalOptions="Start"
+                               VerticalOptions="Center"
                                BorderColor="Red"
-                               TranslationX="8"
-                               BorderThickness="1"
-                               TranslationY="14">
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               BorderThickness="1">
             </image:CircleImage>
             <StackLayout
 			Padding="10, 0, 10, 0"
