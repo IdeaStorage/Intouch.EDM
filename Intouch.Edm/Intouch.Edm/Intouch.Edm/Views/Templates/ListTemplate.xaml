@@ -9,7 +9,7 @@
 		Orientation="Horizontal"
 		Padding="10, 5, 10, 5"
 		VerticalOptions="Center">
-            <image:CircleImage Source="camera.png"
+            <image:CircleImage Source="{Binding profilePicture}"
                                Aspect="AspectFill"
                                HorizontalOptions="Center"
                                VerticalOptions="Start"

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Xamarin.Forms;
 
 namespace Intouch.Edm.Models
 {
@@ -41,5 +42,7 @@ namespace Intouch.Edm.Models
         public string ScenarioId { get; set; }
         public Dtos.ViewScenario.RootObject ScenarioDto { get; set; }
         public Scenario Scenario { get; set; }
+
+        public ImageSource profilePicture { get; set; }
     }
 }
