@@ -1,6 +1,7 @@
 ﻿using Intouch.Edm.Models;
 using Intouch.Edm.Services;
 using Intouch.Edm.Views;
+using Plugin.Connectivity;
 using Plugin.FirebasePushNotification;
 using System;
 using Xamarin.Forms;
@@ -15,7 +16,7 @@ namespace Intouch.Edm
         public App(string value)
         {
             InitializeComponent();
-
+            CheckConnection();
             Redirect(value);
         }
 
@@ -47,7 +48,7 @@ namespace Intouch.Edm
         {
             InitializeComponent();
 
-            
+
             try
             {
                 CrossFirebasePushNotification.Current.Subscribe("notifications");
@@ -113,6 +114,17 @@ namespace Intouch.Edm
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        private async void CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                System.Diagnostics.Debug.WriteLine($"Internet Bağlantızı kontrol ediniz.");
+                await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+            }
+            else
+                return;
         }
     }
 }
