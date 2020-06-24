@@ -151,6 +151,9 @@ namespace Intouch.Edm.ViewModels
         private async void Initialize(int selectedEventId = 0)
         {
             int selectedSubjectId = selectedEventId != Convert.ToInt32(Events.BusinessContuniuty) ? Convert.ToInt32(Subjects.Emergency) : Convert.ToInt32(Subjects.BusinessContuniuty);
+            IsVisibleLocation = true;
+
+            GetLocationInfoBySelectedEventId(selectedEventId);
 
             Models.Dtos.SourceLookupDto.RootObject sourceList = await DataService.GetSourcesAsync(selectedEventId);
             Models.Dtos.LookupDto.EventTypeLookup.RootObject eventList = await DataService.GetEventsAsync(selectedSubjectId);
@@ -163,9 +166,7 @@ namespace Intouch.Edm.ViewModels
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
             IsBusy = false;
-            IsVisibleLocation = true;
-
-            GetLocationInfoBySelectedEventId(selectedEventId);
+            
         }
 
         public async void GetLocationInfoBySelectedEventId(int selectedEventId = 0)

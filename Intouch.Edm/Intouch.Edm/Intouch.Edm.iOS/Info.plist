@@ -70,7 +70,6 @@
     <string>Your iOS 10 and lower background location usage description goes here.</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Your foreground location usage description goes here.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Your message goes here</string>
+    
   </dict>
 </plist>

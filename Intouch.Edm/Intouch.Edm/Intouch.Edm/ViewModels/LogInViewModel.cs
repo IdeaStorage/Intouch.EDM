@@ -1,5 +1,6 @@
 ﻿using Intouch.Edm.Models;
 using Intouch.Edm.Views;
+using Plugin.Connectivity;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -53,7 +54,12 @@ namespace Intouch.Edm.ViewModels
                 UserNameOrEmailAddress = Username != null ? Username.Trim() : "",
                 Password = Password != null ? Password.Trim() : ""
             };
-
+            if(!CrossConnectivity.Current.IsConnected)
+            {
+                IsBusy = false;
+                await Application.Current.MainPage.DisplayAlert("UYARI", "Lütfen internetinizi kontrol ediniz!", "TAMAM");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(user.UserNameOrEmailAddress) || string.IsNullOrWhiteSpace(user.Password))
             {
                 IsBusy = false;

@@ -16,8 +16,15 @@ namespace Intouch.Edm
         public App(string value)
         {
             InitializeComponent();
-            CheckConnection();
-            Redirect(value);
+            if (!CheckConnection())
+            {
+                MainPage = new NavigationPage(new LoginPage());
+
+            }
+            else
+            {
+                Redirect(value);
+            }
         }
 
         public bool IsSignedIn
@@ -47,7 +54,7 @@ namespace Intouch.Edm
         public App()
         {
             InitializeComponent();
-
+           
 
             try
             {
@@ -62,7 +69,8 @@ namespace Intouch.Edm
             {
                 // Potentially..
             }
-            if (IsSignedIn)
+            
+            if (IsSignedIn && CheckConnection())
             {
                 MainPage = new NavigationPage(new MainPage());
             }
@@ -116,15 +124,9 @@ namespace Intouch.Edm
             // Handle when your app resumes
         }
 
-        private async void CheckConnection()
+        private bool CheckConnection()
         {
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                System.Diagnostics.Debug.WriteLine($"Internet Bağlantızı kontrol ediniz.");
-                await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
-            }
-            else
-                return;
+            return CrossConnectivity.Current.IsConnected;
         }
     }
 }

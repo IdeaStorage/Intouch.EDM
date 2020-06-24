@@ -111,7 +111,7 @@
                         VerticalOptions="Center">
                     </controls:BorderlessPicker>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal"  IsVisible="{Binding IsVisibleLocation}">
                     <Image
                             Source="impactAreaIcon.png"
 							VerticalOptions="Center"
