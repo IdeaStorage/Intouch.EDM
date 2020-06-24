@@ -21,7 +21,7 @@ namespace Intouch.Edm.Services
                 StatusImage = taskItem.userTask.completed ? "approveIcon.png" : "waitingIcon.png",
                 Id = taskItem.userTask.id,
                 ScenarioId = taskItem.scenarioId,
-                profilePicture = UriImageSource.FromUri(new System.Uri($"http://edm.intouch.istanbul/Profile/GetProfilePictureByUserId?userId={taskItem.userTask.userId}"))
+                profilePicture = UriImageSource.FromUri(new System.Uri($"http://edm.intouch.istanbul/Profile/GetSmallProfilePictureByUserId?userId={taskItem.userTask.userId}"))
             };
             return item;
         }
