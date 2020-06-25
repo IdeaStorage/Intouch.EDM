@@ -65,7 +65,7 @@ namespace Intouch.Edm.ViewModels
                     TaskItems.Add(item);
                 }
                 AllTaskItems.ReplaceRange(TaskItems);
-                FilterOptions.AddRange(AllTaskItems.Select(a => a.UserName).Distinct().ToList());
+                FilterOptions.ReplaceRange(AllTaskItems.Select(a => a.UserName).Distinct().ToList());
                 FilterItems();
             }
             catch (Exception ex)
