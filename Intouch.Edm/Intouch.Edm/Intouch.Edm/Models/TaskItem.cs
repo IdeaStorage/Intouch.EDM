@@ -43,6 +43,6 @@ namespace Intouch.Edm.Models
         public Dtos.ViewScenario.RootObject ScenarioDto { get; set; }
         public Scenario Scenario { get; set; }
 
-        public string profilePicture { get; set; }
+        public UriImageSource profilePicture { get; set; }
     }
 }

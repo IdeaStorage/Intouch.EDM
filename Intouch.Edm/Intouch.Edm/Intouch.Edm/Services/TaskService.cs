@@ -1,6 +1,7 @@
 ﻿using Intouch.Edm.Models;
 using Intouch.Edm.Models.Dtos.TaskListDto;
 using Intouch.Edm.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -21,7 +22,12 @@ namespace Intouch.Edm.Services
                 StatusImage = taskItem.userTask.completed ? "approveIcon.png" : "waitingIcon.png",
                 Id = taskItem.userTask.id,
                 ScenarioId = taskItem.scenarioId,
-                profilePicture = $"http://edm.intouch.istanbul/Profile/GetSmallProfilePictureByUserId?userId={taskItem.userTask.userId}"
+                profilePicture = new UriImageSource
+                {
+                    Uri = new Uri($"http://edm.intouch.istanbul/Profile/GetSmallProfilePictureByUserId?userId={taskItem.userTask.userId}"),
+                    CacheValidity = TimeSpan.FromDays(1),
+                    CachingEnabled = true
+                }
             };
             return item;
         }
