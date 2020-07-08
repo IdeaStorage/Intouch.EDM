@@ -49,9 +49,16 @@
 							HorizontalOptions="Center"
                             Margin="0,3,0,0" />
                     <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0" />
-                    <controls:BorderlessPicker  ItemsSource="{Binding SubjectCombobox}" ItemDisplayBinding="{Binding Name}"
-                                                   Title="Seçiniz" AutomationProperties.HelpText="Seçiniz" SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"
-                                                    BackgroundColor="White" Margin="3,0,3,8" HorizontalOptions="FillAndExpand"  VerticalOptions="Center">
+                    <controls:BorderlessPicker ItemsSource="{Binding SubjectCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               Title="Seçiniz"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"
+                                               BackgroundColor="White"
+                                               IsEnabled="{Binding IsEnabledEvent}"
+                                               Margin="3,0,3,8"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center">
                     </controls:BorderlessPicker>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
