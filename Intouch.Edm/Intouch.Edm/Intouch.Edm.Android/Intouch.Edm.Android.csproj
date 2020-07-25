@@ -75,6 +75,7 @@
     <Compile Include="AuthenticateOutput.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyFireBaseIDServices.cs" />
+    <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocationService.cs" />
