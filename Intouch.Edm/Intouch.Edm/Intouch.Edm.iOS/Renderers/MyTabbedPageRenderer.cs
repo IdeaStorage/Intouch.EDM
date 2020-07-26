@@ -18,13 +18,13 @@ namespace Intouch.Edm.iOS.Renderers
 
             foreach (UIViewController vc in vcs)
             {
+                vc.TabBarItem.ImageInsets = new UIEdgeInsets(-5, -5, -5, -5);
                 if (vc.TabBarItem.Image != null)
                 {
                     vc.TabBarItem.Image = vc.TabBarItem.Image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
                 }
                 if (vc.TabBarItem.SelectedImage != null)
                 {
-                    // Comment this if you don't want to change the selected image's color
                     vc.TabBarItem.SelectedImage = vc.TabBarItem.SelectedImage.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
                 }
             }
