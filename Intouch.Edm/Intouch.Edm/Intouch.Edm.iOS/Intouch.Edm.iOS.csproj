@@ -333,4 +333,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\appDetailLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gallery.png" />
+  </ItemGroup>
 </Project>

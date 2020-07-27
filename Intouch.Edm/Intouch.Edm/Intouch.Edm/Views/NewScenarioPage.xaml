@@ -137,26 +137,31 @@
                         VerticalOptions="Center">
                     </controls:BorderlessPicker>
                 </StackLayout>
+
+                <StackLayout
+						Orientation="Horizontal"
+						Spacing="1">
+                    <Button
+						Image="gallery.png"
+                        BackgroundColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        Command="{Binding UploadPhotoClicked}" />
+                    <Button
+						Image="camera.png"
+                        BackgroundColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        Command="{Binding TakePhotoClicked}" />
+                    <!--<Grid>
+                        <Image x:Name="image" Margin="0,20" WidthRequest="400" HeightRequest="200" Source="{Binding ImageSource}"   BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                        <ActivityIndicator BindingContext="{x:Reference image}" IsRunning="{Binding IsLoading}"></ActivityIndicator>
+                    </Grid>-->
+                </StackLayout>
                 <ActivityIndicator
                             x:Name="Progress"
                             Color="{StaticResource NavigationPrimary}"
                             IsEnabled="{Binding IsBusy}"
                             IsVisible="{Binding IsBusy}"
                             IsRunning="{Binding IsBusy}"></ActivityIndicator>
-                <StackLayout
-						Orientation="Horizontal"
-						Spacing="1">
-                    <!-- Circle Button -->
-                    <Button
-						Image="camera.png"
-                        BackgroundColor="White"
-                        VerticalOptions="CenterAndExpand"
-                        Command="{Binding SheetSimpleClicked}" />
-                    <Grid>
-                        <Image x:Name="image" Margin="0,20" WidthRequest="400" HeightRequest="200" Source="{Binding ImageSource}"   BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
-                        <ActivityIndicator BindingContext="{x:Reference image}" IsRunning="{Binding IsLoading}"></ActivityIndicator>
-                    </Grid>
-                </StackLayout>
             </StackLayout>
         </Grid>
     </ScrollView>

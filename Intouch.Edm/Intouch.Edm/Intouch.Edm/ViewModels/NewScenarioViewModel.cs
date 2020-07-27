@@ -474,27 +474,12 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private ICommand _sheetClicked;
+        private ICommand _takePhotoClicked;
 
-        public ICommand SheetSimpleClicked => _sheetClicked
-                ?? (_sheetClicked = new Command(async () => await SheetSimpleCommand()));
+        public ICommand TakePhotoClicked => _takePhotoClicked
+                ?? (_takePhotoClicked = new Command(async () => await TakePhotoCommand()));
 
-        private async Task SheetSimpleCommand()
-        {
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Fotoğraf Yükle", "Fotoğraf Çek", "Galeriden Yükle");
-            switch (selectedAction)
-            {
-                case "Fotoğraf Çek":
-                    await TakePhoto();
-                    break;
-
-                case "Galeriden Yükle":
-                    await SelectPhotoFromGallery();
-                    break;
-            }
-        }
-
-        public async Task TakePhoto()
+        private async Task TakePhotoCommand()
         {
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
@@ -534,7 +519,12 @@ namespace Intouch.Edm.ViewModels
             IsUploadingImage = false;
         }
 
-        private async Task SelectPhotoFromGallery()
+        private ICommand _uploadPhotoClicked;
+
+        public ICommand UploadPhotoClicked => _uploadPhotoClicked
+                ?? (_uploadPhotoClicked = new Command(async () => await UploadPhotoCommand()));
+
+        private async Task UploadPhotoCommand()
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
