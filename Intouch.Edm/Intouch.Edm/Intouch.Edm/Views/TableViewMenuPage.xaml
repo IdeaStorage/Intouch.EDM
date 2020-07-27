@@ -19,29 +19,18 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Frame Grid.Row="0" Grid.Column="0" OutlineColor="#cecece" HasShadow="True" Margin="2,2,1,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ImageButton BackgroundColor="White" Source="fire.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="2" ></ImageButton>
-                </Frame>
-                <Frame Grid.Row="0" Grid.Column="1" OutlineColor="#cecece" HasShadow="True" Margin="1,2,2,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ImageButton BackgroundColor="White" Source="water.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="1" ></ImageButton>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="0" OutlineColor="#cecece" HasShadow="True" Margin="2,1,1,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ImageButton BackgroundColor="White" Source="earthquake.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="3" ></ImageButton>
-                </Frame>
-                <Frame Grid.Row="1" Grid.Column="1" OutlineColor="#cecece" HasShadow="True" Margin="1,1,2,1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ImageButton BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="17" ></ImageButton>
-                </Frame>
-                <Frame Grid.Row="2" Grid.Column="0" OutlineColor="#cecece" HasShadow="True" Margin="2,1,1,2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ImageButton BackgroundColor="White" Source="pandemic.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="5" ></ImageButton>
-                </Frame>
-                <Frame Grid.Row="2" Grid.Column="1" OutlineColor="#cecece" HasShadow="True" Margin="1,1,2,2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ImageButton BackgroundColor="White" Source="others.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NewNotificationClicked}" CommandParameter="6" ></ImageButton>
-                </Frame>
+                <ImageButton Grid.Row="0" Grid.Column="0" Margin="3,3,1,1" Padding="15" BackgroundColor="White" Source="fire.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Command="{Binding NewNotificationClicked}" CommandParameter="2" ></ImageButton>
+                <ImageButton Grid.Row="0" Grid.Column="1" Margin="1,3,3,1" Padding="15" BackgroundColor="White" Source="water.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Command="{Binding NewNotificationClicked}" CommandParameter="1" ></ImageButton>
+                <ImageButton Grid.Row="1" Grid.Column="0" Margin="3,1,1,1" Padding="15" BackgroundColor="White" Source="earthquake.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Command="{Binding NewNotificationClicked}" CommandParameter="3" ></ImageButton>
+                <ImageButton Grid.Row="1" Grid.Column="1" Margin="1,1,3,1" Padding="15" BackgroundColor="White" Source="businesscontinuity.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Command="{Binding NewNotificationClicked}" CommandParameter="17" ></ImageButton>
+                <ImageButton Grid.Row="2" Grid.Column="0" Margin="3,1,1,3" Padding="15" BackgroundColor="White" Source="pandemic.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Command="{Binding NewNotificationClicked}" CommandParameter="5" ></ImageButton>
+                <ImageButton Grid.Row="2" Grid.Column="1" Margin="1,1,3,3" Padding="15" BackgroundColor="White" Source="others.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Command="{Binding NewNotificationClicked}" CommandParameter="6" ></ImageButton>
             </Grid>
         </Grid>
     </StackLayout>
