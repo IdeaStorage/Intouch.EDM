@@ -106,7 +106,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\appDetailLogo.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intouch.Edm\Intouch.Edm.csproj">
       <Project>{9E9DD3C4-A0C8-4EDF-82C8-FC81F12927A4}</Project>
