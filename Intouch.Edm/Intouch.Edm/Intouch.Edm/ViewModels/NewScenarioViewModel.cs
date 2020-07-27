@@ -38,7 +38,8 @@ namespace Intouch.Edm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Resim yükleniyor. Lütfen bekleyiniz.", "TAMAM");
                 return;
             }
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Bildirimi göndermek istediğinize emin misiniz?", "Evet", "Hayır");
+            string eventName = GetEventName();
+            string selectedAction = await Application.Current.MainPage.DisplayActionSheet($"{eventName} Bildirimi Yapmak İstediğinize Emin Misiniz?", "Evet", "Hayır");
             switch (selectedAction)
             {
                 case "Evet":
@@ -49,6 +50,42 @@ namespace Intouch.Edm.ViewModels
                 case "Hayır":
                     break;
             }
+        }
+
+        private string GetEventName()
+        {
+            string eventName = "";
+            switch (EventId)
+            {
+                case (int)Events.Fire:
+                    eventName = "Yangın";
+                    break;
+
+                case (int)Events.WaterFlood:
+                    eventName = "Su Baskını";
+                    break;
+
+                case (int)Events.Earthquake:
+                    eventName = "Deprem";
+                    break;
+
+                case (int)Events.BusinessContuniuty:
+                    eventName = "İş Sürekliliği";
+                    break;
+
+                case (int)Events.Pandemic:
+                    eventName = "Pandemi";
+                    break;
+
+                case (int)Events.Other:
+                    eventName = "Diğer";
+                    break;
+
+                default:
+                    break;
+            }
+
+            return eventName;
         }
 
         internal async Task Init()
@@ -166,7 +203,6 @@ namespace Intouch.Edm.ViewModels
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
             IsBusy = false;
-            
         }
 
         public async void GetLocationInfoBySelectedEventId(int selectedEventId = 0)
