@@ -20,149 +20,144 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid
-				RowSpacing="0"
-				Padding="20">
-            <Grid.RowDefinitions>
-                <RowDefinition
-						Height="*" />
-                <RowDefinition
-						Height="Auto" />
-            </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Image Source="logo.png" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
 
-            <!-- FIELD CONTAINERS -->
-            <StackLayout
-					Spacing="20">
-                <StackLayout
-						Orientation="Horizontal"
-						Spacing="5">
-                    <Image
-						Source="logo.png"
-                        BackgroundColor="White"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="subjectIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0" />
-                    <controls:BorderlessPicker ItemsSource="{Binding SubjectCombobox}"
+            <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!--  row background colors  -->
+
+                <!--  inner grid for button layouts  -->
+                <Grid Grid.Row="0" ColumnSpacing="2" BackgroundColor="White" HorizontalOptions="FillAndExpand" RowSpacing="1" VerticalOptions="FillAndExpand" Padding="20,40">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="subjectIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0, 10" />
+                    <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Konu" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="0" Grid.Column="2"
+                                               ItemsSource="{Binding SubjectCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
                                                Title="Seçiniz"
                                                AutomationProperties.HelpText="Seçiniz"
                                                SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"
                                                BackgroundColor="White"
                                                IsEnabled="{Binding IsEnabledEvent}"
-                                               Margin="3,0,3,8"
                                                HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Center">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="eventIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
-                    <controls:BorderlessPicker ItemsSource="{Binding EventCombobox}"
+
+                    <Image Grid.Row="1" Grid.Column="0" Source="eventIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Olay" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="1" Grid.Column="2"
+                                               ItemsSource="{Binding EventCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
                                                Title="Seçiniz"
                                                AutomationProperties.HelpText="Seçiniz"
                                                SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"
                                                BackgroundColor="White"
-                                               Margin="3,0,3,8"
                                                HorizontalOptions="FillAndExpand"
                                                IsEnabled="{Binding IsEnabledEvent}"
-                                               VerticalOptions="Center">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="sourceIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Kaynak" Margin="0, 0, 33, 0"></Label>
-                    <controls:BorderlessPicker
-                        ItemsSource="{Binding SourceCombobox}"
-                        ItemDisplayBinding="{Binding Name}"
-                        BackgroundColor="White"
-                        Margin="3,0,3,8"
-                        Title="Seçiniz"
-                        HorizontalOptions="FillAndExpand"
-                        SelectedItem="{Binding SelectedSource,Mode=TwoWay}"
-                        AutomationProperties.HelpText="Seçiniz"
-                        VerticalOptions="Center">
-                    </controls:BorderlessPicker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" x:Name="locationLayout" IsVisible="{Binding IsVisibleLocation}">
-                    <Image
-                            Source="locationIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Lokasyon" Margin="0, 0, 13, 0"></Label>
-                    <controls:BorderlessPicker
-                        ItemsSource="{Binding LocationCombobox}"
-                        ItemDisplayBinding="{Binding Name}"
-                        BackgroundColor="White"
-                        Margin="3,0,3,8"
-                        Title="Seçiniz"
-                        SelectedItem="{Binding SelectedLocation,Mode=TwoWay}"
-                        HorizontalOptions="FillAndExpand"
-                        AutomationProperties.HelpText="Seçiniz"
-                        VerticalOptions="Center">
-                    </controls:BorderlessPicker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal"  IsVisible="{Binding IsVisibleLocation}">
-                    <Image
-                            Source="impactAreaIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Etki Alanı" Margin="0, 0, 13, 0"></Label>
-                    <controls:BorderlessPicker
-                        ItemsSource="{Binding ImpactAreaCombobox}"
-                        ItemDisplayBinding="{Binding Name}"
-                        BackgroundColor="White"
-                        Margin="3,0,3,8"
-                        Title="Seçiniz"
-                        SelectedItem="{Binding SelectedImpactArea,Mode=TwoWay}"
-                        HorizontalOptions="FillAndExpand"
-                        AutomationProperties.HelpText="Seçiniz"
-                        VerticalOptions="Center">
-                    </controls:BorderlessPicker>
-                </StackLayout>
 
-                <StackLayout
-						Orientation="Horizontal"
-						Spacing="1">
-                    <Button
-						Image="gallery.png"
-                        BackgroundColor="White"
-                        VerticalOptions="CenterAndExpand"
-                        Command="{Binding UploadPhotoClicked}" />
-                    <Button
-						Image="camera.png"
-                        BackgroundColor="White"
-                        VerticalOptions="CenterAndExpand"
-                        Command="{Binding TakePhotoClicked}" />
-                    <!--<Grid>
-                        <Image x:Name="image" Margin="0,20" WidthRequest="400" HeightRequest="200" Source="{Binding ImageSource}"   BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
-                        <ActivityIndicator BindingContext="{x:Reference image}" IsRunning="{Binding IsLoading}"></ActivityIndicator>
-                    </Grid>-->
-                </StackLayout>
-                <ActivityIndicator
+                    <Image Grid.Row="2" Grid.Column="0" Source="sourceIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Kaynak" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="2" Grid.Column="2"
+                                               ItemsSource="{Binding SourceCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               BackgroundColor="White"
+                                               Title="Seçiniz"
+                                               HorizontalOptions="FillAndExpand"
+                                               SelectedItem="{Binding SelectedSource,Mode=TwoWay}"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               VerticalOptions="CenterAndExpand">
+                    </controls:BorderlessPicker>
+
+                    <Image Grid.Row="3" Grid.Column="0" Source="locationIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Lokasyon" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="3" Grid.Column="2"
+                                               ItemsSource="{Binding LocationCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               BackgroundColor="White"
+                                               Title="Seçiniz"
+                                               SelectedItem="{Binding SelectedLocation,Mode=TwoWay}"
+                                               HorizontalOptions="FillAndExpand"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               VerticalOptions="CenterAndExpand">
+                    </controls:BorderlessPicker>
+
+                    <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Etki Alanı" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="4" Grid.Column="2"
+                                               ItemsSource="{Binding ImpactAreaCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               BackgroundColor="White"
+                                               Title="Seçiniz"
+                                               SelectedItem="{Binding SelectedImpactArea,Mode=TwoWay}"
+                                               HorizontalOptions="FillAndExpand"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               VerticalOptions="CenterAndExpand">
+                    </controls:BorderlessPicker>
+                </Grid>
+            </Grid>
+
+            <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Image="gallery.png" BackgroundColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Command="{Binding UploadPhotoClicked}" />
+                <Button Grid.Row="0" Grid.Column="1" Image="camera.png" BackgroundColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Command="{Binding TakePhotoClicked}" />
+            </Grid>
+
+            <ActivityIndicator
                             x:Name="Progress"
                             Color="{StaticResource NavigationPrimary}"
                             IsEnabled="{Binding IsBusy}"
                             IsVisible="{Binding IsBusy}"
                             IsRunning="{Binding IsBusy}"></ActivityIndicator>
-            </StackLayout>
-        </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

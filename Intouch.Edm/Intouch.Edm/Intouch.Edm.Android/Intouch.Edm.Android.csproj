@@ -73,13 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticateOutput.cs" />
+    <Compile Include="Effects\LabelShadowEffect.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyFireBaseIDServices.cs" />
     <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocationService.cs" />
-    <Compile Include="ShowHidePassEffect.cs" />
+    <Compile Include="Effects\ShowHidePassEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />

@@ -92,12 +92,13 @@
     <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Effects\LabelShadowEffect.cs" />
     <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SendRegistrationToServer.cs" />
-    <Compile Include="ShowHidePassEffect.cs" />
+    <Compile Include="Effects\ShowHidePassEffect.cs" />
     <Compile Include="UserNotificationCenterDelegate.cs" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
