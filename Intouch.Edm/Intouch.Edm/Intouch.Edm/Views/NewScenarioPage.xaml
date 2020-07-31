@@ -57,8 +57,7 @@
                                                ItemDisplayBinding="{Binding Name}"
                                                Title="Seçiniz"
                                                AutomationProperties.HelpText="Seçiniz"
-                                               SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"
-                                               BackgroundColor="White"
+                                               SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"                                               
                                                IsEnabled="{Binding IsEnabledEvent}"
                                                HorizontalOptions="FillAndExpand"
                                                VerticalOptions="Fill">
@@ -77,8 +76,7 @@
                                                Title="Seçiniz"
                                                AutomationProperties.HelpText="Seçiniz"
                                                SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"
-                                               BackgroundColor="White"
-                                               HorizontalOptions="FillAndExpand"
+                                                                                              HorizontalOptions="FillAndExpand"
                                                IsEnabled="{Binding IsEnabledEvent}"
                                                VerticalOptions="Fill">
                     </controls:BorderlessPicker>
@@ -93,7 +91,6 @@
                     <controls:BorderlessPicker Grid.Row="2" Grid.Column="2"
                                                ItemsSource="{Binding SourceCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
-                                               BackgroundColor="White"
                                                Title="Seçiniz"
                                                HorizontalOptions="FillAndExpand"
                                                SelectedItem="{Binding SelectedSource,Mode=TwoWay}"
@@ -111,7 +108,6 @@
                     <controls:BorderlessPicker Grid.Row="3" Grid.Column="2"
                                                ItemsSource="{Binding LocationCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
-                                               BackgroundColor="White"
                                                Title="Seçiniz"
                                                SelectedItem="{Binding SelectedLocation,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
@@ -129,7 +125,6 @@
                     <controls:BorderlessPicker Grid.Row="4" Grid.Column="2"
                                                ItemsSource="{Binding ImpactAreaCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
-                                               BackgroundColor="White"
                                                Title="Seçiniz"
                                                SelectedItem="{Binding SelectedImpactArea,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
