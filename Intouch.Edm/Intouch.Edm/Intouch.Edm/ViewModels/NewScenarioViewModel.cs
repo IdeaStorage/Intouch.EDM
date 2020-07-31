@@ -4,7 +4,6 @@ using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using Plugin.Media;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,6 +20,7 @@ namespace Intouch.Edm.ViewModels
         public GeoCoords gpsCoords = new GeoCoords();
 
         private bool isVisibleLocation = true;
+        public string EventName;
 
         public bool IsVisibleLocation
         {
@@ -38,8 +38,7 @@ namespace Intouch.Edm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Resim yükleniyor. Lütfen bekleyiniz.", "TAMAM");
                 return;
             }
-            string eventName = GetEventName();
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet($"{eventName} Bildirimi Yapmak İstediğinize Emin Misiniz?", "Evet", "Hayır");
+            string selectedAction = await Application.Current.MainPage.DisplayActionSheet($"{EventName} Bildirimi Yapmak İstediğinize Emin Misiniz?", "Evet", "Hayır");
             switch (selectedAction)
             {
                 case "Evet":
@@ -52,40 +51,43 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private string GetEventName()
+        private void GetEvent(int selectedEventId = 0)
         {
-            string eventName = "";
-            switch (EventId)
+            switch (selectedEventId)
             {
                 case (int)Events.Fire:
-                    eventName = "Yangın";
+                    EventIcon = "fireDetail.png";
+                    EventName = "Yangın";
                     break;
 
                 case (int)Events.WaterFlood:
-                    eventName = "Su Baskını";
+                    EventIcon = "waterDetail.png";
+                    EventName = "Su Baskını";
                     break;
 
                 case (int)Events.Earthquake:
-                    eventName = "Deprem";
+                    EventIcon = "earthquakeDetail.png";
+                    EventName = "Deprem";
                     break;
 
                 case (int)Events.BusinessContuniuty:
-                    eventName = "İş Sürekliliği";
+                    EventIcon = "businessContinuityDetail.png";
+                    EventName = "İş Sürekliliği";
                     break;
 
                 case (int)Events.Pandemic:
-                    eventName = "Pandemi";
+                    EventIcon = "pandemicDetail.png";
+                    EventName = "Pandemi";
                     break;
 
                 case (int)Events.Other:
-                    eventName = "Diğer";
+                    EventIcon = "othersDetail.png";
+                    EventName = "Diğer";
                     break;
 
                 default:
                     break;
             }
-
-            return eventName;
         }
 
         internal async Task Init()
@@ -148,18 +150,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        public List<ComboboxItem> ListSubject
-        {
-            get;
-            set;
-        }
-
-        public List<ComboboxItem> ListEvent
-        {
-            get;
-            set;
-        }
-
         public NewScenarioViewModel()
         {
             Initialize();
@@ -202,6 +192,8 @@ namespace Intouch.Edm.ViewModels
             EventCombobox = PickerService.GetEvent(eventList);
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
+            GetEvent(selectedEventId);
+
             IsBusy = false;
         }
 
@@ -373,6 +365,20 @@ namespace Intouch.Edm.ViewModels
             set
             {
                 SetProperty(ref _eventId, value);
+            }
+        }
+
+        private string _eventIcon;
+
+        public string EventIcon
+        {
+            get
+            {
+                return _eventIcon;
+            }
+            set
+            {
+                SetProperty(ref _eventIcon, value);
             }
         }
 

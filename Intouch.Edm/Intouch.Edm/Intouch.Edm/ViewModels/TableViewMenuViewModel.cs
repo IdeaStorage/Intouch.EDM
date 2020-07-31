@@ -1,6 +1,4 @@
 ﻿using Intouch.Edm.Helpers;
-using Intouch.Edm.Models;
-using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -26,19 +24,6 @@ namespace Intouch.Edm.ViewModels
 
         internal async Task Init()
         {
-        }
-
-        private ICommand _announcementButton;
-
-        public ICommand AnnouncementClicked => _announcementButton
-        ?? (_announcementButton = new CommandHandler(param => NavigateAnnouncementList(), true));
-
-        private async Task NavigateAnnouncementList()
-        {
-            await DataService.SetReadNotifications();
-            var mainViewModel = new MainPageViewModel();
-            mainViewModel.UnreadCount = 0;
-            await Application.Current.MainPage.Navigation.PushAsync(new MainPage((int)TabPageEnums.AnnouncementListPage));
         }
     }
 }
