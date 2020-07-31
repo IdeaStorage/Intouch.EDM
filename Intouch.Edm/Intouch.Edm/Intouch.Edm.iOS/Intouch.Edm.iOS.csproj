@@ -94,7 +94,7 @@
   <ItemGroup>
     <Compile Include="Effects\LabelShadowEffect.cs" />
     <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
-    <Compile Include="BorderlessPickerRenderer.cs" />
+    <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

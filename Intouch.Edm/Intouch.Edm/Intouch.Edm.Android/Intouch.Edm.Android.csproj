@@ -79,7 +79,7 @@
   <ItemGroup>
     <Compile Include="AuthenticateOutput.cs" />
     <Compile Include="Effects\LabelShadowEffect.cs" />
-    <Compile Include="BorderlessPickerRenderer.cs" />
+    <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyFireBaseIDServices.cs" />
     <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
