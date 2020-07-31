@@ -33,11 +33,11 @@ namespace Intouch.Edm.ViewModels
         {
             TaskItems = new ObservableRangeCollection<TaskItem>();
             AllTaskItems = new ObservableRangeCollection<TaskItem>();
-            LoadTasksCommand = new Command(async () => await ExecuteLoadTasksCommand());
             FilterOptions = new ObservableRangeCollection<string>
             {
                 "Hepsi"
             };
+            LoadTasksCommand = new Command(async () => await ExecuteLoadTasksCommand());
         }
 
         private void FilterItems()
@@ -65,7 +65,7 @@ namespace Intouch.Edm.ViewModels
                     TaskItems.Add(item);
                 }
                 AllTaskItems.ReplaceRange(TaskItems);
-                FilterOptions.ReplaceRange(AllTaskItems.Select(a => a.UserName).Distinct().ToList());
+                FilterOptions.AddRange(AllTaskItems.Select(a => a.UserName).Distinct().ToList());
                 FilterItems();
             }
             catch (Exception ex)

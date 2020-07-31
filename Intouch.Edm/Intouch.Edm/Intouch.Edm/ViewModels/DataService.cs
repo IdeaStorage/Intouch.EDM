@@ -240,15 +240,11 @@ namespace Intouch.Edm.Services
             return response?.success != null && response.success;
         }
 
-        public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync(int? maxResultCount, int skipCount)
+        public async Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync(int maxResultCount, int skipCount)
         {
             await ControlAccessTokenAsync();
 
-            var url = $"/api/services/app/Announcements/GetUserAnnouncements?skipCount={skipCount}";
-            if (maxResultCount != null)
-            {
-                url = $"{url}&MaxResultCount={maxResultCount}";
-            }
+            var url = $"/api/services/app/Announcements/GetUserAnnouncements?MaxResultCount={maxResultCount}&SkipCount={skipCount}";
             var response = await SendRequestAsync<Dtos.AnnouncementListDto.RootObject>(new Uri(_baseUri, url), HttpMethod.Get, _headers);
 
             return response;

@@ -3,7 +3,9 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Intouch.Edm.Views"
             xmlns:badgePlugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions"
-            x:Class="Intouch.Edm.Views.MainPage">
+            x:Class="Intouch.Edm.Views.MainPage"
+            BarTextColor="White"
+            BarBackgroundColor="#00a9ab">
     <TabbedPage.Children>
         <NavigationPage Title="Anasayfa" x:Name="TableViewMenu" Icon="homeIcon.png">
             <x:Arguments>

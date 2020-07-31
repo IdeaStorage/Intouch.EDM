@@ -4,8 +4,9 @@
              xmlns:local="clr-namespace:Intouch.Edm.Views.Templates"
              xmlns:control="clr-namespace:Intouch.Edm.Controls"
              x:Class="Intouch.Edm.Views.ScenarioListPage"
-            IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
-             NavigationPage.HasNavigationBar="False">
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
+             NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="#20979b">
     <TabbedPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="evenTemplate">

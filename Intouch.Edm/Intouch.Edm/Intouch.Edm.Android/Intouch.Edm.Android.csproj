@@ -78,14 +78,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticateOutput.cs" />
+    <Compile Include="Effects\LabelShadowEffect.cs" />
     <Compile Include="BorderlessPickerRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyFireBaseIDServices.cs" />
+    <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundEffect.cs" />
     <Compile Include="Services\LocationService.cs" />
-    <Compile Include="ShowHidePassEffect.cs" />
+    <Compile Include="Effects\ShowHidePassEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />
@@ -110,9 +112,10 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\appDetailLogo.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intouch.Edm\Intouch.Edm.csproj">
       <Project>{9E9DD3C4-A0C8-4EDF-82C8-FC81F12927A4}</Project>
@@ -150,13 +153,7 @@
     <AndroidResource Include="Resources\drawable\mailIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\notification.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\password.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\rejectIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\scenarioIcon.png" />
@@ -229,6 +226,30 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\mainIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\gallery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\scenarioDetailLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\fireDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\businessContinuityDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\earthquakeDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\othersDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pandemicDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\waterDetail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

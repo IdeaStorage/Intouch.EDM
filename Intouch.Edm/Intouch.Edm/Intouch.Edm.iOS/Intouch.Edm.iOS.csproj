@@ -92,12 +92,14 @@
     <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Effects\LabelShadowEffect.cs" />
+    <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="BorderlessPickerRenderer.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SendRegistrationToServer.cs" />
-    <Compile Include="ShowHidePassEffect.cs" />
+    <Compile Include="Effects\ShowHidePassEffect.cs" />
     <Compile Include="UserNotificationCenterDelegate.cs" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
@@ -150,15 +152,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\tab_about.png" />
-    <BundleResource Include="Resources\tab_about%402x.png" />
-    <BundleResource Include="Resources\tab_about%403x.png" />
-    <BundleResource Include="Resources\tab_feed.png" />
-    <BundleResource Include="Resources\tab_feed%402x.png" />
-    <BundleResource Include="Resources\tab_feed%403x.png" />
-    <BundleResource Include="Resources\xamarin_logo.png" />
-    <BundleResource Include="Resources\xamarin_logo%402x.png" />
-    <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\1024.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -271,13 +264,7 @@
     <BundleResource Include="Resources\mailIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\notification.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\password.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\rejectIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\scenarioIcon.png" />
@@ -335,5 +322,32 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pandemic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\appDetailLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gallery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scenarioDetailLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\businessContinuityDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\earthquakeDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fireDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\othersDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pandemicDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\waterDetail.png" />
   </ItemGroup>
 </Project>

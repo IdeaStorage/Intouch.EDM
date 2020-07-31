@@ -54,15 +54,16 @@ namespace Intouch.Edm.ViewModels
                 AnnouncementItems.Count >= _resultCount)
             {
                 IsBusy = true;
-                GetAnnouncements(null, _resultCount);
-                _totalCount = AnnouncementItems.Count;
+                GetAnnouncements((_totalCount - _resultCount), _resultCount);
                 IsBusy = false;
             }
         }
 
-        public async void GetAnnouncements(int? maxCount, int skipCount)
+        public async void GetAnnouncements(int maxCount, int skipCount)
         {
             var announcementItems = await DataService.GetAnnouncementsAsync(maxCount, skipCount);
+            _totalCount = announcementItems.result.totalCount;
+
             foreach (var announcementItem in announcementItems.result.items)
             {
                 Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);

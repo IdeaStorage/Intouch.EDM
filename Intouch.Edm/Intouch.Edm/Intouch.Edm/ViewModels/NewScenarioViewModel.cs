@@ -4,7 +4,6 @@ using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using Plugin.Media;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +20,7 @@ namespace Intouch.Edm.ViewModels
         public GeoCoords gpsCoords = new GeoCoords();
 
         private bool isVisibleLocation = true;
-       // private ObservableCollection<ComboboxItem> LocationCombobox;
+        public string EventName;
 
         public bool IsVisibleLocation
         {
@@ -39,7 +38,7 @@ namespace Intouch.Edm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Resim yükleniyor. Lütfen bekleyiniz.", "TAMAM");
                 return;
             }
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Bildirimi göndermek istediğinize emin misiniz?", "Evet", "Hayır");
+            string selectedAction = await Application.Current.MainPage.DisplayActionSheet($"{EventName} Bildirimi Yapmak İstediğinize Emin Misiniz?", "Evet", "Hayır");
             switch (selectedAction)
             {
                 case "Evet":
@@ -48,6 +47,45 @@ namespace Intouch.Edm.ViewModels
                     break;
 
                 case "Hayır":
+                    break;
+            }
+        }
+
+        private void GetEvent(int selectedEventId = 0)
+        {
+            switch (selectedEventId)
+            {
+                case (int)Events.Fire:
+                    EventIcon = "fireDetail.png";
+                    EventName = "Yangın";
+                    break;
+
+                case (int)Events.WaterFlood:
+                    EventIcon = "waterDetail.png";
+                    EventName = "Su Baskını";
+                    break;
+
+                case (int)Events.Earthquake:
+                    EventIcon = "earthquakeDetail.png";
+                    EventName = "Deprem";
+                    break;
+
+                case (int)Events.BusinessContuniuty:
+                    EventIcon = "businessContinuityDetail.png";
+                    EventName = "İş Sürekliliği";
+                    break;
+
+                case (int)Events.Pandemic:
+                    EventIcon = "pandemicDetail.png";
+                    EventName = "Pandemi";
+                    break;
+
+                case (int)Events.Other:
+                    EventIcon = "othersDetail.png";
+                    EventName = "Diğer";
+                    break;
+
+                default:
                     break;
             }
         }
@@ -112,18 +150,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        public List<ComboboxItem> ListSubject
-        {
-            get;
-            set;
-        }
-
-        public List<ComboboxItem> ListEvent
-        {
-            get;
-            set;
-        }
-
         public NewScenarioViewModel()
         {
             Initialize();
@@ -166,8 +192,9 @@ namespace Intouch.Edm.ViewModels
             EventCombobox = PickerService.GetEvent(eventList);
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
-            IsBusy = false;
+            GetEvent(selectedEventId);
 
+            IsBusy = false;
         }
 
         public async void GetLocationInfoBySelectedEventId(int selectedEventId = 0)
@@ -341,6 +368,20 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
+        private string _eventIcon;
+
+        public string EventIcon
+        {
+            get
+            {
+                return _eventIcon;
+            }
+            set
+            {
+                SetProperty(ref _eventIcon, value);
+            }
+        }
+
         private int? _siteId;
 
         public int? SiteId
@@ -439,27 +480,12 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private ICommand _sheetClicked;
+        private ICommand _takePhotoClicked;
 
-        public ICommand SheetSimpleClicked => _sheetClicked
-                ?? (_sheetClicked = new Command(async () => await SheetSimpleCommand()));
+        public ICommand TakePhotoClicked => _takePhotoClicked
+                ?? (_takePhotoClicked = new Command(async () => await TakePhotoCommand()));
 
-        private async Task SheetSimpleCommand()
-        {
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Fotoğraf Yükle", "Fotoğraf Çek", "Galeriden Yükle");
-            switch (selectedAction)
-            {
-                case "Fotoğraf Çek":
-                    await TakePhoto();
-                    break;
-
-                case "Galeriden Yükle":
-                    await SelectPhotoFromGallery();
-                    break;
-            }
-        }
-
-        public async Task TakePhoto()
+        private async Task TakePhotoCommand()
         {
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
@@ -499,7 +525,12 @@ namespace Intouch.Edm.ViewModels
             IsUploadingImage = false;
         }
 
-        private async Task SelectPhotoFromGallery()
+        private ICommand _uploadPhotoClicked;
+
+        public ICommand UploadPhotoClicked => _uploadPhotoClicked
+                ?? (_uploadPhotoClicked = new Command(async () => await UploadPhotoCommand()));
+
+        private async Task UploadPhotoCommand()
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {

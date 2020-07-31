@@ -2,13 +2,11 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Locations;
 using Android.OS;
 using Android.Util;
 using Firebase.Iid;
 using ImageCircle.Forms.Plugin.Droid;
 using Plugin.CurrentActivity;
-using Plugin.Permissions;
 using Xamarin.Forms;
 
 namespace Intouch.Edm.Droid
@@ -25,22 +23,14 @@ namespace Intouch.Edm.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
             ImageCircleRenderer.Init();
 
             Log.Debug("TOKEN", "Instance token Id:" + FirebaseInstanceId.Instance.Token);
             Helpers.Settings.FirebaseNotification = FirebaseInstanceId.Instance.Token;
 
             bool isNotification = false;
-
-            //LocationManager locationManager = (LocationManager)Forms.Context.GetSystemService(Context.LocationService);
-
-            //if (locationManager.IsProviderEnabled(LocationManager.GpsProvider) == false)
-            //{
-            //    Intent gpsSettingIntent = new Intent(Android.Provider.Settings.ActionLocat‌​ionSourceSettings);
-            //    Forms.Context.StartActivity(gpsSettingIntent);
-            //}
 
             if (Intent.Extras != null)
             {
@@ -58,26 +48,30 @@ namespace Intouch.Edm.Droid
             {
                 LoadApplication(new App());
             }
-
-           
+            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(0, 169, 171));
         }
+
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
             CrossCurrentActivity.Current.Activity = activity;
         }
+
         public void OnActivityResumed(Activity activity)
         {
             CrossCurrentActivity.Current.Activity = activity;
         }
+
         public void OnActivityStarted(Activity activity)
         {
             CrossCurrentActivity.Current.Activity = activity;
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
         protected override void OnStart()
         {
             base.OnStart();
@@ -85,7 +79,6 @@ namespace Intouch.Edm.Droid
             {
                 RequestPermissions(new string[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 0);
             }
-
         }
     }
 }

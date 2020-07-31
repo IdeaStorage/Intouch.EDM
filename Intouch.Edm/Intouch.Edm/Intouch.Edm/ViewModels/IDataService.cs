@@ -46,7 +46,7 @@ namespace Intouch.Edm.Services
 
         Task<bool> RejectScenario(Dtos.ApproveScenario.ApproveScenarioDto scenario);
 
-        Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync(int? maxResultCount, int skipCount);
+        Task<Dtos.AnnouncementListDto.RootObject> GetAnnouncementsAsync(int maxResultCount, int skipCount);
 
         Task<Dtos.AnnouncementCountDto.RootObject> GetAnnouncementsCountAsync();
 

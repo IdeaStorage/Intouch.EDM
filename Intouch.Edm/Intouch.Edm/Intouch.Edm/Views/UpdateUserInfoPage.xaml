@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Intouch.Edm.Controls"
+              BackgroundColor="White"
+             x:Class="Intouch.Edm.Views.UpdateUserInfoPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Kaydet" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid
+				RowSpacing="0"
+				Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition
+						Height="*" />
+                <RowDefinition
+						Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout
+                Spacing="20">
+                <StackLayout
+						Orientation="Horizontal"
+						Spacing="5">
+                    <Image
+						Source="logo.png"
+                        BackgroundColor="White"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource LableStyle}" Text="İsim" Margin="0, 0, 57, 0" />
+                    <Entry Margin="3,0,3,8"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           Placeholder="İsim"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Text="{Binding UserInfoName}">
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource LableStyle}" Text="Soy İsim" Margin="0, 0, 57, 0" />
+                    <Entry Margin="3,0,3,8"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           Placeholder="Soy İsim"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Text="{Binding UserInfoSurname}">
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource LableStyle}" Text="Cep Tel" Margin="0, 0, 57, 0" />
+                    <Entry Margin="3,0,3,8"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           Placeholder="Cep Tel"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Text="{Binding UserInfoMobilePhone}">
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource LableStyle}" Text="Bölümü" Margin="0, 0, 57, 0" />
+                    <controls:BorderlessPicker ItemsSource="{Binding DepartmentCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               Title="Seçiniz"
+                                               SelectedItem="{Binding SelectedDepartment,Mode=TwoWay}"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               BackgroundColor="White"
+                                               Margin="3,0,3,8"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center">
+                    </controls:BorderlessPicker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource LableStyle}" Text="Ünvan" Margin="0, 0, 57, 0" />
+                    <controls:BorderlessPicker 
+                                               ItemsSource="{Binding TitleCombobox}"
+                                               ItemDisplayBinding="{Binding Name}"
+                                               SelectedItem="{Binding SelectedTitle,Mode=TwoWay}"
+                                               Title="Seçiniz"
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               BackgroundColor="White"
+                                               Margin="3,0,3,8"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center">
+                    </controls:BorderlessPicker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource LableStyle}" Text="Mail Adresi" Margin="0, 0, 57, 0" />
+                    <Entry Margin="3,0,3,8"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           Placeholder="Mail Adresi"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Text="{Binding UserInfoMailAddress}">
+                    </Entry>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
