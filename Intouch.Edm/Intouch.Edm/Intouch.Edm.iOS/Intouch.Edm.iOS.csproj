@@ -92,6 +92,7 @@
     <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BorderlessPickerRenderer.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

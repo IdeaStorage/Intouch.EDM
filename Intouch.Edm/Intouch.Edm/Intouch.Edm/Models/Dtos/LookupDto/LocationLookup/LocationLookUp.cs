@@ -9,12 +9,16 @@ namespace Intouch.Edm.Models.Dtos.LookupDto.LocationLookup
     public class Site
     {
         public string name { get; set; }
+        public double? latitude { get; set; }
+        public double? longitude { get; set; }
         public int id { get; set; }
     }
 
     public class Item
     {
         public Site site { get; set; }
+        public bool nearest { get; set; }
+
     }
 
     public class Result

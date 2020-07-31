@@ -34,7 +34,7 @@ namespace Intouch.Edm.Services
 
         Task<Dtos.LookupDto.EventTypeLookup.RootObject> GetEventsAsync(int subjectTypeId);
 
-        Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync();
+        Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync(double latitude, double longitude);
 
         Task<Edm.Models.Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId, int? maxResultCount, int skipCount);
 

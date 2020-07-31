@@ -21,6 +21,7 @@ namespace Intouch.Edm.ViewModels
         public GeoCoords gpsCoords = new GeoCoords();
 
         private bool isVisibleLocation = true;
+       // private ObservableCollection<ComboboxItem> LocationCombobox;
 
         public bool IsVisibleLocation
         {
@@ -157,7 +158,7 @@ namespace Intouch.Edm.ViewModels
 
             Models.Dtos.SourceLookupDto.RootObject sourceList = await DataService.GetSourcesAsync(selectedEventId);
             Models.Dtos.LookupDto.EventTypeLookup.RootObject eventList = await DataService.GetEventsAsync(selectedSubjectId);
-            Models.Dtos.LookupDto.LocationLookup.RootObject locationList = await DataService.GetLocationAsync();
+            Models.Dtos.LookupDto.LocationLookup.RootObject locationList = await DataService.GetLocationAsync(gpsCoords.Latitude, gpsCoords.Longitude);
 
             LocationCombobox = PickerService.GetLocation(locationList);
             SubjectCombobox = PickerService.GetSubject();
@@ -166,7 +167,7 @@ namespace Intouch.Edm.ViewModels
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
             IsBusy = false;
-            
+
         }
 
         public async void GetLocationInfoBySelectedEventId(int selectedEventId = 0)
@@ -174,14 +175,14 @@ namespace Intouch.Edm.ViewModels
             if (selectedEventId == Convert.ToInt32(Events.Earthquake))
             {
                 IsVisibleLocation = false;
-                var locationService = DependencyService.Get<ILocationService>();
-                var position = await locationService.GetGeoCoordinatesAsync();
-                gpsCoords = position;
+            }
+            var locationService = DependencyService.Get<ILocationService>();
+            var position = await locationService.GetGeoCoordinatesAsync();
+            gpsCoords = position;
 
-                if (position == null || position.IsGpsClose)
-                {
-                    await Application.Current.MainPage.DisplayAlert("GPS", "Lokasyon bilgisini almak için GPS i açınız!", "TAMAM");
-                }
+            if (position == null || position.IsGpsClose)
+            {
+                await Application.Current.MainPage.DisplayAlert("GPS", "Lokasyon bilgisini almak için GPS i açınız!", "TAMAM");
             }
         }
 
