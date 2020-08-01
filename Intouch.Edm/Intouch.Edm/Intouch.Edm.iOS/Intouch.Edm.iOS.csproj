@@ -350,4 +350,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\waterDetail.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\adkDetail.png" />
+  </ItemGroup>
 </Project>

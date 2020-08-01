@@ -50,5 +50,32 @@ namespace Intouch.Edm.Services
 
             return updateTaskOption;
         }
+
+        public static (string eventIcon, string eventName) GetEvent(int selectedEventId = 0)
+        {
+            switch (selectedEventId)
+            {
+                case (int)Events.Fire:
+                    return ("fireDetail.png", "Yangın");
+
+                case (int)Events.WaterFlood:
+                    return ("waterDetail.png", "Su Baskını");
+
+                case (int)Events.Earthquake:
+                    return ("earthquakeDetail.png", "Deprem");
+
+                case (int)Events.BusinessContuniuty:
+                    return ("businessContinuityDetail.png", "İş Sürekliliği");
+
+                case (int)Events.Pandemic:
+                    return ("pandemicDetail.png", "Pandemi");
+
+                case (int)Events.Other:
+                    return ("othersDetail.png", "Diğer");
+
+                default:
+                    return ("", "");
+            }
+        }
     }
 }

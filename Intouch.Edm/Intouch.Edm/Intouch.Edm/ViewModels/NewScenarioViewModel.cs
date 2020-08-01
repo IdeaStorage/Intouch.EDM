@@ -51,45 +51,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private void GetEvent(int selectedEventId = 0)
-        {
-            switch (selectedEventId)
-            {
-                case (int)Events.Fire:
-                    EventIcon = "fireDetail.png";
-                    EventName = "Yangın";
-                    break;
-
-                case (int)Events.WaterFlood:
-                    EventIcon = "waterDetail.png";
-                    EventName = "Su Baskını";
-                    break;
-
-                case (int)Events.Earthquake:
-                    EventIcon = "earthquakeDetail.png";
-                    EventName = "Deprem";
-                    break;
-
-                case (int)Events.BusinessContuniuty:
-                    EventIcon = "businessContinuityDetail.png";
-                    EventName = "İş Sürekliliği";
-                    break;
-
-                case (int)Events.Pandemic:
-                    EventIcon = "pandemicDetail.png";
-                    EventName = "Pandemi";
-                    break;
-
-                case (int)Events.Other:
-                    EventIcon = "othersDetail.png";
-                    EventName = "Diğer";
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
         internal async Task Init()
         {
             // Method intentionally left empty.
@@ -192,8 +153,9 @@ namespace Intouch.Edm.ViewModels
             EventCombobox = PickerService.GetEvent(eventList);
 
             ControlFormComponentsBySelectedEventId(selectedEventId);
-            GetEvent(selectedEventId);
-
+            var eventDetail = TaskService.GetEvent(selectedEventId);
+            EventIcon = eventDetail.eventIcon;
+            EventName = eventDetail.eventName;
             IsBusy = false;
         }
 

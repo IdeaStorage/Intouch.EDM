@@ -27,8 +27,8 @@
                         <ColumnDefinition Width="30*" />
                         <ColumnDefinition Width="70*" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding EventIcon}" BackgroundColor="White" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
-                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
+                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding EventIcon}" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
+                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
                 </Grid>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
@@ -57,7 +57,7 @@
                                                ItemDisplayBinding="{Binding Name}"
                                                Title="Seçiniz"
                                                AutomationProperties.HelpText="Seçiniz"
-                                               SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"                                               
+                                               SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"
                                                IsEnabled="{Binding IsEnabledEvent}"
                                                HorizontalOptions="FillAndExpand"
                                                VerticalOptions="Fill">
@@ -76,7 +76,7 @@
                                                Title="Seçiniz"
                                                AutomationProperties.HelpText="Seçiniz"
                                                SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"
-                                                                                              HorizontalOptions="FillAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                IsEnabled="{Binding IsEnabledEvent}"
                                                VerticalOptions="Fill">
                     </controls:BorderlessPicker>

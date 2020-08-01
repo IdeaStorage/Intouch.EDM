@@ -1,139 +1,189 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Intouch.Edm.Controls"
+             NavigationPage.BackButtonTitle="Geri"
              x:Class="Intouch.Edm.Views.ScenarioApprovePage">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LableStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontSize" Value="Large" />
                 <Setter Property="HorizontalOptions" Value="Center"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid
-				RowSpacing="0"
-				Padding="20">
-            <Grid.RowDefinitions>
-                <RowDefinition
-						Height="*" />
-                <RowDefinition
-						Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- FIELD CONTAINERS -->
-            <StackLayout
-					Spacing="20">
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="subjectIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Konu" Margin="0, 0, 57, 0" />
-                    <Label x:Name="Subject"
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="70*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="adkDetail.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
+                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
+                </Grid>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" RowSpacing="10" VerticalOptions="Fill" Margin="0,10,30,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*" />
+                        <ColumnDefinition Width="28*" />
+                        <ColumnDefinition Width="57*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="subjectIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Konu" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="3" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Label Grid.Row="0" Grid.Column="2"
                            Text="{Binding scenario.Subject}"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
+                           TextColor="Black"
                            FontSize="Medium"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Center" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="eventIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Olay" Margin="0, 0, 63, 0"></Label>
-                    <Label x:Name="Event"
+                           VerticalOptions="FillAndExpand">
+                    </Label>
+
+                    <Image Grid.Row="1" Grid.Column="0" Source="eventIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
+                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Olay" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Label Grid.Row="1" Grid.Column="2"
                            Text="{Binding scenario.Event}"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
+                           Margin="0,7,0,0"
                            FontSize="Medium"
+                           TextColor="Black"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Center" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="sourceIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Kaynak" Margin="0, 0, 33, 0"></Label>
-                    <Label x:Name="Source"
+                           VerticalOptions="Fill">
+                    </Label>
+
+                    <Image Grid.Row="2" Grid.Column="0" Source="sourceIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
+                    <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Kaynak" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Label Grid.Row="2" Grid.Column="2"
                            Text="{Binding scenario.Source}"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
                            FontSize="Medium"
+                           Margin="0,7,0,0"
+                           TextColor="Black"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Center" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="locationIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Lokasyon" Margin="0, 0, 13, 0"></Label>
-                    <Label x:Name="LocationArea"
+                           VerticalOptions="Fill">
+                    </Label>
+
+                    <Image Grid.Row="3" Grid.Column="0" Source="locationIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
+                    <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Lokasyon" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Label Grid.Row="3" Grid.Column="2"
                            Text="{Binding scenario.Site}"
                            HorizontalTextAlignment="Center"
                            FontSize="Medium"
+                           Margin="0,7,0,0"
+                           TextColor="Black"
                            VerticalTextAlignment="Center"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Center" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image
-                            Source="impactAreaIcon.png"
-							VerticalOptions="Center"
-							HorizontalOptions="Center"
-                            Margin="0,3,0,0" />
-                    <Label Style="{StaticResource LableStyle}" Text="Etki Alanı" Margin="0, 0, 13, 0"></Label>
-                    <Label x:Name="ImpactArea"
+                           VerticalOptions="Fill">
+                    </Label>
+
+                    <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
+                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Etki Alanı" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Label Grid.Row="4" Grid.Column="2"
                            Text="{Binding scenario.ImpactArea}"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
                            FontSize="Medium"
+                           Margin="0,7,0,0"
+                           TextColor="Black"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Center" />
-                </StackLayout>
-                <StackLayout
-						Orientation="Horizontal"
-						Spacing="1">
-                    <Image x:Name="image" Margin="85,20,85,20" WidthRequest="200" Source="{Binding scenario.PictureUrl}" BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
-                    <ActivityIndicator BindingContext="{x:Reference image}" IsRunning="{Binding IsLoading}"></ActivityIndicator>
-                </StackLayout>
-                <StackLayout
-						Orientation="Horizontal"
-						Spacing="1">
-                    <Button x:Name="RejectButton"
-                            Text="Reddet"
-                            HorizontalOptions="FillAndExpand"
-                            Command="{Binding RejectButtonClicked}"
-                            BackgroundColor="#E61E28"
-                            CornerRadius="50"
-                            IsVisible="{Binding isVisible}"
-                            FontSize="Medium"
-                            TextColor="White"
-                            BorderColor="Black"
-                            FlexLayout.AlignSelf="Stretch"  ></Button>
-                    <Button x:Name="ApproveButton"
-                            Text="Onayla"
-                            HorizontalOptions="FillAndExpand"
-                            Command="{Binding ApproveButtonClicked}"
-                            CornerRadius="50"
-                            FontSize="Medium"
-                            IsVisible="{Binding isVisible}"
-                            TextColor="White"
-                            BorderColor="Black"
-                            BackgroundColor="#2196f3"
-                            FlexLayout.AlignSelf="Stretch"  ></Button>
-                </StackLayout>
+                           VerticalOptions="Fill">
+                    </Label>
+                </Grid>
             </StackLayout>
-        </Grid>
+
+            <Grid ColumnSpacing="3" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,70,10,40">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0"
+                        BackgroundColor="#ec1f25"
+                        Text="REDDET"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Command="{Binding RejectButtonClicked}"
+                        CornerRadius="10"
+                        HeightRequest="80"
+                        FontSize="Large"
+                        TextColor="White"
+                        Margin="0,0,3,0"
+                        BorderColor="Black"
+                        FlexLayout.AlignSelf="Stretch"
+                        IsVisible="{Binding isVisible}">
+                    <Button.Effects>
+                        <controls:ShadowEffect Radius="5" DistanceX="0" DistanceY="5" Color="Black">
+                        </controls:ShadowEffect>
+                    </Button.Effects>
+                </Button>
+
+                <Button Grid.Row="0" Grid.Column="1"
+                        BackgroundColor="{StaticResource NavigationPrimary}"
+                        Text="ONAYLA"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Command="{Binding ApproveButtonClicked}"
+                        CornerRadius="10"
+                        HeightRequest="80"
+                        FontSize="Large"
+                        Margin="0,0,3,0"
+                        TextColor="White"
+                        BorderColor="Black"
+                        FlexLayout.AlignSelf="Stretch"
+                        IsVisible="{Binding isVisible}">
+                    <Button.Effects>
+                        <controls:ShadowEffect Radius="5" DistanceX="0" DistanceY="5" Color="Black">
+                        </controls:ShadowEffect>
+                    </Button.Effects>
+                </Button>
+            </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>       
