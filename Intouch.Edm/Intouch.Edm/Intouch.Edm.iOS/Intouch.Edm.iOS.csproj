@@ -353,4 +353,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\adkDetail.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\businesscontinuityListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\earthquakeListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fireListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\othersListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pandemicListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\waterListIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\taskDetailIcon.png" />
+  </ItemGroup>
 </Project>

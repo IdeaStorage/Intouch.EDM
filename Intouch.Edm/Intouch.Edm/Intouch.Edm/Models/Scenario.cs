@@ -20,7 +20,6 @@ namespace Intouch.Edm.Models
         public string Source { get; set; }
         public string ImpactArea { get; set; }
         public string Description { get; set; }
-        public string StatusIcon { get; set; }
         public string Statu { get; set; }
         public string Icon { get; set; }
         public string RecordDate { get; set; }

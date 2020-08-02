@@ -1,4 +1,5 @@
 ﻿using Intouch.Edm.Models;
+using Intouch.Edm.Services;
 using MvvmHelpers;
 using System;
 using System.Diagnostics;
@@ -84,18 +85,18 @@ namespace Intouch.Edm.ViewModels
                 var records = scenarios.result.items.Where(a => a.type == 1).OrderByDescending(x => x.creationTime).ToList();
                 foreach (var x in records)
                 {
+                    // Serden: Bu geçici olarak konuldu servisten bize eventID gelirse buna gerek yok iconu direkt Taskservice.GetEvent ile ayarlayabiliriz.
+                    // İsim ile çalışması riskli...
+                    var eventValue = TaskService.GetEventByName(x.eventTypeName);
                     var scenario = new Scenario()
                     {
                         Id = x.id,
                         Event = x.eventTypeName,
                         ImpactArea = x.impactAreaName,
                         Site = x.siteName,
-                        Source = x.sourceName != null ? x.sourceName.ToString() : "",
-                        Subject = x.subjectType == 1 ? "Acil Durum" : "İş Sürekliliği",
-                        RecordDate = x.creationTime.ToString("dd MMMM yyyy HH:mm"),
-                        // Buraya servisten statuId dönmek zorunda, ona göre ikon belirleyeceğiz....
-                        StatusIcon = x.approveStatus == 0 ? "waitingIcon.png" : "approveIcon.png",
-                        Icon = x.subjectType == 1 ? "emergencyIcon.png" : "businessIcon.png",
+                        Subject = x.subjectType == 1 ? $"Acil Durum\n{x.eventTypeName}" : $"İş Sürekliliği\n{x.eventTypeName}",
+                        RecordDate = x.creationTime.ToString("dd MMMM yyyy \n HH:mm"),
+                        Icon = eventValue.eventIcon,
                         PictureUrl = x.pictureUrl,
                         ScenarioId = x.scenarioId,
                         IsWaiting = x.approveStatus == 0

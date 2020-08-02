@@ -4,7 +4,6 @@
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
              NavigationPage.BackButtonTitle="Geri"
              x:Class="Intouch.Edm.Views.ScenarioApprovePage">
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LableStyle" TargetType="Label">
