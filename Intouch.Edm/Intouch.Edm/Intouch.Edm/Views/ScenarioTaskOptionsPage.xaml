@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Intouch.Edm.Views.ScenarioTaskOptionsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="60*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <ListView x:Name="TaskListView" ItemsSource="{Binding StatusRecords}"  HeightRequest="250">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal" Padding="10  ">
+                                        <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" />
+                                        <Image Source="tick.png"  IsVisible="{Binding IsSelected}"
+                                    VerticalOptions="Center"  HeightRequest="40"
+                                    WidthRequest="40" />
+                                        <Label Text="{Binding Id}" HorizontalOptions="StartAndExpand" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
