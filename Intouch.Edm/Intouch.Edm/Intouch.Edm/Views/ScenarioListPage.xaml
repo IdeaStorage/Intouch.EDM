@@ -80,7 +80,7 @@
                               ItemTemplate="{StaticResource scenarioDataTemplateSelector}"
                               IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                               CachingStrategy="RecycleElement"
-                              ItemSelected="OnItemSelected">
+                              ItemSelected="OnItemSelectedToCheckDetailOptions">
                 </ListView>
                 <ActivityIndicator
                             x:Name="ApprovedProgress"

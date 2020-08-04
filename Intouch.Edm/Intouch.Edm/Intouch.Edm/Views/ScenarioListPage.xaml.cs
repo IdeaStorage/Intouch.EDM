@@ -1,5 +1,6 @@
 ﻿using Intouch.Edm.Models;
 using Intouch.Edm.Models.Enums;
+using Intouch.Edm.Services;
 using Intouch.Edm.ViewModels;
 using System;
 using Xamarin.Forms;
@@ -11,6 +12,7 @@ namespace Intouch.Edm.Views
     public partial class ScenarioListPage : TabbedPage
     {
         private ScenarioListViewModel viewModel;
+        private DataService dataService;
 
         public ScenarioListPage()
         {
@@ -22,6 +24,7 @@ namespace Intouch.Edm.Views
                 BindingContext = viewModel = new ScenarioListViewModel(numPage);
                 viewModel.LoadScenariosCommand.Execute(null);
             };
+            dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -32,6 +35,19 @@ namespace Intouch.Edm.Views
             }
 
             await Application.Current.MainPage.Navigation.PushAsync(new ScenarioApprovePage(new ScenarioApproveViewModel(scenario)));
+        }
+
+        private async void OnItemSelectedToCheckDetailOptions(object sender, SelectedItemChangedEventArgs args)
+        {
+            if (!(args.SelectedItem is Scenario scenario))
+            {
+                return;
+            }
+            TaskItem taskItem = new TaskItem();
+            var options = await dataService.GetTaskOptionsAsync(scenario.Id); //burada Intouch tarafından senaryodan task optionslarına ulaşılması için geliştirme yapğılması gerekir.
+            taskItem.Options = options;
+
+            await Application.Current.MainPage.Navigation.PushAsync(new ScenarioTaskOptionsPage(new ScenarioTaskOptionsViewModel(taskItem)));
         }
 
         protected override void OnAppearing()

@@ -45,6 +45,9 @@
     <EmbeddedResource Update="Views\ScenarioListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ScenarioTaskOptionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\TableViewMenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
