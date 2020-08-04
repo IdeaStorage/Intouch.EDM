@@ -37,8 +37,6 @@ namespace Intouch.Edm.Models
         public string ScenarioTaskText { get; set; }
         public Dtos.TaskOptionDto.RootObject Options { get; set; }
 
-        public string StatusImage { get; set; }
-
         public string ScenarioId { get; set; }
         public Dtos.ViewScenario.RootObject ScenarioDto { get; set; }
         public Scenario Scenario { get; set; }

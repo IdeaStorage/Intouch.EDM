@@ -19,7 +19,6 @@ namespace Intouch.Edm.Services
                 ScenarioTaskId = taskItem.userTask.scenarioTaskId,
                 UserName = taskItem.userName,
                 Completed = taskItem.userTask.completed,
-                StatusImage = taskItem.userTask.completed ? "approveIcon.png" : "waitingIcon.png",
                 Id = taskItem.userTask.id,
                 ScenarioId = taskItem.scenarioId,
                 profilePicture = new UriImageSource

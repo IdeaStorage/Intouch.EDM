@@ -25,24 +25,12 @@ namespace Intouch.Edm.ViewModels
         public string Description { get; set; }
 
         public bool IsImageVisible { get; set; }
-        public bool IsPictureButtonVisible { get; set; }
 
         public TaskDetailViewModel(TaskItem taskItem = null)
         {
             Task = taskItem;
             TaskDetailLists = new ObservableCollection<TaskDetail>();
-
-            StatusRecords = new ObservableCollection<HelperModel>();
-
-            foreach (var item in taskItem.Options.result.items)
-            {
-                StatusRecords.Add(new HelperModel
-                {
-                    Name = item.checkedOption.text,
-                    Id = item.checkedOption.id,
-                    IsSelected = item.checkedOption.completed
-                });
-            }
+            RefreshStatusRecords(taskItem);
 
             taskItem.Scenario = new Scenario
             {
@@ -54,7 +42,21 @@ namespace Intouch.Edm.ViewModels
                 Subject = taskItem.ScenarioDto.result.scenario.subjectType == 1 ? "Acil Durum" : "İş Sürekliliği",
                 PictureUrl = taskItem.ScenarioDto.result.scenario.pictureUrl
             };
-            IsPictureButtonVisible = !string.IsNullOrEmpty(taskItem.Scenario.PictureUrl);
+        }
+
+        public void RefreshStatusRecords(TaskItem taskItem)
+        {
+            StatusRecords = new ObservableCollection<HelperModel>();
+
+            foreach (var item in taskItem.Options.result.items)
+            {
+                StatusRecords.Add(new HelperModel
+                {
+                    Name = item.checkedOption.text,
+                    Id = item.checkedOption.id,
+                    IsSelected = item.checkedOption.completed
+                });
+            }
         }
 
         private ObservableCollection<HelperModel> _statusRecords;
