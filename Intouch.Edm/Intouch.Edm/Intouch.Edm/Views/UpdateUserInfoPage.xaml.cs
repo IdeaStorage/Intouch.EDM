@@ -8,6 +8,7 @@ namespace Intouch.Edm.Views
     public partial class UpdateUserInfoPage : ContentPage
     {
         private UpdateUserInfoViewModel viewModel;
+
         public UpdateUserInfoPage()
         {
             InitializeComponent();

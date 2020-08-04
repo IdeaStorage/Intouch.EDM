@@ -1,4 +1,5 @@
 ﻿using Intouch.Edm.Services;
+using Intouch.Edm.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Intouch.Edm.ViewModels
 
         private async Task UpdateUserInfo()
         {
-            throw new NotImplementedException();
+            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
             //Kullanıcı bilgi güncellemesi için PUT methodunun inputları burada hazırlanacak.
         }
 
@@ -41,7 +42,9 @@ namespace Intouch.Edm.ViewModels
         }
 
         #region DepartmenSelection
+
         private ObservableCollection<ComboboxItem> _DepartmentCombobox;
+
         public ObservableCollection<ComboboxItem> DepartmentCombobox
         {
             get { return _DepartmentCombobox; }
@@ -69,6 +72,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private string _departmentText;
+
         public string DepartmentText
         {
             get
@@ -94,10 +98,13 @@ namespace Intouch.Edm.ViewModels
                 SetProperty(ref _departmentId, value);
             }
         }
-        #endregion
+
+        #endregion DepartmenSelection
 
         #region TitleSelection
+
         private ObservableCollection<ComboboxItem> _TitleCombobox;
+
         public ObservableCollection<ComboboxItem> TitleCombobox
         {
             get { return _TitleCombobox; }
@@ -125,6 +132,7 @@ namespace Intouch.Edm.ViewModels
         }
 
         private string _titleText;
+
         public string TitleText
         {
             get
@@ -150,7 +158,8 @@ namespace Intouch.Edm.ViewModels
                 SetProperty(ref _titleId, value);
             }
         }
-        #endregion
+
+        #endregion TitleSelection
 
         private string _userInfoName;
 

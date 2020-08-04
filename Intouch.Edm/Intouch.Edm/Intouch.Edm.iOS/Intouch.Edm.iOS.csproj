@@ -93,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Effects\LabelShadowEffect.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="Services\LocationService.cs" />

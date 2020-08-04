@@ -54,7 +54,7 @@ namespace Intouch.Edm.ViewModels
                 UserNameOrEmailAddress = Username != null ? Username.Trim() : "",
                 Password = Password != null ? Password.Trim() : ""
             };
-            if(!CrossConnectivity.Current.IsConnected)
+            if (!CrossConnectivity.Current.IsConnected)
             {
                 IsBusy = false;
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Lütfen internetinizi kontrol ediniz!", "TAMAM");

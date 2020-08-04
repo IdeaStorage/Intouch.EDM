@@ -1,13 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
-              BackgroundColor="White"
+             BackgroundColor="White"
              x:Class="Intouch.Edm.Views.UpdateUserInfoPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Kaydet" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LableStyle" TargetType="Label">
@@ -16,101 +12,143 @@
                 <Setter Property="HorizontalOptions" Value="Center"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
             </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BorderColor" Value="Black" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="40"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="Fill"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid
-				RowSpacing="0"
-				Padding="20">
-            <Grid.RowDefinitions>
-                <RowDefinition
-						Height="*" />
-                <RowDefinition
-						Height="Auto" />
-            </Grid.RowDefinitions>
-            <StackLayout
-                Spacing="20">
-                <StackLayout
-						Orientation="Horizontal"
-						Spacing="5">
-                    <Image
-						Source="logo.png"
-                        BackgroundColor="White"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="CenterAndExpand" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource LableStyle}" Text="İsim" Margin="0, 0, 57, 0" />
-                    <Entry Margin="3,0,3,8"
-                           HorizontalOptions="FillAndExpand"
-                           FontAttributes="Bold"
-                           Placeholder="İsim"
-                           FontSize="18"
-                           VerticalOptions="Center"
-                           Text="{Binding UserInfoName}">
-                    </Entry>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource LableStyle}" Text="Soy İsim" Margin="0, 0, 57, 0" />
-                    <Entry Margin="3,0,3,8"
-                           HorizontalOptions="FillAndExpand"
-                           FontAttributes="Bold"
-                           Placeholder="Soy İsim"
-                           FontSize="18"
-                           VerticalOptions="Center"
-                           Text="{Binding UserInfoSurname}">
-                    </Entry>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource LableStyle}" Text="Cep Tel" Margin="0, 0, 57, 0" />
-                    <Entry Margin="3,0,3,8"
-                           HorizontalOptions="FillAndExpand"
-                           FontAttributes="Bold"
-                           Placeholder="Cep Tel"
-                           FontSize="18"
-                           VerticalOptions="Center"
-                           Text="{Binding UserInfoMobilePhone}">
-                    </Entry>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource LableStyle}" Text="Bölümü" Margin="0, 0, 57, 0" />
-                    <controls:BorderlessPicker ItemsSource="{Binding DepartmentCombobox}"
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,5,0,5" />
+                </Grid>
+            </StackLayout>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" RowSpacing="10" VerticalOptions="Fill" Margin="10,10,30,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="60*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource LableStyle}" Text="İsim" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="3" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Frame Style="{StaticResource FrameStyle}" Grid.Row="0" Grid.Column="1">
+                        <controls:CustomEntry Text="{Binding UserInfoName}" Placeholder="İsminiz" PlaceholderColor="LightGray"
+                                              Style="{StaticResource EntryStyle}">
+                        </controls:CustomEntry>
+                    </Frame>
+
+                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Soy İsim" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Frame Style="{StaticResource FrameStyle}" Grid.Row="1" Grid.Column="1">
+                        <controls:CustomEntry Text="{Binding UserInfoSurname}" Placeholder="Soy İsminiz" PlaceholderColor="LightGray"
+                                              Style="{StaticResource EntryStyle}">
+                        </controls:CustomEntry>
+                    </Frame>
+
+                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Cep Tel" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Frame Style="{StaticResource FrameStyle}" Grid.Row="2" Grid.Column="1">
+                        <controls:CustomEntry Text="{Binding UserInfoMobilePhone}" Placeholder="Telefon Numaranız" PlaceholderColor="LightGray" Keyboard="Telephone"
+                                              Style="{StaticResource EntryStyle}">
+                        </controls:CustomEntry>
+                    </Frame>
+
+                    <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Bölüm" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="3" Grid.Column="1"
+                                               ItemsSource="{Binding DepartmentCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
                                                Title="Seçiniz"
-                                               SelectedItem="{Binding SelectedDepartment,Mode=TwoWay}"
-                                               AutomationProperties.HelpText="Seçiniz"
-                                               BackgroundColor="White"
-                                               Margin="3,0,3,8"
+                                               SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Center">
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               VerticalOptions="Fill">
                     </controls:BorderlessPicker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource LableStyle}" Text="Ünvan" Margin="0, 0, 57, 0" />
-                    <controls:BorderlessPicker 
+
+                    <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Ünvan" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <controls:BorderlessPicker Grid.Row="4" Grid.Column="1"
                                                ItemsSource="{Binding TitleCombobox}"
                                                ItemDisplayBinding="{Binding Name}"
-                                               SelectedItem="{Binding SelectedTitle,Mode=TwoWay}"
                                                Title="Seçiniz"
-                                               AutomationProperties.HelpText="Seçiniz"
-                                               BackgroundColor="White"
-                                               Margin="3,0,3,8"
+                                               SelectedItem="{Binding SelectedTitle,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Center">
+                                               AutomationProperties.HelpText="Seçiniz"
+                                               VerticalOptions="Fill">
                     </controls:BorderlessPicker>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Style="{StaticResource LableStyle}" Text="Mail Adresi" Margin="0, 0, 57, 0" />
-                    <Entry Margin="3,0,3,8"
-                           HorizontalOptions="FillAndExpand"
-                           FontAttributes="Bold"
-                           Placeholder="Mail Adresi"
-                           FontSize="18"
-                           VerticalOptions="Center"
-                           Text="{Binding UserInfoMailAddress}">
-                    </Entry>
-                </StackLayout>
+
+                    <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Mail Adresi" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label.Effects>
+                            <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
+                            </controls:ShadowEffect>
+                        </Label.Effects>
+                    </Label>
+                    <Frame Style="{StaticResource FrameStyle}" Grid.Row="5" Grid.Column="1">
+                        <controls:CustomEntry Text="{Binding UserInfoMailAddress}" Placeholder="Mail Adresiniz" PlaceholderColor="LightGray" Keyboard="Email"
+                                              Style="{StaticResource EntryStyle}">
+                        </controls:CustomEntry>
+                    </Frame>
+                </Grid>
             </StackLayout>
-        </Grid>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Button CornerRadius="10"
+                        FontSize="Large"
+                        TextColor="White"
+                        BackgroundColor="#00a9ab"
+                        FlexLayout.AlignSelf="Stretch"
+                        HorizontalOptions="FillAndExpand"
+						VerticalOptions="EndAndExpand"
+						Text="KAYDET"
+                        HeightRequest="80"
+                        Margin="3,5,3,50"
+                        Command="{Binding SaveClicked}" />
+            </StackLayout>
+        </StackLayout>
     </ScrollView>
 </ContentPage>
