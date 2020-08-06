@@ -7,5 +7,6 @@
         public string Description { get; set; }
         public string RecordDate { get; set; }
         public string AnnouncementUserInfo { get; set; }
+        public string Icon { get; set; }
     }
 }

@@ -9,16 +9,9 @@
 		Orientation="Horizontal"
 		Padding="10, 5, 10, 5"
 		VerticalOptions="Center">
-            <image:CircleImage Source="businessIcon.png"
-                               Aspect="AspectFill"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Start"
-                               BorderColor="Red"
-                               TranslationX="8"
-                               BorderThickness="1"
-                               TranslationY="14">
-            </image:CircleImage>
-            <StackLayout
+            <Image Grid.Row="0" Grid.Column="0" HeightRequest="64" WidthRequest="64" Source="{Binding Icon}" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+            </Image>
+          <StackLayout
 			Padding="3, 0, 3, 0"
 			Spacing="0"
 			Orientation="Horizontal"

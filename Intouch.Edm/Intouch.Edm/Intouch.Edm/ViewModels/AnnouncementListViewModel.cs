@@ -63,11 +63,15 @@ namespace Intouch.Edm.ViewModels
         {
             var announcementItems = await DataService.GetAnnouncementsAsync(maxCount, skipCount);
             _totalCount = announcementItems.result.totalCount;
-
+            int announcementColorModCount = 3;
+            int index = 0;
             foreach (var announcementItem in announcementItems.result.items)
             {
                 Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
+                announcement.Icon = string.Format("announcement_{0}.png", index % announcementColorModCount);
+                //announcement.Icon = "announcement_2.png";
                 AnnouncementItems.Add(announcement);
+                index++;
             }
         }
     }
