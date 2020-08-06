@@ -38,17 +38,11 @@ namespace Intouch.Edm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Resim yükleniyor. Lütfen bekleyiniz.", "TAMAM");
                 return;
             }
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet($"{EventName} Bildirimi Yapmak İstediğinize Emin Misiniz?", "Evet", "Hayır");
-            switch (selectedAction)
+            var result = await PopupSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, $"{EventName} Bildirimi Yapmak İstediğinize Emin Misiniz?");
+            if (result)
             {
-                case "Evet":
-                    await CreateNotification();
-
-                    break;
-
-                case "Hayır":
-                    break;
-            }
+                await CreateNotification();
+            }            
         }
 
         internal async Task Init()

@@ -228,6 +228,9 @@
     <PackageReference Include="Plugin.FirebasePushNotification">
       <Version>2.3.1-rc</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.2.0.223</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
     <PackageReference Include="Xamarin.Forms.InputKit">
       <Version>3.3.1</Version>
