@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="Intouch.Edm.Views.TaskDetailPage"
              NavigationPage.HasNavigationBar="true">
     <ContentPage.ToolbarItems>
@@ -135,20 +136,28 @@
                            VerticalOptions="Fill">
                     </Label>
                 </Grid>
-
-                <ListView x:Name="TaskListView" ItemsSource="{Binding StatusRecords}"  ItemSelected="TaskListView_ItemSelected" HeightRequest="250">
+                <Label Style="{StaticResource LableStyle}" Text="Görevler" Font="Bold,18" Margin="0,15,0,5" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                <ListView x:Name="TaskListView"
+                          ItemsSource="{Binding StatusRecords}"
+                          HasUnevenRows="True"
+                          SeparatorVisibility="None"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="Fill"
+                          Margin="20,10,20,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout HorizontalOptions="FillAndExpand"
-                                    Orientation="Horizontal" Padding="10  ">
-                                        <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" />
-                                        <Image Source="tick.png"  IsVisible="{Binding IsSelected}"
-                                    VerticalOptions="Center"  HeightRequest="40"
-                                    WidthRequest="40" />
-                                    </StackLayout>
-                                </ViewCell.View>
+                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" HasShadow="True" OutlineColor="{StaticResource NavigationPrimary}">
+                                    <input:CheckBox Text="{Binding Name}"
+                                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                        Type="Material"
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Color="#36b87a"
+                                                        TextColor="Black"
+                                                        CheckChanged="CheckBox_CheckChanged"
+                                                        BindingContext="{Binding .}" />
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

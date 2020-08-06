@@ -1,4 +1,5 @@
 ﻿using Intouch.Edm.ViewModels;
+using Plugin.InputKit.Shared.Controls;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,22 +18,25 @@ namespace Intouch.Edm.Views
             BindingContext = this.viewModel = viewModel;
         }
 
-        private void TaskListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null) return;
-            var statusData = e.SelectedItem as HelperModel;
-            ((ListView)sender).SelectedItem = null;
-
-            var item = viewModel.StatusRecords.FirstOrDefault(x => x.Name == statusData.Name);
-            if (item != null)
-            {
-                item.IsSelected = !item.IsSelected;
-            }
-        }
-
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+
+        private void CheckBox_CheckChanged(object sender, System.EventArgs e)
+        {
+            var checkbox = (CheckBox)sender;
+            if (checkbox == null)
+            {
+                return;
+            }
+            var statusData = checkbox.BindingContext as HelperModel;
+
+            var item = viewModel.StatusRecords.FirstOrDefault(x => x.Id == statusData.Id);
+            if (item != null)
+            {
+                item.IsSelected = checkbox.IsChecked;
+            }
         }
     }
 }

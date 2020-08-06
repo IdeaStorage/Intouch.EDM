@@ -93,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Effects\LabelShadowEffect.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
     <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="Services\LocationService.cs" />
@@ -228,6 +229,9 @@
       <Version>2.3.1-rc</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms.InputKit">
+      <Version>3.3.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -282,25 +286,16 @@
     <BundleResource Include="Resources\taskIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\tick.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\tree.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\waitingIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\water.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\announcementIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\approveIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\businesscontinuity.png" />
@@ -313,9 +308,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\earthquake.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\emergencyIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\others.png" />

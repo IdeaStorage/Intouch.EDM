@@ -7,6 +7,7 @@ using Android.Util;
 using Firebase.Iid;
 using ImageCircle.Forms.Plugin.Droid;
 using Plugin.CurrentActivity;
+using Plugin.InputKit;
 using Xamarin.Forms;
 
 namespace Intouch.Edm.Droid
@@ -26,6 +27,7 @@ namespace Intouch.Edm.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
             ImageCircleRenderer.Init();
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
 
             Log.Debug("TOKEN", "Instance token Id:" + FirebaseInstanceId.Instance.Token);
             Helpers.Settings.FirebaseNotification = FirebaseInstanceId.Instance.Token;

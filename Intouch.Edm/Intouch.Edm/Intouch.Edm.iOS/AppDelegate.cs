@@ -14,7 +14,7 @@ namespace Intouch.Edm.iOS
             LoadApplication(new App());
 
             FirebasePushNotificationManager.Initialize(launchOptions, true);
-
+            Plugin.InputKit.Platforms.iOS.Config.Init();
             return base.FinishedLaunching(uiApplication, launchOptions);
         }
 
