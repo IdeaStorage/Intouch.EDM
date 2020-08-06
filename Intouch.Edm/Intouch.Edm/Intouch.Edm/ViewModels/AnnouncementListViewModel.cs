@@ -69,7 +69,6 @@ namespace Intouch.Edm.ViewModels
             {
                 Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
                 announcement.Icon = string.Format("announcement_{0}.png", index % announcementColorModCount);
-                //announcement.Icon = "announcement_2.png";
                 AnnouncementItems.Add(announcement);
                 index++;
             }
