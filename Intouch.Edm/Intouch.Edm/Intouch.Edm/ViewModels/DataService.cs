@@ -126,7 +126,7 @@ namespace Intouch.Edm.Services
 
         async public Task<Dtos.LookupDto.LocationLookup.RootObject> GetLocationAsync(double latitude, double longitude)
         {
-            //await ControlAccessTokenAsync();
+            await ControlAccessTokenAsync();
 
             var url = new Uri(_baseUri, $"/api/services/app/Sites/GetAll?DisablePaging=true&Latitude={latitude}&Longitude={longitude}");
             var response = await SendRequestAsync<Dtos.LookupDto.LocationLookup.RootObject>(url, HttpMethod.Get, _headers);

@@ -142,6 +142,7 @@ namespace Intouch.Edm.ViewModels
             Models.Dtos.LookupDto.LocationLookup.RootObject locationList = await DataService.GetLocationAsync(gpsCoords.Latitude, gpsCoords.Longitude);
 
             LocationCombobox = PickerService.GetLocation(locationList);
+            SelectedLocation = LocationCombobox.Where(x => x.IsSelected).FirstOrDefault();
             SubjectCombobox = PickerService.GetSubject();
             SourceCombobox = PickerService.GetSource(sourceList);
             EventCombobox = PickerService.GetEvent(eventList);
@@ -264,9 +265,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private ComboboxItem _selectedLocation;
+        private ComboboxSelectedVersion _selectedLocation;
 
-        public ComboboxItem SelectedLocation
+        public ComboboxSelectedVersion SelectedLocation
         {
             get
             {
@@ -573,9 +574,9 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private ObservableCollection<ComboboxItem> _LocationCombobox;
+        private ObservableCollection<ComboboxSelectedVersion> _LocationCombobox;
 
-        public ObservableCollection<ComboboxItem> LocationCombobox
+        public ObservableCollection<ComboboxSelectedVersion> LocationCombobox
         {
             get { return _LocationCombobox; }
             set

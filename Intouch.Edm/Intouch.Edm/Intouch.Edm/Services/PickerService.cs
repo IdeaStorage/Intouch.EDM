@@ -60,14 +60,15 @@ namespace Intouch.Edm.Services
             return impactAreaList;
         }
 
-        internal static ObservableCollection<ComboboxItem> GetLocation(Location.RootObject locationList)
+        internal static ObservableCollection<ComboboxSelectedVersion> GetLocation(Location.RootObject locationList)
         {
-            var locations = new ObservableCollection<ComboboxItem>();
+            var locations = new ObservableCollection<ComboboxSelectedVersion>();
             foreach (var location in locationList.result.items)
             {
-                ComboboxItem locationComboboxItem = new ComboboxItem();
+                ComboboxSelectedVersion locationComboboxItem = new ComboboxSelectedVersion();
                 locationComboboxItem.Name = location.site.name;
                 locationComboboxItem.Id = location.site.id;
+                locationComboboxItem.IsSelected = location.nearest;
                 locations.Add(locationComboboxItem);
             }
 
