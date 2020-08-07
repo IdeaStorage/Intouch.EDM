@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using Intouch.Edm.Models.Dtos.JobTiteDto;
+using System;
+using System.Collections.ObjectModel;
 using EventType = Intouch.Edm.Models.Dtos.LookupDto.EventTypeLookup;
 using ImpactArea = Intouch.Edm.Models.Dtos.LookupDto.ImpactAreaLookup;
 using Location = Intouch.Edm.Models.Dtos.LookupDto.LocationLookup;
@@ -70,6 +72,34 @@ namespace Intouch.Edm.Services
             }
 
             return locations;
+        }
+
+        internal static ObservableCollection<ComboboxItem> GetTitles(Root titles)
+        {
+            var titleList = new ObservableCollection<ComboboxItem>();
+            foreach (var title in titles.result.items)
+            {
+                ComboboxItem titleComboboxItem = new ComboboxItem();
+                titleComboboxItem.Name = title.jobTitle.title;
+                titleComboboxItem.Id = title.jobTitle.id;
+                titleList.Add(titleComboboxItem);
+            }
+
+            return titleList;
+        }
+
+        internal static ObservableCollection<ComboboxItem> GetDepartments(Models.Dtos.UnitDto.Root departments)
+        {
+            var departmentList = new ObservableCollection<ComboboxItem>();
+            foreach (var department in departments.result.items)
+            {
+                ComboboxItem departmentComboboxItem = new ComboboxItem();
+                departmentComboboxItem.Name = department.unit.name;
+                departmentComboboxItem.Id = department.unit.id;
+                departmentList.Add(departmentComboboxItem);
+            }
+
+            return departmentList;
         }
     }
 
