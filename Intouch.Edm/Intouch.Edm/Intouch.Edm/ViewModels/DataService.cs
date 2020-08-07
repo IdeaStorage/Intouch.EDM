@@ -349,5 +349,35 @@ namespace Intouch.Edm.Services
             var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers);
             return response.success;
         }
+
+        public async Task<object> GetUser(int userId)
+        {
+            await ControlAccessTokenAsync();
+            var url = new Uri(_baseUri, $"/api/services/app/User/GetUserForEdit?Id={userId}&DisablePaging=true");
+            var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Get);
+            return response;
+        }
+
+        async public Task<Dtos.JobTiteDto.Root> GetJobTitlesAsync()
+        {
+            await ControlAccessTokenAsync();
+
+            var url = new Uri(_baseUri, "/api/services/app/JobTitles/GetAll");
+            var response = await SendRequestAsync<Dtos.JobTiteDto.Root>(url, HttpMethod.Get, _headers);
+
+            return response;
+        }
+
+        async public Task<Dtos.UnitDto.Root> GetUnitsAsync()
+        {
+            await ControlAccessTokenAsync();
+
+            var url = new Uri(_baseUri, "/api/services/app/Units/GetAll");
+            var response = await SendRequestAsync<Dtos.UnitDto.Root>(url, HttpMethod.Get, _headers);
+
+            return response;
+        }
+
+
     }
 }

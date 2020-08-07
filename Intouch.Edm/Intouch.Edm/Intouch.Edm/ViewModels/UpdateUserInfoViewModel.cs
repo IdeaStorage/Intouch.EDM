@@ -10,6 +10,27 @@ namespace Intouch.Edm.ViewModels
 {
     public class UpdateUserInfoViewModel : BaseViewModel
     {
+
+        public UpdateUserInfoViewModel(int userId)
+        {
+            RetrieveTitles();
+            RetrieveDepartments();
+            //var user = GetUser(userId);
+            //if (user != null)
+            //{
+
+            //}
+        }
+
+        public async Task<object> GetUser(int userId)
+        {
+            var user = await DataService.GetUser(userId);
+            return user;
+        }
+
+
+
+
         private ICommand _saveCommand;
 
         public ICommand SaveClicked => _saveCommand
@@ -32,7 +53,14 @@ namespace Intouch.Edm.ViewModels
 
         private async Task UpdateUserInfo()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+            var departmentId = DepartmenId;
+            var titleId = TitleId;
+            var name = UserInfoName;
+            var Surname = UserInfoSurname;
+            var phone = UserInfoMobilePhone;
+            var email = UserInfoMailAddress;
+
+            //await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
             //Kullanıcı bilgi güncellemesi için PUT methodunun inputları burada hazırlanacak.
         }
 
@@ -219,12 +247,14 @@ namespace Intouch.Edm.ViewModels
 
         public async void RetrieveDepartments()
         {
-            //DepartmentCombobox datasource dolacak.
+            var departments = await DataService.GetUnitsAsync();
+            DepartmentCombobox = PickerService.GetDepartments(departments);
         }
 
         public async void RetrieveTitles()
         {
-            //TitleCombobox datasource dolacak.
+            var titles = await DataService.GetJobTitlesAsync();
+            TitleCombobox = PickerService.GetTitles(titles);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Intouch.Edm.Services
         Task<ApiAuthenticationToken> GetAuthTokenAsync(User user);
 
         Task<Dtos.TaskListDto.RootObject> GetTasksAsync(int userId);
-
+        Task<object> GetUser(int userId);
         Task<Dtos.TaskOptionDto.RootObject> GetTaskOptionsAsync(string taskId);
 
         Task<IList<TaskItem>> GetTaskAsync(string taskId);
@@ -63,5 +63,8 @@ namespace Intouch.Edm.Services
         Task<bool> SetReadNotification(Dtos.AnnouncementSetReadDto.AnnouncementSetDto notificaon);
 
         Task<bool> SetReadNotifications();
+
+        Task<Dtos.JobTiteDto.Root> GetJobTitlesAsync();
+        Task<Dtos.UnitDto.Root> GetUnitsAsync();
     }
 }
