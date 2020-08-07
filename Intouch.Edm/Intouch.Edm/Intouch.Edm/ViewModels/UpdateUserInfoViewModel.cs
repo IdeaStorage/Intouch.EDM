@@ -1,6 +1,5 @@
 ﻿using Intouch.Edm.Services;
 using Intouch.Edm.Views;
-using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -10,7 +9,6 @@ namespace Intouch.Edm.ViewModels
 {
     public class UpdateUserInfoViewModel : BaseViewModel
     {
-
         public UpdateUserInfoViewModel(int userId)
         {
             RetrieveTitles();
@@ -18,7 +16,6 @@ namespace Intouch.Edm.ViewModels
             //var user = GetUser(userId);
             //if (user != null)
             //{
-
             //}
         }
 
@@ -28,9 +25,6 @@ namespace Intouch.Edm.ViewModels
             return user;
         }
 
-
-
-
         private ICommand _saveCommand;
 
         public ICommand SaveClicked => _saveCommand
@@ -38,16 +32,11 @@ namespace Intouch.Edm.ViewModels
 
         private async Task ExecuteSaveClicked()
         {
-            string selectedAction = await Application.Current.MainPage.DisplayActionSheet("Kaydetmek istediğinize emin misiniz?", "Evet", "Hayır");
-            switch (selectedAction)
+            var result = await PopupSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, "Kaydetmek istediğinize emin misiniz?");
+
+            if (result)
             {
-                case "Evet":
-                    await UpdateUserInfo();
-
-                    break;
-
-                case "Hayır":
-                    break;
+                await UpdateUserInfo();
             }
         }
 
