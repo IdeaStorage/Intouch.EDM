@@ -20,6 +20,11 @@ namespace Intouch.Edm.Models.Dtos.TaskOptionDto
 
     public class Item
     {
+        public Item()
+        {
+            checkedOption = new CheckedOption();
+        }
+
         public CheckedOption checkedOption { get; set; }
         public string userTaskText { get; set; }
     }
