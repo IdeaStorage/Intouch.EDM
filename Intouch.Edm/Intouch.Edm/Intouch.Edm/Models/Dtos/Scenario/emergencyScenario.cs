@@ -9,7 +9,7 @@ namespace Intouch.Edm.Models.Dtos.Scenario
 
     public class Item
     {
-        public object commiteeApprovalId { get; set; }
+        public string commiteeApprovalId { get; set; }
         public string name { get; set; }
         public string parent { get; set; }
         public bool hasSubordinates { get; set; }

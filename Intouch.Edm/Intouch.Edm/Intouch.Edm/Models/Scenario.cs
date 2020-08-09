@@ -27,5 +27,6 @@ namespace Intouch.Edm.Models
         public string ScenarioId { get; set; }
 
         public bool IsWaiting { get; set; }
+        public string commiteeApprovalId { get; set; }
     }
 }
