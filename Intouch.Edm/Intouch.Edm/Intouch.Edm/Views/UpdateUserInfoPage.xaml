@@ -104,7 +104,7 @@
                                                SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
                                                AutomationProperties.HelpText="Seçiniz"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
 
                     <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Ünvan" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
@@ -120,7 +120,7 @@
                                                SelectedItem="{Binding SelectedTitle,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
                                                AutomationProperties.HelpText="Seçiniz"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
 
                     <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource LableStyle}" Text="Mail Adresi" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
