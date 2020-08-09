@@ -40,7 +40,8 @@ namespace Intouch.Edm.ViewModels
                 StatusRecords.Add(new HelperModel
                 {
                     Name = item.checkedOption.text,
-                    IsSelected = item.checkedOption.completed
+                    IsSelected = item.checkedOption.completed,
+                    UserFullName = item.checkedOption.userFullName
                 });
             }
         }

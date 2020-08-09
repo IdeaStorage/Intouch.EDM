@@ -37,7 +37,7 @@
                                         <Image Source="tick.png"  IsVisible="{Binding IsSelected}"
                                     VerticalOptions="Center"  HeightRequest="40"
                                     WidthRequest="40" />
-                                        <Label Text="{Binding Id}" HorizontalOptions="StartAndExpand" />
+                                        <Label Text="{Binding UserFullName}" HorizontalOptions="StartAndExpand" />
                                     </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>

@@ -41,7 +41,9 @@ namespace Intouch.Edm.ViewModels
                 {
                     Name = item.checkedOption.text,
                     Id = item.checkedOption.id,
-                    IsSelected = item.checkedOption.completed
+                    IsSelected = item.checkedOption.completed,
+                    UserFullName = item.checkedOption.userFullName,
+                    UserId = item.checkedOption.userId
                 });
             }
         }
