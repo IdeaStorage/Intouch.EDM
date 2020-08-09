@@ -41,6 +41,7 @@
                         HorizontalOptions="FillAndExpand"
 						VerticalOptions="Fill"
 						Text="ARA - Kullanıcı ismi Dinamik"
+                        Command="{Binding CallCommand}"
                         Margin="3,5,3,50" />
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                 <ListView x:Name="TaskListView"

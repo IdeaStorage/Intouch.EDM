@@ -1,5 +1,11 @@
 ﻿using Intouch.Edm.Models;
+using Intouch.Edm.Views;
+using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace Intouch.Edm.ViewModels
 {
@@ -58,6 +64,44 @@ namespace Intouch.Edm.ViewModels
             {
                 _statusRecords = value;
                 OnPropertyChanged();
+            }
+        }
+
+        private ICommand _callCommand;
+
+        public ICommand CallCommand => _callCommand
+                ?? (_callCommand = new Command(async () => await ExecuteCallCommand()));
+
+        private async System.Threading.Tasks.Task ExecuteCallCommand()
+        {
+            string text = "05511813450";
+            if (!string.IsNullOrEmpty(text))
+            {
+                var result = await CallConfirmSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, text);
+
+                if (result)
+                {
+                    await Call(text);
+                }
+            }
+            
+           
+           
+        }
+        public async Task Call(string number)
+        {
+            try
+            {
+                PhoneDialer.Open(number);
+            }
+
+            catch (FeatureNotSupportedException ex)
+            {
+                // Phone Dialer is not supported on this device.  
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.  
             }
         }
     }

@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Intouch.Edm.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopupSheet : PopupPage
+    public partial class CallConfirmSheet : PopupPage
     {
         private readonly Action<bool> setResultAction;
 
@@ -24,14 +24,13 @@ namespace Intouch.Edm.Views
             this.Navigation.PopPopupAsync().ConfigureAwait(false);
         }
 
-        public PopupSheet(Action<bool> setResultAction, string message)
+        public CallConfirmSheet(Action<bool> setResultAction, string phoneNumber)
         {
             InitializeComponent();
             this.setResultAction = setResultAction;
-            MessageLabel.Text = message;
+            PhoneNumberButton.Text = phoneNumber;
         }
-
-        public PopupSheet()
+        public CallConfirmSheet()
         {
             InitializeComponent();
         }
@@ -45,7 +44,7 @@ namespace Intouch.Edm.Views
                 completionSource.TrySetResult(didConfirm);
             }
 
-            var popup = new PopupSheet(callback, message);
+            var popup = new CallConfirmSheet(callback, message);
             await navigation.PushPopupAsync(popup);
             return await completionSource.Task;
         }
