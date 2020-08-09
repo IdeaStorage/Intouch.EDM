@@ -369,4 +369,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\taskDetailIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\announcement_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\announcement_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\announcement_0.png" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Intouch.Edm.Views.Templates.AnnouncementListTemplate">
     <ContentView.Content>
         <StackLayout
@@ -9,9 +8,9 @@
 		Orientation="Horizontal"
 		Padding="10, 5, 10, 5"
 		VerticalOptions="Center">
-            <Image Grid.Row="0" Grid.Column="0" HeightRequest="64" WidthRequest="64" Source="{Binding Icon}" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+            <Image Grid.Row="0" Grid.Column="0" Source="{Binding Icon}" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
             </Image>
-          <StackLayout
+            <StackLayout
 			Padding="3, 0, 3, 0"
 			Spacing="0"
 			Orientation="Horizontal"
