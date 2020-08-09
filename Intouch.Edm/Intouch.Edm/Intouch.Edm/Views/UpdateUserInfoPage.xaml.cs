@@ -9,10 +9,24 @@ namespace Intouch.Edm.Views
     {
         private UpdateUserInfoViewModel viewModel;
 
-        public UpdateUserInfoPage(int userId)
+        public UpdateUserInfoPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new UpdateUserInfoViewModel(userId);
+            BindingContext = viewModel = new UpdateUserInfoViewModel();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (viewModel != null)
+            {
+                await viewModel.Init();
+            }
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

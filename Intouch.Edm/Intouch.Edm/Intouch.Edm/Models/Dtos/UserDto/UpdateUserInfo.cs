@@ -27,6 +27,11 @@ namespace Intouch.Edm.Models.Dtos.UserDto
 
         public class Root
         {
+            public Root()
+            {
+                user = new User();
+            }
+
             public User user { get; set; }
             public List<string> assignedRoleNames { get; set; }
             public bool sendActivationEmail { get; set; }
@@ -34,5 +39,4 @@ namespace Intouch.Edm.Models.Dtos.UserDto
             public List<int> organizationUnits { get; set; }
         }
     }
-
 }

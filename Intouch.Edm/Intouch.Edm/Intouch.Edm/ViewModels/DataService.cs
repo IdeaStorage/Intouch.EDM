@@ -354,7 +354,7 @@ namespace Intouch.Edm.Services
         {
             await ControlAccessTokenAsync();
             var url = new Uri(_baseUri, $"/api/services/app/User/GetUserForEdit?Id={userId}");
-            var response = await SendRequestAsync<Dtos.UserDto.Root>(url, HttpMethod.Get);
+            var response = await SendRequestAsync<Dtos.UserDto.Root>(url, HttpMethod.Get, _headers);
             return response;
         }
 
@@ -385,7 +385,7 @@ namespace Intouch.Edm.Services
                 new Uri(_baseUri, $"/api/services/app/CheckedOptions/GetScenarioTasksByCommiteeApprovalId?CommiteeApprovalId={commiteApprovalId}") :
                 new Uri(_baseUri, $"/api/services/app/CheckedOptions/GetScenarioTasksByCommiteeApprovalId?CommiteeApprovalId={commiteApprovalId}&UserId={userId}");
 
-            var response = await SendRequestAsync<Dtos.ScenarioTaskOptionsDto.Root>(url, HttpMethod.Get);
+            var response = await SendRequestAsync<Dtos.ScenarioTaskOptionsDto.Root>(url, HttpMethod.Get, _headers);
             return response;
         }
 

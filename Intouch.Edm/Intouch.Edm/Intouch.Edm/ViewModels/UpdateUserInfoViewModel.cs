@@ -1,5 +1,6 @@
 ﻿using Intouch.Edm.Services;
 using Intouch.Edm.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -9,14 +10,17 @@ namespace Intouch.Edm.ViewModels
 {
     public class UpdateUserInfoViewModel : BaseViewModel
     {
-        public UpdateUserInfoViewModel(int userId)
+        public UpdateUserInfoViewModel()
         {
-            RetrieveTitles();
-            RetrieveDepartments();
-            var user = GetUser(userId);
-            if (user?.Result.result.user != null)
+        }
+
+        public async Task<Models.Dtos.UserDto.Root> GetUser(int userId)
+        {
+            var user = await DataService.GetUser(Convert.ToInt32(Helpers.Settings.UserId));
+
+            if (user?.result.user != null)
             {
-                var userInfo = user.Result.result.user;
+                var userInfo = user.result.user;
                 UserInfoName = userInfo.name;
                 UserInfoSurname = userInfo.surname;
                 UserInfoMobilePhone = userInfo.phoneNumber;
@@ -33,11 +37,6 @@ namespace Intouch.Edm.ViewModels
                 TitleId = Convert.ToInt32(0);
                 DepartmenId = Convert.ToInt32(0);
             }
-        }
-
-        public async Task<Models.Dtos.UserDto.Root> GetUser(int userId)
-        {
-            var user = await DataService.GetUser(userId);
             return user;
         }
 
@@ -65,10 +64,10 @@ namespace Intouch.Edm.ViewModels
             var phone = UserInfoMobilePhone;
             var email = UserInfoMailAddress;
 
-            var user = GetUser(Convert.ToInt32(Helpers.Settings.UserId));
-            if (user?.Result.result.user != null)
+            var user = await GetUser(Convert.ToInt32(Helpers.Settings.UserId));
+            if (user?.result.user != null)
             {
-                var userInfo = user.Result.result.user;
+                var userInfo = user.result.user;
                 userInfo.name = name;
                 userInfo.surname = surname;
                 userInfo.phoneNumber = phone;
@@ -79,11 +78,13 @@ namespace Intouch.Edm.ViewModels
                 {
                     Models.Dtos.UserDto.UpdateUserInfo.Root updateUserInfo = new Models.Dtos.UserDto.UpdateUserInfo.Root();
                     updateUserInfo.user.name = userInfo.name;
+                    updateUserInfo.user.userName = userInfo.userName;
                     updateUserInfo.user.surname = userInfo.surname;
                     updateUserInfo.user.phoneNumber = userInfo.phoneNumber;
                     updateUserInfo.user.emailAddress = userInfo.emailAddress;
                     updateUserInfo.user.jobTitleId = Convert.ToInt32(userInfo.jobTitleId);
                     updateUserInfo.user.unitId = Convert.ToInt32(userInfo.unitId);
+                    updateUserInfo.assignedRoleNames = new System.Collections.Generic.List<string>();
                     updateUserInfo.user.password = Convert.ToString(userInfo.password);
                     updateUserInfo.user.isActive = userInfo.isActive;
                     updateUserInfo.user.shouldChangePasswordOnNextLogin = userInfo.shouldChangePasswordOnNextLogin;
@@ -94,18 +95,18 @@ namespace Intouch.Edm.ViewModels
                 }
                 catch (Exception ex)
                 {
-
+                    Console.Write("User Update edilirken hata alındı:" + ex.Message);
                 }
             }
 
-
-            //await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
-            //Kullanıcı bilgi güncellemesi için PUT methodunun inputları burada hazırlanacak.
+            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
 
         internal async Task Init()
         {
-            // Method intentionally left empty.
+            await RetrieveTitles();
+            await RetrieveDepartments();
+            await GetUser(Convert.ToInt32(Helpers.Settings.UserId));
         }
 
         #region DepartmenSelection
@@ -284,13 +285,13 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        public async void RetrieveDepartments()
+        public async Task RetrieveDepartments()
         {
             var departments = await DataService.GetUnitsAsync();
             DepartmentCombobox = PickerService.GetDepartments(departments);
         }
 
-        public async void RetrieveTitles()
+        public async Task RetrieveTitles()
         {
             var titles = await DataService.GetJobTitlesAsync();
             TitleCombobox = PickerService.GetTitles(titles);
