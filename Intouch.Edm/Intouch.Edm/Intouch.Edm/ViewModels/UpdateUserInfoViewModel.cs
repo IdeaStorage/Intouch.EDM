@@ -15,14 +15,29 @@ namespace Intouch.Edm.ViewModels
         {
             RetrieveTitles();
             RetrieveDepartments();
-            //var user = GetUser(userId);
-            //if (user != null)
-            //{
-
-            //}
+            var user = GetUser(userId);
+            if (user?.Result.result.user != null)
+            {
+                var userInfo = user.Result.result.user;
+                UserInfoName = userInfo.name;
+                UserInfoSurname = userInfo.surname;
+                UserInfoMobilePhone = userInfo.phoneNumber;
+                UserInfoMailAddress = userInfo.emailAddress;
+                TitleId = Convert.ToInt32(userInfo.jobTitleId);
+                DepartmenId = Convert.ToInt32(userInfo.unitId);
+            }
+            else
+            {
+                UserInfoName = "SefaTest";
+                UserInfoSurname = "SefaTest";
+                UserInfoMobilePhone = "5548218081";
+                UserInfoMailAddress = "m.sefaguller@gmail.com";
+                TitleId = Convert.ToInt32(0);
+                DepartmenId = Convert.ToInt32(0);
+            }
         }
 
-        public async Task<object> GetUser(int userId)
+        public async Task<Models.Dtos.UserDto.Root> GetUser(int userId)
         {
             var user = await DataService.GetUser(userId);
             return user;
@@ -56,9 +71,43 @@ namespace Intouch.Edm.ViewModels
             var departmentId = DepartmenId;
             var titleId = TitleId;
             var name = UserInfoName;
-            var Surname = UserInfoSurname;
+            var surname = UserInfoSurname;
             var phone = UserInfoMobilePhone;
             var email = UserInfoMailAddress;
+
+            var user = GetUser(Convert.ToInt32(Helpers.Settings.UserId));
+            if (user?.Result.result.user != null)
+            {
+                var userInfo = user.Result.result.user;
+                userInfo.name = name;
+                userInfo.surname = surname;
+                userInfo.phoneNumber = phone;
+                userInfo.emailAddress = email;
+                userInfo.unitId = departmentId;
+                userInfo.jobTitleId = titleId;
+                try
+                {
+                    Models.Dtos.UserDto.UpdateUserInfo.Root updateUserInfo = new Models.Dtos.UserDto.UpdateUserInfo.Root();
+                    updateUserInfo.user.name = userInfo.name;
+                    updateUserInfo.user.surname = userInfo.surname;
+                    updateUserInfo.user.phoneNumber = userInfo.phoneNumber;
+                    updateUserInfo.user.emailAddress = userInfo.emailAddress;
+                    updateUserInfo.user.jobTitleId = Convert.ToInt32(userInfo.jobTitleId);
+                    updateUserInfo.user.unitId = Convert.ToInt32(userInfo.unitId);
+                    updateUserInfo.user.password = Convert.ToString(userInfo.password);
+                    updateUserInfo.user.isActive = userInfo.isActive;
+                    updateUserInfo.user.shouldChangePasswordOnNextLogin = userInfo.shouldChangePasswordOnNextLogin;
+                    updateUserInfo.user.isTwoFactorEnabled = userInfo.isTwoFactorEnabled;
+                    updateUserInfo.user.isLockoutEnabled = userInfo.isLockoutEnabled;
+
+                    await DataService.CreateOrUpdateUserAsync(updateUserInfo);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
 
             //await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
             //Kullanıcı bilgi güncellemesi için PUT methodunun inputları burada hazırlanacak.

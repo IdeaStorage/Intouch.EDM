@@ -33,7 +33,7 @@ namespace Intouch.Edm.Views
             {
                 return;
             }
-
+            var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId); //Kayıt oplmadıgından debugta çalşığ çalışmadıgnın testi için eklendi.
             await Application.Current.MainPage.Navigation.PushAsync(new ScenarioApprovePage(new ScenarioApproveViewModel(scenario)));
         }
 
@@ -44,8 +44,9 @@ namespace Intouch.Edm.Views
                 return;
             }
             TaskItem taskItem = new TaskItem();
-            var options = await dataService.GetTaskOptionsAsync(scenario.Id); //burada Intouch tarafından senaryodan task optionslarına ulaşılması için geliştirme yapğılması gerekir.
-            taskItem.Options = options;
+            var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId); //burada Intouch tarafından senaryodan task optionslarına ulaşılması için geliştirme yapğılması gerekir.
+
+            //taskItem.Options = options;
 
             await Application.Current.MainPage.Navigation.PushAsync(new ScenarioTaskOptionsPage(new ScenarioTaskOptionsViewModel(taskItem)));
         }

@@ -350,11 +350,11 @@ namespace Intouch.Edm.Services
             return response.success;
         }
 
-        public async Task<object> GetUser(int userId)
+        public async Task<Dtos.UserDto.Root> GetUser(int userId)
         {
             await ControlAccessTokenAsync();
-            var url = new Uri(_baseUri, $"/api/services/app/User/GetUserForEdit?Id={userId}&DisablePaging=true");
-            var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Get);
+            var url = new Uri(_baseUri, $"/api/services/app/User/GetUserForEdit?Id={userId}");
+            var response = await SendRequestAsync<Dtos.UserDto.Root>(url, HttpMethod.Get);
             return response;
         }
 
@@ -378,6 +378,24 @@ namespace Intouch.Edm.Services
             return response;
         }
 
+        public async Task<Dtos.ScenarioTaskOptionsDto.Root> GetScenarioTaskOptions(string commiteApprovalId, int? userId = null)
+        {
+            await ControlAccessTokenAsync();
+            var url = userId == null ?
+                new Uri(_baseUri, $"/api/services/app/CheckedOptions/GetScenarioTasksByCommiteeApprovalId?CommiteeApprovalId={commiteApprovalId}") :
+                new Uri(_baseUri, $"/api/services/app/CheckedOptions/GetScenarioTasksByCommiteeApprovalId?CommiteeApprovalId={commiteApprovalId}&UserId={userId}");
 
+            var response = await SendRequestAsync<Dtos.ScenarioTaskOptionsDto.Root>(url, HttpMethod.Get);
+            return response;
+        }
+
+        public async Task<bool> CreateOrUpdateUserAsync(Dtos.UserDto.UpdateUserInfo.Root userInfo)
+        {
+            await ControlAccessTokenAsync();
+
+            var url = new Uri(_baseUri, "/api/services/app/User/CreateOrUpdateUser");
+            var response = await SendRequestAsync<Dtos.NewAnnouncementReturnDto.RootObject>(url, HttpMethod.Post, _headers, userInfo);
+            return response.success;
+        }
     }
 }
