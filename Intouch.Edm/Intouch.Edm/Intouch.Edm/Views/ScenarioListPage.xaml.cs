@@ -1,4 +1,5 @@
 ﻿using Intouch.Edm.Models;
+using Intouch.Edm.Models.Dtos.TaskOptionDto;
 using Intouch.Edm.Models.Enums;
 using Intouch.Edm.Services;
 using Intouch.Edm.ViewModels;
@@ -44,9 +45,23 @@ namespace Intouch.Edm.Views
                 return;
             }
             TaskItem taskItem = new TaskItem();
+            taskItem.Options = new RootObject();
+            taskItem.Options.result = new Models.Dtos.TaskOptionDto.Result();
+            taskItem.Options.result.items = new System.Collections.Generic.List<Item>();
+            Item item = new Item();
+            CheckedOption checkedOption = new CheckedOption();
             var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId); //burada Intouch tarafından senaryodan task optionslarına ulaşılması için geliştirme yapğılması gerekir.
-
-            //taskItem.Options = options;
+            foreach (var option in options.result)
+            {
+                item = new Item();
+                item.checkedOption.id = option.id;
+                item.checkedOption.text = option.text;
+                item.checkedOption.userId = option.userId;
+                item.checkedOption.userFullName = option.userFullName;
+                item.checkedOption.completed = option.completed;
+                taskItem.Options.result.items.Add(item);
+                taskItem.Options.result.totalCount = options.result.Count;
+            }
 
             await Application.Current.MainPage.Navigation.PushAsync(new ScenarioTaskOptionsPage(new ScenarioTaskOptionsViewModel(taskItem)));
         }

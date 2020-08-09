@@ -14,6 +14,8 @@ namespace Intouch.Edm.Models.Dtos.TaskOptionDto
         public Nullable<DateTime> completedTime { get; set; }
         public string userTaskId { get; set; }
         public int id { get; set; }
+        public int userId { get; set; }
+        public string userFullName { get; set; }
     }
 
     public class Item
