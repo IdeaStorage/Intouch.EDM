@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="Intouch.Edm.Views.ScenarioTaskOptionsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -12,6 +13,7 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
     <ScrollView>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
@@ -23,23 +25,50 @@
                         <ColumnDefinition Width="40*" />
                         <ColumnDefinition Width="60*" />
                     </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="adkDetail.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
+                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
                 </Grid>
             </StackLayout>
+            <Label Text="Görev ve Görevli Kişiler" Font="Bold,25" Margin="0,15,0,5" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
-                <ListView x:Name="TaskListView" ItemsSource="{Binding StatusRecords}"  HeightRequest="250">
+                <ListView x:Name="TaskListView"
+                          ItemsSource="{Binding StatusRecords}"
+                          HasUnevenRows="True"
+                          SeparatorVisibility="None"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="Fill"
+                          Margin="20,10,20,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout HorizontalOptions="FillAndExpand"
-                                    Orientation="Horizontal" Padding="10  ">
-                                        <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand" />
-                                        <Image Source="tick.png"  IsVisible="{Binding IsSelected}"
-                                    VerticalOptions="Center"  HeightRequest="40"
-                                    WidthRequest="40" />
-                                        <Label Text="{Binding UserFullName}" HorizontalOptions="StartAndExpand" />
-                                    </StackLayout>
-                                </ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" HasShadow="True" OutlineColor="{StaticResource NavigationPrimary}">
+                                        <input:CheckBox Text="{Binding Name}"
+                                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                        Type="Material"
+                                                        IsEnabled="False"
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Color="#36b87a"
+                                                        TextColor="Black"
+                                                        BindingContext="{Binding .}" />
+                                    </Frame>
+                                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" HasShadow="True" OutlineColor="{StaticResource NavigationPrimary}">
+                                        <Label  HorizontalOptions="StartAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding UserFullName}"
+                                                      TextColor="{StaticResource NavigationPrimary}"
+                                                      TextDecorations="Underline">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Frame>
+                                </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

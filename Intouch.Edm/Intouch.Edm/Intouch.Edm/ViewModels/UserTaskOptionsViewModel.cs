@@ -6,6 +6,7 @@ namespace Intouch.Edm.ViewModels
     public class UserTaskOptionsViewModel : BaseViewModel
     {
         private TaskItem _task;
+
         public TaskItem Task
         {
             get { return _task; }
@@ -41,12 +42,15 @@ namespace Intouch.Edm.ViewModels
                 {
                     Name = item.checkedOption.text,
                     IsSelected = item.checkedOption.completed,
-                    UserFullName = item.checkedOption.userFullName
+                    UserFullName = item.checkedOption.userFullName,
+                    Id = item.checkedOption.id,
+                    UserId = item.checkedOption.userId
                 });
             }
         }
 
         private ObservableCollection<HelperModel> _statusRecords;
+
         public ObservableCollection<HelperModel> StatusRecords
         {
             get { return _statusRecords; }

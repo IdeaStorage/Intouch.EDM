@@ -28,15 +28,6 @@ namespace Intouch.Edm.ViewModels
                 TitleId = Convert.ToInt32(userInfo.jobTitleId);
                 DepartmenId = Convert.ToInt32(userInfo.unitId);
             }
-            else
-            {
-                UserInfoName = "SefaTest";
-                UserInfoSurname = "SefaTest";
-                UserInfoMobilePhone = "5548218081";
-                UserInfoMailAddress = "m.sefaguller@gmail.com";
-                TitleId = Convert.ToInt32(0);
-                DepartmenId = Convert.ToInt32(0);
-            }
             return user;
         }
 
