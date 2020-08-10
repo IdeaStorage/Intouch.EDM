@@ -147,17 +147,26 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="Center" HasShadow="True" OutlineColor="{StaticResource NavigationPrimary}">
+                                <Grid Padding="0,1,0,1" BackgroundColor="{StaticResource NavigationPrimary}" VerticalOptions="Fill" ColumnSpacing="1" RowSpacing="1" HorizontalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="#fafafa" Margin="1,0,1,0"></BoxView>
                                     <input:CheckBox Text="{Binding Name}"
-                                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                                        Type="Material"
-                                                        VerticalOptions="Center"
-                                                        HorizontalOptions="StartAndExpand"
-                                                        Color="#36b87a"
-                                                        TextColor="Black"
-                                                        CheckChanged="CheckBox_CheckChanged"
-                                                        BindingContext="{Binding .}" />
-                                </Frame>
+                                                    Grid.Row="0" Grid.Column="0"
+                                                    IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                    Type="Material"
+                                                    VerticalOptions="Fill"
+                                                    Margin="3,1,0,0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Color="#36b87a"
+                                                    TextColor="Black"
+                                                    CheckChanged="CheckBox_CheckChanged"
+                                                    BindingContext="{Binding .}" />
+                                </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

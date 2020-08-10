@@ -55,10 +55,6 @@ namespace Intouch.Edm.ViewModels
             {
                 Debug.WriteLine(ex);
             }
-            finally
-            {
-                IsBusy = false;
-            }
         }
 
         public async void LoadMoreItems(Scenario currentItem, int? statusId = null)
@@ -73,7 +69,6 @@ namespace Intouch.Edm.ViewModels
                 GetScenarios(statusId, null, _resultCount);
                 AllScenarioItems.ReplaceRange(ScenarioItems);
                 _totalCount = ScenarioItems.Count;
-                IsBusy = false;
             }
         }
 
@@ -104,6 +99,7 @@ namespace Intouch.Edm.ViewModels
                     };
                     ScenarioItems.Add(scenario);
                 }
+                IsBusy = false;
             }
         }
     }

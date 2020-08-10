@@ -82,12 +82,6 @@
                               CachingStrategy="RecycleElement"
                               ItemSelected="OnItemSelectedToCheckDetailOptions">
                 </ListView>
-                <ActivityIndicator
-                            x:Name="ApprovedProgress"
-                            Color="{StaticResource NavigationPrimary}"
-                            IsEnabled="{Binding IsBusy}"
-                            IsVisible="{Binding IsBusy}"
-                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
             </StackLayout>
         </ContentPage>
         <ContentPage Title="Reddedilenler" x:Name="RejectedFilter">
@@ -116,12 +110,6 @@
                               CachingStrategy="RecycleElement"
                               ItemSelected="OnItemSelected">
                 </ListView>
-                <ActivityIndicator
-                            x:Name="RejectedProgress"
-                            Color="{StaticResource NavigationPrimary}"
-                            IsEnabled="{Binding IsBusy}"
-                            IsVisible="{Binding IsBusy}"
-                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
             </StackLayout>
         </ContentPage>
     </TabbedPage.Children>
