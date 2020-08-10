@@ -8,6 +8,7 @@ namespace Intouch.Edm.Views
     public partial class UserTaskOptionsPage : ContentPage
     {
         private UserTaskOptionsViewModel viewModel;
+
         public UserTaskOptionsPage(UserTaskOptionsViewModel viewModel)
         {
             InitializeComponent();

@@ -14,20 +14,38 @@
                     <ColumnDefinition Width="60*" />
                 </Grid.ColumnDefinitions>
                 <Image Grid.Row="0" Grid.Column="0" Source="adkDetail.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
-                <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
+                <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="0,5,0,5" />
             </Grid>
         </StackLayout>
-        <Label Text="Görev ve Görevli Kişiler" Font="Bold,25" Margin="0,15,0,5" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
-        <Button CornerRadius="7"
-                        FontSize="Large"
-                        TextColor="White"
-                        BackgroundColor="#00a9ab"
-                        FlexLayout.AlignSelf="Stretch"
-                        HorizontalOptions="FillAndExpand"
-						VerticalOptions="Fill"
-						Text="ARA - Kullanıcı ismi Dinamik"
-                        Command="{Binding CallCommand}"
-                        Margin="3,5,3,50" />
+
+        <Label Text="Görev ve Görevli Kişiler" Font="Bold,25" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Margin="50,0,50,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="60*" />
+                </Grid.ColumnDefinitions>
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#fafafa" Margin="1,1,1,1"></BoxView>
+                <ImageButton Grid.Row="0" Grid.Column="0" Source="callIcon.png" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,0,5" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserFullName}" Font="Bold,23" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="0,5,0,5" />
+            </Grid>
+        </StackLayout>
+
+        <Label Font="Bold,20" Margin="0,0,0,5" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="( " />
+                    <Span Text="{Binding TotalTaskCount}" TextColor="#ec292e" />
+                    <Span Text=" / " />
+                    <Span Text="{Binding CompletedTaskCount}" TextColor="#0da858" />
+                    <Span Text=" )" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
             <ListView x:Name="TaskListView"
                           ItemsSource="{Binding StatusRecords}"

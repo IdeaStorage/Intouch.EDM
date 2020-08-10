@@ -381,4 +381,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\announcement_0.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\callIcon.png" />
+  </ItemGroup>
 </Project>

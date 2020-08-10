@@ -2,6 +2,7 @@
 using Intouch.Edm.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -23,6 +24,42 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
+        private string _userFullName;
+
+        public string UserFullName
+        {
+            get { return _userFullName; }
+            set
+            {
+                _userFullName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _totalTaskCount;
+
+        public int TotalTaskCount
+        {
+            get { return _totalTaskCount; }
+            set
+            {
+                _totalTaskCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _completedTaskCount;
+
+        public int CompletedTaskCount
+        {
+            get { return _completedTaskCount; }
+            set
+            {
+                _completedTaskCount = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<TaskDetail> _taskDetailLists;
 
         public ObservableCollection<TaskDetail> TaskDetailLists
@@ -38,6 +75,9 @@ namespace Intouch.Edm.ViewModels
         public UserTaskOptionsViewModel(TaskItem taskItem)
         {
             Task = taskItem;
+            UserFullName = taskItem.Options.result.items.FirstOrDefault().checkedOption.userFullName;
+            TotalTaskCount = taskItem.Options.result.items.Count;
+            CompletedTaskCount = taskItem.Options.result.items.Count(a => a.checkedOption.completed);
             TaskDetailLists = new ObservableCollection<TaskDetail>();
 
             StatusRecords = new ObservableCollection<HelperModel>();
@@ -74,7 +114,7 @@ namespace Intouch.Edm.ViewModels
 
         private async System.Threading.Tasks.Task ExecuteCallCommand()
         {
-            string text = "05511813450";
+            string text = "11111111111";
             if (!string.IsNullOrEmpty(text))
             {
                 var result = await CallConfirmSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, text);
@@ -84,24 +124,21 @@ namespace Intouch.Edm.ViewModels
                     await Call(text);
                 }
             }
-            
-           
-           
         }
+
         public async Task Call(string number)
         {
             try
             {
                 PhoneDialer.Open(number);
             }
-
             catch (FeatureNotSupportedException ex)
             {
-                // Phone Dialer is not supported on this device.  
+                // Phone Dialer is not supported on this device.
             }
             catch (Exception ex)
             {
-                // Other error has occurred.  
+                // Other error has occurred.
             }
         }
     }
