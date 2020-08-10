@@ -95,7 +95,7 @@ namespace Intouch.Edm.ViewModels
                         PictureUrl = x.pictureUrl,
                         ScenarioId = x.scenarioId,
                         IsWaiting = x.approveStatus == 0,
-                        commiteeApprovalId = "E43AC9A3-99D4-4541-B2F6-72AECAFFE772" //test amaçlı olarak sabit verildi. x.commiteeApprovalId
+                        commiteeApprovalId = x.commiteeApprovalId
                     };
                     ScenarioItems.Add(scenario);
                 }
