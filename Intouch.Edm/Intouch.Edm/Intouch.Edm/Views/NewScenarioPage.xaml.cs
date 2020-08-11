@@ -33,6 +33,8 @@ namespace Intouch.Edm.Views
 
         protected override bool OnBackButtonPressed()
         {
+            viewModel.IsBusy = false;
+            viewModel.IsVisibleStartButton = true;
             return true;
         }
     }
