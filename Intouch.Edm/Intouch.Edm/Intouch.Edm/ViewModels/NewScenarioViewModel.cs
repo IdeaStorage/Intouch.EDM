@@ -42,7 +42,7 @@ namespace Intouch.Edm.ViewModels
             if (result)
             {
                 await CreateNotification();
-            }            
+            }
         }
 
         internal async Task Init()
@@ -180,10 +180,7 @@ namespace Intouch.Edm.ViewModels
                 selectedEventId == Convert.ToInt32(Events.Earthquake) ||
                 selectedEventId == Convert.ToInt32(Events.Pandemic))
             {
-                if (selectedEventId != Convert.ToInt32(Events.Pandemic))
-                {
-                    IsEnabledEvent = false;
-                }
+                IsEnabledEvent = IsEventEnabledEvent = false;
 
                 if (selectedEventId == Convert.ToInt32(Events.Earthquake) && SourceCombobox.Count == 1)
                 {
@@ -195,6 +192,8 @@ namespace Intouch.Edm.ViewModels
             else if (selectedEventId == Convert.ToInt32(Events.BusinessContuniuty))
             {
                 SelectedSubject = SubjectCombobox.First(p => p.Id == 2);
+                IsEventEnabledEvent = true;
+                IsEnabledEvent = false;
             }
             else if (selectedEventId == Convert.ToInt32(Events.Other))
             {
@@ -213,6 +212,20 @@ namespace Intouch.Edm.ViewModels
             set
             {
                 SetProperty(ref _isEnabledEvent, value);
+            }
+        }
+
+        private bool _isEventEnabledEvent = true;
+
+        public bool IsEventEnabledEvent
+        {
+            get
+            {
+                return _isEventEnabledEvent;
+            }
+            set
+            {
+                SetProperty(ref _isEventEnabledEvent, value);
             }
         }
 

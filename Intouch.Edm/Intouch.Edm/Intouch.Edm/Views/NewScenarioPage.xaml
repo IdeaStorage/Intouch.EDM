@@ -77,7 +77,7 @@
                                                AutomationProperties.HelpText="Seçiniz"
                                                SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
-                                               IsEnabled="{Binding IsEnabledEvent}"
+                                               IsEnabled="{Binding IsEventEnabledEvent}"
                                                VerticalOptions="Fill">
                     </controls:BorderlessPicker>
 
