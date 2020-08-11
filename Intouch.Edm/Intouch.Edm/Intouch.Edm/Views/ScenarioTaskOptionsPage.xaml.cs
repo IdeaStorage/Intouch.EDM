@@ -37,6 +37,7 @@ namespace Intouch.Edm.Views
                 checkedOptionItem.checkedOption.text = option.Name;
                 checkedOptionItem.checkedOption.userId = option.UserId;
                 checkedOptionItem.checkedOption.userFullName = option.UserFullName;
+                checkedOptionItem.checkedOption.taskUserPhone = option.UserPhone;
                 checkedOptionItem.checkedOption.completed = option.IsSelected;
                 taskItem.Options.result.items.Add(checkedOptionItem);
             }

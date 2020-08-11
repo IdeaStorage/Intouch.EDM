@@ -60,6 +60,7 @@ namespace Intouch.Edm.Views
                     item.checkedOption.userId = option.userId;
                     item.checkedOption.userFullName = option.userFullName;
                     item.checkedOption.completed = option.completed;
+                    item.checkedOption.taskUserPhone = option.taskUserPhone;
                     taskItem.Options.result.items.Add(item);
                 }
                 taskItem.Options.result.totalCount = options.result.Count;

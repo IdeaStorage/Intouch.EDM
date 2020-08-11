@@ -23,6 +23,16 @@ namespace Intouch.Edm.iOS.Renderers
                 {
                     vc.TabBarItem.Image = vc.TabBarItem.Image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
                 }
+                else
+                {
+                    var attributeWithoutIcon = new UITextAttributes()
+                    {
+                        Font = UIFont.FromName("", 18),
+                        TextColor = Color.FromHex("#8b9620").ToUIColor()
+                    };
+                    vc.TabBarItem.SetTitleTextAttributes(attributeWithoutIcon, UIControlState.Normal);
+                }
+
                 if (vc.TabBarItem.SelectedImage != null)
                 {
                     vc.TabBarItem.SelectedImage = vc.TabBarItem.SelectedImage.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);

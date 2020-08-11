@@ -14,6 +14,8 @@ namespace Intouch.Edm.ViewModels
 
         public string UserFullName { get; set; }
 
+        public string UserPhone { get; set; }
+
         public int UserId { get; set; }
 
         public bool IsSelected

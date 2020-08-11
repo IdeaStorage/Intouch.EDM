@@ -26,6 +26,8 @@ namespace Intouch.Edm.ViewModels
 
         private string _userFullName;
 
+        public string UserPhone { get; set; }
+
         public string UserFullName
         {
             get { return _userFullName; }
@@ -76,6 +78,7 @@ namespace Intouch.Edm.ViewModels
         {
             Task = taskItem;
             UserFullName = taskItem.Options.result.items.FirstOrDefault().checkedOption.userFullName;
+            UserPhone = taskItem.Options.result.items.FirstOrDefault().checkedOption.taskUserPhone;
             TotalTaskCount = taskItem.Options.result.items.Count;
             CompletedTaskCount = taskItem.Options.result.items.Count(a => a.checkedOption.completed);
             TaskDetailLists = new ObservableCollection<TaskDetail>();
@@ -89,6 +92,7 @@ namespace Intouch.Edm.ViewModels
                     Name = item.checkedOption.text,
                     IsSelected = item.checkedOption.completed,
                     UserFullName = item.checkedOption.userFullName,
+                    UserPhone = item.checkedOption.taskUserPhone,
                     Id = item.checkedOption.id,
                     UserId = item.checkedOption.userId
                 });
@@ -114,14 +118,13 @@ namespace Intouch.Edm.ViewModels
 
         private async System.Threading.Tasks.Task ExecuteCallCommand()
         {
-            string text = "11111111111";
-            if (!string.IsNullOrEmpty(text))
+            if (!string.IsNullOrEmpty(UserPhone))
             {
-                var result = await CallConfirmSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, text);
+                var result = await CallConfirmSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, UserPhone);
 
                 if (result)
                 {
-                    await Call(text);
+                    await Call(UserPhone);
                 }
             }
         }

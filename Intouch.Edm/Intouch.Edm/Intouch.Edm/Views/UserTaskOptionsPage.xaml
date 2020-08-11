@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="60*" />
                 </Grid.ColumnDefinitions>
                 <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#fafafa" Margin="1,1,1,1"></BoxView>
-                <ImageButton Grid.Row="0" Grid.Column="0" Source="callIcon.png" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,0,5" />
+                <ImageButton Grid.Row="0" Grid.Column="0" Source="callIcon.png" BackgroundColor="Transparent" Command="{Binding CallCommand}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,0,5" />
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserFullName}" Font="Bold,23" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="0,5,0,5" />
             </Grid>
         </StackLayout>

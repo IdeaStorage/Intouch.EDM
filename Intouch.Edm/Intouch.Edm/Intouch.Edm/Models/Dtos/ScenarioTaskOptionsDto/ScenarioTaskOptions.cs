@@ -5,6 +5,7 @@ namespace Intouch.Edm.Models.Dtos.ScenarioTaskOptionsDto
     public class ScenarioTaskOptions
     {
     }
+
     public class Result
     {
         public int id { get; set; }
@@ -12,6 +13,7 @@ namespace Intouch.Edm.Models.Dtos.ScenarioTaskOptionsDto
         public bool completed { get; set; }
         public int userId { get; set; }
         public string userFullName { get; set; }
+        public string taskUserPhone { get; set; }
     }
 
     public class Root
@@ -23,6 +25,4 @@ namespace Intouch.Edm.Models.Dtos.ScenarioTaskOptionsDto
         public bool unAuthorizedRequest { get; set; }
         public bool __abp { get; set; }
     }
-
-
 }

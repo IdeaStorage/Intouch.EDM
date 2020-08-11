@@ -20,7 +20,7 @@
     <key>MinimumOSVersion</key>
     <string>10.3</string>
     <key>CFBundleDisplayName</key>
-    <string>Acil Durum</string>
+    <string>Bileşim Acil Durum</string>
     <key>CFBundleIdentifier</key>
     <string>com.intouch.edm</string>
     <key>CFBundleVersion</key>
@@ -70,6 +70,5 @@
     <string>Your iOS 10 and lower background location usage description goes here.</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Your foreground location usage description goes here.</string>
-    
   </dict>
 </plist>

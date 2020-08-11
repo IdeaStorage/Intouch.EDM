@@ -6,6 +6,7 @@ namespace Intouch.Edm.ViewModels
     public class ScenarioTaskOptionsViewModel : BaseViewModel
     {
         private TaskItem _task;
+
         public TaskItem Task
         {
             get { return _task; }
@@ -43,12 +44,14 @@ namespace Intouch.Edm.ViewModels
                     Id = item.checkedOption.id,
                     IsSelected = item.checkedOption.completed,
                     UserFullName = item.checkedOption.userFullName,
+                    UserPhone = item.checkedOption.taskUserPhone,
                     UserId = item.checkedOption.userId
                 });
             }
         }
 
         private ObservableCollection<HelperModel> _statusRecords;
+
         public ObservableCollection<HelperModel> StatusRecords
         {
             get { return _statusRecords; }
@@ -58,6 +61,5 @@ namespace Intouch.Edm.ViewModels
                 OnPropertyChanged();
             }
         }
-
     }
 }

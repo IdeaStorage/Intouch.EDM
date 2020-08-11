@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dialogs\**" />
+    <EmbeddedResource Remove="Dialogs\**" />
+    <None Remove="Dialogs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Plugin.FirebasePushNotification" Version="2.3.1-rc" />
 	 <PackageReference Include="Plugin.Badge" Version="2.0.0" />
@@ -71,9 +77,5 @@
     <EmbeddedResource Update="Views\UserTaskOptionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dialogs\" />
   </ItemGroup>
 </Project>

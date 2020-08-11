@@ -91,7 +91,7 @@ namespace Intouch.Edm.Services
                     return ("earthquakeListIcon.png", "Deprem");
 
                 case "İş Sürekliliği":
-                    return ("businessContinuityListIcon.png", "İş Sürekliliği");
+                    return ("businessListIcon.png", "İş Sürekliliği");
 
                 case "Pandemi":
                     return ("pandemicListIcon.png", "Pandemi");

@@ -16,6 +16,7 @@ namespace Intouch.Edm.Models.Dtos.TaskOptionDto
         public int id { get; set; }
         public int userId { get; set; }
         public string userFullName { get; set; }
+        public string taskUserPhone { get; set; }
     }
 
     public class Item

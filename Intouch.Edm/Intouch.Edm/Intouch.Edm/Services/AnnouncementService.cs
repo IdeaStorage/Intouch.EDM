@@ -7,13 +7,14 @@ namespace Intouch.Edm.Services
     {
         internal static Announcement GetAnnouncement(Item announcementItem)
         {
+            var userInfoJobTitle = !string.IsNullOrEmpty(announcementItem.creatorJobTitle) ? "(" + announcementItem.creatorJobTitle + ")" : string.Empty;
             Announcement announcement = new Announcement
             {
                 Id = announcementItem.id,
                 Description = announcementItem.text,
                 Title = announcementItem.title,
                 RecordDate = announcementItem.createTime.ToString("dd MMMM yyyy HH:mm"),
-                AnnouncementUserInfo = $"{announcementItem.creatorUserName} ({announcementItem.creatorJobTitle})"
+                AnnouncementUserInfo = $"{announcementItem.creatorUserName} {userInfoJobTitle}"
             };
             return announcement;
         }

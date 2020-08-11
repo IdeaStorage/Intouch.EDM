@@ -82,7 +82,7 @@ namespace Intouch.Edm.ViewModels
                 {
                     // Serden: Bu geçici olarak konuldu servisten bize eventID gelirse buna gerek yok iconu direkt Taskservice.GetEvent ile ayarlayabiliriz.
                     // İsim ile çalışması riskli...
-                    var eventValue = TaskService.GetEventByName(x.eventTypeName);
+                    var eventValue = TaskService.GetEventByName(x.subjectType == 1 ? x.eventTypeName : "İş Sürekliliği");
                     var scenario = new Scenario()
                     {
                         Id = x.id,
@@ -95,7 +95,7 @@ namespace Intouch.Edm.ViewModels
                         PictureUrl = x.pictureUrl,
                         ScenarioId = x.scenarioId,
                         IsWaiting = x.approveStatus == 0,
-                        commiteeApprovalId = x.commiteeApprovalId
+                        commiteeApprovalId = x.id
                     };
                     ScenarioItems.Add(scenario);
                 }

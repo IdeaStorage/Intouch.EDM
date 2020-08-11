@@ -352,7 +352,7 @@
     <BundleResource Include="Resources\adkDetail.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\businesscontinuityListIcon.png" />
+    <BundleResource Include="Resources\businessListIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\earthquakeListIcon.png" />
