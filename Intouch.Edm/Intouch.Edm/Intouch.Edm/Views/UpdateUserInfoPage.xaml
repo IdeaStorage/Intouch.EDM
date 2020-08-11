@@ -89,7 +89,7 @@
                         <controls:CustomEntry Text="{Binding UserInfoMobilePhone}" Placeholder="Telefon Numaranız" PlaceholderColor="LightGray" Keyboard="Telephone"
                                               Style="{StaticResource EntryStyle}">
                             <Entry.Behaviors>
-                                <controls:MaskedBehavior Mask="0 (XXX) XXX-XXXX" />
+                                <controls:MaskedBehavior Mask="0 (5XX) XXX-XXXX" />
                             </Entry.Behaviors>
                         </controls:CustomEntry>
                     </Frame>
