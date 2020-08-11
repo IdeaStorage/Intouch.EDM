@@ -34,7 +34,6 @@ namespace Intouch.Edm.Views
             {
                 return;
             }
-            var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId); //Kayıt oplmadıgından debugta çalşığ çalışmadıgnın testi için eklendi.
             await Application.Current.MainPage.Navigation.PushAsync(new ScenarioApprovePage(new ScenarioApproveViewModel(scenario)));
         }
 
