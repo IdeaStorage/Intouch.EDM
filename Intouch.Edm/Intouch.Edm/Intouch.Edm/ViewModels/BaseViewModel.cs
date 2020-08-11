@@ -12,13 +12,14 @@ namespace Intouch.Edm.ViewModels
         public IDataService DataService => DependencyService.Get<IDataService>() ?? new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
 
         private bool isBusy = false;
-
+      
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
-
+      
+        
         private string title = string.Empty;
 
         public string Title

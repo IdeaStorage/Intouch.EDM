@@ -18,10 +18,15 @@ namespace Intouch.Edm.ViewModels
         private CreateEmergencyScenario.Picture picture = new CreateEmergencyScenario.Picture();
 
         public GeoCoords gpsCoords = new GeoCoords();
-
+        private bool isVisibleStartButton = false;
         private bool isVisibleLocation = true;
         public string EventName;
 
+        public bool IsVisibleStartButton
+        {
+            get { return isVisibleStartButton; }
+            set { SetProperty(ref isVisibleStartButton, value); }
+        }
         public bool IsVisibleLocation
         {
             get { return isVisibleLocation; }
@@ -33,11 +38,6 @@ namespace Intouch.Edm.ViewModels
 
         private async Task ExecuteSaveClicked()
         {
-            if (IsUploadingImage)
-            {
-                await Application.Current.MainPage.DisplayAlert("UYARI", "Resim yükleniyor. Lütfen bekleyiniz.", "TAMAM");
-                return;
-            }
             var result = await PopupSheet.ShowConfirmPopup(Application.Current.MainPage.Navigation, $"{EventName} Bildirimi Yapmak İstediğinize Emin Misiniz?");
             if (result)
             {
@@ -462,8 +462,8 @@ namespace Intouch.Edm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("UYARI", "Cihazınızın kamerası aktif değil!", "OK");
                 return;
             }
-            IsUploadingImage = true;
-
+            IsBusy = true;
+            IsVisibleStartButton = false;
             try
             {
                 var file = await CrossMedia.Current.TakePhotoAsync(
@@ -492,7 +492,8 @@ namespace Intouch.Edm.ViewModels
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
             }
-            IsUploadingImage = false;
+            IsBusy = false;
+            IsVisibleStartButton = true;
         }
 
         private ICommand _uploadPhotoClicked;
