@@ -1,7 +1,9 @@
-﻿using Intouch.Edm.Services;
+﻿using Intouch.Edm.Models.Dtos.UserDto;
+using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -14,7 +16,7 @@ namespace Intouch.Edm.ViewModels
         {
         }
 
-        public async Task<Models.Dtos.UserDto.Root> GetUser(int userId)
+        public async Task<Models.Dtos.UserDto.Root> GetUser(int userId, bool isSetTitleAndUnit = false)
         {
             var user = await DataService.GetUser(Convert.ToInt32(Helpers.Settings.UserId));
 
@@ -27,8 +29,17 @@ namespace Intouch.Edm.ViewModels
                 UserInfoMailAddress = userInfo.emailAddress;
                 TitleId = Convert.ToInt32(userInfo.jobTitleId);
                 DepartmenId = Convert.ToInt32(userInfo.unitId);
+                if (isSetTitleAndUnit)
+                    setTitleAndUnit(userInfo);
             }
+
             return user;
+        }
+
+        private void setTitleAndUnit(User userInfo)
+        {
+            SelectedTitle = TitleCombobox.First(p => p.Id == Convert.ToInt32(userInfo.jobTitleId));
+            SelectedDepartment = DepartmentCombobox.First(p => p.Id == Convert.ToInt32(userInfo.unitId));
         }
 
         private ICommand _saveCommand;
@@ -90,7 +101,7 @@ namespace Intouch.Edm.ViewModels
         {
             await RetrieveTitles();
             await RetrieveDepartments();
-            await GetUser(Convert.ToInt32(Helpers.Settings.UserId));
+            await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
         }
 
         #region DepartmenSelection
