@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace Intouch.Edm.Droid
 {
-    [Activity(Label = "Bileşim Acil Durum", Icon = "@drawable/mainIcon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Bileşim Acil", Icon = "@drawable/mainIcon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static readonly string CHANNEL_ID = "my_notification_channel";
