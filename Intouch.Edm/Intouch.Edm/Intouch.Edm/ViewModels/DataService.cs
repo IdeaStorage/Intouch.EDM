@@ -194,7 +194,7 @@ namespace Intouch.Edm.Services
         public async Task<Dtos.Scenario.RootObject> GetEmergencyScenario(int? approveStatusId, int? maxResultCount, int skipCount)
         {
             await ControlAccessTokenAsync();
-            var url = $"/api/services/app/CommiteeApprovals/GetAllForTree?ApproveStatus={approveStatusId}&skipCount={skipCount}";
+            var url = $"/api/services/app/CommiteeApprovals/GetAllForTree?ApproveStatusFilter={approveStatusId}&skipCount={skipCount}";
 
             if (maxResultCount != null)
             {
