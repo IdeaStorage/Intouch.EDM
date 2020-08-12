@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Intouch.Edm.Views.AnnouncementPage"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True">
     <ContentPage.Content>
@@ -42,6 +43,13 @@
                             FontSize="Medium">
                         </Editor>
                     </Frame>
+                    <StackLayout>
+                        <ActivityIndicator x:Name="Progress"
+                                   Color="{StaticResource NavigationPrimary}"
+                                   IsEnabled="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   IsRunning="{Binding IsBusy}"></ActivityIndicator>
+                    </StackLayout>
                     <Button
                             Grid.Row="2"
 						    CornerRadius="50"

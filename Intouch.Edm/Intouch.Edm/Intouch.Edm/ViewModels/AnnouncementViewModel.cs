@@ -41,10 +41,12 @@ namespace Intouch.Edm.ViewModels
 
         private async System.Threading.Tasks.Task NewAnnouncementClicked()
         {
+            IsBusy = true;
             Models.Dtos.CreateAnnouncementDto.CreateAnnouncementDto createAnnouncement = new Models.Dtos.CreateAnnouncementDto.CreateAnnouncementDto { title = AnnouncementTitle, text = AnnouncementDescription };
             var createAnnouncementResult = await DataService.CreateAnnouncementAsync(createAnnouncement);
             if (createAnnouncementResult)
             {
+                IsBusy = false;
                 await Application.Current.MainPage.DisplayAlert("İşlem Başarılı", $"{AnnouncementTitle} başlıklı duyuru gönderilmiştir", "TAMAM");
                 await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
             }
