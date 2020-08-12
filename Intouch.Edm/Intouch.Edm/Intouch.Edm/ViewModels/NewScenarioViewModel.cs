@@ -443,7 +443,6 @@ namespace Intouch.Edm.ViewModels
                 return;
             }
             IsBusy = true;
-            IsVisibleStartButton = false;
             UploadResult resultPicture = null;
             try
             {
@@ -476,11 +475,10 @@ namespace Intouch.Edm.ViewModels
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                IsBusy = true;
-                await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
+                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
             }
             IsBusy = false;
-            IsVisibleStartButton = true;
+         
             if (resultPicture?.ContentId != null)
             {
                 await Application.Current.MainPage.DisplayAlert("BAŞARILI", "Fotoğraf başarıyla kaydedildi.", "OK");
@@ -506,7 +504,7 @@ namespace Intouch.Edm.ViewModels
             });
 
             IsBusy = true;
-            IsVisibleStartButton = false;
+          
             UploadResult resultPicture = null;
 
             try
@@ -531,12 +529,11 @@ namespace Intouch.Edm.ViewModels
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                IsBusy = true;
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf gönderilirken hata oluştu", "OK");
             }
 
             IsBusy = false;
-            IsVisibleStartButton = true;
+         
             if (resultPicture?.ContentId != null)
             {
                 await Application.Current.MainPage.DisplayAlert("BAŞARILI", "Fotoğraf başarıyla kaydedildi.", "OK");
