@@ -24,6 +24,8 @@
 							Height="*" />
                         <RowDefinition
 							Height="Auto" />
+                        <RowDefinition
+							Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame BackgroundColor="White" Grid.Row="0" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc" Margin="3,5,3,10">
                         <Entry Margin="3,0,3,8"
@@ -43,13 +45,6 @@
                             FontSize="Medium">
                         </Editor>
                     </Frame>
-                    <StackLayout>
-                        <ActivityIndicator x:Name="Progress"
-                                   Color="{StaticResource NavigationPrimary}"
-                                   IsEnabled="{Binding IsBusy}"
-                                   IsVisible="{Binding IsBusy}"
-                                   IsRunning="{Binding IsBusy}"></ActivityIndicator>
-                    </StackLayout>
                     <Button
                             Grid.Row="2"
 						    CornerRadius="50"
@@ -64,6 +59,13 @@
 							VerticalOptions="End"
 							Text="GÖNDER"
                             Command="{Binding NewAnnouncementButtonClicked}" />
+                    <StackLayout Grid.Row="3">
+                        <ActivityIndicator x:Name="Progress"
+                                   Color="{StaticResource NavigationPrimary}"
+                                   IsEnabled="{Binding IsBusy}"
+                                   IsVisible="{Binding IsBusy}"
+                                   IsRunning="{Binding IsBusy}"></ActivityIndicator>
+                    </StackLayout>
                 </Grid>
             </ScrollView>
         </Grid>
