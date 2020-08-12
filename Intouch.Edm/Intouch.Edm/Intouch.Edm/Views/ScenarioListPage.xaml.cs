@@ -50,7 +50,7 @@ namespace Intouch.Edm.Views
 
             if (scenario.commiteeApprovalId != null)
             {
-                var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId); //burada Intouch tarafından senaryodan task optionslarına ulaşılması için geliştirme yapğılması gerekir.
+                var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId);
                 foreach (var option in options.result)
                 {
                     Item item = new Item();

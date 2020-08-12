@@ -6,7 +6,8 @@
              x:Class="Intouch.Edm.Views.ScenarioListPage"
              IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasNavigationBar="False"
-            BarBackgroundColor="#20979b">
+             BarTextColor="White"
+             BarBackgroundColor="#20979b">
     <TabbedPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="evenTemplate">

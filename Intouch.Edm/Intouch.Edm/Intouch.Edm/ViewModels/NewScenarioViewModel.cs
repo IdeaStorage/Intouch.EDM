@@ -430,20 +430,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private bool _isUploadingImage;
-
-        public bool IsUploadingImage
-        {
-            get
-            {
-                return _isUploadingImage;
-            }
-            set
-            {
-                SetProperty(ref _isUploadingImage, value);
-            }
-        }
-
         private ICommand _takePhotoClicked;
 
         public ICommand TakePhotoClicked => _takePhotoClicked
@@ -457,6 +443,8 @@ namespace Intouch.Edm.ViewModels
                 return;
             }
             IsBusy = true;
+            IsVisibleStartButton = false;
+            UploadResult resultPicture = null;
             try
             {
                 var file = await CrossMedia.Current.TakePhotoAsync(
@@ -474,9 +462,10 @@ namespace Intouch.Edm.ViewModels
                 }
                     
                 var imageFile = file;
-                var resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
+                resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
 
                 Helpers.Settings.SetUploadResult(resultPicture);
+
                 ImageSource = ImageSource.FromStream(() =>
                 {
                     var stream = file.GetStream();
@@ -491,6 +480,11 @@ namespace Intouch.Edm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
             }
             IsBusy = false;
+            IsVisibleStartButton = true;
+            if (resultPicture?.ContentId != null)
+            {
+                await Application.Current.MainPage.DisplayAlert("BAŞARILI", "Fotoğraf başarıyla kaydedildi.", "OK");
+            }
         }
 
         private ICommand _uploadPhotoClicked;
@@ -510,7 +504,11 @@ namespace Intouch.Edm.ViewModels
             {
                 CompressionQuality = 50
             });
+
             IsBusy = true;
+            IsVisibleStartButton = false;
+            UploadResult resultPicture = null;
+
             try
             {
                 if (file == null)
@@ -520,7 +518,7 @@ namespace Intouch.Edm.ViewModels
                 }
 
                 var imageFile = file;
-                var resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
+                resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
                 Helpers.Settings.SetUploadResult(resultPicture);
 
                 ImageSource = ImageSource.FromStream(() =>
@@ -536,7 +534,13 @@ namespace Intouch.Edm.ViewModels
                 IsBusy = true;
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf gönderilirken hata oluştu", "OK");
             }
+
             IsBusy = false;
+            IsVisibleStartButton = true;
+            if (resultPicture?.ContentId != null)
+            {
+                await Application.Current.MainPage.DisplayAlert("BAŞARILI", "Fotoğraf başarıyla kaydedildi.", "OK");
+            }
         }
 
         private ObservableCollection<ComboboxItem> _SubjectCombobox;
