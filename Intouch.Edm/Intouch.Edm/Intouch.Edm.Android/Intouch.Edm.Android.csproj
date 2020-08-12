@@ -156,9 +156,6 @@
     <AndroidResource Include="Resources\drawable\locationIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\mailIcon.png" />
   </ItemGroup>
   <ItemGroup>

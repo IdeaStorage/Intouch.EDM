@@ -269,9 +269,6 @@
     <BundleResource Include="Resources\locationIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\mailIcon.png" />
   </ItemGroup>
   <ItemGroup>

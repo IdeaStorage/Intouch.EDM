@@ -32,21 +32,10 @@
 						Padding="0,20,0,0"
 						InputTransparent="true">
                         <!-- LOGO -->
-                        <Grid
-							Grid.Row="1"
-							WidthRequest="135"
-							HeightRequest="135"
-							VerticalOptions="Center"
-							HorizontalOptions="Center">
-                            <BoxView
-								Opacity="1"
-								HorizontalOptions="Center"
-								WidthRequest="60" />
-                            <Image
-                                Source="logo.png"
+                        <Image
+                                Source="scenarioDetailLogo.png"
 								HorizontalOptions="Center"
 								VerticalOptions="Center" />
-                        </Grid>
                         <!-- WELCOME TEXT -->
                         <Label
 							Text="Hoşgeldiniz"
@@ -151,12 +140,11 @@
 						    CornerRadius="50"
                             FontSize="Medium"
                             TextColor="White"
-                            BorderColor="Black"
-                            BackgroundColor="#2196f3"
+                            BackgroundColor="#00a9ab"
                             FlexLayout.AlignSelf="Stretch"
                             HorizontalOptions="FillAndExpand"
 							VerticalOptions="End"
-							Text="LOGIN"
+							Text="GİRİŞ"
                              Command="{Binding SignInCommand}" />
                         </StackLayout>
                         <!--SEPARATOR-->
