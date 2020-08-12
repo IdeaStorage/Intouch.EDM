@@ -393,8 +393,8 @@ namespace Intouch.Edm.Services
         {
             await ControlAccessTokenAsync();
 
-            var url = new Uri(_baseUri, "/api/services/app/User/CreateOrUpdateUser");
-            var response = await SendRequestAsync<Dtos.NewAnnouncementReturnDto.RootObject>(url, HttpMethod.Post, _headers, userInfo);
+            var url = new Uri(_baseUri, "/api/services/app/User/UpdateUserInfo");
+            var response = await SendRequestAsync<Dtos.NewAnnouncementReturnDto.RootObject>(url, HttpMethod.Put, _headers, userInfo);
             return response.success;
         }
     }
