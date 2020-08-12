@@ -18,15 +18,9 @@ namespace Intouch.Edm.ViewModels
         private CreateEmergencyScenario.Picture picture = new CreateEmergencyScenario.Picture();
 
         public GeoCoords gpsCoords = new GeoCoords();
-        private bool isVisibleStartButton = false;
         private bool isVisibleLocation = true;
         public string EventName;
 
-        public bool IsVisibleStartButton
-        {
-            get { return isVisibleStartButton; }
-            set { SetProperty(ref isVisibleStartButton, value); }
-        }
         public bool IsVisibleLocation
         {
             get { return isVisibleLocation; }
@@ -463,7 +457,6 @@ namespace Intouch.Edm.ViewModels
                 return;
             }
             IsBusy = true;
-            IsVisibleStartButton = false;
             try
             {
                 var file = await CrossMedia.Current.TakePhotoAsync(
@@ -475,7 +468,11 @@ namespace Intouch.Edm.ViewModels
                            CompressionQuality = 50
                        });
                 if (file == null)
+                {
+                    IsBusy = false;
                     return;
+                }
+                    
                 var imageFile = file;
                 var resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
 
@@ -490,10 +487,10 @@ namespace Intouch.Edm.ViewModels
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
+                IsBusy = true;
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
             }
             IsBusy = false;
-            IsVisibleStartButton = true;
         }
 
         private ICommand _uploadPhotoClicked;
@@ -513,11 +510,12 @@ namespace Intouch.Edm.ViewModels
             {
                 CompressionQuality = 50
             });
-            IsUploadingImage = true;
+            IsBusy = true;
             try
             {
                 if (file == null)
                 {
+                    IsBusy = false;
                     return;
                 }
 
@@ -535,9 +533,10 @@ namespace Intouch.Edm.ViewModels
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
+                IsBusy = true;
                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf gönderilirken hata oluştu", "OK");
             }
-            IsUploadingImage = false;
+            IsBusy = false;
         }
 
         private ObservableCollection<ComboboxItem> _SubjectCombobox;
