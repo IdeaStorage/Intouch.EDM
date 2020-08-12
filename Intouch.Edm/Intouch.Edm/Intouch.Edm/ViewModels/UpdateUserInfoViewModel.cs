@@ -68,20 +68,13 @@ namespace Intouch.Edm.ViewModels
                 try
                 {
                     Models.Dtos.UserDto.UpdateUserInfo.Root updateUserInfo = new Models.Dtos.UserDto.UpdateUserInfo.Root();
-                    updateUserInfo.user.name = userInfo.name;
-                    updateUserInfo.user.userName = userInfo.userName;
-                    updateUserInfo.user.surname = userInfo.surname;
-                    updateUserInfo.user.phoneNumber = userInfo.phoneNumber;
-                    updateUserInfo.user.emailAddress = userInfo.emailAddress;
-                    updateUserInfo.user.jobTitleId = Convert.ToInt32(userInfo.jobTitleId);
-                    updateUserInfo.user.unitId = Convert.ToInt32(userInfo.unitId);
-                    updateUserInfo.assignedRoleNames = new System.Collections.Generic.List<string>();
-                    updateUserInfo.user.password = Convert.ToString(userInfo.password);
-                    updateUserInfo.user.isActive = userInfo.isActive;
-                    updateUserInfo.user.shouldChangePasswordOnNextLogin = userInfo.shouldChangePasswordOnNextLogin;
-                    updateUserInfo.user.isTwoFactorEnabled = userInfo.isTwoFactorEnabled;
-                    updateUserInfo.user.isLockoutEnabled = userInfo.isLockoutEnabled;
-
+                    updateUserInfo.name = userInfo.name;
+                    updateUserInfo.surname = userInfo.surname;
+                    updateUserInfo.phoneNumber = userInfo.phoneNumber;
+                    updateUserInfo.emailAddress = userInfo.emailAddress;
+                    updateUserInfo.jobTitleId = Convert.ToInt32(userInfo.jobTitleId);
+                    updateUserInfo.unitId = Convert.ToInt32(userInfo.unitId);
+                    updateUserInfo.id = userInfo.id;
                     await DataService.CreateOrUpdateUserAsync(updateUserInfo);
                 }
                 catch (Exception ex)
