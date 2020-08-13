@@ -1,5 +1,4 @@
-﻿using Intouch.Edm.Models.Dtos.UserDto;
-using Intouch.Edm.Services;
+﻿using Intouch.Edm.Services;
 using Intouch.Edm.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -30,16 +29,13 @@ namespace Intouch.Edm.ViewModels
                 TitleId = Convert.ToInt32(userInfo.jobTitleId);
                 DepartmenId = Convert.ToInt32(userInfo.unitId);
                 if (isSetTitleAndUnit)
-                    setTitleAndUnit(userInfo);
+                {
+                    SelectedTitle = userInfo.jobTitleId != null && userInfo.jobTitleId != 0 ? TitleCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.jobTitleId)) : null;
+                    SelectedDepartment = userInfo.unitId != null && userInfo.unitId != 0 ? DepartmentCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.unitId)) : null;
+                }
             }
 
             return user;
-        }
-
-        private void setTitleAndUnit(User userInfo)
-        {
-            SelectedTitle = TitleCombobox.First(p => p.Id == Convert.ToInt32(userInfo.jobTitleId));
-            SelectedDepartment = DepartmentCombobox.First(p => p.Id == Convert.ToInt32(userInfo.unitId));
         }
 
         private ICommand _saveCommand;
@@ -99,9 +95,9 @@ namespace Intouch.Edm.ViewModels
 
         internal async Task Init()
         {
-            await RetrieveTitles();
-            await RetrieveDepartments();
-            await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
+                await RetrieveTitles();
+                await RetrieveDepartments();
+                await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
         }
 
         #region DepartmenSelection
@@ -129,22 +125,10 @@ namespace Intouch.Edm.ViewModels
             set
             {
                 SetProperty(ref _selectedDepartment, value);
-                DepartmentText = "Department : " + _selectedDepartment.Name;
-                DepartmenId = _selectedDepartment.Id;
-            }
-        }
-
-        private string _departmentText;
-
-        public string DepartmentText
-        {
-            get
-            {
-                return _departmentText;
-            }
-            set
-            {
-                SetProperty(ref _departmentText, value);
+                if (_selectedDepartment != null)
+                {
+                    DepartmenId = _selectedDepartment.Id;
+                }
             }
         }
 
@@ -189,22 +173,10 @@ namespace Intouch.Edm.ViewModels
             set
             {
                 SetProperty(ref _selectedTitle, value);
-                TitleText = "Title : " + _selectedTitle.Name;
-                TitleId = _selectedTitle.Id;
-            }
-        }
-
-        private string _titleText;
-
-        public string TitleText
-        {
-            get
-            {
-                return _titleText;
-            }
-            set
-            {
-                SetProperty(ref _titleText, value);
+                if (_selectedTitle != null)
+                {
+                    TitleId = _selectedTitle.Id;
+                }
             }
         }
 

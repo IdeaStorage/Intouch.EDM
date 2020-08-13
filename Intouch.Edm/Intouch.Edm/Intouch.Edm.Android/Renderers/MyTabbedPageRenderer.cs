@@ -2,6 +2,7 @@
 using Android.Support.Design.Widget;
 using Android.Views;
 using Intouch.Edm.Droid.Renderers.TabbedDemo.Droid;
+using Intouch.Edm.Models;
 using Intouch.Edm.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -59,10 +60,26 @@ namespace Intouch.Edm.Droid.Renderers
                         for (var i = 0; i < bottomNavigationMenuView.ChildCount; i++)
                         {
                             BottomNavigationItemView item = bottomNavigationMenuView.GetChildAt(i) as BottomNavigationItemView;
-                            if (item == null) continue;
+                            if (item == null)
+                            {
+                                continue;
+                            }
 
                             item.SetShiftingMode(false);
                             item.SetChecked(item.ItemData.IsChecked);
+                            switch (i)
+                            {
+                                case (int)TabPageEnums.TaskListPage:
+                                    item.Visibility = Helpers.Settings.isTasksAuthorize == "1" ? ViewStates.Visible : ViewStates.Gone;
+                                    break;
+
+                                case (int)TabPageEnums.ScenarioListPage:
+                                    item.Visibility = Helpers.Settings.isADKAuthorize == "1" ? ViewStates.Visible : ViewStates.Gone;
+                                    break;
+
+                                default:
+                                    break;
+                            }
                         }
 
                         if (bottomNavigationMenuView.ChildCount > 0)

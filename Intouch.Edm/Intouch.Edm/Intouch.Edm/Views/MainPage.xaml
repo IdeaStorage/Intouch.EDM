@@ -13,13 +13,13 @@
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="Görevler" x:Name="TaskList" Icon="taskIcon.png" IsVisible="{Binding IsVisibleTaskList}">
+        <NavigationPage Title="Görevler" x:Name="TaskList" Icon="taskIcon.png">
             <x:Arguments>
                 <views:TaskListPage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="ADK" x:Name="ScenarioList" Icon="scenarioIcon.png" IsVisible="{Binding IsVisibleAdkList}">
+        <NavigationPage Title="ADK" x:Name="ScenarioList" Icon="scenarioIcon.png">
             <x:Arguments>
                 <views:ScenarioListPage />
             </x:Arguments>

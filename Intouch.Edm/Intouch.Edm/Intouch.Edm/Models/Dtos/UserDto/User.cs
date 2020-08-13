@@ -10,15 +10,15 @@ namespace Intouch.Edm.Models.Dtos.UserDto
         public string userName { get; set; }
         public string emailAddress { get; set; }
         public string phoneNumber { get; set; }
-        public object password { get; set; }
+        public string password { get; set; }
         public bool isActive { get; set; }
         public bool shouldChangePasswordOnNextLogin { get; set; }
         public bool isTwoFactorEnabled { get; set; }
         public bool isLockoutEnabled { get; set; }
-        public object jobTitleId { get; set; }
-        public object jobTitle { get; set; }
-        public object unitId { get; set; }
-        public object unit { get; set; }
+        public int? jobTitleId { get; set; }
+        public string jobTitle { get; set; }
+        public int? unitId { get; set; }
+        public string unit { get; set; }
     }
 
     public class Role
@@ -47,6 +47,4 @@ namespace Intouch.Edm.Models.Dtos.UserDto
         public bool unAuthorizedRequest { get; set; }
         public bool __abp { get; set; }
     }
-
-
 }

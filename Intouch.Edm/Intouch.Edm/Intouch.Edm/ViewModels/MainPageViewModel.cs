@@ -1,14 +1,10 @@
-﻿using Intouch.Edm.Services;
-using Xamarin.Forms;
-
-namespace Intouch.Edm.ViewModels
+﻿namespace Intouch.Edm.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
         public MainPageViewModel()
         {
             GetUnreadAnnouncementCountAsync();
-            GetTabPageVisible();
         }
 
         private int? _unreadCount;
@@ -25,34 +21,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        private bool _isVisibleTaskList;
-
-        public bool IsVisibleTaskList
-        {
-            get
-            {
-                return _isVisibleTaskList;
-            }
-            set
-            {
-                SetProperty(ref _isVisibleTaskList, value);
-            }
-        }
-
-        private bool _isVisibleAdkList;
-
-        public bool IsVisibleAdkList
-        {
-            get
-            {
-                return _isVisibleAdkList;
-            }
-            set
-            {
-                SetProperty(ref _isVisibleAdkList, value);
-            }
-        }
-
         private async void GetUnreadAnnouncementCountAsync()
         {
             var announcementCount = await DataService.GetAnnouncementsCountAsync();
@@ -60,12 +28,6 @@ namespace Intouch.Edm.ViewModels
             {
                 UnreadCount = announcementCount.result;
             }
-        }
-
-        private void GetTabPageVisible()
-        {
-            IsVisibleTaskList = Helpers.Settings.isTasksAuthorize == "1";
-            IsVisibleAdkList = Helpers.Settings.isADKAuthorize == "1";
         }
     }
 }
