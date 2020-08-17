@@ -89,6 +89,7 @@ namespace Intouch.Edm.ViewModels
                         Event = x.eventTypeName,
                         ImpactArea = x.impactAreaName,
                         Site = x.siteName,
+                        SubjectType = x.subjectType,
                         Subject = x.subjectType == 1 ? $"Acil Durum\n{x.eventTypeName}" : $"İş Sürekliliği\n{x.eventTypeName}",
                         RecordDate = x.creationTime.ToString("dd MMMM yyyy \n HH:mm"),
                         Icon = eventValue.eventIcon,

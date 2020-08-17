@@ -12,6 +12,7 @@ namespace Intouch.Edm.Models
         public int EventId { get; set; }
         public int SourceId { get; set; }
         public int ImpactAreaId { get; set; }
+        public int SubjectType { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string Subject { get; set; }

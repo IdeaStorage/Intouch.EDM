@@ -37,6 +37,7 @@ namespace Intouch.Edm.ViewModels
 
         public ScenarioApproveViewModel(Scenario scenario)
         {
+            scenario.Subject = scenario.SubjectType == 1 ? "Acil Durum" : "İş Sürekliliği";
             Scenario = scenario;
             _isVisible = Scenario.IsWaiting;
         }
