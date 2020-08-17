@@ -67,19 +67,6 @@ namespace Intouch.Edm.Droid.Renderers
 
                             item.SetShiftingMode(false);
                             item.SetChecked(item.ItemData.IsChecked);
-                            switch (i)
-                            {
-                                case (int)TabPageEnums.TaskListPage:
-                                    item.Visibility = Helpers.Settings.isTasksAuthorize == "1" ? ViewStates.Visible : ViewStates.Gone;
-                                    break;
-
-                                case (int)TabPageEnums.ScenarioListPage:
-                                    item.Visibility = Helpers.Settings.isADKAuthorize == "1" ? ViewStates.Visible : ViewStates.Gone;
-                                    break;
-
-                                default:
-                                    break;
-                            }
                         }
 
                         if (bottomNavigationMenuView.ChildCount > 0)

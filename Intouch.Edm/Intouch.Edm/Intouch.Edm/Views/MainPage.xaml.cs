@@ -21,7 +21,6 @@ namespace Intouch.Edm.Views
             InitializeComponent();
             BindingContext = viewModel = new MainPageViewModel();
             dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
-
             CurrentPageChanged += async (object sender, EventArgs e) =>
             {
                 BindingContext = viewModel = new MainPageViewModel();
@@ -48,6 +47,15 @@ namespace Intouch.Edm.Views
             if (currentTab == (int)TabPageEnums.TaskListPage)
             {
                 CurrentPage = this.FindByName<NavigationPage>("TaskList");
+            }
+
+            if (Helpers.Settings.isADKAuthorize == "0")
+            {
+                this.Children.Remove(ScenarioList);
+            }
+            if (Helpers.Settings.isTasksAuthorize == "0")
+            {
+                this.Children.Remove(TaskList);
             }
         }
 
