@@ -1,14 +1,14 @@
 ﻿using Intouch.Edm.iOS.Renderers;
 using Intouch.Edm.Views;
+using Plugin.Badge.iOS;
 using UIKit;
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(MainPage), typeof(MyTabbedPageRenderer))]
 
 namespace Intouch.Edm.iOS.Renderers
 {
-    public class MyTabbedPageRenderer : TabbedRenderer
+    public class MyTabbedPageRenderer : BadgedTabbedPageRenderer
     {
         public override void ViewWillAppear(bool animated)
         {

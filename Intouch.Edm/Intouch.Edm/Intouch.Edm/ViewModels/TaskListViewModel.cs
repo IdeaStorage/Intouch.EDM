@@ -65,6 +65,7 @@ namespace Intouch.Edm.ViewModels
                     TaskItems.Add(item);
                 }
                 AllTaskItems.ReplaceRange(TaskItems);
+                ClearFilterOptions(FilterOptions);
                 FilterOptions.AddRange(AllTaskItems.Select(a => a.UserName).Distinct().ToList());
                 FilterItems();
             }
@@ -75,6 +76,22 @@ namespace Intouch.Edm.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        /// <summary>
+        /// Hepsi seçeneğini çıkarmaması için break var...
+        /// </summary>
+        /// <param name="filterOptions"></param>
+        public static void ClearFilterOptions(ObservableRangeCollection<string> filterOptions)
+        {
+            while (filterOptions.Count > 0)
+            {
+                if ((filterOptions.Count - 1) == 0)
+                {
+                    break;
+                }
+                filterOptions.RemoveAt(filterOptions.Count - 1);
             }
         }
     }

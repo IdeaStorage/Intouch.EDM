@@ -2,11 +2,10 @@
 using Android.Support.Design.Widget;
 using Android.Views;
 using Intouch.Edm.Droid.Renderers.TabbedDemo.Droid;
-using Intouch.Edm.Models;
 using Intouch.Edm.Views;
+using Plugin.Badge.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Platform.Android.AppCompat;
 
 [assembly: ExportRenderer(typeof(MainPage), typeof(MyTabbedPageRenderer))]
 
@@ -14,7 +13,7 @@ namespace Intouch.Edm.Droid.Renderers
 {
     namespace TabbedDemo.Droid
     {
-        public class MyTabbedPageRenderer : TabbedPageRenderer
+        public class MyTabbedPageRenderer : BadgedTabbedPageRenderer
         {
             public MyTabbedPageRenderer(Android.Content.Context context) : base(context)
             {
