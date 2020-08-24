@@ -83,6 +83,7 @@ namespace Intouch.Edm.ViewModels
                     var resultCreateScenario = await DataService.CreateEmergencyScenario(newItem);
                     if (resultCreateScenario)
                     {
+                        Helpers.Settings.ContentId = null;
                         IsBusy = false;
                         await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
                         await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
@@ -136,7 +137,7 @@ namespace Intouch.Edm.ViewModels
             Models.Dtos.LookupDto.LocationLookup.RootObject locationList = await DataService.GetLocationAsync(gpsCoords.Latitude, gpsCoords.Longitude);
 
             LocationCombobox = PickerService.GetLocation(locationList);
-            SelectedLocation = LocationCombobox.Where(x => x.IsSelected).FirstOrDefault();
+            SelectedLocation = LocationCombobox.FirstOrDefault(x => x.IsSelected);
             SubjectCombobox = PickerService.GetSubject();
             SourceCombobox = PickerService.GetSource(sourceList);
             EventCombobox = PickerService.GetEvent(eventList);
@@ -459,7 +460,7 @@ namespace Intouch.Edm.ViewModels
                     IsBusy = false;
                     return;
                 }
-                    
+
                 var imageFile = file;
                 resultPicture = await DataService.UploadImageAsync(imageFile.GetStream(), $"Test_Photo - {DateTime.Now}" + ".jpg");
 
@@ -475,10 +476,10 @@ namespace Intouch.Edm.ViewModels
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                 await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
+                await Application.Current.MainPage.DisplayAlert("HATA", "Fotoğraf çekilirken hata oluştu", "OK");
             }
             IsBusy = false;
-         
+
             if (resultPicture?.ContentId != null)
             {
                 await Application.Current.MainPage.DisplayAlert("BAŞARILI", "Fotoğraf başarıyla kaydedildi.", "OK");
@@ -504,7 +505,7 @@ namespace Intouch.Edm.ViewModels
             });
 
             IsBusy = true;
-          
+
             UploadResult resultPicture = null;
 
             try
@@ -533,7 +534,7 @@ namespace Intouch.Edm.ViewModels
             }
 
             IsBusy = false;
-         
+
             if (resultPicture?.ContentId != null)
             {
                 await Application.Current.MainPage.DisplayAlert("BAŞARILI", "Fotoğraf başarıyla kaydedildi.", "OK");
