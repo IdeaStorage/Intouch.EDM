@@ -213,13 +213,13 @@ namespace Intouch.Edm.Services
             return await EmergencyScenarios;
         }
 
-        public async Task<bool> CreateEmergencyScenario(CreateEmergencyScenario.RootObject scenario)
+        public async Task<Dtos.NewScenarioResultDto.Result> CreateEmergencyScenario(CreateEmergencyScenario.RootObject scenario)
         {
             await ControlAccessTokenAsync();
 
             var url = new Uri(_baseUri, "/api/services/app/Scenarios/Notify");
-            var response = await SendRequestAsync<Dtos.CreateScenario.RootObject>(url, HttpMethod.Post, _headers, scenario);
-            return response.success;
+            var response = await SendRequestAsync<Dtos.NewScenarioResultDto.Root>(url, HttpMethod.Post, _headers, scenario);
+            return response.result;
         }
 
         public async Task<Dtos.ApproveScenarioReturnDto.RootObject> ApproveScenario(Dtos.ApproveScenario.ApproveScenarioDto scenario)

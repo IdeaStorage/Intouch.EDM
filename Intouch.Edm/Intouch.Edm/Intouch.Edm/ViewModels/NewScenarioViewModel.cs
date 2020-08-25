@@ -81,12 +81,16 @@ namespace Intouch.Edm.ViewModels
                     };
 
                     var resultCreateScenario = await DataService.CreateEmergencyScenario(newItem);
-                    if (resultCreateScenario)
+                    if (resultCreateScenario != null && resultCreateScenario.result)
                     {
                         Helpers.Settings.ContentId = null;
                         IsBusy = false;
-                        await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
+                        await Application.Current.MainPage.DisplayAlert("BAŞARILI", resultCreateScenario.message, "TAMAM");
                         await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                    }
+                    else if (resultCreateScenario != null && !resultCreateScenario.result)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("BAŞARISIZ", resultCreateScenario.message, "TAMAM");
                     }
                     else
                     {

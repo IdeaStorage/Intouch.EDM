@@ -40,7 +40,7 @@ namespace Intouch.Edm.Services
 
         Task<Dtos.Scenario.RootObject> GetScenarioAsync(int? approveStatusId, int? maxResultCount, int skipCount);
 
-        Task<bool> CreateEmergencyScenario(CreateEmergencyScenario.RootObject scenario);
+        Task<Dtos.NewScenarioResultDto.Result> CreateEmergencyScenario(CreateEmergencyScenario.RootObject scenario);
 
         Task<Dtos.ApproveScenarioReturnDto.RootObject> ApproveScenario(Dtos.ApproveScenario.ApproveScenarioDto scenario);
 
