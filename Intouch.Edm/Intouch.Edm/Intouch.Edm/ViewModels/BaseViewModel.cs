@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.Services;
+﻿using Intouch.Edm.Helpers;
+using Intouch.Edm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ namespace Intouch.Edm.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataService DataService => DependencyService.Get<IDataService>() ?? new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
+        public IDataService DataService => DependencyService.Get<IDataService>() ?? new DataService(new Uri(Constants.ApplicationServiceUrl), Helpers.Settings.AuthenticationToken);
 
         private bool isBusy = false;
       

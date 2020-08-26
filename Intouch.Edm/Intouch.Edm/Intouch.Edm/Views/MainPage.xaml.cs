@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.Models;
+﻿using Intouch.Edm.Helpers;
+using Intouch.Edm.Models;
 using Intouch.Edm.Services;
 using Intouch.Edm.ViewModels;
 using System;
@@ -20,7 +21,7 @@ namespace Intouch.Edm.Views
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             InitializeComponent();
             BindingContext = viewModel = new MainPageViewModel();
-            dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
+            dataService = new DataService(new Uri(Constants.ApplicationServiceUrl), Helpers.Settings.AuthenticationToken);
             CurrentPageChanged += async (object sender, EventArgs e) =>
             {
                 BindingContext = viewModel = new MainPageViewModel();
