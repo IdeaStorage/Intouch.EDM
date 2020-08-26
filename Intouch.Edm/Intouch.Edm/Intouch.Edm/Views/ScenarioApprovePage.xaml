@@ -133,8 +133,8 @@
                     </Label>
                 </Grid>
             </StackLayout>
-
-            <Grid ColumnSpacing="3" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,70,10,40">
+            <Image x:Name="image" Margin="20,20" Source="{Binding scenario.PictureUrl}" BackgroundColor="Transparent" WidthRequest="200" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+            <Grid ColumnSpacing="3" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,40,10,40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -142,7 +142,6 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-
                 <Button Grid.Row="0" Grid.Column="0"
                         BackgroundColor="#ec1f25"
                         Text="REDDET"
