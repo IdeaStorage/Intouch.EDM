@@ -21,11 +21,6 @@ namespace Intouch.Edm.ViewModels
             }
         }
 
-        //Binding ile ekrandan verilmeli. Düzeltme yapılacak.
-        public string Description { get; set; }
-
-        public bool IsImageVisible { get; set; }
-
         public TaskDetailViewModel(TaskItem taskItem = null)
         {
             Task = taskItem;
@@ -88,28 +83,10 @@ namespace Intouch.Edm.ViewModels
         public ICommand SaveClicked => _saveCommand
                 ?? (_saveCommand = new Command(async () => await ExecuteSaveClicked()));
 
-        private ICommand _showPicture;
-
-        public ICommand ShowPictureButton => _showPicture
-         ?? (_showPicture = new Command(async () => await ShowPictureClicked()));
-
-        private async System.Threading.Tasks.Task ShowPictureClicked()
-        {
-            if (string.IsNullOrEmpty(Task.Scenario.PictureUrl))
-            {
-                IsImageVisible = true;
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("UYARI", "Henüz Yüklenen Fotoğraf Bulunmuyor.", "TAMAM");
-            }
-        }
-
         private async System.Threading.Tasks.Task ExecuteSaveClicked()
         {
             Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = TaskService.GetTaskOptions(StatusRecords);
             updateTaskOption.id = Task.Id;
-            updateTaskOption.description = Description ?? string.Empty;
             var taskResult = await DataService.UpdateTaskOptions(updateTaskOption);
             if (taskResult)
             {

@@ -14,7 +14,8 @@ namespace Intouch.Edm.Services
                 Description = announcementItem.text,
                 Title = announcementItem.title,
                 RecordDate = announcementItem.createTime.ToString("dd MMMM yyyy HH:mm"),
-                AnnouncementUserInfo = $"{announcementItem.creatorUserName} {userInfoJobTitle}"
+                AnnouncementUserInfo = $"{announcementItem.creatorUserName} {userInfoJobTitle}",
+                ShortDescription = announcementItem.text?.Length <= 50 ? announcementItem.text : $"{announcementItem.text.Substring(0, 50)}..."
             };
             return announcement;
         }

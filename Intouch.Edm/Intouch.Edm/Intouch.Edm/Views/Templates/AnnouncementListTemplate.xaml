@@ -3,56 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Intouch.Edm.Views.Templates.AnnouncementListTemplate">
     <ContentView.Content>
-        <StackLayout
-		Spacing="0"
-		Orientation="Horizontal"
-		Padding="10, 5, 10, 5"
-		VerticalOptions="Center">
-            <Image Grid.Row="0" Grid.Column="0" Source="{Binding Icon}" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+        <Grid ColumnSpacing="0" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Icon}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
             </Image>
-            <StackLayout
-			Padding="3, 0, 3, 0"
-			Spacing="0"
-			Orientation="Horizontal"
-			HorizontalOptions="FillAndExpand">
-                <StackLayout
-				HorizontalOptions="FillAndExpand"
-				Spacing="0"
-				Padding="7">
-                    <StackLayout
-					Orientation="Horizontal">
-                        <Label
-						Text="{Binding Title}"
-                        Font="Bold,17"
-						HorizontalOptions="Fill"
-						VerticalOptions="EndAndExpand" />
-                        <Label
-						Text=" "
-						HorizontalOptions="FillAndExpand"
-						VerticalOptions="EndAndExpand" />
-                        <Label
-						Text="{Binding RecordDate}"
-						FontSize="12"
-						HorizontalTextAlignment="Center"
-						HorizontalOptions="EndAndExpand"
-						VerticalOptions="Center" />
-                    </StackLayout>
-                    <StackLayout
-					Orientation="Horizontal"
-					Padding="0,8,0,0">
-                        <Label
-                        Text="{Binding Description}"
-                        TextColor="Gray"
-                        FontAttributes="Italic"
-                        FontSize="11"
-                        HorizontalOptions="FillAndExpand"
-						VerticalOptions="FillAndExpand" />
-                        <Label VerticalOptions="End"
-                               Text="{Binding AnnouncementUserInfo}"
-                               FontSize="11"></Label>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
+
+            <Label Grid.Row="0" Grid.Column="1"
+				   Text="{Binding Title}"
+                   Font="Bold,17"
+				   HorizontalOptions="Fill"
+				   VerticalOptions="Fill" />
+            <Label Grid.Row="0" Grid.Column="2"
+				   Text="{Binding RecordDate}"
+				   FontSize="11"
+                   HorizontalTextAlignment="Center"
+				   HorizontalOptions="Fill"
+				   VerticalOptions="Fill" />
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="{Binding ShortDescription}"
+                   TextColor="Gray"
+                   FontAttributes="Italic"
+                   FontSize="11"
+                   HorizontalOptions="Fill"
+				   VerticalOptions="Fill" />
+            <Label Grid.Row="1" Grid.Column="2"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding AnnouncementUserInfo}"
+                   FontSize="11" />
+        </Grid>
     </ContentView.Content>
 </ContentView>
