@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
              BackgroundColor="White"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              x:Class="Intouch.Edm.Views.UpdateUserInfoPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -140,6 +141,12 @@
                 </Grid>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ActivityIndicator
+                            x:Name="Progress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
                 <Button CornerRadius="10"
                         FontSize="Large"
                         TextColor="White"
