@@ -115,8 +115,8 @@
                                                VerticalOptions="Fill">
                     </controls:BorderlessPicker>
 
-                    <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
-                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Etki Alanı" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                    <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" IsVisible="{Binding IsImpactAreaEnabled}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Etki Alanı"    IsVisible="{Binding IsImpactAreaEnabled}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                         <Label.Effects>
                             <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
                             </controls:ShadowEffect>
@@ -129,6 +129,7 @@
                                                SelectedItem="{Binding SelectedImpactArea,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
                                                AutomationProperties.HelpText="Seçiniz"
+                                               IsVisible="{Binding IsImpactAreaEnabled}"
                                                VerticalOptions="Fill">
                     </controls:BorderlessPicker>
                 </Grid>
