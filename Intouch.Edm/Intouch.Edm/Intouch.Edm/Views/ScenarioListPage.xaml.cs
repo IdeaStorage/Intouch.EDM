@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.Models;
+﻿using Intouch.Edm.Helpers;
+using Intouch.Edm.Models;
 using Intouch.Edm.Models.Dtos.TaskOptionDto;
 using Intouch.Edm.Models.Enums;
 using Intouch.Edm.Services;
@@ -25,7 +26,7 @@ namespace Intouch.Edm.Views
                 BindingContext = viewModel = new ScenarioListViewModel(numPage);
                 viewModel.LoadScenariosCommand.Execute(null);
             };
-            dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
+            dataService = new DataService(new Uri(Constants.ApplicationServiceUrl), Helpers.Settings.AuthenticationToken);
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

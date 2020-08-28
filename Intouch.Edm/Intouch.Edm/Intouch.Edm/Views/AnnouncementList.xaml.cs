@@ -40,5 +40,17 @@ namespace Intouch.Edm.Views
         {
             return true;
         }
+
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            if (!(args.SelectedItem is Announcement announcement))
+            {
+                return;
+            }
+
+            await Application.Current.MainPage.Navigation.PushAsync(new AnnouncementDetailPage(new AnnouncementDetailViewModel(announcement)));
+
+            AnnouncementListView.SelectedItem = null;
+        }
     }
 }

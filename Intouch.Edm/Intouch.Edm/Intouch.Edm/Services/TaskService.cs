@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.Models;
+﻿using Intouch.Edm.Helpers;
+using Intouch.Edm.Models;
 using Intouch.Edm.Models.Dtos.TaskListDto;
 using Intouch.Edm.ViewModels;
 using System;
@@ -23,7 +24,7 @@ namespace Intouch.Edm.Services
                 ScenarioId = taskItem.scenarioId,
                 profilePicture = new UriImageSource
                 {
-                    Uri = new Uri($"http://edm.intouch.istanbul/Profile/GetSmallProfilePictureByUserId?userId={taskItem.userTask.userId}"),
+                    Uri = new Uri($"{Constants.ApplicationServiceUrl}/Profile/GetSmallProfilePictureByUserId?userId={taskItem.userTask.userId}"),
                     CacheValidity = TimeSpan.FromDays(1),
                     CachingEnabled = true
                 }

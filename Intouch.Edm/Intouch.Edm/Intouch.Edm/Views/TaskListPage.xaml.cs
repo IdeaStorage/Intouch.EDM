@@ -1,4 +1,5 @@
-﻿using Intouch.Edm.Models;
+﻿using Intouch.Edm.Helpers;
+using Intouch.Edm.Models;
 using Intouch.Edm.Services;
 using Intouch.Edm.ViewModels;
 using System;
@@ -17,7 +18,7 @@ namespace Intouch.Edm.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new TaskListViewModel();
-            dataService = new DataService(new Uri("http://edm.intouch.istanbul"), Helpers.Settings.AuthenticationToken);
+            dataService = new DataService(new Uri(Constants.ApplicationServiceUrl), Helpers.Settings.AuthenticationToken);
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

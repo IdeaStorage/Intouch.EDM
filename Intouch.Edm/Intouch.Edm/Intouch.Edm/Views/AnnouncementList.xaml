@@ -51,6 +51,7 @@
                 Margin="10,5,10,0"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
+                ItemSelected="OnItemSelected"
                 RefreshCommand="{Binding LoadAnnouncementsCommand}"
                 ItemTemplate="{StaticResource announcementTemplateSelector}"
                 IsPullToRefreshEnabled="true"

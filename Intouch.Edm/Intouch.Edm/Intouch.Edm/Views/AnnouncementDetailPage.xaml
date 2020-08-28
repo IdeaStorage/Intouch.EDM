@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Intouch.Edm.Views.AnnouncementDetailPage">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView
+				VerticalOptions="FillAndExpand"
+				Padding="{ StaticResource MainWrapperPadding }">
+                <!-- MAIN CONTAINER -->
+                <Grid
+					ColumnSpacing="0"
+					RowSpacing="0"
+					Style="{ StaticResource SimpleLoginFormsContentStyle }"
+					HorizontalOptions="Fill"
+					VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+							Height="Auto" />
+                        <RowDefinition
+							Height="*" />
+                        <RowDefinition
+							Height="Auto" />
+                        <RowDefinition
+							Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame BackgroundColor="White" Grid.Row="0" CornerRadius="10" HasShadow="True" OutlineColor="#dcdcdc" Margin="3,5,3,10">
+                        <Label Margin="3,0,3,8"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           TextColor="Black"
+                           VerticalOptions="Center"
+                           Text="{Binding Announcement.Title}">
+                        </Label>
+                    </Frame>
+                    <Frame BackgroundColor="White" CornerRadius="10" Grid.Row="1" HasShadow="True" OutlineColor="#dcdcdc" Margin="3,0,3,5">
+                        <Label
+                            TextColor="Black"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding Announcement.Description}"
+                            FontSize="Medium">
+                        </Label>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
