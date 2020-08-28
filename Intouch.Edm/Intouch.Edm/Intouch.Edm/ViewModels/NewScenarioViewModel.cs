@@ -157,7 +157,7 @@ namespace Intouch.Edm.ViewModels
         {
             if (selectedEventId == Convert.ToInt32(Events.Earthquake))
             {
-                IsVisibleLocation = false;
+                IsVisibleLocation = IsImpactAreaEnabled = false;
             }
             var locationService = DependencyService.Get<ILocationService>();
             var position = await locationService.GetGeoCoordinatesAsync();
@@ -225,6 +225,19 @@ namespace Intouch.Edm.ViewModels
             set
             {
                 SetProperty(ref _isEventEnabledEvent, value);
+            }
+        }
+
+        private bool _isImpactAreaEnabled = true;
+        public bool IsImpactAreaEnabled
+        {
+            get
+            {
+                return _isImpactAreaEnabled;
+            }
+            set
+            {
+                SetProperty(ref _isImpactAreaEnabled, value);
             }
         }
 
