@@ -362,7 +362,7 @@ namespace Intouch.Edm.Services
         {
             await ControlAccessTokenAsync();
 
-            var url = new Uri(_baseUri, "/api/services/app/JobTitles/GetAll");
+            var url = new Uri(_baseUri, "/api/services/app/JobTitles/GetAll?DisablePaging=true");
             var response = await SendRequestAsync<Dtos.JobTiteDto.Root>(url, HttpMethod.Get, _headers);
 
             return response;
@@ -372,7 +372,7 @@ namespace Intouch.Edm.Services
         {
             await ControlAccessTokenAsync();
 
-            var url = new Uri(_baseUri, "/api/services/app/Units/GetAll");
+            var url = new Uri(_baseUri, "/api/services/app/Units/GetAll?DisablePaging=true");
             var response = await SendRequestAsync<Dtos.UnitDto.Root>(url, HttpMethod.Get, _headers);
 
             return response;
