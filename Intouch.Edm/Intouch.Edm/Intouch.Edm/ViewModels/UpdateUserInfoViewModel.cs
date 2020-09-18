@@ -33,6 +33,7 @@ namespace Intouch.Edm.ViewModels
                     SelectedTitle = userInfo.jobTitleId != null && userInfo.jobTitleId != 0 ? TitleCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.jobTitleId)) : null;
                     SelectedDepartment = userInfo.unitId != null && userInfo.unitId != 0 ? DepartmentCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.unitId)) : null;
                 }
+                IsBusy = false;
             }
 
             return user;
@@ -49,6 +50,7 @@ namespace Intouch.Edm.ViewModels
 
             if (result)
             {
+                IsBusy = true;
                 await UpdateUserInfo();
             }
         }
@@ -74,19 +76,26 @@ namespace Intouch.Edm.ViewModels
                 userInfo.jobTitleId = titleId;
                 try
                 {
-                    Models.Dtos.UserDto.UpdateUserInfo.Root updateUserInfo = new Models.Dtos.UserDto.UpdateUserInfo.Root();
-                    updateUserInfo.name = userInfo.name;
-                    updateUserInfo.surname = userInfo.surname;
-                    updateUserInfo.phoneNumber = userInfo.phoneNumber;
-                    updateUserInfo.emailAddress = userInfo.emailAddress;
-                    updateUserInfo.jobTitleId = Convert.ToInt32(userInfo.jobTitleId);
-                    updateUserInfo.unitId = Convert.ToInt32(userInfo.unitId);
-                    updateUserInfo.id = userInfo.id;
-                    await DataService.CreateOrUpdateUserAsync(updateUserInfo);
+                    Models.Dtos.UserDto.UpdateUserInfo.Root updateUserInfo = new Models.Dtos.UserDto.UpdateUserInfo.Root
+                    {
+                        name = userInfo.name,
+                        surname = userInfo.surname,
+                        phoneNumber = userInfo.phoneNumber,
+                        emailAddress = userInfo.emailAddress,
+                        jobTitleId = Convert.ToInt32(userInfo.jobTitleId),
+                        unitId = Convert.ToInt32(userInfo.unitId),
+                        id = userInfo.id
+                    };
+                    var response = await DataService.CreateOrUpdateUserAsync(updateUserInfo);
+                    if (response)
+                    {
+                        IsBusy = false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.Write("User Update edilirken hata alındı:" + ex.Message);
+                    IsBusy = false;
                 }
             }
 
@@ -95,9 +104,10 @@ namespace Intouch.Edm.ViewModels
 
         internal async Task Init()
         {
-                await RetrieveTitles();
-                await RetrieveDepartments();
-                await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
+            IsBusy = true;
+            await RetrieveTitles();
+            await RetrieveDepartments();
+            await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
         }
 
         #region DepartmenSelection

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
              NavigationPage.BackButtonTitle="Geri"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              x:Class="Intouch.Edm.Views.ScenarioApprovePage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+        <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Vertical">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                 <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                     <Grid.RowDefinitions>
@@ -25,12 +26,12 @@
                         <ColumnDefinition Width="30*" />
                         <ColumnDefinition Width="70*" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Row="0" Grid.Column="0" Source="adkDetail.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
-                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
+                    <Image Grid.Row="0" Grid.Column="0" Source="adkDetail.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" />
+                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" />
                 </Grid>
             </StackLayout>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
-                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" RowSpacing="10" VerticalOptions="Fill" Margin="0,10,30,10">
+                <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" RowSpacing="3" VerticalOptions="Fill" Margin="0,0,30,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -39,9 +40,9 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="15*" />
-                        <ColumnDefinition Width="28*" />
-                        <ColumnDefinition Width="57*" />
+                        <ColumnDefinition Width="13*" />
+                        <ColumnDefinition Width="31*" />
+                        <ColumnDefinition Width="56*" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Row="0" Grid.Column="0" Source="subjectIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
                     <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Konu" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
@@ -60,8 +61,8 @@
                            VerticalOptions="FillAndExpand">
                     </Label>
 
-                    <Image Grid.Row="1" Grid.Column="0" Source="eventIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
-                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Olay" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                    <Image Grid.Row="1" Grid.Column="0" Source="eventIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,0,0" />
+                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Olay" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
                         <Label.Effects>
                             <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
                             </controls:ShadowEffect>
@@ -71,15 +72,15 @@
                            Text="{Binding scenario.Event}"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
-                           Margin="0,7,0,0"
+                           Margin="0,0,0,0"
                            FontSize="Medium"
                            TextColor="Black"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Fill">
                     </Label>
 
-                    <Image Grid.Row="2" Grid.Column="0" Source="sourceIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
-                    <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Kaynak" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                    <Image Grid.Row="2" Grid.Column="0" Source="sourceIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,0,0" />
+                    <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Kaynak" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
                         <Label.Effects>
                             <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
                             </controls:ShadowEffect>
@@ -90,14 +91,14 @@
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           Margin="0,7,0,0"
+                           Margin="0,0,0,0"
                            TextColor="Black"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Fill">
                     </Label>
 
-                    <Image Grid.Row="3" Grid.Column="0" Source="locationIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
-                    <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Lokasyon" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                    <Image Grid.Row="3" Grid.Column="0" Source="locationIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,0,0" />
+                    <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Lokasyon" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
                         <Label.Effects>
                             <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
                             </controls:ShadowEffect>
@@ -107,15 +108,15 @@
                            Text="{Binding scenario.Site}"
                            HorizontalTextAlignment="Center"
                            FontSize="Medium"
-                           Margin="0,7,0,0"
+                           Margin="0,0,0,0"
                            TextColor="Black"
                            VerticalTextAlignment="Center"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Fill">
                     </Label>
 
-                    <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,7,0,0" />
-                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Etki Alanı" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,7,0,0">
+                    <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,0,0" />
+                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LableStyle}" Text="Etki Alanı" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0,0,0,0">
                         <Label.Effects>
                             <controls:ShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Black">
                             </controls:ShadowEffect>
@@ -126,15 +127,21 @@
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"
                            FontSize="Medium"
-                           Margin="0,7,0,0"
+                           Margin="0,0,0,0"
                            TextColor="Black"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Fill">
                     </Label>
                 </Grid>
             </StackLayout>
-            <Image x:Name="image" Margin="20,20" Source="{Binding scenario.PictureUrl}" BackgroundColor="Transparent" WidthRequest="200" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
-            <Grid ColumnSpacing="3" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,40,10,40">
+            <Image x:Name="image" Margin="20,0,20,0" Source="{Binding scenario.PictureUrl}" WidthRequest="200" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+            <ActivityIndicator
+                            x:Name="Progress"
+                            Color="{StaticResource NavigationPrimary}"
+                            IsEnabled="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            IsRunning="{Binding IsBusy}"></ActivityIndicator>
+            <Grid ColumnSpacing="3" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="10,5,10,40" BackgroundColor="Azure">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
