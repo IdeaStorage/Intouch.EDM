@@ -74,20 +74,28 @@ namespace Intouch.Edm.ViewModels
 
         private async System.Threading.Tasks.Task RejectClicked()
         {
-            IsBusy = true;
-            ApproveScenarioDto approveScenario = new ApproveScenarioDto { id = this.Scenario.Id };
+            try
+            {
+                IsBusy = true;
+                ApproveScenarioDto approveScenario = new ApproveScenarioDto { id = this.Scenario.Id };
 
-            var result = await DataService.RejectScenario(approveScenario);
-            if (result)
-            {
-                IsBusy = false;
-                await Application.Current.MainPage.DisplayAlert("REDDEDİLDİ", "Kayıt Reddilmiştir.", "TAMAM");
-                await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                var result = await DataService.RejectScenario(approveScenario);
+                if (result)
+                {
+                    IsBusy = false;
+                    await Application.Current.MainPage.DisplayAlert("REDDEDİLDİ", "Kayıt Reddilmiştir.", "TAMAM");
+                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                }
+                else
+                {
+                    IsBusy = false;
+                    await Application.Current.MainPage.DisplayAlert("Başarısız", "Kayıt Reddedilememiştir.", "TAMAM");
+                }
             }
-            else
+            catch (System.Exception ex)
             {
                 IsBusy = false;
-                await Application.Current.MainPage.DisplayAlert("Başarısız", "Kayıt Reddedilememiştir.", "TAMAM");
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
         }
     }

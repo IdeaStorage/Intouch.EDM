@@ -28,14 +28,21 @@ namespace Intouch.Edm.Views
                 return;
             }
 
-            var options = await dataService.GetTaskOptionsAsync(taskItem.Id);
-            taskItem.Options = options;
-            var scenarioDto = await dataService.GetScenarioDetailAsync(taskItem.ScenarioId);
-            taskItem.ScenarioDto = scenarioDto;
+            try
+            {
+                var options = await dataService.GetTaskOptionsAsync(taskItem.Id);
+                taskItem.Options = options;
+                var scenarioDto = await dataService.GetScenarioDetailAsync(taskItem.ScenarioId);
+                taskItem.ScenarioDto = scenarioDto;
 
-            await Application.Current.MainPage.Navigation.PushAsync(new TaskDetailPage(new TaskDetailViewModel(taskItem)));
+                await Application.Current.MainPage.Navigation.PushAsync(new TaskDetailPage(new TaskDetailViewModel(taskItem)));
 
-            TaskListView.SelectedItem = null;
+                TaskListView.SelectedItem = null;
+            }
+            catch (System.Exception ex)
+            {
+                await DisplayAlert("Uyarı!", "Bağlantı sağlanırken hata oluştu.", "Tamam");
+            }
         }
 
         protected override void OnAppearing()

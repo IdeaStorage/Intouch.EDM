@@ -29,7 +29,14 @@ namespace Intouch.Edm.Views
 
                 if (numPage == (int)TabPageEnums.AnnouncementListPage)
                 {
-                    await dataService.SetReadNotifications();
+                    try
+                    {
+                        await dataService.SetReadNotifications();
+                    }
+                    catch (System.Exception ex)
+                    {
+                        await DisplayAlert("Uyarı!", "Bağlantı sağlanırken hata oluştu.", "Tamam");
+                    }
                     (BindingContext as MainPageViewModel).UnreadCount = 0;
                 }
             };

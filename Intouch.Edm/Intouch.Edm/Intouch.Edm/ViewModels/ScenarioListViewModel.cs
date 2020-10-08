@@ -51,9 +51,10 @@ namespace Intouch.Edm.ViewModels
                 GetScenarios(statusId, _resultCount, 0);
                 AllScenarioItems.ReplaceRange(ScenarioItems);
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                Debug.WriteLine(ex);
+                IsBusy = false;
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
         }
 

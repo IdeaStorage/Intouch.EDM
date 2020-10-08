@@ -89,7 +89,6 @@ namespace Intouch.Edm.Services
             {
                 _headers.Add("authorization", PrepareBearerString(response.Result.AccessToken));
             }
-
             return response;
         }
 

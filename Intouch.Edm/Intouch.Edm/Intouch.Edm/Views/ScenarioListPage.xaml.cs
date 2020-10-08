@@ -51,21 +51,28 @@ namespace Intouch.Edm.Views
 
             if (scenario.commiteeApprovalId != null)
             {
-                var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId);
-                foreach (var option in options.result)
+                try
                 {
-                    Item item = new Item();
-                    item.checkedOption.id = option.id;
-                    item.checkedOption.text = option.text;
-                    item.checkedOption.userId = option.userId;
-                    item.checkedOption.userFullName = option.userFullName;
-                    item.checkedOption.completed = option.completed;
-                    item.checkedOption.taskUserPhone = option.taskUserPhone;
-                    taskItem.Options.result.items.Add(item);
-                }
-                taskItem.Options.result.totalCount = options.result.Count;
+                    var options = await dataService.GetScenarioTaskOptions(scenario.commiteeApprovalId);
+                    foreach (var option in options.result)
+                    {
+                        Item item = new Item();
+                        item.checkedOption.id = option.id;
+                        item.checkedOption.text = option.text;
+                        item.checkedOption.userId = option.userId;
+                        item.checkedOption.userFullName = option.userFullName;
+                        item.checkedOption.completed = option.completed;
+                        item.checkedOption.taskUserPhone = option.taskUserPhone;
+                        taskItem.Options.result.items.Add(item);
+                    }
+                    taskItem.Options.result.totalCount = options.result.Count;
 
-                await Application.Current.MainPage.Navigation.PushAsync(new ScenarioTaskOptionsPage(new ScenarioTaskOptionsViewModel(taskItem)));
+                    await Application.Current.MainPage.Navigation.PushAsync(new ScenarioTaskOptionsPage(new ScenarioTaskOptionsViewModel(taskItem)));
+                }
+                catch (System.Exception ex)
+                {
+                    await DisplayAlert("Uyarı!", "Bağlantı sağlanırken hata oluştu.", "Tamam");
+                }
             }
             else
             {
