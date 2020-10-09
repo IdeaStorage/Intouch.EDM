@@ -3,6 +3,7 @@ using Intouch.Edm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
@@ -52,5 +53,12 @@ namespace Intouch.Edm.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+       
+        public async void HandleException(Exception exc, string message)
+        {
+            await Application.Current.MainPage.DisplayAlert("Uyarı!", $"{message}", "TAMAM");
+            Debug.WriteLine("{0} {1}", message, exc);
+        }
+     
     }
 }

@@ -67,37 +67,45 @@ namespace Intouch.Edm.ViewModels
                 return;
             }
 
-            var response = await DataService.GetAuthTokenAsync(user);
+            try
+            {
+                var response = await DataService.GetAuthTokenAsync(user);
 
-            Helpers.Settings.Username = user.UserNameOrEmailAddress.Trim();
-            Helpers.Settings.Password = user.Password.Trim();
+                Helpers.Settings.Username = user.UserNameOrEmailAddress.Trim();
+                Helpers.Settings.Password = user.Password.Trim();
 
-            if (!response.Success)
+                if (!response.Success)
+                {
+                    IsBusy = false;
+                    await Application.Current.MainPage.DisplayAlert("UYARI", "Kullanıcı Adı veya Şifrenizi yanlış girdiniz!", "TAMAM");
+                }
+                else
+                {
+                    Helpers.Settings.SetTokenInformation(response);
+                    // set
+                    if (!string.IsNullOrEmpty(Helpers.Settings.FirebaseNotification))
+                    {
+                        await DataService.SaveFirebaseTokenAsync(
+                            new UserMobileAppTokenInput()
+                            {
+                                Token = Helpers.Settings.FirebaseNotification,
+                                UserId = int.Parse(Helpers.Settings.UserId)
+                            });
+                    }
+                    var responsePermission = await DataService.GetPermissionsAsync(Convert.ToInt32(Helpers.Settings.UserId));
+                    if (responsePermission.success)
+                    {
+                        Helpers.Settings.SetPermission(responsePermission);
+                        IsBusy = false;
+                    }
+
+                    await Application.Current.MainPage.Navigation.PushAsync(new UpdateUserInfoPage());
+                }
+            }
+            catch (System.Exception ex)
             {
                 IsBusy = false;
-                await Application.Current.MainPage.DisplayAlert("UYARI", "Kullanıcı Adı veya Şifrenizi yanlış girdiniz!", "TAMAM");
-            }
-            else
-            {
-                Helpers.Settings.SetTokenInformation(response);
-                // set
-                if (!string.IsNullOrEmpty(Helpers.Settings.FirebaseNotification))
-                {
-                    await DataService.SaveFirebaseTokenAsync(
-                        new UserMobileAppTokenInput()
-                        {
-                            Token = Helpers.Settings.FirebaseNotification,
-                            UserId = int.Parse(Helpers.Settings.UserId)
-                        });
-                }
-                var responsePermission = await DataService.GetPermissionsAsync(Convert.ToInt32(Helpers.Settings.UserId));
-                if (responsePermission.success)
-                {
-                    Helpers.Settings.SetPermission(responsePermission);
-                    IsBusy = false;
-                }
-
-                await Application.Current.MainPage.Navigation.PushAsync(new UpdateUserInfoPage());
+                HandleException(ex, "Beklenmeyen bir hata oluştu.");
             }
         }
     }

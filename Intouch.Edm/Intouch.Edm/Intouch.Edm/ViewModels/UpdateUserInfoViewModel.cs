@@ -17,25 +17,25 @@ namespace Intouch.Edm.ViewModels
 
         public async Task<Models.Dtos.UserDto.Root> GetUser(int userId, bool isSetTitleAndUnit = false)
         {
-            var user = await DataService.GetUser(Convert.ToInt32(Helpers.Settings.UserId));
+             var user = await DataService.GetUser(Convert.ToInt32(Helpers.Settings.UserId));
 
-            if (user?.result.user != null)
-            {
-                var userInfo = user.result.user;
-                UserInfoName = userInfo.name;
-                UserInfoSurname = userInfo.surname;
-                UserInfoMobilePhone = userInfo.phoneNumber;
-                UserInfoMailAddress = userInfo.emailAddress;
-                TitleId = Convert.ToInt32(userInfo.jobTitleId);
-                DepartmenId = Convert.ToInt32(userInfo.unitId);
-                if (isSetTitleAndUnit)
+                if (user?.result.user != null)
                 {
-                    SelectedTitle = userInfo.jobTitleId != null && userInfo.jobTitleId != 0 ? TitleCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.jobTitleId)) : null;
-                    SelectedDepartment = userInfo.unitId != null && userInfo.unitId != 0 ? DepartmentCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.unitId)) : null;
+                    var userInfo = user.result.user;
+                    UserInfoName = userInfo.name;
+                    UserInfoSurname = userInfo.surname;
+                    UserInfoMobilePhone = userInfo.phoneNumber;
+                    UserInfoMailAddress = userInfo.emailAddress;
+                    TitleId = Convert.ToInt32(userInfo.jobTitleId);
+                    DepartmenId = Convert.ToInt32(userInfo.unitId);
+                    if (isSetTitleAndUnit)
+                    {
+                        SelectedTitle = userInfo.jobTitleId != null && userInfo.jobTitleId != 0 ? TitleCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.jobTitleId)) : null;
+                        SelectedDepartment = userInfo.unitId != null && userInfo.unitId != 0 ? DepartmentCombobox.FirstOrDefault(p => p.Id == Convert.ToInt32(userInfo.unitId)) : null;
+                    }
+                    IsBusy = false;
                 }
-                IsBusy = false;
-            }
-
+      
             return user;
         }
 
@@ -95,6 +95,7 @@ namespace Intouch.Edm.ViewModels
                 catch (Exception ex)
                 {
                     Console.Write("User Update edilirken hata alındı:" + ex.Message);
+                    HandleException(ex, "User Update edilirken hata alındı.");
                     IsBusy = false;
                 }
             }
@@ -105,9 +106,17 @@ namespace Intouch.Edm.ViewModels
         internal async Task Init()
         {
             IsBusy = true;
-            await RetrieveTitles();
-            await RetrieveDepartments();
-            await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
+            try
+            {
+                await RetrieveTitles();
+                await RetrieveDepartments();
+                await GetUser(Convert.ToInt32(Helpers.Settings.UserId), true);
+            }
+            catch (System.Exception ex)
+            {
+                IsBusy = false;
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
+            }
         }
 
         #region DepartmenSelection

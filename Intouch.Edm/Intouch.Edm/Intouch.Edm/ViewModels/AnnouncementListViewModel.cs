@@ -37,7 +37,7 @@ namespace Intouch.Edm.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
             finally
             {
@@ -61,16 +61,24 @@ namespace Intouch.Edm.ViewModels
 
         public async void GetAnnouncements(int maxCount, int skipCount)
         {
-            var announcementItems = await DataService.GetAnnouncementsAsync(maxCount, skipCount);
-            _totalCount = announcementItems.result.totalCount;
-            int announcementColorModCount = 3;
-            int index = 0;
-            foreach (var announcementItem in announcementItems.result.items)
+            try
             {
-                Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
-                announcement.Icon = string.Format("announcement_{0}.png", index % announcementColorModCount);
-                AnnouncementItems.Add(announcement);
-                index++;
+                var announcementItems = await DataService.GetAnnouncementsAsync(maxCount, skipCount);
+                _totalCount = announcementItems.result.totalCount;
+                int announcementColorModCount = 3;
+                int index = 0;
+                foreach (var announcementItem in announcementItems.result.items)
+                {
+                    Announcement announcement = AnnouncementService.GetAnnouncement(announcementItem);
+                    announcement.Icon = string.Format("announcement_{0}.png", index % announcementColorModCount);
+                    AnnouncementItems.Add(announcement);
+                    index++;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                IsBusy = false;
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
         }
     }

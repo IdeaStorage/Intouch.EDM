@@ -85,17 +85,25 @@ namespace Intouch.Edm.ViewModels
 
         private async System.Threading.Tasks.Task ExecuteSaveClicked()
         {
-            Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = TaskService.GetTaskOptions(StatusRecords);
-            updateTaskOption.id = Task.Id;
-            var taskResult = await DataService.UpdateTaskOptions(updateTaskOption);
-            if (taskResult)
+            try
             {
-                await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
-                await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = TaskService.GetTaskOptions(StatusRecords);
+                updateTaskOption.id = Task.Id;
+                var taskResult = await DataService.UpdateTaskOptions(updateTaskOption);
+                if (taskResult)
+                {
+                    await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
+                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("BAŞARISIZ", "İşlem Sırasında Hata Oluştu.", "TAMAM");
+                }
             }
-            else
+            catch (System.Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("BAŞARISIZ", "İşlem Sırasında Hata Oluştu.", "TAMAM");
+                IsBusy = false;
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
         }
     }

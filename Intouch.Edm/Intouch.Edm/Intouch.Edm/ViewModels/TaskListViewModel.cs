@@ -69,9 +69,10 @@ namespace Intouch.Edm.ViewModels
                 FilterOptions.AddRange(AllTaskItems.Select(a => a.UserName).Distinct().ToList());
                 FilterItems();
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                Debug.WriteLine(ex);
+                IsBusy = false;
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
             finally
             {

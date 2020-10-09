@@ -23,10 +23,17 @@
 
         private async void GetUnreadAnnouncementCountAsync()
         {
-            var announcementCount = await DataService.GetAnnouncementsCountAsync();
-            if (announcementCount?.result != null && announcementCount.result > 0)
+            try
             {
-                UnreadCount = announcementCount.result;
+                var announcementCount = await DataService.GetAnnouncementsCountAsync();
+                if (announcementCount?.result != null && announcementCount.result > 0)
+                {
+                    UnreadCount = announcementCount.result;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
             }
         }
     }
