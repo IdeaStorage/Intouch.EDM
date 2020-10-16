@@ -14,5 +14,15 @@ namespace Intouch.Edm.Views
             InitializeComponent();
             BindingContext = this.viewModel = viewModel;
         }
+
+        private void Logout_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.Logout();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

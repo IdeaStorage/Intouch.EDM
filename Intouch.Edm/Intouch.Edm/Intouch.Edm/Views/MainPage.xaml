@@ -6,6 +6,9 @@
             x:Class="Intouch.Edm.Views.MainPage"
             BarTextColor="White"
             BarBackgroundColor="#00a9ab">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Çıkış" Clicked="Logout_Clicked" />
+    </TabbedPage.ToolbarItems>
     <TabbedPage.Children>
         <NavigationPage Title="Anasayfa" x:Name="TableViewMenu" Icon="homeIcon.png">
             <x:Arguments>

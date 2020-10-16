@@ -34,7 +34,12 @@ namespace Intouch.Edm.Views
         protected override bool OnBackButtonPressed()
         {
             viewModel.IsBusy = false;
-           return true;
+            return true;
+        }
+
+        private void Logout_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.Logout();
         }
     }
 }
