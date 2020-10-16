@@ -38,5 +38,10 @@ namespace Intouch.Edm.Views
                 item.IsSelected = checkbox.IsChecked;
             }
         }
+
+        private void Logout_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.Logout();
+        }
     }
 }

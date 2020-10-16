@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
-             NavigationPage.BackButtonTitle="Geri"
              IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              x:Class="Intouch.Edm.Views.ScenarioApprovePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Çıkış" Clicked="Logout_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="LableStyle" TargetType="Label">

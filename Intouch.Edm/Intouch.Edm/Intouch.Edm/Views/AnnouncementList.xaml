@@ -7,9 +7,6 @@
              NavigationPage.HasNavigationBar="False"
              IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasBackButton="False">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Yeni Duyuru" Clicked="ToolbarItem_Clicked" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="evenTemplate">
@@ -32,32 +29,53 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="8,8">
-            <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+            <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="13*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="82*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40*" />
-                    <ColumnDefinition Width="60*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="announcement_0.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
-                <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
+                <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="38*" />
+                        <ColumnDefinition Width="62*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Source="announcement_0.png" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="0,5,0,5" />
+                    <Image Grid.Row="0" Grid.Column="1" Source="scenarioDetailLogo.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,5" />
+                </Grid>
+                <Button CornerRadius="7"
+                        Grid.Row="1" Grid.Column="0"
+                        FontSize="Small"
+                        TextColor="White"
+                        BackgroundColor="#00a9ab"
+                        FlexLayout.AlignSelf="Stretch"
+                        HorizontalOptions="EndAndExpand"
+						VerticalOptions="Center"
+						Text="Yeni Duyuru"
+                        Margin="3,0,3,0"
+                        Clicked="NewAnnouncement_Clicked" />
+                <ListView x:Name="AnnouncementListView"
+                        ItemsSource="{Binding AnnouncementItems}"
+                        ItemAppearing="ListView_ItemAppearing"
+                        Margin="10,5,10,0"
+                        Grid.Row="2" Grid.Column="0"
+                        VerticalOptions="FillAndExpand"
+                        HasUnevenRows="true"
+                        ItemSelected="OnItemSelected"
+                        RefreshCommand="{Binding LoadAnnouncementsCommand}"
+                        ItemTemplate="{StaticResource announcementTemplateSelector}"
+                        IsPullToRefreshEnabled="true"
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                        CachingStrategy="RecycleElement">
+                </ListView>
             </Grid>
-            <ListView x:Name="AnnouncementListView"
-                ItemsSource="{Binding AnnouncementItems}"
-                ItemAppearing="ListView_ItemAppearing"
-                Margin="10,5,10,0"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"
-                ItemSelected="OnItemSelected"
-                RefreshCommand="{Binding LoadAnnouncementsCommand}"
-                ItemTemplate="{StaticResource announcementTemplateSelector}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement">
-            </ListView>
             <ActivityIndicator
                             x:Name="Progress"
                             Color="{StaticResource NavigationPrimary}"

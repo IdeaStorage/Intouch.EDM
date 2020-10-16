@@ -71,5 +71,10 @@ namespace Intouch.Edm.Views
         {
             return true;
         }
+
+        private void Logout_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.Logout();
+        }
     }
 }

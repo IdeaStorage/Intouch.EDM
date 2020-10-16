@@ -251,5 +251,10 @@ namespace Intouch.Edm.Helpers
             };
             return picture;
         }
+
+        public static void ClearAllData()
+        {
+            AppSettings.Clear();
+        }
     }
 }

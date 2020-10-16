@@ -1,5 +1,6 @@
 ﻿using Intouch.Edm.Helpers;
 using Intouch.Edm.Services;
+using Intouch.Edm.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +15,13 @@ namespace Intouch.Edm.ViewModels
         public IDataService DataService => DependencyService.Get<IDataService>() ?? new DataService(new Uri(Constants.ApplicationServiceUrl), Helpers.Settings.AuthenticationToken);
 
         private bool isBusy = false;
-      
+
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
-      
-        
+
         private string title = string.Empty;
 
         public string Title
@@ -53,12 +53,17 @@ namespace Intouch.Edm.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-       
+
         public async void HandleException(Exception exc, string message)
         {
             await Application.Current.MainPage.DisplayAlert("Uyarı!", $"{message}", "TAMAM");
             Debug.WriteLine("{0} {1}", message, exc);
         }
-     
+
+        public async void Logout()
+        {
+            Settings.ClearAllData();
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+        }
     }
 }

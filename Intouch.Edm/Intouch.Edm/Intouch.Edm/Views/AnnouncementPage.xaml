@@ -5,6 +5,9 @@
              IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Çıkış" Clicked="Logout_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
             <ScrollView

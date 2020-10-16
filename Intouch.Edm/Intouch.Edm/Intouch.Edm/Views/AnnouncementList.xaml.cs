@@ -31,7 +31,7 @@ namespace Intouch.Edm.Views
             (BindingContext as AnnouncementListViewModel).LoadMoreItems(e.Item as Announcement);
         }
 
-        private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        private async void NewAnnouncement_Clicked(object sender, System.EventArgs e)
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AnnouncementPage(new AnnouncementViewModel()));
         }

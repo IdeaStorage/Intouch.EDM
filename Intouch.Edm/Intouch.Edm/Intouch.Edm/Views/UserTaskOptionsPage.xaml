@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="Intouch.Edm.Views.UserTaskOptionsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Çıkış" Clicked="Logout_Clicked" />
+    </ContentPage.ToolbarItems>
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
             <Grid ColumnSpacing="2" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
