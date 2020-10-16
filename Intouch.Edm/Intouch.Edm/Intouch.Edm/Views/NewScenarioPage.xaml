@@ -163,7 +163,6 @@
                         FlexLayout.AlignSelf="Stretch"
                         HorizontalOptions="FillAndExpand"
 						VerticalOptions="EndAndExpand"
-
 						Text="Başlat"
                         Margin="3,5,3,50"
                         Command="{Binding SaveClicked}" />
