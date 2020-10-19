@@ -25,9 +25,8 @@ namespace Intouch.Edm.Views
             CurrentPageChanged += async (object sender, EventArgs e) =>
             {
                 BindingContext = viewModel = new MainPageViewModel();
-                int numPage = Children.IndexOf(CurrentPage);
 
-                if (numPage == (int)TabPageEnums.AnnouncementListPage)
+                if (CurrentPage.Title == "Duyurular")
                 {
                     try
                     {
