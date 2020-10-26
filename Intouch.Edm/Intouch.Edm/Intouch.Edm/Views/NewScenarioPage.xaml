@@ -44,8 +44,8 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="15*" />
-                        <ColumnDefinition Width="28*" />
+                        <ColumnDefinition Width="11*" />
+                        <ColumnDefinition Width="32*" />
                         <ColumnDefinition Width="57*" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Row="0" Grid.Column="0" Source="subjectIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
@@ -63,7 +63,7 @@
                                                SelectedItem="{Binding SelectedSubject,Mode=TwoWay}"
                                                IsEnabled="{Binding IsEnabledEvent}"
                                                HorizontalOptions="FillAndExpand"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
 
                     <Image Grid.Row="1" Grid.Column="0" Source="eventIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
@@ -81,7 +81,7 @@
                                                SelectedItem="{Binding SelectedEvent,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
                                                IsEnabled="{Binding IsEventEnabledEvent}"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
 
                     <Image Grid.Row="2" Grid.Column="0" Source="sourceIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
@@ -98,7 +98,7 @@
                                                HorizontalOptions="FillAndExpand"
                                                SelectedItem="{Binding SelectedSource,Mode=TwoWay}"
                                                AutomationProperties.HelpText="Seçiniz"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
 
                     <Image Grid.Row="3" Grid.Column="0" Source="locationIcon.png" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
@@ -115,7 +115,7 @@
                                                SelectedItem="{Binding SelectedLocation,Mode=TwoWay}"
                                                HorizontalOptions="FillAndExpand"
                                                AutomationProperties.HelpText="Seçiniz"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
 
                     <Image Grid.Row="4" Grid.Column="0" Source="impactAreaIcon.png" IsVisible="{Binding IsImpactAreaEnabled}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
@@ -133,7 +133,7 @@
                                                HorizontalOptions="FillAndExpand"
                                                AutomationProperties.HelpText="Seçiniz"
                                                IsVisible="{Binding IsImpactAreaEnabled}"
-                                               VerticalOptions="Fill">
+                                               VerticalOptions="CenterAndExpand">
                     </controls:BorderlessPicker>
                 </Grid>
             </StackLayout>
