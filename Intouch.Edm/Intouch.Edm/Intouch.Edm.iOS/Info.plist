@@ -22,7 +22,7 @@
     <key>CFBundleDisplayName</key>
     <string>Bileşim Acil</string>
     <key>CFBundleIdentifier</key>
-    <string>com.intouch.edm</string>
+    <string>com.bilesim.edm</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>
