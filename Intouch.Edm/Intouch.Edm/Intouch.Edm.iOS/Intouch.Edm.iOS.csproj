@@ -1,386 +1,357 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{50213E92-56A9-40E8-9EB8-F65F9F58F86C}</ProjectGuid>
-    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Intouch.Edm.iOS</RootNamespace>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>IntouchEdm</AssemblyName>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchDebug>true</MtouchDebug>
-    <OptimizePNGs>true</OptimizePNGs>
-    <MtouchSdkVersion>12.4</MtouchSdkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchArch>x86_64</MtouchArch>
-    <ConsolePause>false</ConsolePause>
-    <MtouchSdkVersion>12.4</MtouchSdkVersion>
-    <OptimizePNGs>true</OptimizePNGs>
-    <MtouchDebug>true</MtouchDebug>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhone\Debug</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\iPhone\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <MtouchArch>ARM64</MtouchArch>
-    <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
-    <AppExtensionDebugBundleId />
-  </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator'">
-    <OutputPath>bin\iPhoneSimulator\Ad-Hoc\</OutputPath>
-    <MtouchArch>i386, x86_64</MtouchArch>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone'">
-    <OutputPath>bin\iPhone\Ad-Hoc\</OutputPath>
-    <MtouchArch>ARM64</MtouchArch>
-    <MtouchFloat32>true</MtouchFloat32>
-    <OptimizePNGs>true</OptimizePNGs>
-    <CodesignKey>iPhone Developer: Mehmet Sefa Guller (H9745PFFD5)</CodesignKey>
-    <CodesignProvision>intouchedm</CodesignProvision>
-    <CodesignExtraArgs />
-    <CodesignResourceRules />
-    <CodesignEntitlements />
-    <MtouchSdkVersion>13.2</MtouchSdkVersion>
-    <BuildIpa>true</BuildIpa>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="Effects\LabelShadowEffect.cs" />
-    <Compile Include="Renderers\CustomEntryRenderer.cs" />
-    <Compile Include="Renderers\InlineTabbedPageRenderer.cs" />
-    <Compile Include="Renderers\MyTabbedPageRenderer.cs" />
-    <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
-    <Compile Include="Services\LocationService.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="SendRegistrationToServer.cs" />
-    <Compile Include="Effects\ShowHidePassEffect.cs" />
-    <Compile Include="UserNotificationCenterDelegate.cs" />
-    <None Include="Entitlements.plist" />
-    <BundleResource Include="GoogleService-Info.plist" />
-    <None Include="Info.plist">
-      <SubType>Designer</SubType>
-    </None>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="iTunesMetadata.plist" />
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\1201.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\401.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\402.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\581.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\801.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Icon.xcassets\LaunchImages.launchimage\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Plugin.Badge">
-      <Version>2.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Plugin.FirebasePushNotification">
-      <Version>2.3.1-rc</Version>
-    </PackageReference>
-    <PackageReference Include="Rg.Plugins.Popup">
-      <Version>1.2.0.223</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Essentials">
-      <Version>1.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
-    <PackageReference Include="Xamarin.Forms.InputKit">
-      <Version>3.3.1</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Intouch.Edm\Intouch.Edm.csproj">
-      <Project>{B4B86FFE-0639-4785-A05B-E646D5E6F328}</Project>
-      <Name>Intouch.Edm</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\eventIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\fire.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\HidePass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\homeIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icons8notification30.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\impactAreaIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\locationIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\mailIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\password.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\scenarioIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ShowPass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sourceIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\subjectIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\taskIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tree.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\water.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\announcementIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\businesscontinuity.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\businessIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\camera.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\earthquake.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\others.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pandemic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\appDetailLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\gallery.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\scenarioDetailLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\businessContinuityDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\earthquakeDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\fireDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\othersDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pandemicDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\waterDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\adkDetail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\businessListIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\earthquakeListIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\fireListIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\othersListIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pandemicListIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\waterListIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\taskDetailIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\announcement_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\announcement_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\announcement_0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\callIcon.png" />
-  </ItemGroup>
+﻿<?xml version="1.0" encoding="utf-8"?>  
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+  <PropertyGroup>   
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration> 
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>  
+    <ProductVersion>8.0.30703</ProductVersion>  
+    <SchemaVersion>2.0</SchemaVersion>  
+    <ProjectGuid>{50213E92-56A9-40E8-9EB8-F65F9F58F86C}</ProjectGuid>   
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>  
+    <TemplateGuid>{89a4fe7c-635d-49c9-8d8c-5cd363c0d68d}</TemplateGuid> 
+    <OutputType>Exe</OutputType>    
+    <RootNamespace>Intouch.Edm.iOS</RootNamespace>  
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>  
+    <AssemblyName>IntouchEdm</AssemblyName> 
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>  
+    <NuGetPackageImportStamp>   
+    </NuGetPackageImportStamp>  
+  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">   
+    <DebugSymbols>true</DebugSymbols>   
+    <DebugType>full</DebugType> 
+    <Optimize>false</Optimize>  
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>  
+    <DefineConstants>DEBUG</DefineConstants>    
+    <ErrorReport>prompt</ErrorReport>   
+    <WarningLevel>4</WarningLevel>  
+    <ConsolePause>false</ConsolePause>  
+    <MtouchArch>i386, x86_64</MtouchArch>   
+    <MtouchLink>SdkOnly</MtouchLink>    
+    <MtouchDebug>true</MtouchDebug> 
+    <OptimizePNGs>true</OptimizePNGs>   
+    <MtouchSdkVersion>12.4</MtouchSdkVersion>   
+    <CodesignKey>Apple Development: Serden Bulut (HXWP4W9A37)</CodesignKey> 
+  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' "> 
+    <DebugType>none</DebugType> 
+    <Optimize>true</Optimize>   
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>    
+    <ErrorReport>prompt</ErrorReport>   
+    <WarningLevel>4</WarningLevel>  
+    <MtouchLink>SdkOnly</MtouchLink>    
+    <MtouchArch>x86_64</MtouchArch> 
+    <ConsolePause>false</ConsolePause>  
+    <OptimizePNGs>true</OptimizePNGs>   
+    <MtouchDebug>true</MtouchDebug> 
+    <CodesignKey>Apple Development: Serden Bulut (HXWP4W9A37)</CodesignKey> 
+  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">    
+    <DebugSymbols>true</DebugSymbols>   
+    <DebugType>full</DebugType> 
+    <Optimize>false</Optimize>  
+    <OutputPath>bin\iPhone\Debug</OutputPath>   
+    <DefineConstants>DEBUG</DefineConstants>    
+    <ErrorReport>prompt</ErrorReport>   
+    <WarningLevel>4</WarningLevel>  
+    <ConsolePause>false</ConsolePause>  
+    <MtouchArch>ARM64</MtouchArch>  
+    <CodesignKey>Apple Development: Serden Bulut (HXWP4W9A37)</CodesignKey> 
+    <MtouchDebug>true</MtouchDebug> 
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements> 
+    <MtouchLink>SdkOnly</MtouchLink>    
+  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">  
+    <DebugType>none</DebugType> 
+    <Optimize>true</Optimize>   
+    <OutputPath>bin\iPhone\Release</OutputPath> 
+    <ErrorReport>prompt</ErrorReport>   
+    <WarningLevel>4</WarningLevel>  
+    <MtouchArch>ARM64</MtouchArch>  
+    <ConsolePause>false</ConsolePause>  
+    <CodesignKey>iPhone Distribution: BILESIM ALTERNATIF DAGITIM KANALLARI ANONIM SIRKETI (86DAU4UJ4V)</CodesignKey>    
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements> 
+    <CodesignProvision>AcilBilesim</CodesignProvision>  
+    <MtouchLink>SdkOnly</MtouchLink>    
+    <MtouchSdkVersion>14.3</MtouchSdkVersion>
+  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">  
+    <AppExtensionDebugBundleId />   
+  </PropertyGroup>  
+  <PropertyGroup>   
+    <NoWin32Manifest>true</NoWin32Manifest> 
+  </PropertyGroup>  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator'">    
+    <OutputPath>bin\iPhoneSimulator\Ad-Hoc\</OutputPath>    
+    <MtouchArch>i386, x86_64</MtouchArch>   
+    <CodesignKey>Apple Development: Serden Bulut (HXWP4W9A37)</CodesignKey> 
+    <MtouchLink>SdkOnly</MtouchLink>    
+  </PropertyGroup>  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone'"> 
+    <OutputPath>bin\iPhone\Ad-Hoc\</OutputPath> 
+    <MtouchArch>ARM64</MtouchArch>  
+    <MtouchFloat32>true</MtouchFloat32> 
+    <OptimizePNGs>true</OptimizePNGs>   
+    <CodesignKey>Apple Development: Serden Bulut (HXWP4W9A37)</CodesignKey> 
+    <CodesignExtraArgs />   
+    <CodesignResourceRules />   
+    <CodesignEntitlements />    
+    <MtouchSdkVersion>14.3</MtouchSdkVersion>   
+    <BuildIpa>true</BuildIpa>   
+    <MtouchLink>SdkOnly</MtouchLink>    
+  </PropertyGroup>  
+  <ItemGroup>   
+    <Compile Include="Effects\LabelShadowEffect.cs" />  
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />  
+    <Compile Include="Renderers\InlineTabbedPageRenderer.cs" /> 
+    <Compile Include="Renderers\MyTabbedPageRenderer.cs" /> 
+    <Compile Include="Renderers\BorderlessPickerRenderer.cs" /> 
+    <Compile Include="Services\LocationService.cs" />   
+    <Compile Include="Main.cs" />   
+    <Compile Include="AppDelegate.cs" />    
+    <Compile Include="SendRegistrationToServer.cs" />   
+    <Compile Include="Effects\ShowHidePassEffect.cs" /> 
+    <Compile Include="UserNotificationCenterDelegate.cs" /> 
+    <None Include="Entitlements.plist" />   
+    <BundleResource Include="GoogleService-Info.plist" />   
+    <None Include="Info.plist"> 
+      <SubType>Designer</SubType>   
+    </None> 
+    <Compile Include="Properties\AssemblyInfo.cs" />    
+    <None Include="iTunesMetadata.plist" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json"> 
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">  
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">   
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">   
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">   
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">   
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">    
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Contents.json">  
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <ImageAsset Include="Icon.xcassets\LaunchImages.launchimage\Contents.json"> 
+      <Visible>false</Visible>  
+    </ImageAsset>   
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" /> 
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-20x20%402x-1.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-29x29%403x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-20x20%402x-1-1.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-29x29%401x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-29x29%402x-1.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-40x40%402x-1.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-76x76%401x-1.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Icon.xcassets\AppIcons.appiconset\iTunesArtwork%402x.png" />
+  </ItemGroup>  
+  <ItemGroup>   
+    <Reference Include="System" />  
+    <Reference Include="System.Xml" />  
+    <Reference Include="System.Core" /> 
+    <Reference Include="Xamarin.iOS" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <PackageReference Include="Plugin.Badge">   
+      <Version>2.0.0</Version>  
+    </PackageReference> 
+    <PackageReference Include="Plugin.FirebasePushNotification">    
+      <Version>2.3.1-rc</Version>   
+    </PackageReference> 
+    <PackageReference Include="Rg.Plugins.Popup">   
+      <Version>1.2.0.223</Version>  
+    </PackageReference> 
+    <PackageReference Include="Xamarin.Essentials"> 
+      <Version>1.0.1</Version>  
+    </PackageReference> 
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />   
+    <PackageReference Include="Xamarin.Forms.InputKit"> 
+      <Version>3.3.1</Version>  
+    </PackageReference> 
+  </ItemGroup>  
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />  
+  <ItemGroup>   
+    <ProjectReference Include="..\Intouch.Edm\Intouch.Edm.csproj">  
+      <Project>{B4B86FFE-0639-4785-A05B-E646D5E6F328}</Project> 
+      <Name>Intouch.Edm</Name>  
+    </ProjectReference> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\eventIcon.png" />    
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\fire.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\HidePass.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\homeIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\icons8notification30.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\impactAreaIcon.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\locationIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\mailIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\password.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\scenarioIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\ShowPass.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\sourceIcon.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\subjectIcon.png" />  
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\taskIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\tree.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\user.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\water.png" />    
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\announcementIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\businesscontinuity.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\businessIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\camera.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\earthquake.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\others.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\pandemic.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\appDetailLogo.png" />    
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\gallery.png" />  
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\scenarioDetailLogo.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\businessContinuityDetail.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\earthquakeDetail.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\fireDetail.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\othersDetail.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\pandemicDetail.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\waterDetail.png" />  
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\adkDetail.png" />    
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\businessListIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\earthquakeListIcon.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\fireListIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\othersListIcon.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\pandemicListIcon.png" /> 
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\waterListIcon.png" />    
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\taskDetailIcon.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\announcement_2.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\announcement_1.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\announcement_0.png" />   
+  </ItemGroup>  
+  <ItemGroup>   
+    <BundleResource Include="Resources\callIcon.png" /> 
+  </ItemGroup>  
 </Project>
