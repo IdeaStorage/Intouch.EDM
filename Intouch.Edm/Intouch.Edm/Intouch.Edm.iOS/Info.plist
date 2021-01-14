@@ -30,11 +30,14 @@
 	<key>XSAppIconAssets</key>
 	<string>Icon.xcassets/AppIcons.appiconset</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs access to the camera to take photos.</string>
+	<string>Acil durum bildirimi sırasında olay yeri ile ilgili fotograf çekilmesi gerekebileceği icin kamera erisim izni gerekmektedir
+</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to photos.</string>
+	<string>Acil durum bildirimi sırasında olay yeri ile ilgili fotograf yuklemesi gerekebileceği icin kamera erisim izni gerekmektedir
+Acil durum bildirimi sırasında olay yeri ile ilgili fotograf çekilmesi gerekebileceği icin fotograflara erisim izni gerekmektedir
+</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app needs access to the photo gallery.</string>
+	<string>Acil durum bildirimi sırasında olay yeri ile ilgili fotograf çekilmesi gerekebileceği icin fotograf galerisine erisim izni gerekmektedir</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -64,11 +67,11 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your iOS 11 and higher background location usage description goes here.</string>
+	<string>Acil Durum sırasında acil durumun yasandigi alanda bulunup bulnmadigiyla ilgili yoneticilere bilgi vermek amaçlı lokasyon bilgisine erisim izni gerekmektedir.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your iOS 10 and lower background location usage description goes here.</string>
+	<string>Acil Durum sırasında acil durumun yasandigi alanda bulunup bulnmadigiyla ilgili yoneticilere bilgi vermek amaçlı lokasyon bilgisine erisim izni gerekmektedir.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your foreground location usage description goes here.</string>
+	<string>Acil Durum bildirimi sırasında lokasyon bilgisini otomatik doldurmak icin lokasyon bilgisine erisim izni gerekmektedir.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app need to access your calendar events</string>
 </dict>
