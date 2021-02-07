@@ -87,11 +87,18 @@ namespace Intouch.Edm.ViewModels
         {
             try
             {
+                if (IsBusy)
+                {
+                    return;
+                }
+
+                IsBusy = true;
                 Models.Dtos.TaskOptionUpdateDto.RootObject updateTaskOption = TaskService.GetTaskOptions(StatusRecords);
                 updateTaskOption.id = Task.Id;
                 var taskResult = await DataService.UpdateTaskOptions(updateTaskOption);
                 if (taskResult)
                 {
+                    IsBusy = false;
                     await Application.Current.MainPage.DisplayAlert("BAŞARILI", "İşlem Tamamlanmıştır.", "TAMAM");
                     await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
                 }
@@ -104,6 +111,10 @@ namespace Intouch.Edm.ViewModels
             {
                 IsBusy = false;
                 HandleException(ex, "Bağlantı sağlanırken hata oluştu.");
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
     }

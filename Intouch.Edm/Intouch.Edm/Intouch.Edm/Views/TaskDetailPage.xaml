@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:Intouch.Edm.Controls"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="Intouch.Edm.Views.TaskDetailPage"
+             IsEnabled="{Binding IsBusy, Converter= {StaticResource reverseBoolean}}"
              NavigationPage.HasNavigationBar="true">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Çıkış" Clicked="Logout_Clicked" />
@@ -46,7 +47,8 @@
                         <RowDefinition Height="40*" />
                         <RowDefinition Height="3*" />
                         <RowDefinition Height="45*" />
-                        <RowDefinition Height="12*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="11*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -189,8 +191,15 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <StackLayout Grid.Column="0" Grid.Row="3">
+                        <ActivityIndicator x:Name="Progress"
+                                   Color="{StaticResource NavigationPrimary}"
+                                   IsEnabled="{Binding IsBusy}"
+                                   IsVisible="{Binding true}"
+                                   IsRunning="{Binding IsBusy}"></ActivityIndicator>
+                    </StackLayout>
                     <Button CornerRadius="7"
-                    Grid.Row="3" Grid.Column="0"
+                    Grid.Row="4" Grid.Column="0"
                         FontSize="Large"
                         TextColor="White"
                         BackgroundColor="#00a9ab"
